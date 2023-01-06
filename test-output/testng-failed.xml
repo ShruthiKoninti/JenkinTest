@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <listeners>
+    <listener class-name="com.focus.listeners.Listener"/>
+  </listeners>
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="com.focus.testcases.URLBrowserTest"/>
+      <class name="com.focus.testcases.LoginPageTest"/>
+      <class name="com.focus.testcases.PDCTest"/>
+    </classes>
+  </test> <!-- Test -->
+  <test name="Test(failed)">
+    <classes>
+      <class name="com.focus.testcases.URLBrowserTest">
+        <methods>
+          <include name="closeBrowser"/>
+          <include name="beforeMethodExecution"/>
+          <include name="generateReports"/>
+          <include name="intialiseReports"/>
+          <include name="openBrowser"/>
+          <include name="afterMethodExecution"/>
+        </methods>
+      </class> <!-- com.focus.testcases.URLBrowserTest -->
+      <class name="com.focus.testcases.LoginPageTest">
+        <methods>
+          <include name="beforeMethodExecution"/>
+          <include name="afterMethodExecution"/>
+        </methods>
+      </class> <!-- com.focus.testcases.LoginPageTest -->
+      <class name="com.focus.testcases.PDCTest">
+        <methods>
+          <include name="checkConvertingVouchersPDPInPDCVoucherScreenWithOutPostOnDate"/>
+          <include name="beforeMethodExecution"/>
+          <include name="checkConvertedPDCVoucherInReceipts"/>
+          <include name="checkUpdateinPDCUnderSettingMenuForEnableReversePostingInPayments"/>
+          <include name="checkCreationOfNewCashAndBankAccountType"/>
+          <include name="checkSavedVouchersInPDCVoucherScreenWithOutPostOnDate"/>
+          <include name="checkLogoutAndLoginWithSU"/>
+          <include name="checkConvertingVouchersInPDCVoucherScreenWithOutPostOnDate"/>
+          <include name="CheckSavedVoucherInPDPVATInCovertedPDCScreen"/>
+          <include name="checkConvertedPDCVoucherInPayments"/>
+          <include name="CheckSavingVoucherInPDPVAT"/>
+          <include name="checkSavedCovertedVoucherInReceiptsAfterReversePosting"/>
+          <include name="afterMethodExecution"/>
+          <include name="checkSavingVoucherInPostDatedReceiptsWithCustomerC"/>
+        </methods>
+      </class> <!-- com.focus.testcases.PDCTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

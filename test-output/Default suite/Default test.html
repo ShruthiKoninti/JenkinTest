@@ -1,0 +1,1054 @@
+<html>
+<head>
+<title>TestNG:  Default test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Default test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>0/0/49</td>
+</tr><tr>
+<td>Started on:</td><td>Tue Dec 06 10:31:17 IST 2022</td>
+</tr>
+<tr><td>Total time:</td><td>0 seconds (235 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED CONFIGURATIONS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.openBrowser()'><b>openBrowser</b><br>Test class: com.focus.testcases.RulesTest<br>Parameters: chrome</td>
+<td><div><pre>org.openqa.selenium.WebDriverException: disconnected: received Inspector.detached event
+  (failed to check if window was closed: disconnected: unable to connect to renderer)
+  (Session info: chrome=107.0.5304.122)
+Build info: version: &apos;3.12.0&apos;, revision: &apos;7c6e0b3&apos;, time: &apos;2018-05-08T14:04:26.12Z&apos;
+System info: host: &apos;FOCUS-QA-10&apos;, ip: &apos;192.168.4.206&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_111&apos;
+Driver info: driver.version: ChromeDriver
+remote stacktrace: Backtrace:
+	Ordinal0 [0x002A1ED3+2236115]
+	Ordinal0 [0x002392F1+1807089]
+	Ordinal0 [0x001466FD+812797]
+	Ordinal0 [0x0013A1B6+762294]
+	Ordinal0 [0x00139E33+761395]
+	Ordinal0 [0x00139350+758608]
+	Ordinal0 [0x001392C1+758465]
+	Ordinal0 [0x00138113+753939]
+	Ordinal0 [0x0013861D+755229]
+	Ordinal0 [0x00137D25+752933]
+	Ordinal0 [0x00142083+794755]
+	Ordinal0 [0x00137CD5+752853]
+	Ordinal0 [0x00138EE6+757478]
+	Ordinal0 [0x00138113+753939]
+	Ordinal0 [0x0013861D+755229]
+	Ordinal0 [0x00137D25+752933]
+	Ordinal0 [0x0013FBB8+785336]
+	Ordinal0 [0x00137CD5+752853]
+	Ordinal0 [0x00138EE6+757478]
+	Ordinal0 [0x00138113+753939]
+	Ordinal0 [0x0013861D+755229]
+	Ordinal0 [0x00137D25+752933]
+	Ordinal0 [0x0013D5C2+775618]
+	Ordinal0 [0x00137CD5+752853]
+	Ordinal0 [0x00138EE6+757478]
+	Ordinal0 [0x00138113+753939]
+	Ordinal0 [0x0013861D+755229]
+	Ordinal0 [0x00137D25+752933]
+	Ordinal0 [0x00132F2D+732973]
+	Ordinal0 [0x00137CD5+752853]
+	Ordinal0 [0x001374FD+750845]
+	Ordinal0 [0x0013720F+750095]
+	Ordinal0 [0x00147B93+818067]
+	Ordinal0 [0x0012D2E9+709353]
+	Ordinal0 [0x0012C4EB+705771]
+	Ordinal0 [0x00198215+1147413]
+	Ordinal0 [0x00197A6A+1145450]
+	Ordinal0 [0x001918A6+1120422]
+	Ordinal0 [0x0016A73D+960317]
+	Ordinal0 [0x0016B71F+964383]
+	GetHandleVerifier [0x0054E7E2+2743074]
+	GetHandleVerifier [0x005408D4+2685972]
+	GetHandleVerifier [0x00332BAA+532202]
+	GetHandleVerifier [0x00331990+527568]
+	Ordinal0 [0x0024080C+1837068]
+	Ordinal0 [0x00244CD8+1854680]
+	Ordinal0 [0x00244DC5+1854917]
+	Ordinal0 [0x0024ED64+1895780]
+	BaseThreadInitThunk [0x75B73744+36]
+	RtlSetCurrentTransaction [0x77DC9E54+212]
+	RtlSetCurrentTransaction [0x77DC9E1F+159]
+	(No symbol) [0x00000000]
+
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.W3CHandshakeResponse.lambda$new$0(W3CHandshakeResponse.java:57)
+	at org.openqa.selenium.remote.W3CHandshakeResponse.lambda$getResponseFunction$2(W3CHandshakeResponse.java:104)
+	at org.openqa.selenium.remote.ProtocolHandshake.lambda$createSession$0(ProtocolHandshake.java:123)
+	at java.util.stream.ReferencePipeline$3$1.accept(Unknown Source)
+	at java.util.Spliterators$ArraySpliterator.tryAdvance(Unknown Source)
+	at java.util.stream.ReferencePipeline.forEachWithCancel(Unknown Source)
+	at java.util.stream.AbstractPipeline.copyIntoWithCancel(Unknown Source)
+	at java.util.stream.AbstractPipeline.copyInto(Unknown Source)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(Unknown Source)
+	at java.util.stream.FindOps$FindOp.evaluateSequential(Unknown Source)
+	at java.util.stream.AbstractPipeline.evaluate(Unknown Source)
+	at java.util.stream.ReferencePipeline.findFirst(Unknown Source)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:126)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:73)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:136)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:207)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:130)
+	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:181)
+	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:147)
+	at com.focus.base.BaseEngine.openBrowser(BaseEngine.java:123)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:514)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:215)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div><a href='#' onClick='toggleBox("stack-trace704106237", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace704106237'><pre>org.openqa.selenium.WebDriverException: disconnected: received Inspector.detached event
+  (failed to check if window was closed: disconnected: unable to connect to renderer)
+  (Session info: chrome=107.0.5304.122)
+Build info: version: &apos;3.12.0&apos;, revision: &apos;7c6e0b3&apos;, time: &apos;2018-05-08T14:04:26.12Z&apos;
+System info: host: &apos;FOCUS-QA-10&apos;, ip: &apos;192.168.4.206&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_111&apos;
+Driver info: driver.version: ChromeDriver
+remote stacktrace: Backtrace:
+	Ordinal0 [0x002A1ED3+2236115]
+	Ordinal0 [0x002392F1+1807089]
+	Ordinal0 [0x001466FD+812797]
+	Ordinal0 [0x0013A1B6+762294]
+	Ordinal0 [0x00139E33+761395]
+	Ordinal0 [0x00139350+758608]
+	Ordinal0 [0x001392C1+758465]
+	Ordinal0 [0x00138113+753939]
+	Ordinal0 [0x0013861D+755229]
+	Ordinal0 [0x00137D25+752933]
+	Ordinal0 [0x00142083+794755]
+	Ordinal0 [0x00137CD5+752853]
+	Ordinal0 [0x00138EE6+757478]
+	Ordinal0 [0x00138113+753939]
+	Ordinal0 [0x0013861D+755229]
+	Ordinal0 [0x00137D25+752933]
+	Ordinal0 [0x0013FBB8+785336]
+	Ordinal0 [0x00137CD5+752853]
+	Ordinal0 [0x00138EE6+757478]
+	Ordinal0 [0x00138113+753939]
+	Ordinal0 [0x0013861D+755229]
+	Ordinal0 [0x00137D25+752933]
+	Ordinal0 [0x0013D5C2+775618]
+	Ordinal0 [0x00137CD5+752853]
+	Ordinal0 [0x00138EE6+757478]
+	Ordinal0 [0x00138113+753939]
+	Ordinal0 [0x0013861D+755229]
+	Ordinal0 [0x00137D25+752933]
+	Ordinal0 [0x00132F2D+732973]
+	Ordinal0 [0x00137CD5+752853]
+	Ordinal0 [0x001374FD+750845]
+	Ordinal0 [0x0013720F+750095]
+	Ordinal0 [0x00147B93+818067]
+	Ordinal0 [0x0012D2E9+709353]
+	Ordinal0 [0x0012C4EB+705771]
+	Ordinal0 [0x00198215+1147413]
+	Ordinal0 [0x00197A6A+1145450]
+	Ordinal0 [0x001918A6+1120422]
+	Ordinal0 [0x0016A73D+960317]
+	Ordinal0 [0x0016B71F+964383]
+	GetHandleVerifier [0x0054E7E2+2743074]
+	GetHandleVerifier [0x005408D4+2685972]
+	GetHandleVerifier [0x00332BAA+532202]
+	GetHandleVerifier [0x00331990+527568]
+	Ordinal0 [0x0024080C+1837068]
+	Ordinal0 [0x00244CD8+1854680]
+	Ordinal0 [0x00244DC5+1854917]
+	Ordinal0 [0x0024ED64+1895780]
+	BaseThreadInitThunk [0x75B73744+36]
+	RtlSetCurrentTransaction [0x77DC9E54+212]
+	RtlSetCurrentTransaction [0x77DC9E1F+159]
+	(No symbol) [0x00000000]
+
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.W3CHandshakeResponse.lambda$new$0(W3CHandshakeResponse.java:57)
+	at org.openqa.selenium.remote.W3CHandshakeResponse.lambda$getResponseFunction$2(W3CHandshakeResponse.java:104)
+	at org.openqa.selenium.remote.ProtocolHandshake.lambda$createSession$0(ProtocolHandshake.java:123)
+	at java.util.stream.ReferencePipeline$3$1.accept(Unknown Source)
+	at java.util.Spliterators$ArraySpliterator.tryAdvance(Unknown Source)
+	at java.util.stream.ReferencePipeline.forEachWithCancel(Unknown Source)
+	at java.util.stream.AbstractPipeline.copyIntoWithCancel(Unknown Source)
+	at java.util.stream.AbstractPipeline.copyInto(Unknown Source)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(Unknown Source)
+	at java.util.stream.FindOps$FindOp.evaluateSequential(Unknown Source)
+	at java.util.stream.AbstractPipeline.evaluate(Unknown Source)
+	at java.util.stream.ReferencePipeline.findFirst(Unknown Source)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:126)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:73)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:136)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:207)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:130)
+	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:181)
+	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:147)
+	at com.focus.base.BaseEngine.openBrowser(BaseEngine.java:123)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:514)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:215)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>null</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED CONFIGURATIONS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.intialiseReports()'><b>intialiseReports</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>null</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.beforeMethodExecution()'><b>beforeMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.afterMethodExecution()'><b>afterMethodExecution</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.generateReports()'><b>generateReports</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>null</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.CheckNavigateToRulesTAB()'><b>CheckNavigateToRulesTAB</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.chckRestoreBackUpForSQLFunction()'><b>chckRestoreBackUpForSQLFunction</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkAccountTxtWithClickOnF5()'><b>checkAccountTxtWithClickOnF5</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkAddingHeadeAndFooterInLedgerReport()'><b>checkAddingHeadeAndFooterInLedgerReport</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkAfterEnableHiddenOptionAtVoucherLevel()'><b>checkAfterEnableHiddenOptionAtVoucherLevel</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkBodyHeadingColumnWithCustomerAccount()'><b>checkBodyHeadingColumnWithCustomerAccount</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkChangingDepartmentAsAMERICAAndValidateColounmHeadingName()'><b>checkChangingDepartmentAsAMERICAAndValidateColounmHeadingName</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkClickOnHiddingOptionInRulesAndClickOnSave()'><b>checkClickOnHiddingOptionInRulesAndClickOnSave</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkCopyAndPasteWithControlOptionInLedgerReport()'><b>checkCopyAndPasteWithControlOptionInLedgerReport</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkCreatingConditionForRestrictionsWithStopOption()'><b>checkCreatingConditionForRestrictionsWithStopOption</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkCreatingConditionForRestrictionsWithWarnAndAllowOption()'><b>checkCreatingConditionForRestrictionsWithWarnAndAllowOption</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkCreatingViewOptionInPurchaseVoucher()'><b>checkCreatingViewOptionInPurchaseVoucher</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkEditingAndAddingSavedRuleUnderRecepitsVAT()'><b>checkEditingAndAddingSavedRuleUnderRecepitsVAT</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkEnterF5keyInLedgerReport()'><b>checkEnterF5keyInLedgerReport</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkF5KeyInFilterPopUpScreen()'><b>checkF5KeyInFilterPopUpScreen</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkF5KeyWithRMAPopUpInOpeningStocks()'><b>checkF5KeyWithRMAPopUpInOpeningStocks</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkITEMWithF5Key()'><b>checkITEMWithF5Key</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkItemValuesintoVoucherLevelOnClickOnOkBtnInSearchPopUp()'><b>checkItemValuesintoVoucherLevelOnClickOnOkBtnInSearchPopUp</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkLOADRuleOptionAtVoucherLevel()'><b>checkLOADRuleOptionAtVoucherLevel</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkLoadingAccountValuesFromSearchPopUp()'><b>checkLoadingAccountValuesFromSearchPopUp</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkLoadingFieldsIntoPopOnClickOnRefreshBtn()'><b>checkLoadingFieldsIntoPopOnClickOnRefreshBtn</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkLogin()'><b>checkLogin</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkOnLeaveValiationATVoucherLevelWithDepartmentWales()'><b>checkOnLeaveValiationATVoucherLevelWithDepartmentWales</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkPrintPDFFileAfterCreatingHeadeAndFooterLayoutInLedgerReport()'><b>checkPrintPDFFileAfterCreatingHeadeAndFooterLayoutInLedgerReport</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkPrintPDFFileAfterImportingHeaderAndFooterLayoutInStockLedgerReport()'><b>checkPrintPDFFileAfterImportingHeaderAndFooterLayoutInStockLedgerReport</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkRuleConditionAfterEditingINEnterRule()'><b>checkRuleConditionAfterEditingINEnterRule</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkSQLFuntionATExcessStockVoucherLevel()'><b>checkSQLFuntionATExcessStockVoucherLevel</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkSavedRuleWithLoadOptionEnable()'><b>checkSavedRuleWithLoadOptionEnable</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkSavingExtraFiledInSalesINvoiceVAT()'><b>checkSavingExtraFiledInSalesINvoiceVAT</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkSavingOpeningStockVoucher()'><b>checkSavingOpeningStockVoucher</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkSavingPurchaseVoucherVATWithRateBelowAverageRate()'><b>checkSavingPurchaseVoucherVATWithRateBelowAverageRate</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkSavingPurchaseVoucherVATWithRateBelowAverageRateForWarnAndAllow()'><b>checkSavingPurchaseVoucherVATWithRateBelowAverageRateForWarnAndAllow</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkSavingPurchaseVoucherVATWithRateEqualToAverageRate()'><b>checkSavingPurchaseVoucherVATWithRateEqualToAverageRate</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkSavingPurchaseVoucherVATWithRateEqualToAverageRateWithWarnAndAllow()'><b>checkSavingPurchaseVoucherVATWithRateEqualToAverageRateWithWarnAndAllow</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkSavingPurchaseVoucherVATWithRateGreaterThanAverageRate()'><b>checkSavingPurchaseVoucherVATWithRateGreaterThanAverageRate</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkSavingPurchaseVoucherVATWithRateGreaterThanAverageRateWithWarnAndAllow()'><b>checkSavingPurchaseVoucherVATWithRateGreaterThanAverageRateWithWarnAndAllow</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkSavingRuleWithFormulaUnderSalesINvoiceVAT()'><b>checkSavingRuleWithFormulaUnderSalesINvoiceVAT</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkSavingRuleWithOutInput()'><b>checkSavingRuleWithOutInput</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkSavingRulesWithOnLeave()'><b>checkSavingRulesWithOnLeave</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkSavingRulesWithOnLoadOptionEnableInVoucherLevel()'><b>checkSavingRulesWithOnLoadOptionEnableInVoucherLevel</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkStockLedgerReportImportingHeaderAndFooterLayout()'><b>checkStockLedgerReportImportingHeaderAndFooterLayout</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkValidationOFEditRuleWithWarnAndProcedueInRecepitsVoucher()'><b>checkValidationOFEditRuleWithWarnAndProcedueInRecepitsVoucher</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkValidationOFFOrmulaControlAtVoucherLevel()'><b>checkValidationOFFOrmulaControlAtVoucherLevel</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkValidationRuleWithOnDeleteAtVoucherLevel()'><b>checkValidationRuleWithOnDeleteAtVoucherLevel</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkViewOptionCreatedInPurchaseVoucherVAT()'><b>checkViewOptionCreatedInPurchaseVoucherVAT</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.checkVoucherLevelOnEnterRuleValidation()'><b>checkVoucherLevelOnEnterRuleValidation</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.chekSavingRuleWithBeforeDelete()'><b>chekSavingRuleWithBeforeDelete</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.chekSavingRuleWithOnEdit()'><b>chekSavingRuleWithOnEdit</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+<tr>
+<td title='com.focus.testcases.RulesTest.chekSavingRuleWithOnEnter()'><b>chekSavingRuleWithOnEnter</b><br>Test class: com.focus.testcases.RulesTest</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.RulesTest@6325a3ee</td></tr>
+</table><p>
+</body>
+</html>

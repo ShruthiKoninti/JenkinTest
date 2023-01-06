@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?><PriceBook><BuyerPriceBook MaxId="7"><PriceBookHeader PriceBookType="Buyer" PriceBookId="7" PriceBookName="TestSmokeBuyigRatesAdvExcelImport" Active="True" LocationId="0" CustomizeDisplay="10922" MarkDeleted="False" ModifiedDate="17369084537016" SyncReceivedDate="0" EditingLocation="0" EditedFrom="False" sAbbr="TestSmokeBuyigRatesAdvExcelImport"><PriceBookDetails><ProductId>2</ProductId>
+<AccountId>0</AccountId>
+<TagId>5</TagId>
+<CurrencyId>47</CurrencyId>
+<StartDate>132515598</StartDate>
+<EndDate>0</EndDate>
+<UnitId>0</UnitId>
+<MinQty>0.0000000</MinQty>
+<MaxQty>0.0000000</MaxQty>
+<Val0>200.0000000</Val0>
+<Val1>100.0000000</Val1>
+<Val2>50.0000000</Val2>
+<Val3>0.0000000</Val3>
+<Val4>0.0000000</Val4>
+<Val5>0.0000000</Val5>
+<Val6>0.0000000</Val6>
+<Val7>0.0000000</Val7>
+<Val8>0.0000000</Val8>
+<Val9>0.0000000</Val9>
+<Val10>0.0000000</Val10>
+<Val11>0.0000000</Val11>
+<Val12>0.0000000</Val12>
+<Val13>0.0000000</Val13>
+<MarkDeleted>False</MarkDeleted>
+<LocationId>0</LocationId>
+<Editedfrom>False</Editedfrom>
+<CreatedDate>17369084536999</CreatedDate>
+<ModifiedDate>17369084536999</ModifiedDate>
+<SyncReceivedDate>0</SyncReceivedDate>
+<EditingLocation>0</EditingLocation>
+<CreatedBy>0</CreatedBy>
+<ModifiedBy>0</ModifiedBy>
+</PriceBookDetails><PriceBookDetails><ProductId>19</ProductId>
+<AccountId>0</AccountId>
+<TagId>5</TagId>
+<CurrencyId>47</CurrencyId>
+<StartDate>132515598</StartDate>
+<EndDate>0</EndDate>
+<UnitId>3</UnitId>
+<MinQty>0.0000000</MinQty>
+<MaxQty>0.0000000</MaxQty>
+<Val0>300.0000000</Val0>
+<Val1>200.0000000</Val1>
+<Val2>100.0000000</Val2>
+<Val3>0.0000000</Val3>
+<Val4>0.0000000</Val4>
+<Val5>0.0000000</Val5>
+<Val6>0.0000000</Val6>
+<Val7>0.0000000</Val7>
+<Val8>0.0000000</Val8>
+<Val9>0.0000000</Val9>
+<Val10>0.0000000</Val10>
+<Val11>0.0000000</Val11>
+<Val12>0.0000000</Val12>
+<Val13>0.0000000</Val13>
+<MarkDeleted>False</MarkDeleted>
+<LocationId>0</LocationId>
+<Editedfrom>False</Editedfrom>
+<CreatedDate>17369084536999</CreatedDate>
+<ModifiedDate>17369084536999</ModifiedDate>
+<SyncReceivedDate>0</SyncReceivedDate>
+<EditingLocation>0</EditingLocation>
+<CreatedBy>0</CreatedBy>
+<ModifiedBy>0</ModifiedBy>
+</PriceBookDetails></PriceBookHeader></BuyerPriceBook><MastersFromPriceBook>&lt;MastersExport&gt;﻿
+  &lt;MastersData&gt;
+    &lt;iMasterTypeId&gt;2&lt;/iMasterTypeId&gt;
+    &lt;strMasterName&gt;mCore_Product&lt;/strMasterName&gt;
+    &lt;arrMasterIdNameCode&gt;
+      &lt;MasterIdNameCode&gt;
+        &lt;iMasterId&gt;2&lt;/iMasterId&gt;
+        &lt;Name&gt;ITEMS GROUP&lt;/Name&gt;
+        &lt;Code&gt;ITEMS GROUP&lt;/Code&gt;
+        &lt;Status&gt;false&lt;/Status&gt;
+      &lt;/MasterIdNameCode&gt;
+      &lt;MasterIdNameCode&gt;
+        &lt;iMasterId&gt;19&lt;/iMasterId&gt;
+        &lt;Name&gt;BR COGS ITEM&lt;/Name&gt;
+        &lt;Code&gt;BR COGS ITEM&lt;/Code&gt;
+        &lt;Status&gt;false&lt;/Status&gt;
+      &lt;/MasterIdNameCode&gt;
+    &lt;/arrMasterIdNameCode&gt;
+  &lt;/MastersData&gt;
+  &lt;MastersData&gt;
+    &lt;iMasterTypeId&gt;3&lt;/iMasterTypeId&gt;
+    &lt;strMasterName&gt;mCore_Department&lt;/strMasterName&gt;
+    &lt;arrMasterIdNameCode&gt;
+      &lt;MasterIdNameCode&gt;
+        &lt;iMasterId&gt;5&lt;/iMasterId&gt;
+        &lt;Name&gt;AMERICA&lt;/Name&gt;
+        &lt;Code&gt;AMERICA&lt;/Code&gt;
+        &lt;Status&gt;false&lt;/Status&gt;
+      &lt;/MasterIdNameCode&gt;
+    &lt;/arrMasterIdNameCode&gt;
+  &lt;/MastersData&gt;
+  &lt;MastersData&gt;
+    &lt;iMasterTypeId&gt;11&lt;/iMasterTypeId&gt;
+    &lt;strMasterName&gt;mCore_Units&lt;/strMasterName&gt;
+    &lt;arrMasterIdNameCode&gt;
+      &lt;MasterIdNameCode&gt;
+        &lt;iMasterId&gt;3&lt;/iMasterId&gt;
+        &lt;Name&gt;Dozs&lt;/Name&gt;
+        &lt;Code&gt;Dozs&lt;/Code&gt;
+        &lt;Status&gt;false&lt;/Status&gt;
+      &lt;/MasterIdNameCode&gt;
+    &lt;/arrMasterIdNameCode&gt;
+  &lt;/MastersData&gt;
+&lt;/MastersExport&gt;</MastersFromPriceBook>
+</PriceBook>

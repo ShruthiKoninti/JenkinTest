@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test verbose="2" name="Default test">
+    <classes>
+      <class name="com.focus.testcases.RulesTest"/>
+    </classes>
+  </test> <!-- Default test -->
+  <test name="Default test(failed)">
+    <classes>
+      <class name="com.focus.testcases.RulesTest">
+        <methods>
+          <include name="checkEnterF5keyInLedgerReport"/>
+          <include name="checkLoadingAccountValuesFromSearchPopUp"/>
+          <include name="checkLoadingFieldsIntoPopOnClickOnRefreshBtn"/>
+          <include name="checkOnLeaveValiationATVoucherLevelWithDepartmentWales"/>
+          <include name="chekSavingRuleWithOnEdit"/>
+          <include name="checkSavingPurchaseVoucherVATWithRateGreaterThanAverageRate"/>
+          <include name="checkITEMWithF5Key"/>
+          <include name="checkSavingPurchaseVoucherVATWithRateEqualToAverageRateWithWarnAndAllow"/>
+          <include name="chekSavingRuleWithBeforeDelete"/>
+          <include name="checkCreatingConditionForRestrictionsWithWarnAndAllowOption"/>
+          <include name="checkSavingPurchaseVoucherVATWithRateEqualToAverageRate"/>
+          <include name="checkAccountTxtWithClickOnF5"/>
+          <include name="checkSavingRuleWithFormulaUnderSalesINvoiceVAT"/>
+          <include name="checkBodyHeadingColumnWithCustomerAccount"/>
+          <include name="checkSavingPurchaseVoucherVATWithRateBelowAverageRateForWarnAndAllow"/>
+          <include name="checkAfterEnableHiddenOptionAtVoucherLevel"/>
+          <include name="checkValidationOFEditRuleWithWarnAndProcedueInRecepitsVoucher"/>
+          <include name="checkAddingHeadeAndFooterInLedgerReport"/>
+          <include name="checkCreatingConditionForRestrictionsWithStopOption"/>
+          <include name="chckRestoreBackUpForSQLFunction"/>
+          <include name="checkSavingPurchaseVoucherVATWithRateGreaterThanAverageRateWithWarnAndAllow"/>
+          <include name="checkStockLedgerReportImportingHeaderAndFooterLayout"/>
+          <include name="CheckNavigateToRulesTAB"/>
+          <include name="checkSavingPurchaseVoucherVATWithRateBelowAverageRate"/>
+          <include name="checkSavingRuleWithOutInput"/>
+          <include name="checkVoucherLevelOnEnterRuleValidation"/>
+          <include name="checkLOADRuleOptionAtVoucherLevel"/>
+          <include name="checkRuleConditionAfterEditingINEnterRule"/>
+          <include name="checkLogin"/>
+          <include name="checkSavingRulesWithOnLoadOptionEnableInVoucherLevel"/>
+          <include name="checkCopyAndPasteWithControlOptionInLedgerReport"/>
+          <include name="checkSavedRuleWithLoadOptionEnable"/>
+          <include name="checkClickOnHiddingOptionInRulesAndClickOnSave"/>
+          <include name="checkF5KeyWithRMAPopUpInOpeningStocks"/>
+          <include name="checkViewOptionCreatedInPurchaseVoucherVAT"/>
+          <include name="chekSavingRuleWithOnEnter"/>
+          <include name="checkSQLFuntionATExcessStockVoucherLevel"/>
+          <include name="checkEditingAndAddingSavedRuleUnderRecepitsVAT"/>
+          <include name="checkChangingDepartmentAsAMERICAAndValidateColounmHeadingName"/>
+          <include name="checkValidationRuleWithOnDeleteAtVoucherLevel"/>
+          <include name="openBrowser"/>
+          <include name="checkItemValuesintoVoucherLevelOnClickOnOkBtnInSearchPopUp"/>
+          <include name="checkSavingOpeningStockVoucher"/>
+          <include name="checkCreatingViewOptionInPurchaseVoucher"/>
+          <include name="checkPrintPDFFileAfterImportingHeaderAndFooterLayoutInStockLedgerReport"/>
+          <include name="checkValidationOFFOrmulaControlAtVoucherLevel"/>
+          <include name="checkPrintPDFFileAfterCreatingHeadeAndFooterLayoutInLedgerReport"/>
+          <include name="checkSavingExtraFiledInSalesINvoiceVAT"/>
+          <include name="checkF5KeyInFilterPopUpScreen"/>
+          <include name="checkSavingRulesWithOnLeave"/>
+        </methods>
+      </class> <!-- com.focus.testcases.RulesTest -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

@@ -1,0 +1,1235 @@
+<html>
+<head>
+<title>TestNG:  Test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>28/12/0</td>
+</tr><tr>
+<td>Started on:</td><td>Tue Jan 03 13:48:05 IST 2023</td>
+</tr>
+<tr><td>Total time:</td><td>671 seconds (671255 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.CheckSavedVoucherInPDPVATInCovertedPDCScreen()'><b>CheckSavedVoucherInPDPVATInCovertedPDCScreen</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-182446950" onClick='toggleBox("Output-182446950", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-182446950" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-182446950">
+Completed executing following method : PDCTest.CheckSavedVoucherInPDPVATInCovertedPDCScreen<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Failed<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.focus.testcases.PDCTest.CheckSavedVoucherInPDPVATInCovertedPDCScreen(PDCTest.java:218)
+... Removed 30 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace182446950", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace182446950'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:513)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:135)
+	at org.testng.Assert.assertEquals(Assert.java:116)
+	at org.testng.Assert.assertEquals(Assert.java:305)
+	at org.testng.Assert.assertEquals(Assert.java:315)
+	at com.focus.testcases.PDCTest.CheckSavedVoucherInPDPVATInCovertedPDCScreen(PDCTest.java:218)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>10</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.CheckSavingVoucherInPDPVAT()'><b>CheckSavingVoucherInPDPVAT</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-428256766" onClick='toggleBox("Output-428256766", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-428256766" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-428256766">
+Completed executing following method : PDCTest.CheckSavingVoucherInPDPVAT<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Failed<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.focus.testcases.PDCTest.CheckSavingVoucherInPDPVAT(PDCTest.java:181)
+... Removed 30 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace428256766", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace428256766'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:513)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:135)
+	at org.testng.Assert.assertEquals(Assert.java:116)
+	at org.testng.Assert.assertEquals(Assert.java:305)
+	at org.testng.Assert.assertEquals(Assert.java:315)
+	at com.focus.testcases.PDCTest.CheckSavingVoucherInPDPVAT(PDCTest.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>29</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkConvertedPDCVoucherInPayments()'><b>checkConvertedPDCVoucherInPayments</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-401855512" onClick='toggleBox("Output-401855512", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-401855512" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-401855512">
+Completed executing following method : PDCTest.checkConvertedPDCVoucherInPayments<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Failed<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.focus.testcases.PDCTest.checkConvertedPDCVoucherInPayments(PDCTest.java:246)
+... Removed 30 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace401855512", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace401855512'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:513)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:135)
+	at org.testng.Assert.assertEquals(Assert.java:116)
+	at org.testng.Assert.assertEquals(Assert.java:305)
+	at org.testng.Assert.assertEquals(Assert.java:315)
+	at com.focus.testcases.PDCTest.checkConvertedPDCVoucherInPayments(PDCTest.java:246)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>11</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkConvertedPDCVoucherInReceipts()'><b>checkConvertedPDCVoucherInReceipts</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-1368519920" onClick='toggleBox("Output-1368519920", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1368519920" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1368519920">
+Completed executing following method : PDCTest.checkConvertedPDCVoucherInReceipts<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Failed<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//input[@id=&apos;id_header_67108981&apos;]&quot;}
+  (Session info: chrome=108.0.5359.125)
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.12.0&apos;, revision: &apos;7c6e0b3&apos;, time: &apos;2018-05-08T14:04:26.12Z&apos;
+System info: host: &apos;FOCUS-QA-10&apos;, ip: &apos;192.168.4.206&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_111&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.125, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\Rakesh\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:61342}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: c8506335ae1f41eb975b75faa432a762
+*** Element info: {Using=xpath, value=//input[@id=&apos;id_header_67108981&apos;]}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:317)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:419)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:309)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at com.sun.proxy.$Proxy12.getAttribute(Unknown Source)
+	at com.focus.Pages.PDCPage.checkConvertedPDCVoucherInReceipts(PDCPage.java:938)
+	at com.focus.testcases.PDCTest.checkConvertedPDCVoucherInReceipts(PDCTest.java:86)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1368519920", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1368519920'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//input[@id=&apos;id_header_67108981&apos;]&quot;}
+  (Session info: chrome=108.0.5359.125)
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.12.0&apos;, revision: &apos;7c6e0b3&apos;, time: &apos;2018-05-08T14:04:26.12Z&apos;
+System info: host: &apos;FOCUS-QA-10&apos;, ip: &apos;192.168.4.206&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_111&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.125, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\Rakesh\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:61342}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: c8506335ae1f41eb975b75faa432a762
+*** Element info: {Using=xpath, value=//input[@id=&apos;id_header_67108981&apos;]}
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:317)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:419)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:309)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at com.sun.proxy.$Proxy12.getAttribute(Unknown Source)
+	at com.focus.Pages.PDCPage.checkConvertedPDCVoucherInReceipts(PDCPage.java:938)
+	at com.focus.testcases.PDCTest.checkConvertedPDCVoucherInReceipts(PDCTest.java:86)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>45</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkConvertingVouchersInPDCVoucherScreenWithOutPostOnDate()'><b>checkConvertingVouchersInPDCVoucherScreenWithOutPostOnDate</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-928646799" onClick='toggleBox("Output-928646799", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-928646799" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-928646799">
+Completed executing following method : PDCTest.checkConvertingVouchersInPDCVoucherScreenWithOutPostOnDate<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Failed<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.focus.testcases.PDCTest.checkConvertingVouchersInPDCVoucherScreenWithOutPostOnDate(PDCTest.java:64)
+... Removed 30 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace928646799", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace928646799'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:513)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:135)
+	at org.testng.Assert.assertEquals(Assert.java:116)
+	at org.testng.Assert.assertEquals(Assert.java:305)
+	at org.testng.Assert.assertEquals(Assert.java:315)
+	at com.focus.testcases.PDCTest.checkConvertingVouchersInPDCVoucherScreenWithOutPostOnDate(PDCTest.java:64)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>6</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkConvertingVouchersPDPInPDCVoucherScreenWithOutPostOnDate()'><b>checkConvertingVouchersPDPInPDCVoucherScreenWithOutPostOnDate</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-1801355590" onClick='toggleBox("Output-1801355590", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1801355590" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1801355590">
+Completed executing following method : PDCTest.checkConvertingVouchersPDPInPDCVoucherScreenWithOutPostOnDate<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Failed<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.focus.testcases.PDCTest.checkConvertingVouchersPDPInPDCVoucherScreenWithOutPostOnDate(PDCTest.java:225)
+... Removed 30 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1801355590", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1801355590'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:513)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:135)
+	at org.testng.Assert.assertEquals(Assert.java:116)
+	at org.testng.Assert.assertEquals(Assert.java:305)
+	at org.testng.Assert.assertEquals(Assert.java:315)
+	at com.focus.testcases.PDCTest.checkConvertingVouchersPDPInPDCVoucherScreenWithOutPostOnDate(PDCTest.java:225)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>4</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkCreationOfNewCashAndBankAccountType()'><b>checkCreationOfNewCashAndBankAccountType</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-821533683" onClick='toggleBox("Output-821533683", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-821533683" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-821533683">
+Completed executing following method : PDCTest.checkCreationOfNewCashAndBankAccountType<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Failed<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.focus.testcases.PDCTest.checkCreationOfNewCashAndBankAccountType(PDCTest.java:126)
+... Removed 30 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace821533683", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace821533683'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:513)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:135)
+	at org.testng.Assert.assertEquals(Assert.java:116)
+	at org.testng.Assert.assertEquals(Assert.java:305)
+	at org.testng.Assert.assertEquals(Assert.java:315)
+	at com.focus.testcases.PDCTest.checkCreationOfNewCashAndBankAccountType(PDCTest.java:126)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>32</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkLogoutAndLoginWithSU()'><b>checkLogoutAndLoginWithSU</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-891051840" onClick='toggleBox("Output-891051840", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-891051840" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-891051840">
+Completed executing following method : PDCTest.checkLogoutAndLoginWithSU<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Failed<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@id=&apos;ddlCompany&apos;]&quot;}
+  (Session info: chrome=108.0.5359.125)
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.12.0&apos;, revision: &apos;7c6e0b3&apos;, time: &apos;2018-05-08T14:04:26.12Z&apos;
+System info: host: &apos;FOCUS-QA-10&apos;, ip: &apos;192.168.4.206&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_111&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.125, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\Rakesh\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:61342}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: c8506335ae1f41eb975b75faa432a762
+*** Element info: {Using=xpath, value=//*[@id=&apos;ddlCompany&apos;]}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:317)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:419)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:309)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at com.sun.proxy.$Proxy12.getTagName(Unknown Source)
+	at org.openqa.selenium.support.ui.Select.&lt;init&gt;(Select.java:44)
+	at com.focus.Pages.PDCPage.checkLogoutAndLoginWithSU(PDCPage.java:1243)
+	at com.focus.testcases.PDCTest.checkLogoutAndLoginWithSU(PDCTest.java:117)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace891051840", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace891051840'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@id=&apos;ddlCompany&apos;]&quot;}
+  (Session info: chrome=108.0.5359.125)
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.12.0&apos;, revision: &apos;7c6e0b3&apos;, time: &apos;2018-05-08T14:04:26.12Z&apos;
+System info: host: &apos;FOCUS-QA-10&apos;, ip: &apos;192.168.4.206&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_111&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.125, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\Rakesh\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:61342}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: c8506335ae1f41eb975b75faa432a762
+*** Element info: {Using=xpath, value=//*[@id=&apos;ddlCompany&apos;]}
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:317)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:419)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:309)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at com.sun.proxy.$Proxy12.getTagName(Unknown Source)
+	at org.openqa.selenium.support.ui.Select.&lt;init&gt;(Select.java:44)
+	at com.focus.Pages.PDCPage.checkLogoutAndLoginWithSU(PDCPage.java:1243)
+	at com.focus.testcases.PDCTest.checkLogoutAndLoginWithSU(PDCTest.java:117)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>53</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkSavedCovertedVoucherInReceiptsAfterReversePosting()'><b>checkSavedCovertedVoucherInReceiptsAfterReversePosting</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-1310426886" onClick='toggleBox("Output-1310426886", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1310426886" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1310426886">
+Completed executing following method : PDCTest.checkSavedCovertedVoucherInReceiptsAfterReversePosting<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Failed<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//input[@id=&apos;id_header_67108981&apos;]&quot;}
+  (Session info: chrome=108.0.5359.125)
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.12.0&apos;, revision: &apos;7c6e0b3&apos;, time: &apos;2018-05-08T14:04:26.12Z&apos;
+System info: host: &apos;FOCUS-QA-10&apos;, ip: &apos;192.168.4.206&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_111&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.125, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\Rakesh\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:61342}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: c8506335ae1f41eb975b75faa432a762
+*** Element info: {Using=xpath, value=//input[@id=&apos;id_header_67108981&apos;]}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:317)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:419)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:309)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at com.sun.proxy.$Proxy12.getAttribute(Unknown Source)
+	at com.focus.Pages.PDCPage.checkSavedCovertedVoucherInReceiptsAfterReversePosting(PDCPage.java:1827)
+	at com.focus.testcases.PDCTest.checkSavedCovertedVoucherInReceiptsAfterReversePosting(PDCTest.java:156)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1310426886", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1310426886'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//input[@id=&apos;id_header_67108981&apos;]&quot;}
+  (Session info: chrome=108.0.5359.125)
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.12.0&apos;, revision: &apos;7c6e0b3&apos;, time: &apos;2018-05-08T14:04:26.12Z&apos;
+System info: host: &apos;FOCUS-QA-10&apos;, ip: &apos;192.168.4.206&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_111&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.125, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\Rakesh\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:61342}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: c8506335ae1f41eb975b75faa432a762
+*** Element info: {Using=xpath, value=//input[@id=&apos;id_header_67108981&apos;]}
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:317)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:419)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:309)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at com.sun.proxy.$Proxy12.getAttribute(Unknown Source)
+	at com.focus.Pages.PDCPage.checkSavedCovertedVoucherInReceiptsAfterReversePosting(PDCPage.java:1827)
+	at com.focus.testcases.PDCTest.checkSavedCovertedVoucherInReceiptsAfterReversePosting(PDCTest.java:156)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>47</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkSavedVouchersInPDCVoucherScreenWithOutPostOnDate()'><b>checkSavedVouchersInPDCVoucherScreenWithOutPostOnDate</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-1931787432" onClick='toggleBox("Output-1931787432", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1931787432" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1931787432">
+Completed executing following method : PDCTest.checkSavedVouchersInPDCVoucherScreenWithOutPostOnDate<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Failed<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.focus.testcases.PDCTest.checkSavedVouchersInPDCVoucherScreenWithOutPostOnDate(PDCTest.java:57)
+... Removed 30 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1931787432", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1931787432'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:513)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:135)
+	at org.testng.Assert.assertEquals(Assert.java:116)
+	at org.testng.Assert.assertEquals(Assert.java:305)
+	at org.testng.Assert.assertEquals(Assert.java:315)
+	at com.focus.testcases.PDCTest.checkSavedVouchersInPDCVoucherScreenWithOutPostOnDate(PDCTest.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>11</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkSavingVoucherInPostDatedReceiptsWithCustomerC()'><b>checkSavingVoucherInPostDatedReceiptsWithCustomerC</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-88637907" onClick='toggleBox("Output-88637907", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-88637907" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-88637907">
+Completed executing following method : PDCTest.checkSavingVoucherInPostDatedReceiptsWithCustomerC<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Failed<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.focus.testcases.PDCTest.checkSavingVoucherInPostDatedReceiptsWithCustomerC(PDCTest.java:134)
+... Removed 30 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace88637907", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace88637907'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:513)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:135)
+	at org.testng.Assert.assertEquals(Assert.java:116)
+	at org.testng.Assert.assertEquals(Assert.java:305)
+	at org.testng.Assert.assertEquals(Assert.java:315)
+	at com.focus.testcases.PDCTest.checkSavingVoucherInPostDatedReceiptsWithCustomerC(PDCTest.java:134)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>18</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkUpdateinPDCUnderSettingMenuForEnableReversePostingInPayments()'><b>checkUpdateinPDCUnderSettingMenuForEnableReversePostingInPayments</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-252611055" onClick='toggleBox("Output-252611055", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-252611055" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-252611055">
+Completed executing following method : PDCTest.checkUpdateinPDCUnderSettingMenuForEnableReversePostingInPayments<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Failed<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.focus.testcases.PDCTest.checkUpdateinPDCUnderSettingMenuForEnableReversePostingInPayments(PDCTest.java:255)
+... Removed 30 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace252611055", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace252611055'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:513)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:135)
+	at org.testng.Assert.assertEquals(Assert.java:116)
+	at org.testng.Assert.assertEquals(Assert.java:305)
+	at org.testng.Assert.assertEquals(Assert.java:315)
+	at com.focus.testcases.PDCTest.checkUpdateinPDCUnderSettingMenuForEnableReversePostingInPayments(PDCTest.java:255)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>16</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkAddExtraFieldPDCInHeaderFieldOFPayments()'><b>checkAddExtraFieldPDCInHeaderFieldOFPayments</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-1276954061" onClick='toggleBox("Output-1276954061", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1276954061" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1276954061">
+Completed executing following method : PDCTest.checkAddExtraFieldPDCInHeaderFieldOFPayments<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>28</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkAddExtraFieldPDCInHeaderFieldOFReceipts()'><b>checkAddExtraFieldPDCInHeaderFieldOFReceipts</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-1334011314" onClick='toggleBox("Output-1334011314", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1334011314" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1334011314">
+Completed executing following method : PDCTest.checkAddExtraFieldPDCInHeaderFieldOFReceipts<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>26</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkClickOnConvertedPDCVouchersAfterDeletionOfConvertedVoucherInRecepits()'><b>checkClickOnConvertedPDCVouchersAfterDeletionOfConvertedVoucherInRecepits</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-1536939082" onClick='toggleBox("Output-1536939082", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1536939082" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1536939082">
+Completed executing following method : PDCTest.checkClickOnConvertedPDCVouchersAfterDeletionOfConvertedVoucherInRecepits<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>10</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.LoginPageTest.checkCompanyTextDisplayInCompanyListDropdown()'><b>checkCompanyTextDisplayInCompanyListDropdown</b><br>Test class: com.focus.testcases.LoginPageTest<br/>
+<a href="#Output-2142411945" onClick='toggleBox("Output-2142411945", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2142411945" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2142411945">
+Completed executing following method : LoginPageTest.checkCompanyTextDisplayInCompanyListDropdown<br/>
+Test Method resides in com.focus.testcases.LoginPageTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.LoginPageTest@23e028a9</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkConvertMaturedPDCScreenForPDPVAT()'><b>checkConvertMaturedPDCScreenForPDPVAT</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-1601353764" onClick='toggleBox("Output-1601353764", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1601353764" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1601353764">
+Completed executing following method : PDCTest.checkConvertMaturedPDCScreenForPDPVAT<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>7</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkConvertedMaturePDCScreenWithNoPDCExists()'><b>checkConvertedMaturePDCScreenWithNoPDCExists</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-1916505855" onClick='toggleBox("Output-1916505855", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1916505855" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1916505855">
+Completed executing following method : PDCTest.checkConvertedMaturePDCScreenWithNoPDCExists<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>13</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkConvertingPDPVoucherInPDCScreenAfterExtraField()'><b>checkConvertingPDPVoucherInPDCScreenAfterExtraField</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-270262283" onClick='toggleBox("Output-270262283", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-270262283" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-270262283">
+Completed executing following method : PDCTest.checkConvertingPDPVoucherInPDCScreenAfterExtraField<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>10</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkCovertingPDPVoucherInPDCWithReversePosting()'><b>checkCovertingPDPVoucherInPDCWithReversePosting</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-752232101" onClick='toggleBox("Output-752232101", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-752232101" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-752232101">
+Completed executing following method : PDCTest.checkCovertingPDPVoucherInPDCWithReversePosting<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>20</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkCovertingVoucherInPDC()'><b>checkCovertingVoucherInPDC</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-1971649348" onClick='toggleBox("Output-1971649348", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1971649348" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1971649348">
+Completed executing following method : PDCTest.checkCovertingVoucherInPDC<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>10</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkCovertingVoucherInPDCWithReversePosting()'><b>checkCovertingVoucherInPDCWithReversePosting</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-1524671475" onClick='toggleBox("Output-1524671475", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1524671475" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1524671475">
+Completed executing following method : PDCTest.checkCovertingVoucherInPDCWithReversePosting<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>13</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkDeleteOfConvertedVoucherinRecepits()'><b>checkDeleteOfConvertedVoucherinRecepits</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-1114188042" onClick='toggleBox("Output-1114188042", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1114188042" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1114188042">
+Completed executing following method : PDCTest.checkDeleteOfConvertedVoucherinRecepits<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>4</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkDeleteOptionInPDPVAT()'><b>checkDeleteOptionInPDPVAT</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-1131337100" onClick='toggleBox("Output-1131337100", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1131337100" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1131337100">
+Completed executing following method : PDCTest.checkDeleteOptionInPDPVAT<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkDeleteOptionInPDRVAT()'><b>checkDeleteOptionInPDRVAT</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-385358102" onClick='toggleBox("Output-385358102", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-385358102" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-385358102">
+Completed executing following method : PDCTest.checkDeleteOptionInPDRVAT<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkEditingVoucherAndSavingInPDPVAT()'><b>checkEditingVoucherAndSavingInPDPVAT</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-1214520599" onClick='toggleBox("Output-1214520599", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1214520599" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1214520599">
+Completed executing following method : PDCTest.checkEditingVoucherAndSavingInPDPVAT<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>8</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkEditingVoucherAndSavingInPDRVAT()'><b>checkEditingVoucherAndSavingInPDRVAT</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-1784064410" onClick='toggleBox("Output-1784064410", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1784064410" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1784064410">
+Completed executing following method : PDCTest.checkEditingVoucherAndSavingInPDRVAT<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>15</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.LoginPageTest.checkLoginPageAvailablityOfFields()'><b>checkLoginPageAvailablityOfFields</b><br>Test class: com.focus.testcases.LoginPageTest<br/>
+<a href="#Output-1407713529" onClick='toggleBox("Output-1407713529", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1407713529" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1407713529">
+Completed executing following method : LoginPageTest.checkLoginPageAvailablityOfFields<br/>
+Test Method resides in com.focus.testcases.LoginPageTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.LoginPageTest@23e028a9</td></tr>
+<tr>
+<td title='com.focus.testcases.URLBrowserTest.checkLoginPageTitleByURLInputInBrowser()'><b>checkLoginPageTitleByURLInputInBrowser</b><br>Test class: com.focus.testcases.URLBrowserTest<br/>
+<a href="#Output-564086167" onClick='toggleBox("Output-564086167", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-564086167" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-564086167">
+Completed executing following method : URLBrowserTest.checkLoginPageTitleByURLInputInBrowser<br/>
+Test Method resides in com.focus.testcases.URLBrowserTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>3</td>
+<td>com.focus.testcases.URLBrowserTest@47ef968d</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkPDCOptionsUnderSettings()'><b>checkPDCOptionsUnderSettings</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-1641059445" onClick='toggleBox("Output-1641059445", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1641059445" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1641059445">
+Completed executing following method : PDCTest.checkPDCOptionsUnderSettings<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>15</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkSavedCovertedVoucherInPaymentsAfterReversePosting()'><b>checkSavedCovertedVoucherInPaymentsAfterReversePosting</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-1832559039" onClick='toggleBox("Output-1832559039", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1832559039" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1832559039">
+Completed executing following method : PDCTest.checkSavedCovertedVoucherInPaymentsAfterReversePosting<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>13</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkSavedVoucherInPDPVAT()'><b>checkSavedVoucherInPDPVAT</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-158454837" onClick='toggleBox("Output-158454837", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-158454837" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-158454837">
+Completed executing following method : PDCTest.checkSavedVoucherInPDPVAT<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>11</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkSavedVoucherInPDRVAT()'><b>checkSavedVoucherInPDRVAT</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-1375936066" onClick='toggleBox("Output-1375936066", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1375936066" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1375936066">
+Completed executing following method : PDCTest.checkSavedVoucherInPDRVAT<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>4</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkSavingNewVoucherInPDPVATOnFutureDateWithCurrencyAEDAndDepartmentINDIA()'><b>checkSavingNewVoucherInPDPVATOnFutureDateWithCurrencyAEDAndDepartmentINDIA</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-938952195" onClick='toggleBox("Output-938952195", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-938952195" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-938952195">
+Completed executing following method : PDCTest.checkSavingNewVoucherInPDPVATOnFutureDateWithCurrencyAEDAndDepartmentINDIA<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>33</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkSavingVoucherInPDPVATWithVendorB()'><b>checkSavingVoucherInPDPVATWithVendorB</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-1998884676" onClick='toggleBox("Output-1998884676", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1998884676" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1998884676">
+Completed executing following method : PDCTest.checkSavingVoucherInPDPVATWithVendorB<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>34</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkSavingVoucherToPostDatedReceipts()'><b>checkSavingVoucherToPostDatedReceipts</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-316324264" onClick='toggleBox("Output-316324264", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-316324264" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-316324264">
+Completed executing following method : PDCTest.checkSavingVoucherToPostDatedReceipts<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>33</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.LoginPageTest.checkSignInBtnWithValidUserNameAndValidPassword()'><b>checkSignInBtnWithValidUserNameAndValidPassword</b><br>Test class: com.focus.testcases.LoginPageTest<br/>
+<a href="#Output-1313359405" onClick='toggleBox("Output-1313359405", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1313359405" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1313359405">
+Completed executing following method : LoginPageTest.checkSignInBtnWithValidUserNameAndValidPassword<br/>
+Test Method resides in com.focus.testcases.LoginPageTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>10</td>
+<td>com.focus.testcases.LoginPageTest@23e028a9</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkUpdateinPDCUnderSettingMenuForDisableEnableReversePostingInRecepits()'><b>checkUpdateinPDCUnderSettingMenuForDisableEnableReversePostingInRecepits</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-822379173" onClick='toggleBox("Output-822379173", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-822379173" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-822379173">
+Completed executing following method : PDCTest.checkUpdateinPDCUnderSettingMenuForDisableEnableReversePostingInRecepits<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>11</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.PDCTest.checkUpdateinPDCUnderSettingMenuForEnableReversePostingInRecepits()'><b>checkUpdateinPDCUnderSettingMenuForEnableReversePostingInRecepits</b><br>Test class: com.focus.testcases.PDCTest<br/>
+<a href="#Output-658444087" onClick='toggleBox("Output-658444087", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-658444087" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-658444087">
+Completed executing following method : PDCTest.checkUpdateinPDCUnderSettingMenuForEnableReversePostingInRecepits<br/>
+Test Method resides in com.focus.testcases.PDCTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>16</td>
+<td>com.focus.testcases.PDCTest@3dd4520b</td></tr>
+<tr>
+<td title='com.focus.testcases.URLBrowserTest.verifyBrowserOpen()'><b>verifyBrowserOpen</b><br>Test class: com.focus.testcases.URLBrowserTest<br/>
+<a href="#Output-280223635" onClick='toggleBox("Output-280223635", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-280223635" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-280223635">
+Completed executing following method : URLBrowserTest.verifyBrowserOpen<br/>
+Test Method resides in com.focus.testcases.URLBrowserTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>com.focus.testcases.URLBrowserTest@47ef968d</td></tr>
+</table><p>
+</body>
+</html>
