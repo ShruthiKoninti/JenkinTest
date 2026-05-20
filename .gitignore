@@ -1,1 +1,4 @@
 /target/
+.metadata/
+node_modules/
+.recommenders/
