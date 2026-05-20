@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>19/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>34/0/0</td>
 </tr><tr>
-<td>Started on:</td><td>Tue May 19 17:38:33 IST 2026</td>
+<td>Started on:</td><td>Wed May 20 16:17:02 IST 2026</td>
 </tr>
-<tr><td>Total time:</td><td>1086 seconds (1086350 ms)</td>
+<tr><td>Total time:</td><td>905 seconds (905136 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,83 +67,6 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-failed'>
-<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
-<tr><td><b>Test method</b></td>
-<td><b>Attribute(s)</b></td>
-<td width="30%"><b>Exception</b></td>
-<td width="10%"><b>Time (seconds)</b></td>
-<td><b>Instance</b></td>
-</tr>
-<tr>
-<td title='com.focus.testcases.ReportGenerationTest.reportGeneration()'><b>reportGeneration</b><br>Test class: com.focus.testcases.ReportGenerationTest<br/>
-<a href="#Output-2044498897" onClick='toggleBox("Output-2044498897", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-2044498897" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-2044498897">
-About to begin executing following method : ReportGenerationTest.reportGeneration<br/>
-Completed executing following method : ReportGenerationTest.reportGeneration<br/>
-Test Method resides in com.focus.testcases.ReportGenerationTest<br/>
-Test Status: Failed<br/>
-About to begin executing following method : BaseEngine.afterMethodExecution<br/>
-</div>
-</td>
-<td><div><pre>java.lang.NoClassDefFoundError: com/sun/image/codec/jpeg/JPEGCodec
-	at org.jfree.chart.encoders.SunJPEGEncoderAdapter.encode(SunJPEGEncoderAdapter.java:128)
-	at org.jfree.chart.encoders.EncoderUtil.writeBufferedImage(EncoderUtil.java:144)
-	at org.jfree.chart.ChartUtilities.writeChartAsJPEG(ChartUtilities.java:426)
-	at org.jfree.chart.ChartUtilities.writeChartAsJPEG(ChartUtilities.java:374)
-	at org.automationtesting.excelreport.Xl.generateReport(Xl.java:130)
-	at com.focus.testcases.ReportGenerationTest.reportGeneration(ReportGenerationTest.java:13)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-Caused by: java.lang.ClassNotFoundException: com.sun.image.codec.jpeg.JPEGCodec
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
-	... 32 more
-... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2044498897", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace2044498897'><pre>java.lang.NoClassDefFoundError: com/sun/image/codec/jpeg/JPEGCodec
-	at org.jfree.chart.encoders.SunJPEGEncoderAdapter.encode(SunJPEGEncoderAdapter.java:128)
-	at org.jfree.chart.encoders.EncoderUtil.writeBufferedImage(EncoderUtil.java:144)
-	at org.jfree.chart.ChartUtilities.writeChartAsJPEG(ChartUtilities.java:426)
-	at org.jfree.chart.ChartUtilities.writeChartAsJPEG(ChartUtilities.java:374)
-	at org.automationtesting.excelreport.Xl.generateReport(Xl.java:130)
-	at com.focus.testcases.ReportGenerationTest.reportGeneration(ReportGenerationTest.java:13)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.testng.TestRunner.privateRun(TestRunner.java:741)
-	at org.testng.TestRunner.run(TestRunner.java:616)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-Caused by: java.lang.ClassNotFoundException: com.sun.image.codec.jpeg.JPEGCodec
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
-	... 32 more
-</pre></div></td>
-<td>1</td>
-<td>com.focus.testcases.ReportGenerationTest@4b8ee4de</td></tr>
-</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -153,267 +76,11 @@ Caused by: java.lang.ClassNotFoundException: com.sun.image.codec.jpeg.JPEGCodec
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.focus.testcases.VoucherViewsTest.checkSavingOpeningStockVoucher()'><b>checkSavingOpeningStockVoucher</b><br>Test class: com.focus.testcases.VoucherViewsTest<br/>
-<a href="#Output-161423039" onClick='toggleBox("Output-161423039", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-161423039" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-161423039">
-About to begin executing following method : VoucherViewsTest.checkSavingOpeningStockVoucher<br/>
-Completed executing following method : VoucherViewsTest.checkSavingOpeningStockVoucher<br/>
-Test Method resides in com.focus.testcases.VoucherViewsTest<br/>
-Test Status: Pass<br/>
-About to begin executing following method : BaseEngine.afterMethodExecution<br/>
-</div>
-</td>
-<td></td>
-<td>29</td>
-<td>com.focus.testcases.VoucherViewsTest@47d9a273</td></tr>
-<tr>
-<td title='com.focus.testcases.VoucherViewsTest.checkSavingViewWithMultipleRowsinFilterCriteria()'><b>checkSavingViewWithMultipleRowsinFilterCriteria</b><br>Test class: com.focus.testcases.VoucherViewsTest<br/>
-<a href="#Output-569178381" onClick='toggleBox("Output-569178381", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-569178381" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-569178381">
-About to begin executing following method : VoucherViewsTest.checkSavingViewWithMultipleRowsinFilterCriteria<br/>
-Completed executing following method : VoucherViewsTest.checkSavingViewWithMultipleRowsinFilterCriteria<br/>
-Test Method resides in com.focus.testcases.VoucherViewsTest<br/>
-Test Status: Pass<br/>
-About to begin executing following method : BaseEngine.afterMethodExecution<br/>
-</div>
-</td>
-<td></td>
-<td>122</td>
-<td>com.focus.testcases.VoucherViewsTest@47d9a273</td></tr>
-<tr>
-<td title='com.focus.testcases.VoucherViewsTest.checkSavingSalesReturnsVoucher()'><b>checkSavingSalesReturnsVoucher</b><br>Test class: com.focus.testcases.VoucherViewsTest<br/>
-<a href="#Output-207014260" onClick='toggleBox("Output-207014260", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-207014260" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-207014260">
-About to begin executing following method : VoucherViewsTest.checkSavingSalesReturnsVoucher<br/>
-Completed executing following method : VoucherViewsTest.checkSavingSalesReturnsVoucher<br/>
-Test Method resides in com.focus.testcases.VoucherViewsTest<br/>
-Test Status: Pass<br/>
-About to begin executing following method : BaseEngine.afterMethodExecution<br/>
-</div>
-</td>
-<td></td>
-<td>37</td>
-<td>com.focus.testcases.VoucherViewsTest@47d9a273</td></tr>
-<tr>
-<td title='com.focus.testcases.VoucherViewsTest.checkSavedFilterCriteriainPurchaseVoucherforPurchaseAC()'><b>checkSavedFilterCriteriainPurchaseVoucherforPurchaseAC</b><br>Test class: com.focus.testcases.VoucherViewsTest<br/>
-<a href="#Output-1871979575" onClick='toggleBox("Output-1871979575", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-1871979575" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1871979575">
-About to begin executing following method : VoucherViewsTest.checkSavedFilterCriteriainPurchaseVoucherforPurchaseAC<br/>
-Completed executing following method : VoucherViewsTest.checkSavedFilterCriteriainPurchaseVoucherforPurchaseAC<br/>
-Test Method resides in com.focus.testcases.VoucherViewsTest<br/>
-Test Status: Pass<br/>
-About to begin executing following method : BaseEngine.afterMethodExecution<br/>
-</div>
-</td>
-<td></td>
-<td>14</td>
-<td>com.focus.testcases.VoucherViewsTest@47d9a273</td></tr>
-<tr>
-<td title='com.focus.testcases.VoucherViewsTest.checkSavingViewWithInsertInformationColumn()'><b>checkSavingViewWithInsertInformationColumn</b><br>Test class: com.focus.testcases.VoucherViewsTest<br/>
-<a href="#Output-760519665" onClick='toggleBox("Output-760519665", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-760519665" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-760519665">
-About to begin executing following method : VoucherViewsTest.checkSavingViewWithInsertInformationColumn<br/>
-Completed executing following method : VoucherViewsTest.checkSavingViewWithInsertInformationColumn<br/>
-Test Method resides in com.focus.testcases.VoucherViewsTest<br/>
-Test Status: Pass<br/>
-About to begin executing following method : BaseEngine.afterMethodExecution<br/>
-</div>
-</td>
-<td></td>
-<td>158</td>
-<td>com.focus.testcases.VoucherViewsTest@47d9a273</td></tr>
-<tr>
-<td title='com.focus.testcases.VoucherViewsTest.checkLogoutandLoginwithUseralloptionsstAgain()'><b>checkLogoutandLoginwithUseralloptionsstAgain</b><br>Test class: com.focus.testcases.VoucherViewsTest<br/>
-<a href="#Output-835241038" onClick='toggleBox("Output-835241038", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-835241038" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-835241038">
-About to begin executing following method : VoucherViewsTest.checkLogoutandLoginwithUseralloptionsstAgain<br/>
-Completed executing following method : VoucherViewsTest.checkLogoutandLoginwithUseralloptionsstAgain<br/>
-Test Method resides in com.focus.testcases.VoucherViewsTest<br/>
-Test Status: Pass<br/>
-About to begin executing following method : BaseEngine.afterMethodExecution<br/>
-</div>
-</td>
-<td></td>
-<td>25</td>
-<td>com.focus.testcases.VoucherViewsTest@47d9a273</td></tr>
-<tr>
-<td title='com.focus.testcases.VoucherViewsTest.checkSavingViewwithDefaultValueinSalesReturnsVoucher()'><b>checkSavingViewwithDefaultValueinSalesReturnsVoucher</b><br>Test class: com.focus.testcases.VoucherViewsTest<br/>
-<a href="#Output-856184335" onClick='toggleBox("Output-856184335", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-856184335" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-856184335">
-About to begin executing following method : VoucherViewsTest.checkSavingViewwithDefaultValueinSalesReturnsVoucher<br/>
-Completed executing following method : VoucherViewsTest.checkSavingViewwithDefaultValueinSalesReturnsVoucher<br/>
-Test Method resides in com.focus.testcases.VoucherViewsTest<br/>
-Test Status: Pass<br/>
-About to begin executing following method : BaseEngine.afterMethodExecution<br/>
-</div>
-</td>
-<td></td>
-<td>118</td>
-<td>com.focus.testcases.VoucherViewsTest@47d9a273</td></tr>
-<tr>
-<td title='com.focus.testcases.VoucherViewsTest.checkSavingPurchaseVoucherwithInsertInfoColumninView()'><b>checkSavingPurchaseVoucherwithInsertInfoColumninView</b><br>Test class: com.focus.testcases.VoucherViewsTest<br/>
-<a href="#Output-1597462907" onClick='toggleBox("Output-1597462907", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-1597462907" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1597462907">
-About to begin executing following method : VoucherViewsTest.checkSavingPurchaseVoucherwithInsertInfoColumninView<br/>
-Completed executing following method : VoucherViewsTest.checkSavingPurchaseVoucherwithInsertInfoColumninView<br/>
-Test Method resides in com.focus.testcases.VoucherViewsTest<br/>
-Test Status: Pass<br/>
-About to begin executing following method : BaseEngine.afterMethodExecution<br/>
-</div>
-</td>
-<td></td>
-<td>69</td>
-<td>com.focus.testcases.VoucherViewsTest@47d9a273</td></tr>
-<tr>
-<td title='com.focus.testcases.VoucherViewsTest.checkLogoutAndLoginWithSU()'><b>checkLogoutAndLoginWithSU</b><br>Test class: com.focus.testcases.VoucherViewsTest<br/>
-<a href="#Output-170221515" onClick='toggleBox("Output-170221515", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-170221515" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-170221515">
-About to begin executing following method : VoucherViewsTest.checkLogoutAndLoginWithSU<br/>
-Completed executing following method : VoucherViewsTest.checkLogoutAndLoginWithSU<br/>
-Test Method resides in com.focus.testcases.VoucherViewsTest<br/>
-Test Status: Pass<br/>
-About to begin executing following method : BaseEngine.afterMethodExecution<br/>
-</div>
-</td>
-<td></td>
-<td>28</td>
-<td>com.focus.testcases.VoucherViewsTest@47d9a273</td></tr>
-<tr>
-<td title='com.focus.testcases.VoucherViewsTest.checkLogoutVoucherViewsPage()'><b>checkLogoutVoucherViewsPage</b><br>Test class: com.focus.testcases.VoucherViewsTest<br/>
-<a href="#Output-735340890" onClick='toggleBox("Output-735340890", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-735340890" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-735340890">
-About to begin executing following method : VoucherViewsTest.checkLogoutVoucherViewsPage<br/>
-Completed executing following method : VoucherViewsTest.checkLogoutVoucherViewsPage<br/>
-Test Method resides in com.focus.testcases.VoucherViewsTest<br/>
-Test Status: Pass<br/>
-About to begin executing following method : BaseEngine.afterMethodExecution<br/>
-</div>
-</td>
-<td></td>
-<td>7</td>
-<td>com.focus.testcases.VoucherViewsTest@47d9a273</td></tr>
-<tr>
-<td title='com.focus.testcases.VoucherViewsTest.checkLogin()'><b>checkLogin</b><br>Test class: com.focus.testcases.VoucherViewsTest<br/>
-<a href="#Output-424832797" onClick='toggleBox("Output-424832797", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-424832797" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-424832797">
-About to begin executing following method : VoucherViewsTest.checkLogin<br/>
-Completed executing following method : VoucherViewsTest.checkLogin<br/>
-Test Method resides in com.focus.testcases.VoucherViewsTest<br/>
-Test Status: Pass<br/>
-About to begin executing following method : BaseEngine.afterMethodExecution<br/>
-</div>
-</td>
-<td></td>
-<td>61</td>
-<td>com.focus.testcases.VoucherViewsTest@47d9a273</td></tr>
-<tr>
-<td title='com.focus.testcases.VoucherViewsTest.checkSavingSalesInvoiceVATthroughConvertOption()'><b>checkSavingSalesInvoiceVATthroughConvertOption</b><br>Test class: com.focus.testcases.VoucherViewsTest<br/>
-<a href="#Output-1355579836" onClick='toggleBox("Output-1355579836", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-1355579836" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1355579836">
-About to begin executing following method : VoucherViewsTest.checkSavingSalesInvoiceVATthroughConvertOption<br/>
-Completed executing following method : VoucherViewsTest.checkSavingSalesInvoiceVATthroughConvertOption<br/>
-Test Method resides in com.focus.testcases.VoucherViewsTest<br/>
-Test Status: Pass<br/>
-About to begin executing following method : BaseEngine.afterMethodExecution<br/>
-</div>
-</td>
-<td></td>
-<td>28</td>
-<td>com.focus.testcases.VoucherViewsTest@47d9a273</td></tr>
-<tr>
-<td title='com.focus.testcases.VoucherViewsTest.checkSavingViewinSalesInvoiceVoucher()'><b>checkSavingViewinSalesInvoiceVoucher</b><br>Test class: com.focus.testcases.VoucherViewsTest<br/>
-<a href="#Output-647172738" onClick='toggleBox("Output-647172738", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-647172738" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-647172738">
-About to begin executing following method : VoucherViewsTest.checkSavingViewinSalesInvoiceVoucher<br/>
-Completed executing following method : VoucherViewsTest.checkSavingViewinSalesInvoiceVoucher<br/>
-Test Method resides in com.focus.testcases.VoucherViewsTest<br/>
-Test Status: Pass<br/>
-About to begin executing following method : BaseEngine.afterMethodExecution<br/>
-</div>
-</td>
-<td></td>
-<td>91</td>
-<td>com.focus.testcases.VoucherViewsTest@47d9a273</td></tr>
-<tr>
-<td title='com.focus.testcases.VoucherViewsTest.checkSavingSalesOrderVoucherwithStockItem()'><b>checkSavingSalesOrderVoucherwithStockItem</b><br>Test class: com.focus.testcases.VoucherViewsTest<br/>
-<a href="#Output-1194361637" onClick='toggleBox("Output-1194361637", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-1194361637" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1194361637">
-About to begin executing following method : VoucherViewsTest.checkSavingSalesOrderVoucherwithStockItem<br/>
-Completed executing following method : VoucherViewsTest.checkSavingSalesOrderVoucherwithStockItem<br/>
-Test Method resides in com.focus.testcases.VoucherViewsTest<br/>
-Test Status: Pass<br/>
-About to begin executing following method : BaseEngine.afterMethodExecution<br/>
-</div>
-</td>
-<td></td>
-<td>61</td>
-<td>com.focus.testcases.VoucherViewsTest@47d9a273</td></tr>
-<tr>
-<td title='com.focus.testcases.VoucherViewsTest.checkEditedFilterCriteriainPurchaseVoucherforPurchaseAC()'><b>checkEditedFilterCriteriainPurchaseVoucherforPurchaseAC</b><br>Test class: com.focus.testcases.VoucherViewsTest<br/>
-<a href="#Output-192465731" onClick='toggleBox("Output-192465731", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-192465731" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-192465731">
-About to begin executing following method : VoucherViewsTest.checkEditedFilterCriteriainPurchaseVoucherforPurchaseAC<br/>
-Completed executing following method : VoucherViewsTest.checkEditedFilterCriteriainPurchaseVoucherforPurchaseAC<br/>
-Test Method resides in com.focus.testcases.VoucherViewsTest<br/>
-Test Status: Pass<br/>
-About to begin executing following method : BaseEngine.afterMethodExecution<br/>
-</div>
-</td>
-<td></td>
-<td>51</td>
-<td>com.focus.testcases.VoucherViewsTest@47d9a273</td></tr>
-<tr>
-<td title='com.focus.testcases.VoucherViewsTest.checkSavingViewAfterEditingFilterCriteria()'><b>checkSavingViewAfterEditingFilterCriteria</b><br>Test class: com.focus.testcases.VoucherViewsTest<br/>
-<a href="#Output-961625965" onClick='toggleBox("Output-961625965", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-961625965" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-961625965">
-About to begin executing following method : VoucherViewsTest.checkSavingViewAfterEditingFilterCriteria<br/>
-Completed executing following method : VoucherViewsTest.checkSavingViewAfterEditingFilterCriteria<br/>
-Test Method resides in com.focus.testcases.VoucherViewsTest<br/>
-Test Status: Pass<br/>
-About to begin executing following method : BaseEngine.afterMethodExecution<br/>
-</div>
-</td>
-<td></td>
-<td>70</td>
-<td>com.focus.testcases.VoucherViewsTest@47d9a273</td></tr>
-<tr>
 <td title='com.focus.testcases.URLBrowserTest.verifyBrowserOpen()'><b>verifyBrowserOpen</b><br>Test class: com.focus.testcases.URLBrowserTest<br/>
-<a href="#Output-1457157255" onClick='toggleBox("Output-1457157255", this, "Show output", "Hide output");'>Show output</a>
+<a href="#Output-918730310" onClick='toggleBox("Output-918730310", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-1457157255" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1457157255">
+<a href="#Output-918730310" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-918730310">
 About to begin executing following method : URLBrowserTest.verifyBrowserOpen<br/>
 Completed executing following method : URLBrowserTest.verifyBrowserOpen<br/>
 Test Method resides in com.focus.testcases.URLBrowserTest<br/>
@@ -422,14 +89,78 @@ About to begin executing following method : BaseEngine.afterMethodExecution<br/>
 </div>
 </td>
 <td></td>
-<td>12</td>
-<td>com.focus.testcases.URLBrowserTest@47e2e487</td></tr>
+<td>11</td>
+<td>com.focus.testcases.URLBrowserTest@2d710f1a</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkLogoutAccountPageAfterTabCreation()'><b>checkLogoutAccountPageAfterTabCreation</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-443898289" onClick='toggleBox("Output-443898289", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-443898289" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-443898289">
+About to begin executing following method : AccountsTest.checkLogoutAccountPageAfterTabCreation<br/>
+Completed executing following method : AccountsTest.checkLogoutAccountPageAfterTabCreation<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkAfterTabCreationinAccountMasterPage()'><b>checkAfterTabCreationinAccountMasterPage</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-603648060" onClick='toggleBox("Output-603648060", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-603648060" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-603648060">
+About to begin executing following method : AccountsTest.checkAfterTabCreationinAccountMasterPage<br/>
+Completed executing following method : AccountsTest.checkAfterTabCreationinAccountMasterPage<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>10</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkRestoreAutomationCompany()'><b>checkRestoreAutomationCompany</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-745172195" onClick='toggleBox("Output-745172195", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-745172195" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-745172195">
+About to begin executing following method : AccountsTest.checkRestoreAutomationCompany<br/>
+Completed executing following method : AccountsTest.checkRestoreAutomationCompany<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>183</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkUpdatedExtraFieldinGeneralTabofAccountMaster()'><b>checkUpdatedExtraFieldinGeneralTabofAccountMaster</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-758651122" onClick='toggleBox("Output-758651122", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-758651122" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-758651122">
+About to begin executing following method : AccountsTest.checkUpdatedExtraFieldinGeneralTabofAccountMaster<br/>
+Completed executing following method : AccountsTest.checkUpdatedExtraFieldinGeneralTabofAccountMaster<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>7</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
 <tr>
 <td title='com.focus.testcases.URLBrowserTest.checkLoginPageTitleByURLInputInBrowser()'><b>checkLoginPageTitleByURLInputInBrowser</b><br>Test class: com.focus.testcases.URLBrowserTest<br/>
-<a href="#Output-1141059550" onClick='toggleBox("Output-1141059550", this, "Show output", "Hide output");'>Show output</a>
+<a href="#Output-1244211620" onClick='toggleBox("Output-1244211620", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-1141059550" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1141059550">
+<a href="#Output-1244211620" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1244211620">
 About to begin executing following method : URLBrowserTest.checkLoginPageTitleByURLInputInBrowser<br/>
 Completed executing following method : URLBrowserTest.checkLoginPageTitleByURLInputInBrowser<br/>
 Test Method resides in com.focus.testcases.URLBrowserTest<br/>
@@ -438,24 +169,456 @@ About to begin executing following method : BaseEngine.afterMethodExecution<br/>
 </div>
 </td>
 <td></td>
-<td>70</td>
-<td>com.focus.testcases.URLBrowserTest@47e2e487</td></tr>
+<td>7</td>
+<td>com.focus.testcases.URLBrowserTest@2d710f1a</td></tr>
 <tr>
-<td title='com.focus.testcases.VoucherViewsTest.checkLogoutandLoginwithUseralloptionsst()'><b>checkLogoutandLoginwithUseralloptionsst</b><br>Test class: com.focus.testcases.VoucherViewsTest<br/>
-<a href="#Output-479466474" onClick='toggleBox("Output-479466474", this, "Show output", "Hide output");'>Show output</a>
+<td title='com.focus.testcases.AccountsTest.checkSavingAccountsinSubGroupsinAccountMaster()'><b>checkSavingAccountsinSubGroupsinAccountMaster</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-1036131981" onClick='toggleBox("Output-1036131981", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-479466474" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-479466474">
-About to begin executing following method : VoucherViewsTest.checkLogoutandLoginwithUseralloptionsst<br/>
-Completed executing following method : VoucherViewsTest.checkLogoutandLoginwithUseralloptionsst<br/>
-Test Method resides in com.focus.testcases.VoucherViewsTest<br/>
+<a href="#Output-1036131981" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1036131981">
+About to begin executing following method : AccountsTest.checkSavingAccountsinSubGroupsinAccountMaster<br/>
+Completed executing following method : AccountsTest.checkSavingAccountsinSubGroupsinAccountMaster<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
 Test Status: Pass<br/>
 About to begin executing following method : BaseEngine.afterMethodExecution<br/>
 </div>
 </td>
 <td></td>
-<td>26</td>
-<td>com.focus.testcases.VoucherViewsTest@47d9a273</td></tr>
+<td>54</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkSavingAccountGroupinAccountMaster()'><b>checkSavingAccountGroupinAccountMaster</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-1988152146" onClick='toggleBox("Output-1988152146", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1988152146" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1988152146">
+About to begin executing following method : AccountsTest.checkSavingAccountGroupinAccountMaster<br/>
+Completed executing following method : AccountsTest.checkSavingAccountGroupinAccountMaster<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>18</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.CheckLogin()'><b>CheckLogin</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-319086807" onClick='toggleBox("Output-319086807", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-319086807" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-319086807">
+About to begin executing following method : AccountsTest.CheckLogin<br/>
+Completed executing following method : AccountsTest.CheckLogin<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>22</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkEditingInSavedAccountINAccountMaster()'><b>checkEditingInSavedAccountINAccountMaster</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-1550822972" onClick='toggleBox("Output-1550822972", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1550822972" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1550822972">
+About to begin executing following method : AccountsTest.checkEditingInSavedAccountINAccountMaster<br/>
+Completed executing following method : AccountsTest.checkEditingInSavedAccountINAccountMaster<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>11</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkCreatingExtraFieldsinAccountMaster()'><b>checkCreatingExtraFieldsinAccountMaster</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-1008689929" onClick='toggleBox("Output-1008689929", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1008689929" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1008689929">
+About to begin executing following method : AccountsTest.checkCreatingExtraFieldsinAccountMaster<br/>
+Completed executing following method : AccountsTest.checkCreatingExtraFieldsinAccountMaster<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>52</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkLogoutAfterExtraFieldDeleted()'><b>checkLogoutAfterExtraFieldDeleted</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-1563725550" onClick='toggleBox("Output-1563725550", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1563725550" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1563725550">
+About to begin executing following method : AccountsTest.checkLogoutAfterExtraFieldDeleted<br/>
+Completed executing following method : AccountsTest.checkLogoutAfterExtraFieldDeleted<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>7</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkSavingAccountSubGroupinAccountMaster()'><b>checkSavingAccountSubGroupinAccountMaster</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-702793726" onClick='toggleBox("Output-702793726", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-702793726" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-702793726">
+About to begin executing following method : AccountsTest.checkSavingAccountSubGroupinAccountMaster<br/>
+Completed executing following method : AccountsTest.checkSavingAccountSubGroupinAccountMaster<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>98</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkEditandUpdateExtraFieldinCustomizeMaster()'><b>checkEditandUpdateExtraFieldinCustomizeMaster</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-744256381" onClick='toggleBox("Output-744256381", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-744256381" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-744256381">
+About to begin executing following method : AccountsTest.checkEditandUpdateExtraFieldinCustomizeMaster<br/>
+Completed executing following method : AccountsTest.checkEditandUpdateExtraFieldinCustomizeMaster<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>20</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkSearchinganAccountUnderSubGroup()'><b>checkSearchinganAccountUnderSubGroup</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-721090136" onClick='toggleBox("Output-721090136", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-721090136" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-721090136">
+About to begin executing following method : AccountsTest.checkSearchinganAccountUnderSubGroup<br/>
+Completed executing following method : AccountsTest.checkSearchinganAccountUnderSubGroup<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>4</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkAccountsSavedinGroupsandSubGroupsinAccountMaster()'><b>checkAccountsSavedinGroupsandSubGroupsinAccountMaster</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-718103022" onClick='toggleBox("Output-718103022", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-718103022" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-718103022">
+About to begin executing following method : AccountsTest.checkAccountsSavedinGroupsandSubGroupsinAccountMaster<br/>
+Completed executing following method : AccountsTest.checkAccountsSavedinGroupsandSubGroupsinAccountMaster<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>67</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkSavingAccountINAccountMaster()'><b>checkSavingAccountINAccountMaster</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-747601258" onClick='toggleBox("Output-747601258", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-747601258" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-747601258">
+About to begin executing following method : AccountsTest.checkSavingAccountINAccountMaster<br/>
+Completed executing following method : AccountsTest.checkSavingAccountINAccountMaster<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>37</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkOpenGroupAccountMaster()'><b>checkOpenGroupAccountMaster</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-1291005462" onClick='toggleBox("Output-1291005462", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1291005462" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1291005462">
+About to begin executing following method : AccountsTest.checkOpenGroupAccountMaster<br/>
+Completed executing following method : AccountsTest.checkOpenGroupAccountMaster<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>30</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkEditingNewlyCreatedTreeTabDisplay()'><b>checkEditingNewlyCreatedTreeTabDisplay</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-1373361341" onClick='toggleBox("Output-1373361341", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1373361341" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1373361341">
+About to begin executing following method : AccountsTest.checkEditingNewlyCreatedTreeTabDisplay<br/>
+Completed executing following method : AccountsTest.checkEditingNewlyCreatedTreeTabDisplay<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>5</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkCreatingaTreeTabinAccountMaster()'><b>checkCreatingaTreeTabinAccountMaster</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-1677632726" onClick='toggleBox("Output-1677632726", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1677632726" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1677632726">
+About to begin executing following method : AccountsTest.checkCreatingaTreeTabinAccountMaster<br/>
+Completed executing following method : AccountsTest.checkCreatingaTreeTabinAccountMaster<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>36</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkAddedExtraFieldinGeneralTabofAccountMaster()'><b>checkAddedExtraFieldinGeneralTabofAccountMaster</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-1615302766" onClick='toggleBox("Output-1615302766", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1615302766" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1615302766">
+About to begin executing following method : AccountsTest.checkAddedExtraFieldinGeneralTabofAccountMaster<br/>
+Completed executing following method : AccountsTest.checkAddedExtraFieldinGeneralTabofAccountMaster<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>11</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkDeleteAccountInAccountMaster()'><b>checkDeleteAccountInAccountMaster</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-1837746467" onClick='toggleBox("Output-1837746467", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1837746467" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1837746467">
+About to begin executing following method : AccountsTest.checkDeleteAccountInAccountMaster<br/>
+Completed executing following method : AccountsTest.checkDeleteAccountInAccountMaster<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>29</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkDeletedExtraFieldinGeneralTabofAccountMaster()'><b>checkDeletedExtraFieldinGeneralTabofAccountMaster</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-1181050063" onClick='toggleBox("Output-1181050063", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1181050063" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1181050063">
+About to begin executing following method : AccountsTest.checkDeletedExtraFieldinGeneralTabofAccountMaster<br/>
+Completed executing following method : AccountsTest.checkDeletedExtraFieldinGeneralTabofAccountMaster<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>9</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkLoginAfterLogout()'><b>checkLoginAfterLogout</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-1465544433" onClick='toggleBox("Output-1465544433", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1465544433" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1465544433">
+About to begin executing following method : AccountsTest.checkLoginAfterLogout<br/>
+Completed executing following method : AccountsTest.checkLoginAfterLogout<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>19</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkCreateDocumentTabOptionsInCustomizeMaster()'><b>checkCreateDocumentTabOptionsInCustomizeMaster</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-1597359897" onClick='toggleBox("Output-1597359897", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1597359897" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1597359897">
+About to begin executing following method : AccountsTest.checkCreateDocumentTabOptionsInCustomizeMaster<br/>
+Completed executing following method : AccountsTest.checkCreateDocumentTabOptionsInCustomizeMaster<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>15</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.CheckLoginAfterExtraFieldDeleted()'><b>CheckLoginAfterExtraFieldDeleted</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-1280878517" onClick='toggleBox("Output-1280878517", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1280878517" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1280878517">
+About to begin executing following method : AccountsTest.CheckLoginAfterExtraFieldDeleted<br/>
+Completed executing following method : AccountsTest.CheckLoginAfterExtraFieldDeleted<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>19</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkDeleteExtraFieldinCustomizeMaster()'><b>checkDeleteExtraFieldinCustomizeMaster</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-1608352434" onClick='toggleBox("Output-1608352434", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1608352434" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1608352434">
+About to begin executing following method : AccountsTest.checkDeleteExtraFieldinCustomizeMaster<br/>
+Completed executing following method : AccountsTest.checkDeleteExtraFieldinCustomizeMaster<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>25</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkLogoutAfterExtraFieldUpdated()'><b>checkLogoutAfterExtraFieldUpdated</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-1838283751" onClick='toggleBox("Output-1838283751", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1838283751" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1838283751">
+About to begin executing following method : AccountsTest.checkLogoutAfterExtraFieldUpdated<br/>
+Completed executing following method : AccountsTest.checkLogoutAfterExtraFieldUpdated<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>7</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkCreatedGroupDisplayedonLeftPanel()'><b>checkCreatedGroupDisplayedonLeftPanel</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-2145209191" onClick='toggleBox("Output-2145209191", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2145209191" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2145209191">
+About to begin executing following method : AccountsTest.checkCreatedGroupDisplayedonLeftPanel<br/>
+Completed executing following method : AccountsTest.checkCreatedGroupDisplayedonLeftPanel<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkDeleteTabOptionForCreateTreeTabDisplayInTabs()'><b>checkDeleteTabOptionForCreateTreeTabDisplayInTabs</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-1545136162" onClick='toggleBox("Output-1545136162", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1545136162" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1545136162">
+About to begin executing following method : AccountsTest.checkDeleteTabOptionForCreateTreeTabDisplayInTabs<br/>
+Completed executing following method : AccountsTest.checkDeleteTabOptionForCreateTreeTabDisplayInTabs<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>9</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkLogoutAccountsPage()'><b>checkLogoutAccountsPage</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-18861540" onClick='toggleBox("Output-18861540", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-18861540" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-18861540">
+About to begin executing following method : AccountsTest.checkLogoutAccountsPage<br/>
+Completed executing following method : AccountsTest.checkLogoutAccountsPage<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkUpdatedAccountDisplayInAccountGridBeforeCustomization()'><b>checkUpdatedAccountDisplayInAccountGridBeforeCustomization</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-416184434" onClick='toggleBox("Output-416184434", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-416184434" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-416184434">
+About to begin executing following method : AccountsTest.checkUpdatedAccountDisplayInAccountGridBeforeCustomization<br/>
+Completed executing following method : AccountsTest.checkUpdatedAccountDisplayInAccountGridBeforeCustomization<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>7</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.checkDeleteGroupAccountinAccountMaster()'><b>checkDeleteGroupAccountinAccountMaster</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-1376999853" onClick='toggleBox("Output-1376999853", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1376999853" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1376999853">
+About to begin executing following method : AccountsTest.checkDeleteGroupAccountinAccountMaster<br/>
+Completed executing following method : AccountsTest.checkDeleteGroupAccountinAccountMaster<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>23</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
+<tr>
+<td title='com.focus.testcases.AccountsTest.CheckLoginAfterExtraFieldUpdated()'><b>CheckLoginAfterExtraFieldUpdated</b><br>Test class: com.focus.testcases.AccountsTest<br/>
+<a href="#Output-783654411" onClick='toggleBox("Output-783654411", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-783654411" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-783654411">
+About to begin executing following method : AccountsTest.CheckLoginAfterExtraFieldUpdated<br/>
+Completed executing following method : AccountsTest.CheckLoginAfterExtraFieldUpdated<br/>
+Test Method resides in com.focus.testcases.AccountsTest<br/>
+Test Status: Pass<br/>
+About to begin executing following method : BaseEngine.afterMethodExecution<br/>
+</div>
+</td>
+<td></td>
+<td>24</td>
+<td>com.focus.testcases.AccountsTest@13fd2ccd</td></tr>
 </table><p>
 </body>
 </html>
