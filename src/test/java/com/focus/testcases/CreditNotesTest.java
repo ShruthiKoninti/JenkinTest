@@ -14,8 +14,18 @@ import com.focus.base.BaseEngine;
 public class CreditNotesTest extends BaseEngine
 {
 	CreditNotesPage CN;
+	
+	
+	@Test(priority=325)
+	public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		CN=new CreditNotesPage(getDriver());
+		Assert.assertEquals(CN.CheckLogin(), true);
+	}
+	
+	
 
-	//@Test(priority=327)
+	@Test(priority=327)
 	public void checkCustomizationOptionInCreditNotes() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
 		CN=new CreditNotesPage(getDriver());
@@ -57,8 +67,15 @@ public class CreditNotesTest extends BaseEngine
 		Assert.assertEquals(CN.checkVerifingDetailsOfSavedCreditNotesVoucherInHomepage(), true);
 	}
 
+	
 
-
+	
+	@Test(priority=333)
+	public void checkLogoutCreditNotesPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		CN=new CreditNotesPage(getDriver());
+		Assert.assertEquals(CN.checkLogoutCreditNotesPage(), true);
+	}
 
 
 }

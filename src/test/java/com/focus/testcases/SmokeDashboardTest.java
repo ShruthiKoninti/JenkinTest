@@ -15,6 +15,13 @@ public class SmokeDashboardTest extends BaseEngine
 {
 	
 	SmokeDashboardPage HPDP;
+	
+	 @Test(priority=141)
+	 public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	 {
+		 HPDP=new SmokeDashboardPage(getDriver());
+		 Assert.assertEquals(SmokeDashboardPage.CheckLogin(), true);
+	 }
 
 	 @Test(priority=143)
 	 public void verifyDashBboardOptions() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
@@ -42,8 +49,7 @@ public class SmokeDashboardTest extends BaseEngine
 	 {
 		 HPDP=new SmokeDashboardPage(getDriver());
 		 Assert.assertEquals(SmokeDashboardPage.checkUpdateDashboardByClickOnSaveBtnInDashboard(), true);
-	 }	
-	 	 
+	 }	 
 	
 	 @Test(priority=161)
 	 public void verifyLogoutandLoginWithNewUser() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
@@ -81,13 +87,14 @@ public class SmokeDashboardTest extends BaseEngine
 		 Assert.assertEquals(SmokeDashboardPage.checkSaveInTheDefineGraphInDefineGraph(), true);
 	 } 
 	 
+	 
 	 @Test(priority=189)
 	 public void verifyDragAndDropGraphNew() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	 {
 		 HPDP=new SmokeDashboardPage(getDriver());
 		 Assert.assertEquals(SmokeDashboardPage.checkDragAndDropGraphAfterDeletingInCreatedashlet(), true);
 	 }
-	 
+	
 	 @Test(priority=191)
 	 public void verifyUpdateGraphCreatedIsMessageDisplayedInDashlet() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	 {
@@ -124,9 +131,6 @@ public class SmokeDashboardTest extends BaseEngine
 		 Assert.assertEquals(SmokeDashboardPage.checkDashBoardDeleted(), true);
 	 }
 	 
-	 
-	 
-	 
 	 @Test(priority=250)
 	 public void TakeBackupForTransactions() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -134,10 +138,11 @@ public class SmokeDashboardTest extends BaseEngine
 		 Assert.assertEquals(SmokeDashboardPage.TakeBackupForTransactions(), true);
 	 }
 	 
-	 
-	 
-	 
-	 
-	 
+	 @Test(priority=252)
+	 public void checkLogoutSmokeDashboardPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 HPDP=new SmokeDashboardPage(getDriver());
+		 Assert.assertEquals(SmokeDashboardPage.checkLogoutSmokeDashboardPage(), true);
+	 }
 	 
 }

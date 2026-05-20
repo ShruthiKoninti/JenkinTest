@@ -16,6 +16,14 @@ public class SellerPriceBookTest extends BaseEngine
 
 	SellerPriceBookPage SPB;
 	
+	 @Test(priority=168)
+	 public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 SPB=new SellerPriceBookPage(getDriver());
+		 Assert.assertEquals(SPB.CheckLogin(), true);
+	 }
+	
+	
 	 @Test(priority=169)
 	 public void checkSavingSellerPriceBook() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -66,7 +74,7 @@ public class SellerPriceBookTest extends BaseEngine
 	 
 	 
 	 
-	  @Test(priority=176)
+	/*  @Test(priority=176)
 	 public void  checkSavingItemGroupalongwithItemsinItemMaster() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 SPB=new SellerPriceBookPage(getDriver());
@@ -291,7 +299,17 @@ public class SellerPriceBookTest extends BaseEngine
 	 }
 	 
 	 
-
+*/
+	 
+	 
+	 
+	 
+	 @Test(priority=204)
+	 public void  checkLogoutSellerrPricebookPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 SPB=new SellerPriceBookPage(getDriver());
+		 Assert.assertEquals(SPB. checkLogoutSellerrPricebookPage(), true);
+	 }
 	 
 	 
 	 

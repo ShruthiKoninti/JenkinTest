@@ -11,7 +11,7 @@ import javax.security.auth.login.CredentialExpiredException;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.omg.Messaging.SyncScopeHelper;
+//import org.omg.Messaging.SyncScopeHelper;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -21,6 +21,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.focus.base.BaseEngine;
 import com.focus.supporters.ExcelReader;
@@ -45,6 +46,8 @@ public class SanityDocCustViewPage extends BaseEngine
 
 		LoginPage lp=new LoginPage(getDriver()); 
 
+		
+		 lp.checkLoginPageTitleByURLInputInBrowser();
 		String unamelt="su";
 
 		String pawslt="su";
@@ -52,6 +55,34 @@ public class SanityDocCustViewPage extends BaseEngine
 		lp.enterUserName(unamelt);
 
 		lp.enterPassword(pawslt);
+		
+		String compname = "Automation Company : 08/10/2020";
+
+		Select oSelect = new Select(companyDropDownList);
+
+		List<WebElement> elementCount = oSelect.getOptions();
+
+		int cqSize = elementCount.size();
+
+		System.out.println("CompanyDropdownList Count :" + cqSize);
+
+		int i;
+
+		for (i = 0; i < elementCount.size(); i++) {
+
+			elementCount.get(i).getText();
+
+			String optionName = elementCount.get(i).getText();
+			if (optionName.toUpperCase().startsWith(compname.toUpperCase())) {
+				System.out.println("q" + elementCount.get(i).getText());
+				elementCount.get(i).click();
+			}
+
+		}
+
+		Thread.sleep(2000);
+
+		
 
 		lp.clickOnSignInBtn();
 
@@ -64,13 +95,13 @@ public class SanityDocCustViewPage extends BaseEngine
 		System.out.println("User Info Capture Text :"+userNameDisplay.getText());
 
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
-		companyLogo.click();
+	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
+		companyLogo.click();*/
 
-		String getCompanyTxt=companyName.getText();
+		String getCompanyTxt=Company_Name.getText();
 		String getLoginCompanyName=getCompanyTxt.substring(0, 19);
 		System.out.println("company name :"+ getLoginCompanyName);
-		companyLogo.click();
+		//companyLogo.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashboard));
 
@@ -91,7 +122,7 @@ public class SanityDocCustViewPage extends BaseEngine
 		}
 	}
 
-	@FindBy(xpath="//*[@id='id_search_menu']/input")
+	@FindBy(xpath="//*[@id='id_menu_search_input']")
 	public static WebElement searchTxt;
 
 
@@ -165,6 +196,9 @@ public class SanityDocCustViewPage extends BaseEngine
 		String actBaseDocumentName = baseDocumentTxtInDocCust.getAttribute("value");
 		String expBaseDocumentName = "Purchases Vouchers 301";
 
+		getAction().moveToElement(masters1).build().perform();
+		Thread.sleep(2000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masters1)); 
 		masters1.click();
 
@@ -182,8 +216,8 @@ public class SanityDocCustViewPage extends BaseEngine
 		String expPositionR1C1="Body";	
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masters2)); 
-		ScrollIntoView(masters2);
-		Thread.sleep(2000);
+		//ScrollIntoView(masters2);
+		//Thread.sleep(2000);
 		masters2.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterDropDown));
@@ -306,7 +340,7 @@ public class SanityDocCustViewPage extends BaseEngine
 		abbreviationTxt.click();		
 
 		String actAbbreviationTxt=abbreviationTxt.getAttribute("value");
-		String expAbbreviationTxt= "PurVocUpda";
+		String expAbbreviationTxt= "NDT57";
 		excelReader.setCellData(xlfile, xlSheetName, 289, 8, actAbbreviationTxt);
 
 		Thread.sleep(2000);
@@ -317,7 +351,7 @@ public class SanityDocCustViewPage extends BaseEngine
 		miscellaneousTabVoucherAccountSettingsBtn.click();
 		
 		Thread.sleep(2000);
-		
+		getAction().moveToElement(miscellaneusTabPostingDetailsMenu).build().perform();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(miscellaneusTabPostingDetailsMenu));
 		miscellaneusTabPostingDetailsMenu.click();
 
@@ -351,7 +385,9 @@ public class SanityDocCustViewPage extends BaseEngine
 		miscellaneusTabARAPBtn.click();
 		
 		Thread.sleep(1000);
-
+		
+		getAction().moveToElement(updateBtn).build().perform();
+		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtn));
 		updateBtn.click();
 		
@@ -436,7 +472,7 @@ public class SanityDocCustViewPage extends BaseEngine
 
 		Thread.sleep(2000);
 		
-		checkValidationMessage("");
+		checkValidationMessage("Data saved successfully");
 
 		int editScreenbodyCaptionCount = editScreenbodyCaption.size();
 
@@ -501,6 +537,9 @@ public class SanityDocCustViewPage extends BaseEngine
 			}
 		}
 		
+		getAction().moveToElement(updateBtn).build().perform();
+		Thread.sleep(1000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtn));
 		updateBtn.click();
 
@@ -533,6 +572,7 @@ public class SanityDocCustViewPage extends BaseEngine
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());
 		xlfile=getBaseDir()+"\\src\\main\\resources\\testdata\\FocusTestData.xlsx";
 		
+		Thread.sleep(5500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutTab));
 		editLayoutTab.click();
 
@@ -599,7 +639,8 @@ public class SanityDocCustViewPage extends BaseEngine
 
 
 
-
+	@FindBy(xpath="//*[contains(text(),'View Settings')]")//(//*[@id='panelsStayOpen-headingOne']/button)[2]
+	private static WebElement viewSettingsBtn;
 
 
 	public boolean checkFieldTypesinBodyGridViewTab() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
@@ -607,27 +648,65 @@ public class SanityDocCustViewPage extends BaseEngine
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());
 		xlfile=getBaseDir()+"\\src\\main\\resources\\testdata\\FocusTestData.xlsx";
 
-		Thread.sleep(2000);
+		Thread.sleep(7000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewsBtn));
 		viewsBtn.click();
 
+		Thread.sleep(4000);
+		
+		IsVisible(viewTabViewSettingsBtn);
+		
 		Thread.sleep(2000);
 		
-		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewTabViewSettingsBtn));
-		viewTabViewSettingsBtn.click();
-		*/
+		getAction().moveToElement(ViewExistingViewTxt).build().perform();
 		Thread.sleep(1000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ViewExistingViewTxt));
 		ViewExistingViewTxt.click();
-		ViewExistingViewTxt.clear();
-
+		ViewExistingViewTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		Thread.sleep(2000);
 		ViewExistingViewTxt.sendKeys(excelReader.getCellData(xlSheetName, 353, 5));
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		ViewExistingViewTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(4000);
+		Thread.sleep(10000);
+		
+		
+		
+		/*((JavascriptExecutor)getDriver()).executeScript("window.scrollBy(0,1000)","");
+		Thread.sleep(2000);*/
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewSettingsBtn));
+		viewSettingsBtn.click();
+		Thread.sleep(2000);
+		
+	if(viewsUserAllOptionsSTChkboxSelected.isDisplayed()==false)
+		{
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewTabLoginBtn));
+		viewTabLoginBtn.click();
+		}
+		Thread.sleep(2000);
+
+		if(viewsUserAllOptionsSTChkboxSelected.isSelected()==false)
+		{
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewsUserAllOptionsSTChkbox));
+		viewsUserAllOptionsSTChkbox.click();
+		}
+		Thread.sleep(2000);
+		
+		getAction().moveToElement(viewSaveView).build().perform();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewSaveView));
+		viewSaveView.click();
+		Thread.sleep(2000);
+
+		String expMessage= excelReader.getCellData(xlSheetName, 356, 6);
+
+		String actMessage=checkValidationMessage(expMessage);
+
+		excelReader.setCellData(xlfile, xlSheetName, 356, 7, actMessage);
+		
+		Thread.sleep(2000);
 
 		int Count = viewsGridFiledsList.size();
 
@@ -648,10 +727,13 @@ public class SanityDocCustViewPage extends BaseEngine
 			}
 		}
 
-
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewGridRow2EditBtn));
 		getAction().doubleClick(viewGridRow2EditBtn).build().perform();
 
+		
+		Thread.sleep(6000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(fieldDetails_DataTypeDrpdwn));			
 		fieldDetails_DataTypeDrpdwn.click();
 
@@ -667,45 +749,12 @@ public class SanityDocCustViewPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(fieldDetails_ApplyBtn));
 		fieldDetails_ApplyBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		
-		if(fieldDetails_CloseBtn.isDisplayed()==true)
-		{
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(fieldDetails_CloseBtn));
-			fieldDetails_CloseBtn.click();
-		}
-		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewTabViewSettingsBtn));
-		viewTabViewSettingsBtn.click();
-		
-		Thread.sleep(1000);*/
-		
+		checkValidationMessage("Data saved successfully");
+		Thread.sleep(4000);
 
-		((JavascriptExecutor)getDriver()).executeScript("window.scrollBy(0,500)","");
-		Thread.sleep(2000);
-		
-		//getAction().moveToElement(viewTabLoginBtn).build().perform(); 
-		
-		
-		if(viewsUserAllOptionsSTChkboxSelected.isDisplayed()==false)
-		{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewTabLoginBtn));
-		viewTabLoginBtn.click();
-		}
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewsUserAllOptionsSTChkbox));
-		viewsUserAllOptionsSTChkbox.click();
-
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewSaveView));
-		viewSaveView.click();
-
-		String expMessage= excelReader.getCellData(xlSheetName, 356, 6);
-
-		String actMessage=checkValidationMessage(expMessage);
-
-		excelReader.setCellData(xlfile, xlSheetName, 356, 7, actMessage);
-
+	
 		if (actMessage.equalsIgnoreCase(expMessage) && actDataType.equalsIgnoreCase(expDataType)) 
 		{ 
 			System.out.println("Test Pass : Toogle Options in Sales Orders As Expected");
@@ -730,25 +779,49 @@ public class SanityDocCustViewPage extends BaseEngine
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());
 		xlfile=getBaseDir()+"\\src\\main\\resources\\testdata\\FocusTestData.xlsx";
 
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		
-		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewTabViewSettingsBtn));
-		viewTabViewSettingsBtn.click();
 		
-		Thread.sleep(1000);
-*/
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ViewExistingViewTxt));
 		ViewExistingViewTxt.click();
 
-		ViewExistingViewTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-
-		ViewExistingViewTxt.sendKeys(Keys.SPACE);
+		ViewExistingViewTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
 		Thread.sleep(2000);
 		ViewExistingViewTxt.sendKeys(excelReader.getCellData(xlSheetName, 358, 5));
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		ViewExistingViewTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(5000);
+		Thread.sleep(15000);
+		
+	
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewSettingsBtn));
+		viewSettingsBtn.click();
+		
+		Thread.sleep(5500);
+		
+	if(viewsUserAllOptionsSTChkboxSelected.isDisplayed()==false)
+		{
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewTabLoginBtn));
+		viewTabLoginBtn.click();
+		}
+		Thread.sleep(2000);
+
+		if(viewsUserAllOptionsSTChkboxSelected.isSelected()==false)
+		{
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewsUserAllOptionsSTChkbox));
+		viewsUserAllOptionsSTChkbox.click();
+		}
+		Thread.sleep(2000);
+		
+		getAction().moveToElement(viewSaveView).build().perform();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewSaveView));
+		viewSaveView.click();
+		Thread.sleep(8000);
+
+		
+		((JavascriptExecutor)getDriver()).executeScript("window.scrollBy(0,1000)","");
+		Thread.sleep(4000);
 
 		int Count = viewsGridFiledsList.size();
 
@@ -769,7 +842,7 @@ public class SanityDocCustViewPage extends BaseEngine
 		}
 
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(fieldDetails_DataTypeDrpdwn));
 		Select data=new Select(fieldDetails_DataTypeDrpdwn);
@@ -787,32 +860,13 @@ public class SanityDocCustViewPage extends BaseEngine
 		fieldDetails_ApplyBtn.click();
 
 		Thread.sleep(2000);
-		if(fieldDetails_CloseBtn.isDisplayed()==true)
-		{
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(fieldDetails_CloseBtn));
-			fieldDetails_CloseBtn.click();
-		}
-		
-		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewTabViewSettingsBtn));
-		viewTabViewSettingsBtn.click();*/
 		
 		Thread.sleep(3000);
-		if(viewsUserAllOptionsSTChkbox.isDisplayed()==false)
-		{
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewTabLoginBtn));
-		viewTabLoginBtn.click();
-		
-		Thread.sleep(2000);
-		}
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewsUserAllOptionsSTChkbox));
-		viewsUserAllOptionsSTChkbox.click();
 
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewSaveView));
-		viewSaveView.click();
+		//getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewSaveView));
+		ClickUsingJs(viewSaveView);
+		Thread.sleep(6000);
 
 		String expMessage=excelReader.getCellData(xlSheetName, 361, 6);
 
@@ -820,13 +874,31 @@ public class SanityDocCustViewPage extends BaseEngine
 
 		excelReader.setCellData(xlfile, xlSheetName, 361, 7, actMessage);
 		
+		Thread.sleep(3000);
+		
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ViewExistingViewTxt));
+		ViewExistingViewTxt.click();
 		Thread.sleep(2000);
+		//ViewExistingViewTxt.sendKeys(Keys.SHIFT,Keys.HOME);
+		clearValueFromTextBox(ViewExistingViewTxt);
+	
+		Thread.sleep(2000);
+		ViewExistingViewTxt.sendKeys("ViewForDelete");
+		Thread.sleep(4000);
+		ViewExistingViewTxt.sendKeys(Keys.TAB);
+
+		Thread.sleep(5000);
+
+		
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewsDeleteViewIcon));
 		viewsDeleteViewIcon.click();
+		Thread.sleep(4000);
 
 		getWaitForAlert();
+		
 		Thread.sleep(2000);
 
 		String actAlertMessage=getAlert().getText();
@@ -871,7 +943,7 @@ public class SanityDocCustViewPage extends BaseEngine
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());
 		xlfile=getBaseDir()+"\\src\\main\\resources\\testdata\\FocusTestData.xlsx";
 
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		
 		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewTabViewSettingsBtn));
 		viewTabViewSettingsBtn.click();
@@ -881,7 +953,7 @@ public class SanityDocCustViewPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ViewExistingViewTxt));
 		ViewExistingViewTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(7000);
+		Thread.sleep(15000);
 
 		int Count = viewsGridFiledsList.size();
 
@@ -903,11 +975,36 @@ public class SanityDocCustViewPage extends BaseEngine
 
 		Thread.sleep(3000);
 		
-			getAction().moveToElement(viewSaveView).build().perform();
-			Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewGridRow12EditBtn));
+		getAction().doubleClick(viewGridRow12EditBtn).build().perform();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(fieldDetails_DataTypeDrpdwn));			
+		fieldDetails_DataTypeDrpdwn.click();
+
+		Select data=new Select(fieldDetails_DataTypeDrpdwn);
+		data.selectByVisibleText("Hidden");
+
+		String actDataType=data.getFirstSelectedOption().getText();
+		String expDataType=excelReader.getCellData(xlSheetName, 366, 6);
+		excelReader.setCellData(xlfile, xlSheetName, 366, 7, actDataType);
+
+		System.err.println("FiledCaption For date In Create View  : "+actDataType);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(fieldDetails_ApplyBtn));
+		fieldDetails_ApplyBtn.click();
+
+		Thread.sleep(3000);
+		
+		checkValidationMessage("");
+		Thread.sleep(2000);
+		
+					
+			getAction().moveToElement(viewSaveView).build().perform();;
+			Thread.sleep(3000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewSaveView));
 		viewSaveView.click();
+		Thread.sleep(2000);
 
 		String expMessage=excelReader.getCellData(xlSheetName, 369, 6);
 
@@ -915,11 +1012,20 @@ public class SanityDocCustViewPage extends BaseEngine
 
 		excelReader.setCellData(xlfile, xlSheetName, 369, 7, actMessage);
 
+		getAction().moveToElement(updateBtn).build().perform();
+		
+		Thread.sleep(2000);
+		
+		getAction().moveToElement(updateBtn).build().perform();;
+		Thread.sleep(3000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtn));
 		updateBtn.click();
+				
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(closeBtn));
-		closeBtn.click();
+	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settings_closeBtn));
+		settings_closeBtn.click();
+*/		Thread.sleep(2000);
 
 		if (actMessage.equalsIgnoreCase(expMessage) /*&& actDataType.equalsIgnoreCase(expDataType)*/ /*&& 
            		actDefaultValue.equalsIgnoreCase(expDefaultValue)*/) 
@@ -949,55 +1055,13 @@ public class SanityDocCustViewPage extends BaseEngine
 	{
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());
 		xlfile=getBaseDir()+"\\src\\main\\resources\\testdata\\FocusTestData.xlsx";
-		getDriver().navigate().refresh();
+		
+		
+		
+		
+		Thread.sleep(5500);
+		getAction().moveToElement(rulesBtn).build().perform();
 		Thread.sleep(2000);
-
-		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SettingsMenu));
-		SettingsMenu.click();
-		
-		Thread.sleep(2000);
-
-		int count = SettingsSubMenusList.size();
-		
-		for (int i = 0; i < count; i++) 
-		{
-			String data = SettingsSubMenusList.get(i).getText();
-			
-			System.err.println(data);
-			
-			ScrollIntoView(SettingsSubMenusList.get(i));
-			
-			if (data.equalsIgnoreCase("Configure Transactions")) 
-			{
-				SettingsSubMenusList.get(i).click();
-				break;
-			}
-		}
-		
-		Thread.sleep(2000);
-*/	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchTxt));
-		searchTxt.click();
-		searchTxt.sendKeys("Configure Transactions");
-		searchTxt.sendKeys(Keys.ENTER);
-		Thread.sleep(3000);
-		
-		
-		
-	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(configureTransactionPreferencesMinus));
-		configureTransactionPreferencesMinus.click();
-		
-		Thread.sleep(2000);*/
-		
-		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(configureTransactionDocumentCustomiztionMinus));
-		configureTransactionDocumentCustomiztionMinus.click();
-		
-		Thread.sleep(1000);*/
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(docCustCreatedVoucher));
-		docCustCreatedVoucher.click();
-		
-		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rulesBtn));
 		rulesBtn.click();
@@ -1038,6 +1102,7 @@ public class SanityDocCustViewPage extends BaseEngine
 	{
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());
 		xlfile=getBaseDir()+"\\src\\main\\resources\\testdata\\FocusTestData.xlsx";
+		Thread.sleep(5000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rulesTabRuleNameTxt));
 		rulesTabRuleNameTxt.click();
@@ -1125,11 +1190,18 @@ public class SanityDocCustViewPage extends BaseEngine
 
 		rulesTabConditionTxt.sendKeys(excelReader.getCellData(xlSheetName, 381, 5));
 
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 
 		rulesTabConditionTxt.sendKeys(Keys.TAB);
 
 		Thread.sleep(2000);
+		
+		
+		//((JavascriptExecutor)getDriver()).executeScript("window.scrollBy(0,500)", "");
+		getAction().moveToElement(rulesGrid1stRow_1stcol).build().perform();
+		
+			Thread.sleep(3000);
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rulesGrid1stRow_1stcol));
 		rulesGrid1stRow_1stcol.click();
@@ -1174,6 +1246,10 @@ public class SanityDocCustViewPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rulesTabElseTab));
 		rulesTabElseTab.click();
+		
+		((JavascriptExecutor)getDriver()).executeScript("window.scrollBy(0,350)", "");
+		
+			Thread.sleep(3000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rulesGridElse1stRow_1stcol));
 		rulesGridElse1stRow_1stcol.click();
@@ -1199,22 +1275,30 @@ public class SanityDocCustViewPage extends BaseEngine
 
 		rulesTabElseGridEnterCaption.sendKeys(Keys.TAB);	
 		
-		((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", rulesTab_SaveRuleBtn);
+		//((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", rulesTab_SaveRuleBtn);
+		
+		getAction().moveToElement(rulesTab_SaveRuleBtn).build().perform();
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rulesTab_SaveRuleBtn));
 		rulesTab_SaveRuleBtn.click();
+		Thread.sleep(4000);
 
 		String expMessageOnSaveRule = excelReader.getCellData(xlSheetName, 395, 6);
 		String actMessageOnSaveRule=checkValidationMessage(expMessageOnSaveRule);
 
 		excelReader.setCellData(xlfile, xlSheetName, 395, 7, actMessageOnSaveRule);
+		
+		getAction().moveToElement(updateBtn).build().perform();
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtn));
 		updateBtn.click();
 
 		Thread.sleep(2000);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(Settings_closeBtn));
+	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(Settings_closeBtn));
 		Settings_closeBtn.click();
+		Thread.sleep(2000);*/
 
 		String expMessageOnClickOnUpdate = excelReader.getCellData(xlSheetName, 396, 6);
 		String actMessageOnClickOnUpdate=checkValidationMessage(expMessageOnSaveRule);
@@ -1248,9 +1332,9 @@ public class SanityDocCustViewPage extends BaseEngine
 		excelReader = new ExcelReader(POJOUtility.getExcelPath());
 		xlfile=getBaseDir()+"\\src\\main\\resources\\testdata\\FocusTestData.xlsx";
 
-		getDriver().navigate().refresh();
+		/*getDriver().navigate().refresh();
 		Thread.sleep(2000);
-		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SettingsMenu));
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SettingsMenu));
 		SettingsMenu.click();
 		
 		Thread.sleep(2000);
@@ -1274,7 +1358,7 @@ public class SanityDocCustViewPage extends BaseEngine
 		
 		Thread.sleep(2000);
 		
-*/	
+	
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchTxt));
 		searchTxt.click();
@@ -1283,20 +1367,20 @@ public class SanityDocCustViewPage extends BaseEngine
 		Thread.sleep(3000);
 		
 		
-		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(configureTransactionPreferencesMinus));
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(configureTransactionPreferencesMinus));
 		configureTransactionPreferencesMinus.click();
 		
-		Thread.sleep(2000);*/
+		Thread.sleep(2000);
 		
-	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(configureTransactionDocumentCustomiztionMinus));
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(configureTransactionDocumentCustomiztionMinus));
 		configureTransactionDocumentCustomiztionMinus.click();
 		
-		Thread.sleep(1000);*/
+		Thread.sleep(1000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(docCustCreatedVoucher));
-		docCustCreatedVoucher.click();
+		docCustCreatedVoucher.click();*/
 		
-		Thread.sleep(4000);
+		Thread.sleep(8000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberingBtn));
 		documentNumberingBtn.click();
@@ -1467,6 +1551,9 @@ public class SanityDocCustViewPage extends BaseEngine
 	{	
 		excelReader = new ExcelReader(POJOUtility.getExcelPath());
 		xlfile=getBaseDir()+"\\src\\main\\resources\\testdata\\FocusTestData.xlsx";
+		
+		getAction().moveToElement(updateBtn).build().perform();
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtn));
 		updateBtn.click();
@@ -1480,9 +1567,10 @@ public class SanityDocCustViewPage extends BaseEngine
 		System.out.println("SaveMessage Display Value Actual      : " + actSaveMessage);
 		System.out.println("SaveMessage Display Value Expected    : " + expSaveMessage);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settings_closeBtn));
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settings_closeBtn));
 		settings_closeBtn.click();
-
+		Thread.sleep(2000);
+*/
 		if(actSaveMessage.equalsIgnoreCase(expSaveMessage)) 
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 436, 8, resPass);
@@ -1504,9 +1592,11 @@ public class SanityDocCustViewPage extends BaseEngine
 		excelReader = new ExcelReader(POJOUtility.getExcelPath());
 		xlfile=getBaseDir()+"\\src\\main\\resources\\testdata\\FocusTestData.xlsx";
 		
-		getDriver().navigate().refresh();
+		Thread.sleep(6000);
+		
+		/*getDriver().navigate().refresh();
 
-		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SettingsMenu));
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SettingsMenu));
 		SettingsMenu.click();
 		
 		Thread.sleep(2000);
@@ -1530,7 +1620,7 @@ public class SanityDocCustViewPage extends BaseEngine
 		
 		Thread.sleep(2000);
 		
-*/	
+	
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchTxt));
 		searchTxt.click();
 		searchTxt.sendKeys("Configure Transactions");
@@ -1538,18 +1628,18 @@ public class SanityDocCustViewPage extends BaseEngine
 		Thread.sleep(3000);
 		
 		
-	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(configureTransactionPreferencesMinus));
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(configureTransactionPreferencesMinus));
 		configureTransactionPreferencesMinus.click();
 		
-		Thread.sleep(2000);*/
-	/*	
+		Thread.sleep(2000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(configureTransactionDocumentCustomiztionMinus));
 		configureTransactionDocumentCustomiztionMinus.click();
 		
-		Thread.sleep(1000);*/
+		Thread.sleep(1000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(docCustCreatedVoucher));
-		docCustCreatedVoucher.click();
+		docCustCreatedVoucher.click();*/
 		
 		Thread.sleep(4000);
 		
@@ -1568,7 +1658,7 @@ public class SanityDocCustViewPage extends BaseEngine
 
 		String actdocNumberingGridBody = docNumberingGridBodyArray.toString();
 
-		String expdocNumberingGridBody = "[1, Login, Login Name, 0, 2, 2, Character Input, /, 0, 1, 3, Department, Name, 0, 3, 4, Character Input, /, 0, 1, 5, Input, TEXT, 0, 1, 6, Increment, 0, 0, 1, 7,  ,  ,  ,  , 8,  ,  ,  ,  , 9,  ,  ,  ,  , 10,  ,  ,  ,  , 11,  ,  ,  ,  , 12,  ,  ,  ,  , 13,  ,  ,  ,  , 14,  ,  ,  ,  , 15,  ,  ,  ,  , 16,  ,  ,  ,  , 17,  ,  ,  ,  , 18,  ,  ,  ,  , 19,  ,  ,  ,  , 20,  ,  ,  ,  ]";
+		String expdocNumberingGridBody = "[1, Login, Login Name, 0, 2, 2, Character Input, /,  , 1, 3, Department, Name, 0, 3, 4, Character Input, /,  , 1, 5, Input, TEXT,  , 1, 6, Increment, 0, 0, 1, 7, ,  ,  ,  , 8,  ,  ,  ,  , 9,  ,  ,  ,  , 10,  ,  ,  ,  , 11,  ,  ,  ,  , 12,  ,  ,  ,  , 13,  ,  ,  ,  , 14,  ,  ,  ,  , 15,  ,  ,  ,  , 16,  ,  ,  ,  , 17,  ,  ,  ,  , 18,  ,  ,  ,  , 19,  ,  ,  ,  , 20,  ,  ,  ,  ]";
 
 		excelReader.setCellData(xlfile, xlSheetName, 440, 8, actdocNumberingGridBody);
 
@@ -1622,52 +1712,43 @@ public class SanityDocCustViewPage extends BaseEngine
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());
 		xlfile=getBaseDir()+"\\src\\main\\resources\\testdata\\FocusTestData.xlsx";
 
-		Thread.sleep(2000);
+		Thread.sleep(7000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggersBtn));
 		triggersBtn.click();
 
-		Thread.sleep(4000);
+		Thread.sleep(1500);
 		
-		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggerTabTriggersBtn));
-		triggerTabTriggersBtn.click();
 		
-		Thread.sleep(1000);*/
+		IsVisible(triggersText);
+		Thread.sleep(1000);
+		
+		
+		
+		
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutTriggerName));
 		editLayoutTriggerName.click();
 		editLayoutTriggerName.sendKeys(excelReader.getCellData(xlSheetName, 444, 5));
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		editLayoutTriggerName.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(5500);
+		Thread.sleep(5500);
+		Thread.sleep(5500);
 		
-		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggerTabTriggersBtn));
-		triggerTabTriggersBtn.click();
+		IsVisible(triggersRiseANewDocChkbox);
 		
-		Thread.sleep(1000);*/
-		
-		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggerTabActionBtn));
-		triggerTabActionBtn.click();
-		
-		Thread.sleep(1000);*/
+		Thread.sleep(5500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggersRiseANewDocChkbox));
 		triggersRiseANewDocChkbox.click();
 		
-		Thread.sleep(2000);
+		Thread.sleep(5500);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggerTabActionBtn));
-		triggerTabActionBtn.click();
 		
-		Thread.sleep(1000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggerTabAlertBtn));
-		triggerTabAlertBtn.click();
-		
-		Thread.sleep(1000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(editLayoutTriggersAllVouchers));
 		boolean allVoucher=editLayoutTriggersAllVouchers.isDisplayed();
@@ -1702,11 +1783,13 @@ public class SanityDocCustViewPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutTriggersAllVouchers));
 		editLayoutTriggersAllVouchers.sendKeys(excelReader.getCellData(xlSheetName, 446, 6));
+		Thread.sleep(4000);
 		editLayoutTriggersAllVouchers.sendKeys(Keys.TAB);
-
+		Thread.sleep(6000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutTriggersSaveBtn));
 		editLayoutTriggersSaveBtn.click();
+		Thread.sleep(2000);
 
 		String expSaveMessage = excelReader.getCellData(xlSheetName, 447, 6);
 
@@ -1738,23 +1821,26 @@ public class SanityDocCustViewPage extends BaseEngine
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());
 		xlfile=getBaseDir()+"\\src\\main\\resources\\testdata\\FocusTestData.xlsx";
 
-		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggerTabTriggersBtn));
-		triggerTabTriggersBtn.click();*/
+		
 		
 		Thread.sleep(1000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutTriggerName));
 		editLayoutTriggerName.click();
 		editLayoutTriggerName.sendKeys(excelReader.getCellData(xlSheetName, 448, 5));
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		editLayoutTriggerName.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(12000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutTriggerDeleteBtn));
 		editLayoutTriggerDeleteBtn.click();
-
+		Thread.sleep(20000);
+		
+		Thread.sleep(20000);
+		
 		getWaitForAlert();
+		Thread.sleep(2000);
 
 		boolean AlertPresent=getIsAlertPresent();
 
@@ -1764,20 +1850,20 @@ public class SanityDocCustViewPage extends BaseEngine
 
 		System.out.println(" ALert is Present : "+actAlertPresent+" Value Expected : "+expAlertPresent);
 
-		//System.out.println("Select Options In Inventory Tab and Click on Update  Value Actual : " + actAlertPresent +  " Value Expected : " + expAlertPresent);
+	
 
 		String actMessageOnUpdateInAlert = getAlert().getText();
 		String expMessageOnUpdateInAlert = excelReader.getCellData(xlSheetName, 450, 6);
 
 		excelReader.setCellData(xlfile, xlSheetName, 450, 7, actMessageOnUpdateInAlert);
 
-		//System.out.println("Select Options In Inventory Tab and Click on Ok  Value Actual : " + actMessageOnUpdateInAlert +  " Value Expected : " + expMessageOnUpdateInAlert);
+	
 
 		Thread.sleep(2000);
 		getAlert().accept();
+		Thread.sleep(2000);
 
-		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(errorMessagecloseBtn));
-		errorMessagecloseBtn.click();*/
+		
 
 		if(actAlertPresent.equalsIgnoreCase(expAlertPresent)/* && actMessageOnUpdateInAlert.equalsIgnoreCase(expMessageOnUpdateInAlert)*/)
 		{
@@ -1806,36 +1892,19 @@ public class SanityDocCustViewPage extends BaseEngine
 		xlfile=getBaseDir()+"\\src\\main\\resources\\testdata\\FocusTestData.xlsx";
 		
 		
-		Thread.sleep(4000);
+		Thread.sleep(6500);
 		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutTriggerName));
 		editLayoutTriggerName.click();
 		Thread.sleep(1500);
+		editLayoutTriggerName.sendKeys(Keys.SHIFT,Keys.HOME);
+		Thread.sleep(1500);
 		editLayoutTriggerName.sendKeys(excelReader.getCellData(xlSheetName, 451, 5));
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		editLayoutTriggerName.sendKeys(Keys.TAB);			
-		Thread.sleep(6000);
-		/*editLayoutTriggerName.sendKeys(Keys.TAB);	
-		Thread.sleep(2000);
-		editLayoutTriggerValue.click();
-		editLayoutTriggerValue.sendKeys(Keys.TAB);
-
 		Thread.sleep(5000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggerTabTriggersBtn));
-		triggerTabTriggersBtn.click();
-		
-		Thread.sleep(3000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggerTabActionBtn));
-		triggerTabActionBtn.click();
-		
-		Thread.sleep(1000);
-
-		
-		Thread.sleep(2000);
-*/		
+				
 		triggersConjuctionDrpdwn.click();
 		Thread.sleep(2000);		
 		triggersConjuctionDrpdwn.sendKeys(Keys.ARROW_DOWN);			
@@ -1845,21 +1914,21 @@ public class SanityDocCustViewPage extends BaseEngine
 		triggersSelectFieldTxt.click();
 
 		Thread.sleep(3000);
-		((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", triggerVendorACExpansionBtn);
-
+	///	((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", triggerVendorACExpansionBtn);
+		getAction().moveToElement(triggerVendorACExpansionBtn).build().perform();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggerVendorACExpansionBtn));
 		triggerVendorACExpansionBtn.click();
 
 		Thread.sleep(2000);
 		
-		//((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", triggerVendorAcName);
+	
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggerVendorAcName));
 		triggerVendorAcName.click();
 
 		Thread.sleep(2000);
 		
-		//triggerVendorAcName.sendKeys(Keys.TAB);
+		
 		triggersSelectFieldTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggersSelectOperdrpdwn));
@@ -1876,61 +1945,53 @@ public class SanityDocCustViewPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggersCompareWithdrpdwn));
 		triggersCompareWithdrpdwn.click();
 
-		/*triggersCompareWithdrpdwn.sendKeys(Keys.ARROW_DOWN);
-		Thread.sleep(2000);*/
+		
 		triggersCompareWithdrpdwn.sendKeys("value");
 		Thread.sleep(3000);
 		triggersCompareWithdrpdwn.sendKeys(Keys.TAB);
 
+		Thread.sleep(1500);
+
+	
+		triggersValueToEnterTxt.sendKeys("Vendor A");	
+
 		Thread.sleep(2000);
-
-		//triggersValueToEnterTxt.click();
-		triggersValueTxt.click();
-		triggersValueTxt.sendKeys("Vendor A");	
-
+		triggersValueToEnterTxt.sendKeys(Keys.TAB);
+		
 		Thread.sleep(2000);
-
-		//triggersValueTxt.sendKeys(Keys.TAB);
-		triggersValueTxt.sendKeys(Keys.TAB);
-
-
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggersRiseANewDocChkbox));
 		triggersRiseANewDocChkbox.click();
 
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggerTabActionBtn));
-		triggerTabActionBtn.click();
-		
-		Thread.sleep(1000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggerTabAlertBtn));
-		triggerTabAlertBtn.click();
-		
-		Thread.sleep(1000);
+	
 		
 		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(editLayoutTriggersAllVouchers));
 		boolean actdata=editLayoutTriggersAllVouchers.isDisplayed();
 		boolean expdata=true;
 
  		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutTriggersAllVouchers));
-		editLayoutTriggersAllVouchers.click();
+		ClickUsingJs(editLayoutTriggersAllVouchers);
+		Thread.sleep(1000);
 		editLayoutTriggersAllVouchers.sendKeys("Job Orders");
 		editLayoutTriggersAllVouchers.sendKeys(Keys.ENTER);
 
-
+		getAction().moveToElement(editLayoutTriggersSaveBtn).build().perform();
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutTriggersSaveBtn));
 		editLayoutTriggersSaveBtn.click();
+		Thread.sleep(2000);
 
 		String expSaveMessage = excelReader.getCellData(xlSheetName, 453, 6);
 		String actSaveMessage = checkValidationMessage(expSaveMessage);
 		excelReader.setCellData(xlfile, xlSheetName, 453, 7, actSaveMessage);
 
 
-		
+		getAction().moveToElement(updateBtn).build().perform();
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtn));
 		updateBtn.click();
-
+		Thread.sleep(4000);
 
 		String expUpdateMessage = excelReader.getCellData(xlSheetName, 454, 6);
 		String actUpdateMessage = checkValidationMessage(expUpdateMessage);
@@ -1938,8 +1999,7 @@ public class SanityDocCustViewPage extends BaseEngine
 
 		
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(closeBtn));
-		closeBtn.click();
+	
 
 		if(actdata==expdata && actSaveMessage.equalsIgnoreCase(expSaveMessage))
 		{
@@ -1966,94 +2026,46 @@ public class SanityDocCustViewPage extends BaseEngine
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());
 		xlfile=getBaseDir()+"\\src\\main\\resources\\testdata\\FocusTestData.xlsx";
 
-		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SettingsMenu));
-		SettingsMenu.click();
-		
-		Thread.sleep(2000);
-
-		int count = SettingsSubMenusList.size();
-		
-		for (int i = 0; i < count; i++) 
-		{
-			String data = SettingsSubMenusList.get(i).getText();
-			
-			System.err.println(data);
-			
-			ScrollIntoView(SettingsSubMenusList.get(i));
-			
-			if (data.equalsIgnoreCase("Configure Transactions")) 
-			{
-				SettingsSubMenusList.get(i).click();
-				break;
-			}
-		}
-		
-		Thread.sleep(2000);
-*/	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchTxt));
-		searchTxt.click();
-		searchTxt.sendKeys("Configure Transactions");
-		searchTxt.sendKeys(Keys.ENTER);
-		Thread.sleep(3000);
-		
-	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(configureTransactionPreferencesMinus));
-		configureTransactionPreferencesMinus.click();
-		
-		Thread.sleep(2000);*/
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(configureTransactionDocumentCustomiztionMinus));
-		configureTransactionDocumentCustomiztionMinus.click();
-		
-		Thread.sleep(1000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(docCustCreatedVoucher));
-		docCustCreatedVoucher.click();
-		
-		Thread.sleep(4000);
+		Thread.sleep(10000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggersBtn));
 		triggersBtn.click();			
 
-		Thread.sleep(2000);	
+		Thread.sleep(6000);	
 		
-		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggerTabTriggersBtn));
-		triggerTabTriggersBtn.click();
 		
-		Thread.sleep(1000);*/
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutTriggerName));
 		editLayoutTriggerName.click();
-
-		editLayoutTriggerName.sendKeys(Keys.SHIFT,Keys.HOME);
-		editLayoutTriggerName.sendKeys(Keys.BACK_SPACE);
-
-		editLayoutTriggerName.sendKeys(Keys.CLEAR);
-
 		Thread.sleep(2000);
-		
+		clearValueFromTextBox(editLayoutTriggerName);
+		Thread.sleep(2000);
+		editLayoutTriggerName.sendKeys("Test Trigger");
+		Thread.sleep(4000);
 		editLayoutTriggerName.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(8000);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggerTabTriggersBtn));
-		triggerTabTriggersBtn.click();
-		
-		Thread.sleep(1000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggerTabActionBtn));
-		triggerTabActionBtn.click();
-		
-		Thread.sleep(1000);
+	
 		
 		triggersValueTxtGetValue.click();
 
 		Thread.sleep(2000);
+				
+		
+		
+		
+		//triggersValueTxt.click();
 
-		triggersValueTxt.sendKeys("Vendor B");	
+		//Thread.sleep(2000);
+		//EdittriggersValueTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		//Thread.sleep(1000);
+
+		triggersValueToEnterTxt.sendKeys("Vendor B");	
 
 		Thread.sleep(2000);
 
-		triggersValueTxt.sendKeys(Keys.TAB);
+		triggersValueToEnterTxt.sendKeys(Keys.TAB);
 
 		Thread.sleep(3000);
 		
@@ -2061,29 +2073,45 @@ public class SanityDocCustViewPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggersConjuctionDrpdwn));
 		Select triggersConjuctionDrpdwnSelect = new Select(triggersConjuctionDrpdwn);
 		String acttriggersConjuctionDrpdwn=triggersConjuctionDrpdwnSelect.getFirstSelectedOption().getText();
-		String exptriggersConjuctionDrpdwn="Where";
+		String exptriggersConjuctionDrpdwn=".Where.";
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggersSelectFieldTxt));
 		String acttriggersSelectFieldTxt= triggersSelectFieldTxt.getAttribute("value");
-		String exptriggersSelectFieldTxt="Name";
+		String exptriggersSelectFieldTxt=".Name.";
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggersSelectOperdrpdwn));
 		Select triggersSelectOperdrpdwnSelect = new Select(triggersSelectOperdrpdwn);
 		String acttriggersSelectOperdrpdwn=triggersSelectOperdrpdwnSelect.getFirstSelectedOption().getText();
-		String exptriggersSelectOperdrpdwn="Equal to";
+		String exptriggersSelectOperdrpdwn=".Equal to.";
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggersCompareWithdrpdwn));
 		Select triggersCompareWithdrpdwnSelect = new Select(triggersCompareWithdrpdwn);
 		String acttriggersCompareWithdrpdwn=triggersCompareWithdrpdwnSelect.getFirstSelectedOption().getText();
-		String exptriggersCompareWithdrpdwn="value";
+		String exptriggersCompareWithdrpdwn=".value.";
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggersSelectFieldTxt));
 		String acttriggersValueToEnterTxt= triggersValueTxtGetValue.getAttribute("value");
-		String exptriggersValueToEnterTxt="Vendor B";
+		String exptriggersValueToEnterTxt=".Vendor B.";
+		
+	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggerTabActionBtn));
+		triggerTabActionBtn.click();
+		
+		Thread.sleep(1000);
+		
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggerTabAlertBtn));
+		triggerTabAlertBtn.click();
+		*/
+		//Thread.sleep(1000);
+		//getAction().moveToElement(editLayoutTriggersAllVouchers).build().perform();
+		//Thread.sleep(2000);
+		ClickUsingJs(editLayoutTriggersAllVouchers);
 
 		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(editLayoutTriggersAllVouchers));
 		boolean actdata=editLayoutTriggersAllVouchers.isDisplayed();
 		boolean expdata=true;
+		
+		System.out.println("actdata : " + actdata + "expdata : "+ expdata);
 
 		System.out.println("triggersConjuctionDrpdwn  : ."+acttriggersConjuctionDrpdwn  +". Value Expected :"+exptriggersConjuctionDrpdwn);
 		System.out.println("triggersSelectFieldTxt    : ."+acttriggersSelectFieldTxt    +". Value Expected :"+exptriggersSelectFieldTxt);
@@ -2092,15 +2120,16 @@ public class SanityDocCustViewPage extends BaseEngine
 		System.out.println("triggersValueToEnterTxt   : ."+acttriggersValueToEnterTxt   +". Value Expected :"+exptriggersValueToEnterTxt);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutTriggersSaveBtn));
-		editLayoutTriggersSaveBtn.click();
+		ClickUsingJs(editLayoutTriggersSaveBtn);
+		Thread.sleep(2000);
 
-		String expSaveMessage = excelReader.getCellData(xlSheetName, 453, 7);
+		String expSaveMessage =/* excelReader.getCellData(xlSheetName, 453, 7);*/"Data saved successfully";
 		String actSaveMessage = checkValidationMessage(expSaveMessage);
 		excelReader.setCellData(xlfile, xlSheetName, 453, 8, actSaveMessage);			
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtn));
-		updateBtn.click();
-
+		
+		ClickUsingJs(updateBtn);
+		Thread.sleep(1000);
+		
 		String expUpdateMessage = excelReader.getCellData(xlSheetName, 454, 7);
 		String actUpdateMessage = checkValidationMessage(expUpdateMessage);
 		excelReader.setCellData(xlfile, xlSheetName, 454, 8, actUpdateMessage);
@@ -2134,6 +2163,9 @@ public class SanityDocCustViewPage extends BaseEngine
 	{
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());
 		xlfile=getBaseDir()+"\\src\\main\\resources\\testdata\\FocusTestData.xlsx";
+		
+		getDriver().navigate().refresh();
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplayLogo));
 		userNameDisplayLogo.click();
@@ -2184,8 +2216,12 @@ public class SanityDocCustViewPage extends BaseEngine
 	
 public boolean checkCreatingNewFieldsinEditScreenTabatDifferentPositions() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 {
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
-		settingsmenuBtn.click();
+		getAction().moveToElement(settingsmenuBtn).build().perform();
+		Thread.sleep(2000);
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
+		settingsmenuBtn.click();*/
+		
+		ClickUsingJs(SettingsMenu);
 		
 		Thread.sleep(2000);
 		
@@ -2195,14 +2231,7 @@ public boolean checkCreatingNewFieldsinEditScreenTabatDifferentPositions() throw
 	    Thread.sleep(2000);
 		
 	 
-	    getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(configureTransactionDocumentCustomiztionMinus));
-		configureTransactionDocumentCustomiztionMinus.click();
-		
-		
-		
-		
-	    Thread.sleep(2000);
-		
+			
 	    getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersNewVoucherBtn));
 	    purchaseVouchersNewVoucherBtn.click();
 	    
@@ -2248,7 +2277,7 @@ public boolean checkCreatingNewFieldsinEditScreenTabatDifferentPositions() throw
 		editScreenApplyBtn.click();
 		
 		Thread.sleep(2000);
-		checkValidationMessage("");
+		checkValidationMessage("Data saved successfully");
 		
 		
 		
@@ -2288,7 +2317,7 @@ public boolean checkCreatingNewFieldsinEditScreenTabatDifferentPositions() throw
 		
 		Thread.sleep(2000);
 		
-		checkValidationMessage("");
+		checkValidationMessage("Data saved successfully");
 		
 		
 ///Position at Between  Rate and Gross
@@ -2326,7 +2355,7 @@ public boolean checkCreatingNewFieldsinEditScreenTabatDifferentPositions() throw
 		editScreenApplyBtn.click();
 		Thread.sleep(2000);
 		
-		checkValidationMessage("");
+		checkValidationMessage("Data saved successfully");
 		
 		
 ///Position at After Gross
@@ -2363,7 +2392,7 @@ public boolean checkCreatingNewFieldsinEditScreenTabatDifferentPositions() throw
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
 		editScreenApplyBtn.click();
 		Thread.sleep(2000);
-		checkValidationMessage("");
+		checkValidationMessage("Data saved successfully");
 		
 		
 		///checking List of captions for newly added fields
@@ -2407,14 +2436,12 @@ public boolean checkCreatingNewFieldsinEditScreenTabatDifferentPositions() throw
 @FindBy(xpath="//span[@class='dropdown icon-menuicon1 icon-font6 theme_color-inverse pull-right']")
 private static WebElement  toogleExpandBtn;
 
-@FindBy(xpath="//*[@id='panelsStayOpen-headingTwo']/button")
+@FindBy(xpath="(//*[contains(text(),'Login')])[3]")////*[@id="panelsStayOpen-headingTwo"]/button
 private static WebElement viewTabLoginBtn;
 
 public boolean checkCreateViewforNewlyAddedFields() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 {
 	
-	
-
 	  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewsBtn));
 	  viewsBtn.click();
 	  Thread.sleep(2000);
@@ -2429,21 +2456,19 @@ public boolean checkCreateViewforNewlyAddedFields() throws InterruptedException,
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ViewExistingViewTxt));
 		ViewExistingViewTxt.click();
-		
-		ViewExistingViewTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		
-		ViewExistingViewTxt.sendKeys(Keys.SPACE);
+		Thread.sleep(2000);
+		clearValueFromTextBox(ViewExistingViewTxt);
 		Thread.sleep(2000);
 		ViewExistingViewTxt.sendKeys("positionView");
 		Thread.sleep(2000);
 		ViewExistingViewTxt.sendKeys(Keys.TAB);
 		
-		 Thread.sleep(2000);
+		 Thread.sleep(20000);
 		 
 	int Count = viewsGridFiledsList.size();
 	
 	String actFiledCount=Integer.toString(Count);
-	String expFiledCount= "40"; 		
+	String expFiledCount= "37"; 		
 	
 	System.out.println("Count    : "+Count);
 	
@@ -2456,16 +2481,29 @@ public boolean checkCreateViewforNewlyAddedFields() throws InterruptedException,
 	}
 	
 	String actFieldList					  = actviewsGridFiledsList.toString();
-	String expFieldList					  = "[DocNo, Date, Time, VendorAC, UpdateStock, RaiseReceipt, DueDate, Currency, ExchangeRate, Department, LocExchangeRate, Place of supply, Jurisdiction, sNarration, PermitNo, Warehouse, Item, TaxCode, PurchaseAC, Unit, RD, Avg Rate, Avg Rate(O), MCharge1, Quantity, L-Purchases Orders, MCharge2, Rate, MCharge3, Gross, Discount, VAT, Taxable, MCharge4, Batch, Bins, ExpDate, RMA, FD%, VAT advance]";
+	String expFieldList					  = "[DocNo, Date, Time, VendorAC, UpdateStock, RaiseReceipt, DueDate, Currency, Department, Place of supply, Jurisdiction, sNarration, PermitNo, Warehouse, Item, TaxCode, PurchaseAC, Unit, RD, Avg Rate, Avg Rate(O), MCharge1, Quantity, MCharge2, Rate, MCharge3, Gross, Discount, VAT, Taxable, MCharge4, Batch, Bins, ExpDate, RMA, FD%, VAT advance]";
 	
 	
 		    	
 	System.err.println("Field Names Display Text Actual Values      :  " + actFieldList);
 	System.out.println("Field Names Display Text Expected Values    :  " + expFieldList);
 	
-	  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewTabLoginBtn));
-	  viewTabLoginBtn.click();
-	  
+	
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewSettingsBtn));
+	viewSettingsBtn.click();
+	
+	Thread.sleep(2000);
+
+	if(viewsUserAllOptionsSTChkboxSelected.isDisplayed()==false)
+	{
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewTabLoginBtn));
+	
+	viewTabLoginBtn.click();;
+	}
+	Thread.sleep(2000);
+
+	
+	Thread.sleep(2000);
 	  if(viewSuChkboxIsSelected.isSelected()==false)
 	  {
 	   getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewSuChkbox));
@@ -2504,18 +2542,16 @@ public boolean checkFieldsinViewTabafterRefreshView() throws InterruptedExceptio
 {
 	
 	
-	
+	Thread.sleep(5500);
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ViewExistingViewTxt));
 	ViewExistingViewTxt.click();
 	
-	ViewExistingViewTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-	
-	ViewExistingViewTxt.sendKeys(Keys.SPACE);
+	clearValueFromTextBox(ViewExistingViewTxt);
 	Thread.sleep(2000);
 	ViewExistingViewTxt.sendKeys("positionView");
-	Thread.sleep(2000);
+	Thread.sleep(4000);
 	ViewExistingViewTxt.sendKeys(Keys.TAB);
-	Thread.sleep(2000);
+	Thread.sleep(20000);
 	
 	
 	 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewRefreshViewBtn));
@@ -2526,7 +2562,7 @@ public boolean checkFieldsinViewTabafterRefreshView() throws InterruptedExceptio
 	 int Count = viewsGridFiledsList.size();
 		
 		String actFiledCount=Integer.toString(Count);
-		String expFiledCount= "38"; 		
+		String expFiledCount= "37"; 		
 		
 		System.out.println("Count    : "+Count);
 		
@@ -2539,20 +2575,19 @@ public boolean checkFieldsinViewTabafterRefreshView() throws InterruptedExceptio
 		}
 		
 		String actFieldList					  = actviewsGridFiledsList.toString();
-		String expFieldList					  = "[DocNo, Date, Time, VendorAC, UpdateStock, RaiseReceipt, DueDate, Currency, ExchangeRate, Department, LocExchangeRate, Place of supply, Jurisdiction, sNarration, PermitNo, Warehouse, Item, TaxCode, PurchaseAC, Unit, RD, Avg Rate, Avg Rate(O), MCharge1, Quantity, L-Purchases Orders, Rate, Gross, Discount, VAT, Taxable, MCharge4, Batch, Bins, ExpDate, RMA, FD%, VAT advance]";
+		String expFieldList					  = "[DocNo, Date, Time, VendorAC, UpdateStock, RaiseReceipt, DueDate, Currency, Department, Place of supply, Jurisdiction, sNarration, PermitNo, Warehouse, Item, TaxCode, PurchaseAC, Unit, RD, Avg Rate, Avg Rate(O), MCharge1, Quantity, MCharge2, Rate, MCharge3, Gross, Discount, VAT, Taxable, MCharge4, Batch, Bins, ExpDate, RMA, FD%, VAT advance]";
 		
 		
 			    	
 		System.err.println("Field Names Display Text Actual Values      :  " + actFieldList);
 		System.out.println("Field Names Display Text Expected Values    :  " + expFieldList);
 		
+		Thread.sleep(2000);
 		
-		 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(viewSaveView));
-           viewSaveView.click();
-           Thread.sleep(2000);
+           ClickUsingJs(viewSaveView);
+           Thread.sleep(3000);
            
-           getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtn)); 
-           updateBtn.click();
+           ClickUsingJs(updateBtn);
            Thread.sleep(2000);
 		
            String expMessage="Data saved successfully";
@@ -2579,6 +2614,8 @@ public boolean checkFieldsinViewTabafterRefreshView() throws InterruptedExceptio
 
 public boolean checkCreatedViewFieldsatVoucherLevel() throws InterruptedException
 {
+	getDriver().navigate().refresh();
+	Thread.sleep(2000);
 	
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 	financialsMenu.click();
@@ -2604,16 +2641,17 @@ public boolean checkCreatedViewFieldsatVoucherLevel() throws InterruptedExceptio
 	 System.err.println(reportsHeaderListCount);
 	 
 		ArrayList<String> reportsHeaderListArray = new ArrayList<String>();
-		for(int i=0;i<reportsHeaderListCount;i++)
+		for(int i=1;i<reportsHeaderListCount;i++)
 		{
-			String data = headersList.get(i).getText();
-			((JavascriptExecutor)getDriver()).executeScript("window.scrollBy(0,300)","");
-			 System.err.println(data);
+			String data = headersList.get(i).getAttribute("title");
+			getAction().moveToElement(headersList.get(i)).build().perform();
+			Thread.sleep(2000);
+			// System.err.println(data);
 			 
 			reportsHeaderListArray.add(data);
 		}
 		String actHeaderList = reportsHeaderListArray.toString();
-		String expHeaderList = "";
+		String expHeaderList = "[Warehouse, Item, Tax Code, PurchaseAC, Unit, RD, Avg Rate, Avg Rate(O), MCharge1, Quantity, MCharge2, Rate, MCharge3, Gross, Discount, VAT, Taxable, MCharge4, Batch, Bins, ExpDate, RMA]";
 	    
 	    System.out.println(" Header List Actual    : "+actHeaderList);
 	    System.out.println("  Header List expected :  "+expHeaderList);
@@ -2646,6 +2684,8 @@ public static WebElement PVVAtSettingsBtn;
 
 public boolean checkDeleteAddedFieldsinEditScreenTab() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 {
+	Thread.sleep(2000);
+	
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PVVAtToggleBtn));
 	PVVAtToggleBtn.click();
 	
@@ -2677,8 +2717,8 @@ public boolean checkDeleteAddedFieldsinEditScreenTab() throws InterruptedExcepti
 		}
 	}
 	
-	checkValidationMessage("");
-	Thread.sleep(1000);
+	checkValidationMessage("Data deleted successfully");
+	Thread.sleep(2000);
 	for(int i=0;i<captionsListCount;i++)
 	{
 		
@@ -2696,8 +2736,8 @@ public boolean checkDeleteAddedFieldsinEditScreenTab() throws InterruptedExcepti
 		
 	}
 	
-	checkValidationMessage("");
-	Thread.sleep(1000);
+	checkValidationMessage("Data deleted successfully");
+	Thread.sleep(2000);
 	
 	for(int i=0;i<captionsListCount;i++)
 	{
@@ -2717,10 +2757,10 @@ public boolean checkDeleteAddedFieldsinEditScreenTab() throws InterruptedExcepti
 		}
 	}
 	
-	checkValidationMessage("");
-	Thread.sleep(1000);
+	checkValidationMessage("Data deleted successfully");
+	Thread.sleep(2000);
 	
-	
+
 	for(int i=0;i<captionsListCount;i++)
 	{
 		
@@ -2741,19 +2781,23 @@ public boolean checkDeleteAddedFieldsinEditScreenTab() throws InterruptedExcepti
 	}
 	
 	
-	checkValidationMessage("");
-	Thread.sleep(1000);
+	checkValidationMessage("Data deleted successfully");
+	Thread.sleep(2000);
 	
 	
 	Thread.sleep(2000);
 	
-	for(int i=0;i<captionsListCount;i++)
+	
+	int captionsListCount1 = captionsList.size();
+	ArrayList<String> captionsListArrayAfterDelete = new ArrayList<String>();
+	
+	for(int i=0;i<captionsListCount1;i++)
 	{
 		
 		String data = captionsList.get(i).getText();
-		captionsListArray.add(data);
+		captionsListArrayAfterDelete.add(data);
 	}
-	String actCaptionList = captionsListArray.toString();
+	String actCaptionList = captionsListArrayAfterDelete.toString();
 	String expCaptionList = "[Discount, RD, Avg Rate, Avg Rate(O), VAT, Taxable]";
 	
 	
@@ -2784,7 +2828,7 @@ public static WebElement delete7thRowBtn;
 public static List<WebElement> captionsList;
 
 
-@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_head']/tr/th")
+@FindBy(xpath="//tr[@id='id_transaction_entry_detail_table_row_heading']//th")
 public static List<WebElement> headersList;
 
 
@@ -2796,7 +2840,306 @@ public static WebElement viewRefreshViewBtn;
 
 
 	
+public static boolean CheckLogin() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+{
+        Thread.sleep(3000);
+
+        getDriver().navigate().refresh();
+
+        LoginPage lp=new LoginPage(getDriver()); 
+
+        lp.checkLoginPageTitleByURLInputInBrowser();
+
+        String unamelt="su";
+
+        String pawslt="su";
+
+        lp.enterUserName(unamelt);
+
+        lp.enterPassword(pawslt);
+
+        Thread.sleep(2000);
+
+        String compname = "Automation Company : 08/10/2020";
+
+        Select oSelect = new Select(companyDropDownList);
+
+        List<WebElement> elementCount = oSelect.getOptions();
+
+        int cqSize = elementCount.size();
+
+        System.out.println("CompanyDropdownList Count :" + cqSize);
+
+        int i;
+
+        for (i = 0; i < elementCount.size(); i++) {
+
+                elementCount.get(i).getText();
+
+                String optionName = elementCount.get(i).getText();
+                if (optionName.toUpperCase().startsWith(compname.toUpperCase())) {
+                        System.out.println("q" + elementCount.get(i).getText());
+                        elementCount.get(i).click();
+                }
+
+        }
+
+        Thread.sleep(2000);
+
+        lp.clickOnSignInBtn();
+
+        Thread.sleep(2000);
+
+        String actUserInfo1=userNameDisplay.getText();
+
+        System.out.println("User Info  : "+actUserInfo1);
+
+        System.out.println("User Info Capture Text  :  "+userNameDisplay.getText());
+
+        getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
+        companyLogo.click();
+
+        String getCompanyTxt1=companyName.getText();
+        String getLoginCompanyName1=getCompanyTxt1.substring(0, 31);
+        System.out.println("company name  :  "+ getLoginCompanyName1);
+        companyLogo.click();
+
+        String expUserInfo1           ="SU";
+        String expLoginCompanyName1   ="Automation Company : 08/10/2020";
+
+        System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
+        System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
+
+        if(actUserInfo1.equalsIgnoreCase(expUserInfo1) && getLoginCompanyName1.contains(expLoginCompanyName1))
+        {
+                return true;
+        }
+        else
+        {
+                return false;
+        }
+
+}
+
+
+public boolean checkLogoutSanityDocCustViewPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+{
+	getDriver().navigate().refresh();
+	Thread.sleep(2000);
+	 
+	 try
+		{
+		  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplayLogo));
+		  userNameDisplayLogo.click();
+		  Thread.sleep(2000);
+		 
+		  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
+		  logoutOption.click();
+		  
+		  Thread.sleep(2000);
+		  
+		  boolean actUserLoginPage              = username.isDisplayed() && username.isEnabled()
+                                               && password.isDisplayed() && password.isEnabled();
+                                      
+		  boolean expUserLoginPage              = true;
+		  
+		  if(actUserLoginPage==expUserLoginPage)  
+	      {
+			System.out.println("***Test Pass: Login Successfull***");
+			
+			return true;
+		  }
+	      else
+	      {
+	  	 
+			System.out.println("***Test Fail: Login Not Successfull***");
+			
+			return false;
+		  }
+		}
+		catch (Exception e)
+		{
+		 	String exception = e.getMessage();
+		 		
+			return false;
+		}
+	}
+
+
+public boolean checkAddingNewFieldsinEditLayoutinPVVAT() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+{
+	Thread.sleep(2000);
+	getAction().moveToElement(settingsmenuBtn).build().perform();
+	Thread.sleep(2000);
+/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
+	settingsmenuBtn.click();*/
 	
+	ClickUsingJs(SettingsMenu);
+	
+	Thread.sleep(2000);
+	
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(configureTransactionBtn));
+	configureTransactionBtn.click();
+	
+    Thread.sleep(2000);
+	
+   	
+    getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersNewVoucherBtn));
+    purchaseVouchersNewVoucherBtn.click();
+    
+   Thread.sleep(4000);
+   
+   	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutTab));
+	editLayoutTab.click();
+	
+	Thread.sleep(4000);
+	
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutAddFieldsBtn));
+	editLayoutAddFieldsBtn.click();
+	
+	if(getIsAlertPresent())
+	{
+		getWaitForAlert();
+		Thread.sleep(2000);
+		
+		getAlert().accept();
+	}
+	Thread.sleep(2000);
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutCaptionTxt));
+	editLayoutCaptionTxt.click();
+	editLayoutCaptionTxt.sendKeys("DateField");
+	Thread.sleep(4000);
+	editLayoutCaptionTxt.sendKeys(Keys.TAB);
+	Thread.sleep(4000);
+	
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutDataTypeDropdown));
+	editLayoutDataTypeDropdown.click();
+	Select s=new Select(editLayoutDataTypeDropdown);
+	s.selectByVisibleText("Date");
+	Thread.sleep(2000);
+	
+	editLayoutDefaultValueTxt.click();
+	editLayoutDefaultValueTxt.sendKeys("&#dt");
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutApplyBtn));
+	editLayoutApplyBtn.click();
+	
+	Thread.sleep(4000);
+	String expMessage = "Data saved successfully";
+	String actMessage = checkValidationMessage(expMessage);
+	
+	Thread.sleep(4000);
+	
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutAddFieldsBtn));
+	editLayoutAddFieldsBtn.click();
+	
+	if(getIsAlertPresent())
+	{
+		getWaitForAlert();
+		Thread.sleep(2000);
+		
+		getAlert().accept();
+	}
+	Thread.sleep(2000);
+	
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutCaptionTxt));
+	editLayoutCaptionTxt.click();
+	editLayoutCaptionTxt.sendKeys("NumberField");
+	Thread.sleep(4000);
+	editLayoutCaptionTxt.sendKeys(Keys.TAB);
+	Thread.sleep(4000);
+	
+	
+	
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutDataTypeDropdown));
+	editLayoutDataTypeDropdown.click();
+	Select s1=new Select(editLayoutDataTypeDropdown);
+	s1.selectByVisibleText("Number");
+	Thread.sleep(2000);
+	
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutApplyBtn));
+	editLayoutApplyBtn.click();
+	
+	Thread.sleep(4000);
+	String expMessage1 = "Data saved successfully";
+	String actMessage1 = checkValidationMessage(expMessage1);
+	
+	
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtn));
+	updateBtn.click();
+	Thread.sleep(4000);
+	
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(Settings_closeBtn));
+	Settings_closeBtn.click();
+	Thread.sleep(4000);
+	
+	if(actMessage.equalsIgnoreCase(expMessage))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+@FindBy(xpath="(//*[@id='id_transactionentry_header1_section']//div[16]//table//input)[2]")
+public static WebElement createdDateFieldTxt;
+
+@FindBy(xpath="//*[@id='id_transactionentry_header1_section']//div[17]//input")
+public static WebElement createdNumberFieldTxt;
+
+
+
+public boolean checkAddedFieldsinPVVATVoucher() throws InterruptedException
+{
+	Thread.sleep(4000);
+	getDriver().navigate().refresh();
+	Thread.sleep(4000);
+	
+	
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+	financialsMenu.click();
+	Thread.sleep(2000);
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
+	financialsTransactionMenu.click();
+	Thread.sleep(2000);
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
+	financialsTransactionsPurchaseMenu.click();
+	Thread.sleep(2000);
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
+	purchaseVouchersVat.click();
+
+	Thread.sleep(20000);
+	new WebDriverWait(getDriver(), 300).until(ExpectedConditions.visibilityOf(newBtn));
+	
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
+	newBtn.click();
+	Thread.sleep(6000);
+	
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createdDateFieldTxt));
+	String actCreatedDateFieldTxt=createdDateFieldTxt.getAttribute("value");
+	String expCreatedDateFieldTxt=getCurrentDateF2();
+	
+	System.out.println("Created Date Field Text		"		+		"Actual		"		+		actCreatedDateFieldTxt		+		"Expected		"		+		expCreatedDateFieldTxt);
+	
+	
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createdNumberFieldTxt));
+	String actCreatedNumberFieldTxt=createdNumberFieldTxt.getAttribute("value");
+	String expCreatedNumberFieldTxt="0";
+	
+	System.out.println("Created Number Field Text		"		+		"Actual		"		+		actCreatedNumberFieldTxt		+		"Expected		"		+		expCreatedNumberFieldTxt);
+	
+	if(actCreatedDateFieldTxt.equalsIgnoreCase(expCreatedDateFieldTxt) && actCreatedNumberFieldTxt.equalsIgnoreCase(expCreatedNumberFieldTxt))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+	
+	
+}
 	
 
 	public SanityDocCustViewPage(WebDriver driver)

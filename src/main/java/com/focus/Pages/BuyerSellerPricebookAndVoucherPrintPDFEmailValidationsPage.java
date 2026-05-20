@@ -261,8 +261,8 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_13thColumn));
 		select2ndRow_13thColumn.click();
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_14thColumn));
-		select1stRow_14thColumn.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_14thColumn));
+		select2ndRow_14thColumn.click();
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_PvVat));
 		enter_PvVat.click();
@@ -317,35 +317,29 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		Bill_OkBtn.click();
 
 		Thread.sleep(2000);
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i--) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}*/
 		
-		String actMessage = SavingInBackground(1);
-
-		/*HashSet<String> expMsg = new HashSet();
-
-		expMsg.add("Voucher saved successfully : SU/AME/TEXT1");
-		expMsg.add("Saving in background.");*/
 		
-		String expMessage = excelReader.getCellData(xlSheetName, 17, 6);
-
-		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		String expMessage1 = excelReader.getCellData(xlSheetName, 17, 6);
+		
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 18, 6);
 		
 		excelReader.setCellData(xlfile, xlSheetName, 17, 7, actMessage);
+	
+		System.out.println("Actual Message    : "+actMessage);
+		System.out.println("Expected Message  : "+expMessage1);
+
+		System.out.println("Expected Message  : "+expMessage2);
+		
+		
 
 		System.out.println("************************************************************************");
 
 		System.out.println("Rates1 : "+actRate1+"  Value Expected  "+expRate1);
-		//System.out.println("Rates2 : "+actRate2+"  Value Expected  "+expRate2);
+		
 
-		if(actRate1.equalsIgnoreCase(expRate1) /*&& actRate2.equalsIgnoreCase(expRate2)*/ 
-				&& actMessage.equals(expMessage))
+		if(actRate1.equalsIgnoreCase(expRate1)  
+				&& actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 8, 8, resPass);
 			return true;
@@ -577,7 +571,24 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenBehaviourDropdown));
 		Select behaviour = new Select(editScreenBehaviourDropdown);
 		behaviour.selectByVisibleText(excelReader.getCellData(xlSheetName, 44, 5));
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtn));
+		updateBtn.click();
+		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customizationCloseBtn));
+		customizationCloseBtn.click();
+		Thread.sleep(3000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsBtn));
+		settingsBtn.click();
 
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenTab));
+		editScreenTab.click();
+
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenBehaviourFormulaTxt));
 		editScreenBehaviourFormulaTxt.click();
 		editScreenBehaviourFormulaTxt.clear();
@@ -785,7 +796,7 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 
 		// Row 2 with Item Group item
 
-		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_WarehouseTxt));
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_WarehouseTxt));
 		enter_WarehouseTxt.sendKeys(Keys.END);
 		enter_WarehouseTxt.sendKeys(Keys.SHIFT,Keys.HOME);
 		enter_WarehouseTxt.sendKeys(excelReader.getCellData(xlSheetName, 54, 5));
@@ -861,7 +872,7 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 
 		System.out.println(actRMAColumn);
 		System.out.println(expRMAColumn);
-*/
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 		
@@ -878,39 +889,28 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		
 		Thread.sleep(3000);
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
 		
-		expMessage.add("Voucher saved successfully : SU/AME/TEXT2");
-		expMessage.add("Saving in background.");*/
 		
-		String actMessage = SavingInBackground(2);
-
-		/*HashSet<String> expMsg = new HashSet();
-
-		expMsg.add("Voucher saved successfully : SU/AME/TEXT2");
-		expMsg.add("Saving in background.");*/
+		String expMessage1 = excelReader.getCellData(xlSheetName, 55, 6);
 		
-		String expMessage = excelReader.getCellData(xlSheetName, 55, 6);
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 56, 6);
+		
 		excelReader.setCellData(xlfile, xlSheetName, 55, 7, actMessage);
-
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
 
+		System.out.println("Expected Message  : "+expMessage2);
+		
+		
 		System.out.println("************************************************************************");
 
 		System.out.println("Rates1 : "+actRate1+"  Value Expected  "+expRate1);
-		//System.out.println("Rates2 : "+actRate2+"  Value Expected  "+expRate2);
+		
 
-		if(actRate1.equalsIgnoreCase(expRate1) /*&& actRate2.equalsIgnoreCase(expRate2) /*&& actBackgroundSavingMessage.equalsIgnoreCase(expBackgroundSavingMessage)*/
-				&& actMessage.equals(expMessage))
+		if(actRate1.equalsIgnoreCase(expRate1) 
+				&& actMessage.startsWith(expMessage1) && actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 46, 8, resPass);
 			return true;
@@ -1138,7 +1138,40 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		editScreenTab.click();
 
 		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenBehaviourFormulaTxt));
+		editScreenBehaviourFormulaTxt.click();
+		editScreenBehaviourFormulaTxt.sendKeys(Keys.END);
+		editScreenBehaviourFormulaTxt.sendKeys(Keys.SHIFT,Keys.HOME);
+		Thread.sleep(1000);
+		editScreenBehaviourFormulaTxt.sendKeys(Keys.BACK_SPACE);
+		
+		((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", editScreenBehaviourFormulaOkBtn);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenBehaviourFormulaOkBtn));
+		editScreenBehaviourFormulaOkBtn.click();
+		
+		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtn));
+		updateBtn.click();
+		Thread.sleep(3000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customizationCloseBtn));
+		customizationCloseBtn.click();
+		Thread.sleep(2000);
+		
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsBtn));
+		settingsBtn.click();
 
+		Thread.sleep(3000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenTab));
+		editScreenTab.click();
+
+		Thread.sleep(2000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenBehaviourFormulaTxt));
 		editScreenBehaviourFormulaTxt.click();
 		editScreenBehaviourFormulaTxt.sendKeys(Keys.END);
@@ -1324,7 +1357,7 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		enter_Batch.sendKeys(excelReader.getCellData(xlSheetName, 90, 5));
 		enter_Batch.sendKeys(Keys.TAB);
 
-		/*DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
 					Calendar cal=Calendar.getInstance();
 					SimpleDateFormat currentDate = new SimpleDateFormat("dd/MM/yyyy");
@@ -1332,14 +1365,14 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 
 					String next2DaysDate=df.format(cal.getTime());
 
-					System.out.println(">>>>>>>>>Expiry Date After Adding 2Days>>>>>>>> : "+next2DaysDate);*/
+					System.out.println(">>>>>>>>>Expiry Date After Adding 2Days>>>>>>>> : "+next2DaysDate);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Expirydate));
 		enter_Expirydate.click();
 		enter_Expirydate.sendKeys(Keys.HOME);
-		enter_Expirydate.sendKeys(excelReader.getCellData(xlSheetName, 91, 5));
+		enter_Expirydate.sendKeys(next2DaysDate);
 		enter_Expirydate.sendKeys(Keys.HOME);
-		enter_Expirydate.sendKeys(excelReader.getCellData(xlSheetName, 91, 5));
+		enter_Expirydate.sendKeys(next2DaysDate);
 		enter_Expirydate.sendKeys(Keys.TAB);
 
 		Thread.sleep(2000);
@@ -1440,31 +1473,19 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		
 		Thread.sleep(3000);
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : SU/AME/TEXT3");
-		expMessage.add("Saving in background.");*/
-
-		String actMessage = SavingInBackground(2);
-
-		/*HashSet<String> expMsg = new HashSet();
-
-		expMsg.add("Voucher saved successfully : SU/AME/TEXT3");
-		expMsg.add("Saving in background.");*/
 		
-		String expMessage = excelReader.getCellData(xlSheetName, 92, 6);
+		
+		String expMessage1 = excelReader.getCellData(xlSheetName, 92, 6);
+		
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 93, 6);
+		
 		excelReader.setCellData(xlfile, xlSheetName, 92, 7, actMessage);
-		
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
+
+		System.out.println("Expected Message  : "+expMessage2);
 
 		System.out.println("************************************************************************");
 
@@ -1472,7 +1493,7 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 	//	System.out.println("Rates2 : "+actRate2+"  Value Expected  "+expRate2);
 
 		if(actRate1.equalsIgnoreCase(expRate1)/* && actRate2.equalsIgnoreCase(expRate2) /*&&  actBackgroundSavingMessage.equalsIgnoreCase(expBackgroundSavingMessage)*/
-				&& actMessage.equals(expMessage))
+				&& actMessage.startsWith(expMessage1) && actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 83, 8, resPass);
 			return true;
@@ -1573,7 +1594,12 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		excelReader.setCellData(xlfile, xlSheetName, 110, 7, actBatch);
 
 		String actExpiry = select1stRow_18thColumn.getText();
-		String expExpiry=excelReader.getCellData(xlSheetName, 111, 6);
+		
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		Calendar cal=Calendar.getInstance();
+		cal.add(Calendar.DATE, 2); 
+		String expExpiry=df.format(cal.getTime());
+		/*String expExpiry=excelReader.getCellData(xlSheetName, 111, 6);*/
 		excelReader.setCellData(xlfile, xlSheetName, 111, 7, actExpiry);
 
 
@@ -1708,7 +1734,39 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtn));
 		updateBtn.click();
+		checkValidationMessage("");
+		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customizationCloseBtn));
+		customizationCloseBtn.click();
+		Thread.sleep(3000);
+		
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsBtn));
+		settingsBtn.click();
 
+		Thread.sleep(3000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenTab));
+		editScreenTab.click();
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenBehaviourDropdown));
+		ScrollIntoView(editScreenBehaviourDropdown);
+		//Select behaviour = new Select(editScreenBehaviourDropdown);
+		behaviour.selectByVisibleText(excelReader.getCellData(xlSheetName, 121, 5));
+		
+		((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", updateBtn);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtn));
+		updateBtn.click();
+		
+		
+		
+
+		
+		
 		System.out.println("******************checkChangingRatePreloadBehaviourToRatePurchaseVoucherVAT*****************");
 
 		String expMessage = excelReader.getCellData(xlSheetName, 121, 6);
@@ -1855,35 +1913,22 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		Bill_OkBtn.click();
 		Thread.sleep(3000);
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : SU/DUB/TEXT1");
-		expMessage.add("Saving in background.");*/
+	
+		String expMessage1 = excelReader.getCellData(xlSheetName, 128, 6);
 		
-		String actMessage = SavingInBackground(2);
-
-		/*HashSet<String> expMsg = new HashSet();
-
-		expMsg.add("Voucher saved successfully : SU/DUB/TEXT1");
-		expMsg.add("Saving in background.");*/
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 129, 6);
 		
-		String expMessage = /*expMsg.toString()*/ excelReader.getCellData(xlSheetName, 128, 6);
 		excelReader.setCellData(xlfile, xlSheetName, 128, 7, actMessage);
-
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
+
+		System.out.println("Expected Message  : "+expMessage2);
 
 		Thread.sleep(2000);
 
-		if(actMessage.equals(expMessage))
+		if(actMessage.startsWith(expMessage1) && actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 122, 8, resPass);
 			return true;
@@ -2086,31 +2131,23 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		
 		Thread.sleep(3000);
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : SU/DUB/TEXT1");
-		expMessage.add("Saving in background.");*/
-
-		String actMessage = SavingInBackground(2);
-
-		/*HashSet<String> expMsg = new HashSet();
-
-		expMsg.add("Voucher saved successfully : SU/DUB/TEXT1");
-		expMsg.add("Saving in background.");*/
 		
-		String expMessage = /*expMsg.toString()*/excelReader.getCellData(xlSheetName, 149, 6);
+		
+		String expMessage1 = excelReader.getCellData(xlSheetName, 149, 6);
+		
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 150, 6);
+		
 		excelReader.setCellData(xlfile, xlSheetName, 149, 7, actMessage);
-		
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
+
+		System.out.println("Expected Message  : "+expMessage2);
+
+		Thread.sleep(2000);
+
+	
 
 		Thread.sleep(2000);
 
@@ -2127,7 +2164,7 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 				&& actpostingDetailsDebitSum.equalsIgnoreCase(exppostingDetailsDebitSum) 
 				&& actpostingDetailsCreditSum.equalsIgnoreCase(exppostingDetailsCreditSum)
 
-				&& actMessage.equals(expMessage))
+				&& actMessage.startsWith(expMessage1) && actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 131, 8, resPass);
 			return true;
@@ -2340,7 +2377,7 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		expMessage.add("Voucher saved successfully : SU/DUB/TEXT1");
 		expMessage.add("Saving in background.");*/
 
-		String actMessage = SavingInBackground(2);
+		//String actMessage = SavingInBackground(2);
 
 		/*HashSet<String> expMsg = new HashSet();
 
@@ -2348,6 +2385,8 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		expMsg.add("Saving in background.");*/
 		
 		String expMessage = /*expMsg.toString()*/excelReader.getCellData(xlSheetName, 169, 6);
+		
+		String actMessage=checkValidationMessage(expMessage);
 		excelReader.setCellData(xlfile, xlSheetName, 169, 7, actMessage);
 		
 		System.out.println("Actual Message    : "+actMessage);
@@ -2593,6 +2632,8 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 			checkValidationMessage("Rules");
 		}
 
+		Thread.sleep(2000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherHeaderDueDate));
 		voucherHeaderDueDate.click();
 		voucherHeaderDueDate.sendKeys(Keys.TAB);
@@ -2640,16 +2681,16 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 
 		Thread.sleep(2000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_11thColumn));
-		select1stRow_11thColumn.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_9thColumn));
+		select1stRow_9thColumn.click();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Quantity));
 		enter_Quantity.click();
 		enter_Quantity.clear();
 		enter_Quantity.sendKeys(excelReader.getCellData(xlSheetName, 195, 5));
 
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_13thColumn));
-		select1stRow_13thColumn.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_11thColumn));
+		select1stRow_11thColumn.click();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Rate));
 		enter_Rate.sendKeys(excelReader.getCellData(xlSheetName, 196, 5));
 		Thread.sleep(2000);
@@ -2666,10 +2707,10 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 
 		if (validationConfirmationMessage.getText().isEmpty()==false) 
 		{
-			checkValidationMessage("Rules");
+			checkValidationMessage("SNarration Test Rule");
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newReferenceTxt));
 		newReferenceTxt.click();
@@ -2681,35 +2722,23 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		Bill_OkBtn.click();
 		Thread.sleep(3000);
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : SU/DUB/TEXT2");
-		expMessage.add("Saving in background.");*/
-
-		String actMessage = SavingInBackground(2);
-
-		/*HashSet<String> expMsg = new HashSet();
-
-		expMsg.add("Voucher saved successfully : SU/DUB/TEXT2");
-		expMsg.add("Saving in background.");*/
+		//checkValidationMessage("SNarration Test Rule");
 		
-		String expMessage = /*expMsg.toString()*/ excelReader.getCellData(xlSheetName, 188, 6);
+		String expMessage1 = excelReader.getCellData(xlSheetName, 188, 6);
+		
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 189, 6);
+		
 		excelReader.setCellData(xlfile, xlSheetName, 188, 7, actMessage);
-		
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
+
+		System.out.println("Expected Message  : "+expMessage2);
 
 		Thread.sleep(2000);
 
-		if(actMessage.equals(expMessage))
+		if(actMessage.startsWith(expMessage1) && actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 188, 8, resPass);
 			return true;
@@ -2789,16 +2818,16 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_PurchaseAccountTxt));
 		enter_PurchaseAccountTxt.sendKeys(Keys.TAB);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_11thColumn));
-		select1stRow_11thColumn.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_9thColumn));
+		select1stRow_9thColumn.click();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Quantity));
 		enter_Quantity.click();
 		enter_Quantity.clear();
 		enter_Quantity.sendKeys(excelReader.getCellData(xlSheetName, 204, 5));
 
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_13thColumn));
-		select1stRow_13thColumn.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_11thColumn));
+		select1stRow_11thColumn.click();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Rate));
 		enter_Rate.click();
 		enter_Rate.clear();
@@ -2809,8 +2838,8 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		enter_Gross.click();
 		enter_Gross.sendKeys(Keys.TAB);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_16thColumn));
-		select1stRow_16thColumn.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_14thColumn));
+		select1stRow_14thColumn.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_PvVat));
 		enter_PvVat.sendKeys(Keys.TAB);
@@ -2854,7 +2883,7 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binCancelBtn));
 		binCancelBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 
 		if(actBinBalanceQty1.equalsIgnoreCase(expBinBalanceQty1) && actBinBalanceQty2.equalsIgnoreCase(expBinBalanceQty2))
 		{
@@ -5210,6 +5239,8 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 	public boolean checksalesInvoiceVatWithBuyerSellerPriceBooklist() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());
+		getDriver().navigate().refresh();
+		Thread.sleep(2000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(finacinalsMenu));
 		finacinalsMenu.click();
@@ -5325,7 +5356,7 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		pvWareHouseTxt.click();
 
 		pvWareHouseTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
-		pvWareHouseTxt.sendKeys(excelReader.getCellData(xlSheetName, 315, 5));
+		pvWareHouseTxt.sendKeys(excelReader.getCellData(xlSheetName, 314, 5));
 		Thread.sleep(2000);
 		pvWareHouseTxt.sendKeys(Keys.TAB);
 
@@ -5333,7 +5364,7 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		enter_ItemTxt.sendKeys(Keys.END);
 		enter_ItemTxt.sendKeys(Keys.SHIFT,Keys.HOME);
 		enter_ItemTxt.sendKeys(Keys.BACK_SPACE);
-		enter_ItemTxt.sendKeys(excelReader.getCellData(xlSheetName, 316, 5));
+		enter_ItemTxt.sendKeys(excelReader.getCellData(xlSheetName, 315, 5));
 		Thread.sleep(2000);
 		enter_ItemTxt.sendKeys(Keys.TAB);
 
@@ -5353,11 +5384,11 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		select2ndRow_8thColumn.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_AQTxt));
-		enter_AQTxt.sendKeys(excelReader.getCellData(xlSheetName, 317, 5));
+		enter_AQTxt.sendKeys(excelReader.getCellData(xlSheetName, 316, 5));
 		enter_AQTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_FQTxt));
-		enter_FQTxt.sendKeys(excelReader.getCellData(xlSheetName, 318, 5));
+		enter_FQTxt.sendKeys(excelReader.getCellData(xlSheetName, 317, 5));
 		enter_FQTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_11thColumn));
@@ -5404,40 +5435,31 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefOkBtn));
 		billRefOkBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 1");
-		expMessage.add("Saving in background.");*/
-
-		String actMessage = SavingInBackground(2);
-
-		/*HashSet<String> expMsg = new HashSet();
-
-		expMsg.add("Voucher saved successfully : 1");
-		expMsg.add("Saving in background.");
 		
-		String expMessage = expMsg.toString();*/
 		
-		String expMessage = excelReader.getCellData(xlSheetName, 308, 6);
+		String expMessage1 = excelReader.getCellData(xlSheetName, 308, 6);
+		
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 309, 6);
+		
 		excelReader.setCellData(xlfile, xlSheetName, 308, 7, actMessage);
-		
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
 
+		System.out.println("Expected Message  : "+expMessage2);
+		
+		// actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+
+		
+
+		
 		System.out.println("************************************************************************");
 
 		System.out.println("Rates1 : "+actRate1+"  Value Expected  "+expRate1);
 		System.out.println("Rates2 : "+actRate2+"  Value Expected  "+expRate2);
 
-		if(actMessage.equals(expMessage) && actRate1.equalsIgnoreCase(expRate1) && actRate2.equalsIgnoreCase(expRate2))
+		if(actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2) && actRate1.equalsIgnoreCase(expRate1) && actRate2.equalsIgnoreCase(expRate2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 306, 8, resPass);
 			return true;
@@ -5596,6 +5618,26 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		ScrollIntoView(editScreenBehaviourDropdown);
 		Select behaviour = new Select(editScreenBehaviourDropdown);
 		behaviour.selectByVisibleText(excelReader.getCellData(xlSheetName, 333, 5));
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtn));
+		updateBtn.click();
+		
+		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customizationCloseBtn));
+		customizationCloseBtn.click();
+		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesInvoiceSettingsBtn));
+		salesInvoiceSettingsBtn.click();
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenTab));
+		editScreenTab.click();
+
+		Thread.sleep(2000);
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenBehaviourFormulaTxt));
 		editScreenBehaviourFormulaTxt.sendKeys(excelReader.getCellData(xlSheetName, 334, 5));
@@ -5783,8 +5825,8 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_14thColumn));
 		String actRate2 = select2ndRow_14thColumn.getText();
-		String expRate2 = excelReader.getCellData(xlSheetName, 337, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 337, 7, actRate2);
+		String expRate2 = excelReader.getCellData(xlSheetName, 336, 6);
+		excelReader.setCellData(xlfile, xlSheetName, 336, 7, actRate2);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_8thColumn));
 		select2ndRow_8thColumn.click();
@@ -5841,40 +5883,30 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefOkBtn));
 		billRefOkBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 2");
-		expMessage.add("Saving in background.");*/
+		Thread.sleep(2000);
 		
-		String actMessage = SavingInBackground(2);
 
-		/*HashSet<String> expMsg = new HashSet();
+		
 
-		expMsg.add("Voucher saved successfully : 2");
-		expMsg.add("Saving in background.");
+		String expMessage1 = excelReader.getCellData(xlSheetName, 337, 6);
 		
-		String expMessage = expMsg.toString();*/
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 338, 6);
 		
-		String expMessage = excelReader.getCellData(xlSheetName, 337, 6);
 		excelReader.setCellData(xlfile, xlSheetName, 337, 7, actMessage);
-
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
 
+		System.out.println("Expected Message  : "+expMessage2);
+		
+		// actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
 		System.out.println("************************************************************************");
 
 		System.out.println("Rates1 : "+actRate1+"  Value Expected  "+expRate1);
 		System.out.println("Rates2 : "+actRate2+"  Value Expected  "+expRate2);
 
-		if(actMessage.equals(expMessage) && actRate1.equalsIgnoreCase(expRate1) && actRate2.equalsIgnoreCase(expRate2))
+		if(actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2) && actRate1.equalsIgnoreCase(expRate1) && actRate2.equalsIgnoreCase(expRate2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 335, 8, resPass);
 			return true;
@@ -6043,6 +6075,32 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenBehaviourFormulaTxt));
 		editScreenBehaviourFormulaTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		editScreenBehaviourFormulaTxt.sendKeys(Keys.BACK_SPACE);
+		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtn));
+		updateBtn.click();
+
+		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customizationCloseBtn));
+		customizationCloseBtn.click();
+		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesInvoiceSettingsBtn));
+		salesInvoiceSettingsBtn.click();
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenTab));
+		editScreenTab.click();
+
+		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenBehaviourFormulaTxt));
+		editScreenBehaviourFormulaTxt.click();
+		Thread.sleep(2000);
+		
 		editScreenBehaviourFormulaTxt.sendKeys(excelReader.getCellData(xlSheetName, 362, 5));
 		editScreenBehaviourFormulaTxt.sendKeys(Keys.TAB);
 		getAction().moveToElement(editScreenBehaviourFormulaTxt).pause(1000).click().build().perform();
@@ -6287,41 +6345,27 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefOkBtn));
 		billRefOkBtn.click();
-
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 3");
-		expMessage.add("Saving in background.");*/
+		Thread.sleep(2000);
 		
-		String actMessage = SavingInBackground(2);
-
-		/*HashSet<String> expMsg = new HashSet();
-
-		expMsg.add("Voucher saved successfully : 3");
-		expMsg.add("Saving in background.");
+		String expMessage1 = excelReader.getCellData(xlSheetName, 365, 6);
 		
-		String expMessage = expMsg.toString();*/
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 366, 6);
 		
-		String expMessage = excelReader.getCellData(xlSheetName, 365, 6);
 		excelReader.setCellData(xlfile, xlSheetName, 365, 7, actMessage);
-
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
 
+		System.out.println("Expected Message  : "+expMessage2);
+		
+		// actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))	
 		System.out.println("************************************************************************");
 
 		System.out.println("Rates1 : "+actRate1+"  Value Expected  "+expRate1);
 		System.out.println("Rates2 : "+actRate2+"  Value Expected  "+expRate2);
 
-		if(actMessage.equals(expMessage) && actRate1.equalsIgnoreCase(expRate1) && actRate2.equalsIgnoreCase(expRate2))
+		if(actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2) && actRate1.equalsIgnoreCase(expRate1) && actRate2.equalsIgnoreCase(expRate2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 363, 8, resPass);
 			return true;
@@ -6528,6 +6572,9 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 	{
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());
 		
+		getDriver().navigate().refresh();
+		Thread.sleep(2000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(finacinalsMenu));
 		finacinalsMenu.click();
 
@@ -6642,37 +6689,25 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefOkBtn));
 		billRefOkBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 4");
-		expMessage.add("Saving in background.");*/
-		
-		String actMessage = SavingInBackground(2);
-
-		/*HashSet<String> expMsg = new HashSet();
-
-		expMsg.add("Voucher saved successfully : 4");
-		expMsg.add("Saving in background.");
-		
-		String expMessage = expMsg.toString();*/
-
-		String expMessage = excelReader.getCellData(xlSheetName, 391, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 391, 7, actMessage);
+		Thread.sleep(2000);
 				
+		String expMessage1 = excelReader.getCellData(xlSheetName, 391, 6);
+		
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 392, 6);
+		
+		excelReader.setCellData(xlfile, xlSheetName, 391, 7, actMessage);
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
+
+		System.out.println("Expected Message  : "+expMessage2);
+		
+		// actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))	
 
 		System.out.println("************************************************************************");
 
-		if(actMessage.equals(expMessage))
+		if(actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 391, 8, resPass);
 			return true;
@@ -7723,35 +7758,24 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 1");
-		expMessage.add("Saving in background.");*/
 		
-		String actMessage = SavingInBackground(2);
 
-		/*HashSet<String> expMsg = new HashSet();
-
-		expMsg.add("Voucher saved successfully : 1");
-		expMsg.add("Saving in background.");
+		String expMessage1 = excelReader.getCellData(xlSheetName, 470, 6);
 		
-		String expMessage = expMsg.toString();*/
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 471, 6);
 		
-		String expMessage = excelReader.getCellData(xlSheetName, 470, 6);
 		excelReader.setCellData(xlfile, xlSheetName, 470, 7, actMessage);
-
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
 
-		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.equals(expMessage))
+		System.out.println("Expected Message  : "+expMessage2);
+		
+		// actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+
+
+		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 467, 8, resPass);
 			return true;
@@ -7857,35 +7881,23 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
+		Thread.sleep(2000);
 
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 2");
-		expMessage.add("Saving in background.");*/
+		String expMessage1 = excelReader.getCellData(xlSheetName, 476, 6);
 		
-		String actMessage = SavingInBackground(2);
-
-		/*HashSet<String> expMsg = new HashSet();
-
-		expMsg.add("Voucher saved successfully : 2");
-		expMsg.add("Saving in background.");
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 477, 6);
 		
-		String expMessage = expMsg.toString();*/
-		
-		String expMessage = excelReader.getCellData(xlSheetName, 476, 6);
 		excelReader.setCellData(xlfile, xlSheetName, 476, 7, actMessage);
-
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
 
-		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.equals(expMessage))
+		System.out.println("Expected Message  : "+expMessage2);
+		
+		// actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+
+		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 473, 8, resPass);
 			return true;
@@ -7980,7 +7992,7 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		}
 
 		String actRow1List = row1.toString();
-		String expRow1List = "excelReader.getCellData(xlSheetName, 479, 6)";
+		String expRow1List = excelReader.getCellData(xlSheetName, 479, 6);
 		excelReader.setCellData(xlfile, xlSheetName, 479, 7, actRow1List);
 
 		Thread.sleep(1000);
@@ -7991,35 +8003,24 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
+		Thread.sleep(2000);
 
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 3");
-		expMessage.add("Saving in background.");*/
+		String expMessage1 = excelReader.getCellData(xlSheetName, 482, 6);
 		
-		String actMessage = SavingInBackground(2);
-
-		/*HashSet<String> expMsg = new HashSet();
-
-		expMsg.add("Voucher saved successfully : 3");
-		expMsg.add("Saving in background.");
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 483, 6);
 		
-		String expMessage = expMsg.toString();*/
-		
-		String expMessage = excelReader.getCellData(xlSheetName, 482, 6);
 		excelReader.setCellData(xlfile, xlSheetName, 482, 7, actMessage);
-
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
 
-		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.equals(expMessage))
+		System.out.println("Expected Message  : "+expMessage2);
+		
+		// actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+
+
+		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 479, 8, resPass);
 			return true;
@@ -8125,35 +8126,25 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 4");
-		expMessage.add("Saving in background.");*/
 		
-		String actMessage = SavingInBackground(2);
+		Thread.sleep(2000);
 
-		/*HashSet<String> expMsg = new HashSet();
-
-		expMsg.add("Voucher saved successfully : 4");
-		expMsg.add("Saving in background.");
+		String expMessage1 = excelReader.getCellData(xlSheetName, 488, 6);
 		
-		String expMessage = expMsg.toString();*/
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 489, 6);
 		
-		String expMessage = excelReader.getCellData(xlSheetName, 488, 6);
 		excelReader.setCellData(xlfile, xlSheetName, 488, 7, actMessage);
-
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
 
-		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.equals(expMessage))
+		System.out.println("Expected Message  : "+expMessage2);
+		
+		// actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+
+
+		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 485, 8, resPass);
 			return true;
@@ -8260,28 +8251,24 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		/*HashSet<String> actMsg = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMsg.add(data);
-		}*/
 		
-		String actMessage = SavingInBackground(2);
+		Thread.sleep(2000);
 
-		/*HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Saving in background.");
-		expMessage.add("Voucher saved successfully : 5");*/
+		String expMessage1 = excelReader.getCellData(xlSheetName, 494, 6);
 		
-		String expMessage = excelReader.getCellData(xlSheetName, 494, 6);
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 495, 6);
+		
 		excelReader.setCellData(xlfile, xlSheetName, 494, 7, actMessage);
-		
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
 
-		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.equals(expMessage))
+		System.out.println("Expected Message  : "+expMessage2);
+		
+		// actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+
+		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 491, 8, resPass);
 			return true;
@@ -8386,35 +8373,24 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 6");
-		expMessage.add("Saving in background.");*/
 		
-		String actMessage = SavingInBackground(2);
+		Thread.sleep(2000);
 
-		/*HashSet<String> expMsg = new HashSet();
-
-		expMsg.add("Voucher saved successfully : 6");
-		expMsg.add("Saving in background.");
+		String expMessage1 = excelReader.getCellData(xlSheetName, 500, 6);
 		
-		String expMessage = expMsg.toString();*/
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 501, 6);
 		
-		String expMessage = excelReader.getCellData(xlSheetName, 500, 6);
 		excelReader.setCellData(xlfile, xlSheetName, 500, 7, actMessage);
-
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
 
-		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.equals(expMessage))
+		System.out.println("Expected Message  : "+expMessage2);
+		
+		// actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+
+		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 497, 8, resPass);
 			return true;
@@ -8521,35 +8497,25 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 7");
-		expMessage.add("Saving in background.");*/
 		
-		String actMessage = SavingInBackground(2);
 
-		/*HashSet<String> expMsg = new HashSet();
+		Thread.sleep(2000);
 
-		expMsg.add("Saving in background.");
-		expMsg.add("Voucher saved successfully : 7");
+		String expMessage1 = excelReader.getCellData(xlSheetName, 506, 6);
 		
-		String expMessage = expMsg.toString();*/
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 507, 6);
 		
-		String expMessage = excelReader.getCellData(xlSheetName, 506, 6);
 		excelReader.setCellData(xlfile, xlSheetName, 506, 7, actMessage);
-
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
 
-		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.equals(expMessage))
+		System.out.println("Expected Message  : "+expMessage2);
+		
+		// actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+
+		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 503, 8, resPass);
 			return true;
@@ -8568,150 +8534,7 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 
 
 
-	/*public boolean checkSavingDeliveryNoteVoucher7WithGroupTwoAccountTwoAndValidatePricebookValues() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
-				{
-					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
-					inventoryMenu.click();
-
-					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsMenu));
-					inventoryTransactionsMenu.click();
-
-					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsSalesMenu));
-					inventoryTransactionsSalesMenu.click();
-
-					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(deliveryNotesBtn));
-					deliveryNotesBtn.click();
-
-					Thread.sleep(2000);
-
-					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
-					newBtn.click();
-
-					checkValidationMessage("Screen opened");
-
-					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
-
-					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerAccountTxt));
-					customerAccountTxt.sendKeys("Group Two Account Two");
-					Thread.sleep(2000);
-					customerAccountTxt.sendKeys(Keys.TAB);
-
-					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(warehouseTxt));
-					warehouseTxt.sendKeys("HYDERABAD");
-					Thread.sleep(2000);
-					warehouseTxt.sendKeys(Keys.TAB);
-
-					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(departmentTxt));
-					departmentTxt.sendKeys("DUBAI");
-					Thread.sleep(2000);
-					departmentTxt.sendKeys(Keys.TAB);
-
-					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_1stColumn));
-					select1stRow_1stColumn.click();
-					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_ItemTxt));
-					enter_ItemTxt.sendKeys("BR COGS ITEM");
-
-					int itemsCount=itemComboList.size();
-
-					for (int i = 0; i < itemsCount; i++) 
-					{
-						String item=itemComboList.get(i).getText();
-
-						if (item.equalsIgnoreCase("BR COGS ITEM")) 
-						{
-							itemComboList.get(i).click();
-							enter_ItemTxt.sendKeys(Keys.TAB);
-							break;
-						}
-					}
-
-					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_UnitTxt));
-					enter_UnitTxt.sendKeys(Keys.TAB);
-
-					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Quantity));
-					enter_Quantity.sendKeys("1");
-					enter_Quantity.sendKeys(Keys.TAB);
-
-					Thread.sleep(3000);
-
-					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Rate));
-					enter_Rate.sendKeys("5");
-					enter_Rate.sendKeys(Keys.TAB);
-
-					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Gross));
-					enter_Gross.sendKeys(Keys.TAB);
-
-					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_salrt0Txt));
-					enter_salrt0Txt.sendKeys(Keys.TAB);
-
-					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_salrt1Txt));
-					enter_salrt1Txt.sendKeys(Keys.TAB);
-
-					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_salrtGrp0Txt));
-					enter_salrtGrp0Txt.sendKeys(Keys.TAB);
-
-					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_salrtGrp1Txt));
-					enter_salrtGrp1Txt.sendKeys(Keys.TAB);
-
-					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(batchPickOnFIFOIcon));
-					batchPickOnFIFOIcon.click();
-
-					Thread.sleep(2000);
-
-					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(batchOkIcon));
-			    	batchOkIcon.click();
-
-					Thread.sleep(2000);
-
-					ArrayList<String> row1 = new ArrayList<String>();
-
-					int count = voucherBodyRow1List.size();
-
-					for (int j = 0; j < count; j++) 
-					{
-						String data = voucherBodyRow1List.get(j).getText();
-						row1.add(data);
-					}
-
-					String actRow1List = row1.toString();
-					String expRow1List = "[1, BR COGS ITEM, Pcs, 1.00, , 5.00, 5.00, 10.00, 10.10, 7000.00, 7000.10, BATCHHYDERABAD, , ]";
-
-					Thread.sleep(1000);
-
-					System.out.println(actRow1List);
-					System.out.println(expRow1List);
-
-					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
-					voucherSaveBtn.click();
-
-					HashSet<String> actMessage = new HashSet();
-
-					for (int i = 0; i < 2; i++) 
-					{
-						String data = checkValidationMessage("");
-						actMessage.add(data);
-					}
-
-					HashSet<String> expMessage = new HashSet();
-
-					expMessage.add("Voucher saved successfully : 7");
-					expMessage.add("Saving in background.");
-
-					System.out.println("Actual Message    : "+actMessage);
-					System.out.println("Expected Message  : "+expMessage);
-
-					if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.equals(expMessage))
-					{
-						return true;
-					}
-					else
-					{
-						return false;
-					}
-				}
-	 */
-
-
+	
 
 
 
@@ -8721,6 +8544,9 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 	public boolean checkSavingMaterialReceiptNoteVoucher1WithNoTagsAndValidatePricebookValues() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());
+		
+		getDriver().navigate().refresh();
+		Thread.sleep(2000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
@@ -8835,35 +8661,25 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 1");
-		expMessage.add("Saving in background.");*/
-
-		String actMessage = SavingInBackground(2);
-
-		/*HashSet<String> expMsg = new HashSet();
-
-		expMsg.add("Voucher saved successfully : 1");
-		expMsg.add("Saving in background.");
 		
-		String expMessage = expMsg.toString();*/
 		
-		String expMessage = excelReader.getCellData(xlSheetName, 428, 6);
+		Thread.sleep(2000);
+		
+		String expMessage1 = excelReader.getCellData(xlSheetName, 428, 6);
+		
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 429, 6);
+		
 		excelReader.setCellData(xlfile, xlSheetName, 428, 7, actMessage);
-		
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
 
-		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.equals(expMessage))
+		System.out.println("Expected Message  : "+expMessage2);
+		
+		// actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+
+		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 425, 8, resPass);
 			return true;
@@ -8981,35 +8797,25 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 2");
-		expMessage.add("Saving in background.");*/
 		
-		String actMessage = SavingInBackground(2);
-
-		/*HashSet<String> expMsg = new HashSet();
-
-		expMsg.add("Voucher saved successfully : 2");
-		expMsg.add("Saving in background.");
 		
-		String expMessage = expMsg.toString();*/
+		Thread.sleep(2000);
 		
-		String expMessage = excelReader.getCellData(xlSheetName, 434, 6);
+		String expMessage1 = excelReader.getCellData(xlSheetName, 434, 6);
+		
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 435, 6);
+		
 		excelReader.setCellData(xlfile, xlSheetName, 434, 7, actMessage);
-		
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
 
-		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.equals(expMessage))
+		System.out.println("Expected Message  : "+expMessage2);
+		
+		// actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+
+		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 431, 8, resPass);
 			return true;
@@ -9125,35 +8931,25 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 3");
-		expMessage.add("Saving in background.");*/
 		
-		String actMessage = SavingInBackground(2);
 
-		/*HashSet<String> expMsg = new HashSet();
-
-		expMsg.add("Voucher saved successfully : 3");
-		expMsg.add("Saving in background.");
+		Thread.sleep(2000);
 		
-		String expMessage = expMsg.toString();*/
+		String expMessage1 = excelReader.getCellData(xlSheetName, 440, 6);
 		
-		String expMessage = excelReader.getCellData(xlSheetName, 440, 6);
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 441, 6);
+		
 		excelReader.setCellData(xlfile, xlSheetName, 440, 7, actMessage);
-
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
 
-		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.equals(expMessage))
+		System.out.println("Expected Message  : "+expMessage2);
+		
+		// actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+
+		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 437, 8, resPass);
 			return true;
@@ -9270,35 +9066,23 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 4");
-		expMessage.add("Saving in background.");*/
 		
-		String actMessage = SavingInBackground(2);
-
-		/*HashSet<String> expMsg = new HashSet();
-
-		expMsg.add("Voucher saved successfully : 4");
-		expMsg.add("Saving in background.");
+		Thread.sleep(2000);
 		
-		String expMessage = expMsg.toString();*/
+		String expMessage1 = excelReader.getCellData(xlSheetName, 446, 6);
 		
-		String expMessage = excelReader.getCellData(xlSheetName, 446, 6);
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 447, 6);
+		
 		excelReader.setCellData(xlfile, xlSheetName, 446, 7, actMessage);
-
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
 
-		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.equals(expMessage))
+		System.out.println("Expected Message  : "+expMessage2);
+		
+		// actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 443, 8, resPass);
 			return true;
@@ -9320,22 +9104,28 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 	{
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());
 		
+		
+		Thread.sleep(2000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerAccountTxt));
+		customerAccountTxt.click();
+		customerAccountTxt.sendKeys(Keys.SHIFT,Keys.HOME);
+		Thread.sleep(1000);
 		customerAccountTxt.sendKeys(excelReader.getCellData(xlSheetName, 449, 5));
 		Thread.sleep(2000);
 		customerAccountTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(warehouseTxt));
-		warehouseTxt.sendKeys(excelReader.getCellData(xlSheetName, 550, 5));
+		warehouseTxt.sendKeys(excelReader.getCellData(xlSheetName, 450, 5));
 		Thread.sleep(2000);
 		warehouseTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_1stColumn));
 		select1stRow_1stColumn.click();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_ItemTxt));
-		enter_ItemTxt.sendKeys(excelReader.getCellData(xlSheetName, 551, 5));
+		enter_ItemTxt.sendKeys(excelReader.getCellData(xlSheetName, 451, 5));
 		Thread.sleep(2000);
 		enter_ItemTxt.sendKeys(Keys.TAB);
 
@@ -9345,13 +9135,13 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_4thColumn));
 		select1stRow_4thColumn.click();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Quantity));
-		enter_Quantity.sendKeys(excelReader.getCellData(xlSheetName, 552, 5));
+		enter_Quantity.sendKeys(excelReader.getCellData(xlSheetName, 452, 5));
 		enter_Quantity.sendKeys(Keys.TAB);
 
 		Thread.sleep(3000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Rate));
-		enter_Rate.sendKeys(excelReader.getCellData(xlSheetName, 553, 5));
+		enter_Rate.sendKeys(excelReader.getCellData(xlSheetName, 453, 5));
 		enter_Rate.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Gross));
@@ -9371,7 +9161,7 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Batch));
 		enter_Batch.click();
-		enter_Batch.sendKeys(excelReader.getCellData(xlSheetName, 554, 5));
+		enter_Batch.sendKeys(excelReader.getCellData(xlSheetName, 454, 5));
 		enter_Batch.sendKeys(Keys.TAB);
 
 		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
@@ -9414,35 +9204,25 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 5");
-		expMessage.add("Saving in background.");*/
 		
-		String actMessage = SavingInBackground(2);
 
-		/*HashSet<String> expMsg = new HashSet();
-
-		expMsg.add("Voucher saved successfully : 5");
-		expMsg.add("Saving in background.");
+		Thread.sleep(2000);
 		
-		String expMessage = expMsg.toString();*/
+		String expMessage1 = excelReader.getCellData(xlSheetName, 452, 6);
 		
-		String expMessage = excelReader.getCellData(xlSheetName, 452, 6);
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 453, 6);
+		
 		excelReader.setCellData(xlfile, xlSheetName, 452, 7, actMessage);
-
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
 
-		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.equals(expMessage))
+		System.out.println("Expected Message  : "+expMessage2);
+		
+		// actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+
+		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 449, 8, resPass);
 			return true;
@@ -9559,35 +9339,24 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 6");
-		expMessage.add("Saving in background.");*/
 		
-		String actMessage = SavingInBackground(2);
-
-		/*HashSet<String> expMsg = new HashSet();
-
-		expMsg.add("Voucher saved successfully : 6");
-		expMsg.add("Saving in background.");
+		Thread.sleep(2000);
 		
-		String expMessage = expMsg.toString();*/
+		String expMessage1 = excelReader.getCellData(xlSheetName, 458, 6);
 		
-		String expMessage = excelReader.getCellData(xlSheetName, 458, 6);
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 459, 6);
+		
 		excelReader.setCellData(xlfile, xlSheetName, 458, 7, actMessage);
-
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
 
-		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.equals(expMessage))
+		System.out.println("Expected Message  : "+expMessage2);
+		
+		// actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+
+		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 455, 5, resPass);
 			return true;
@@ -9703,35 +9472,26 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage extends 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 7");
-		expMessage.add("Saving in background.");*/
 		
-		String actMessage = SavingInBackground(2);
 
-		/*HashSet<String> expMsg = new HashSet();
-
-		expMsg.add("Saving in background.");
-		expMsg.add("Voucher saved successfully : 7");
+		Thread.sleep(2000);
 		
-		String expMessage = expMsg.toString();*/
+		String expMessage1 = excelReader.getCellData(xlSheetName, 464, 6);
 		
-		String expMessage = excelReader.getCellData(xlSheetName, 464, 6);
+		String actMessage = checkValidationMessage(expMessage1);
+		String expMessage2 = excelReader.getCellData(xlSheetName, 465, 6);
+		
 		excelReader.setCellData(xlfile, xlSheetName, 464, 7, actMessage);
-
+	
 		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
+		System.out.println("Expected Message  : "+expMessage1);
 
-		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.equals(expMessage))
+		System.out.println("Expected Message  : "+expMessage2);
+		
+		// actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+
+
+		if(actRow1List.equalsIgnoreCase(expRow1List) && actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 461, 8, resPass);
 			return true;
@@ -10035,6 +9795,26 @@ public boolean checkSavingPurchaseVoucherVATVoucher1WithRMA() throws Interrupted
 	
 
 }
+
+
+public static boolean checkRestoreAutomationCompany() throws InterruptedException, IOException, AWTException
+{
+	String actMessage=BaseEngine.restoreCompany("SanityUptoMaster","Automation Company");
+	String expMessage="Restore company code : 010";
+	
+	System.err.println("Actual Text :"	+actMessage);
+	System.err.println("Expected Text :"	+expMessage);
+	
+	if(actMessage.equalsIgnoreCase(expMessage))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+	
+}	
 
 
 

@@ -15,6 +15,14 @@ import com.focus.base.BaseEngine;
 public class ExcessInStocksVoucherTest extends BaseEngine
 {
 	ExcessInStocksVoucherPage EIS;
+	
+	
+	@Test(priority=279)
+	public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		EIS=new ExcessInStocksVoucherPage(getDriver());
+		Assert.assertEquals(EIS.CheckLogin(), true);
+	}
 
 	@Test(priority=280)
 	public void checkSavingExcessInStocksVoucherWithAllItems() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
@@ -71,5 +79,12 @@ public class ExcessInStocksVoucherTest extends BaseEngine
 		EIS=new ExcessInStocksVoucherPage(getDriver());
 		Assert.assertEquals(EIS.checkVerifingDetailsOfSavedExcessInStocksVoucherInHomepage(), true);
 	}
-
+	
+	@Test(priority=288)
+	public void checkLogoutExcessStocksPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		EIS=new ExcessInStocksVoucherPage(getDriver());
+		Assert.assertEquals(EIS.checkLogoutExcessStocksPage(), true);
+	}
+	
 }

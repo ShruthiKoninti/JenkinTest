@@ -58,9 +58,11 @@ public class ReceiptsVATVoucherPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("");
+		checkValidationMessage("Screen opened");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newCashBankAccountTxt));
+		newCashBankAccountTxt.sendKeys(Keys.HOME,Keys.SHIFT,Keys.END);
+		Thread.sleep(1000);
 		newCashBankAccountTxt.sendKeys(excelReader.getCellData(xlSheetName, 8, 5));
 		Thread.sleep(2000);
 		newCashBankAccountTxt.sendKeys(Keys.TAB);
@@ -104,20 +106,18 @@ public class ReceiptsVATVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefPartyName));
 
 		String actPartyName = billRefPartyName.getText();
-		String expPartyName = excelReader.getCellData(xlSheetName, 8, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 8, 7, actPartyName);
+		String expPartyName = "Customer A (122-001)";
 
-		System.out.println("Bill wise Screen Cutomer Name "  + actPartyName + "  Value Expected  " + expPartyName);
+		//System.out.println("Bill wise Screen Cutomer Name "  + actPartyName + "  Value Expected  " + expPartyName);
 
 		int Adjustbills=billRefAdjustBillsGridList.size();
 
 		String actAdjustbills=Integer.toString(Adjustbills);
 
-		String expAdjustbills=excelReader.getCellData(xlSheetName, 9, 6);
+		String expAdjustbills="5";
 		
-		excelReader.setCellData(xlfile, xlSheetName, 9, 7, actAdjustbills);
 
-		System.err.println("actAdjustbills : "+actAdjustbills +" Value Expected  : "+expAdjustbills);
+	//	System.err.println("actAdjustbills : "+actAdjustbills +" Value Expected  : "+expAdjustbills);
 
 		
 		int billwiseAdjustBillsDocListcount=billwiseAdjustBillsDocList.size();
@@ -133,9 +133,7 @@ public class ReceiptsVATVoucherPage extends BaseEngine
 
 		String actDocumentNumberText=actbillwiseAdjustBillsDocList.toString();
 
-		String expDocumentNumberText=excelReader.getCellData(xlSheetName, 10, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 10, 7, actDocumentNumberText);
+		String expDocumentNumberText="[NDT50:1, NDT50:4, NDT50:5, NDT50:6, NDT50:7]";
 
 		System.out.println("actDocumentNumberText   : "+actDocumentNumberText);
 		System.out.println("expDocumentNumberText   : "+expDocumentNumberText);
@@ -166,31 +164,28 @@ public class ReceiptsVATVoucherPage extends BaseEngine
 		String actbillRefAdjustAmountInTransCurency          = billRefAdjustAmountInTransCurency.getText();
 		String actbillRefBalanceAmountAdjustInTrnasCurrency  = billRefBalanceAmountAdjustInTrnasCurrency.getText();
 		
-		String expBillNewReference                      =excelReader.getCellData(xlSheetName, 11, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 11, 7, actBillNewReference);
+		String expBillNewReference                      =	"0.00";
 		
-		String expBillTransactionCurrency               =excelReader.getCellData(xlSheetName, 12, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 12, 7, actBillTransactionCurrency);
+		String expBillTransactionCurrency               =	"50.00";
 		
-		String expBillBaseCurrency                      =excelReader.getCellData(xlSheetName, 13, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 13, 7, actBillBaseCurrency);
+		String expBillBaseCurrency                      = 	"50.00";
 		
-		String expBillLocalCurrency                     =excelReader.getCellData(xlSheetName, 14, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 14, 7, actBillLocalCurrency);
 		
-		String expBillBalanceNewRefAmount               =excelReader.getCellData(xlSheetName, 15, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 15, 7, actBillBalanceNewRefAmount);
+		String expBillLocalCurrency                     =	"3.50";
 		
-		String expbillRefAdjustAmountInTransCurency         =excelReader.getCellData(xlSheetName, 16, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 16, 7, actbillRefAdjustAmountInTransCurency);
+		String expBillBalanceNewRefAmount               =	"0.00";
 		
-		String expbillRefBalanceAmountAdjustInTrnasCurrency =excelReader.getCellData(xlSheetName, 17, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 17, 7, actbillRefBalanceAmountAdjustInTrnasCurrency);
+		String expbillRefAdjustAmountInTransCurency     =	"50.00";
+		
+		String expbillRefBalanceAmountAdjustInTrnasCurrency =	"0.00";
 		
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefGridFirstRowAdjustmentAmtTxt));
 		billRefGridFirstRowAdjustmentAmtTxt.click();
 
+		
+		getAction().moveToElement(billRefPickIcon).build().perform();
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefPickIcon));
 		billRefPickIcon.click();
 
@@ -230,90 +225,62 @@ public class ReceiptsVATVoucherPage extends BaseEngine
 		String actexchangeGainLossForBaseCurrencyPick    = exchangeGainLossForBaseCurrency.getText();	
 		String actexchangeGainLossForLocalCurrencyPick   = exchangeGainLossForLocalCurrency.getText();
 
-		String expBillNewReferencePick                          = excelReader.getCellData(xlSheetName, 18, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 18, 7, actBillNewReferencePick);
+		String expBillNewReferencePick                          = "0.00";
 		
-		String expBillTransactionCurrencyPick                   = excelReader.getCellData(xlSheetName, 19, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 19, 7, actBillTransactionCurrencyPick);
+		String expBillTransactionCurrencyPick                   = "50";
 		
-		String expBillBaseCurrencyPick                          = excelReader.getCellData(xlSheetName, 20, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 20, 7, actBillBaseCurrencyPick);
+		String expBillBaseCurrencyPick                          = "50";
 		
-		String expBillLocalCurrencyPick                         = excelReader.getCellData(xlSheetName, 21, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 21, 7, actBillLocalCurrencyPick);
+		String expBillLocalCurrencyPick                         = "3.50";
 		
-		String expBillBalanceNewRefAmountPick                   = excelReader.getCellData(xlSheetName, 22, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 22, 7, actBillBalanceNewRefAmountPick);
+		String expBillBalanceNewRefAmountPick                   = "0.00";
 		
-		String expbillRefAdjustAmountInTransCurencyPick         = excelReader.getCellData(xlSheetName, 23, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 23, 7, actbillRefAdjustAmountInTransCurencyPick);
+		String expbillRefAdjustAmountInTransCurencyPick         = "50.00";
 		
-		String expbillRefBalanceAmountAdjustInTrnasCurrencyPick = excelReader.getCellData(xlSheetName, 24, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 24, 7, actbillRefBalanceAmountAdjustInTrnasCurrencyPick);
+		String expbillRefBalanceAmountAdjustInTrnasCurrencyPick = "0.00";
+		
+		String expbreakUpDetailsAccountPick             = "071-001";
+		
+		
+		String expbreakUpDetailsDepartmentPick          ="DUBAI";
+		
+		
+		String expconversationRateLocalCurrencyRatePick =	"0.0700000000";
+		
 
-		String expbreakUpDetailsAccountPick             =excelReader.getCellData(xlSheetName, 25, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 25, 7, actbreakUpDetailsAccountPick);
+		String expasOnEntryDateTransAmtPick             =	"100.00";
 		
-		//String expbreakUpDetailsItemPick                =excelReader.getCellData(xlSheetName, 26, 6);
-		//excelReader.setCellData(xlfile, xlSheetName, 26, 7, actbreakUpDetailsItemPick);
+				
+		String expasOnEntryDateBaseConcersationRatePick =	"1.0000000000";
 		
-		String expbreakUpDetailsDepartmentPick          =excelReader.getCellData(xlSheetName, 27, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 27, 7, actbreakUpDetailsDepartmentPick);
+		String expasOnEntryDateBaseAmountPick           =	"100.00";
 		
-		/*String expconversationRateBaseCurrencyRatePick  =excelReader.getCellData(xlSheetName, 28, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 28, 7, actconversationRateBaseCurrencyRatePick);
-		*/
-		String expconversationRateLocalCurrencyRatePick =excelReader.getCellData(xlSheetName, 29, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 29, 7, actconversationRateLocalCurrencyRatePick);
-
-		String expasOnEntryDateTransAmtPick             =excelReader.getCellData(xlSheetName, 30, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 30, 7, actasOnEntryDateTransAmtPick);
+		String expasOnEntryDateLocConversationRatePick  =	"0.0700000000";
 		
-		String expasOnEntryDateBaseConcersationRatePick =excelReader.getCellData(xlSheetName, 31, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 31, 7, actasOnEntryDateBaseConcersationRatePick);
+		String expasOnEntryDateAmtPick                  =	"7.00";
 		
-		String expasOnEntryDateBaseAmountPick           =excelReader.getCellData(xlSheetName, 32, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 32, 7, actasOnEntryDateBaseAmountPick);
+		String expbalOnAdjstDateTransAmtPick            =	"100.00";
 		
-		String expasOnEntryDateLocConversationRatePick  =excelReader.getCellData(xlSheetName, 33, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 33, 7, actasOnEntryDateLocConversationRatePick);
+		String expbalOnAdjstDateBasrConversionRatePick  =	"1";
 		
-		String expasOnEntryDateAmtPick                  =excelReader.getCellData(xlSheetName, 34, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 34, 7, actasOnEntryDateAmtPick);
+		String expbalOnAdjstDateBaseAmountPick          =	"100.00";
 		
-		String expbalOnAdjstDateTransAmtPick            =excelReader.getCellData(xlSheetName, 35, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 35, 7, actbalOnAdjstDateTransAmtPick);
+		String expbalOnAdjstDateLocalConversionRatePick =	"0.0700000000";
 		
-		String expbalOnAdjstDateBasrConversionRatePick  =excelReader.getCellData(xlSheetName, 36, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 36, 7, actbalOnAdjstDateBasrConversionRatePick);
+		String expbalOnAdjstDateAmtPick                 = 	"7.00";
 		
-		String expbalOnAdjstDateBaseAmountPick          =excelReader.getCellData(xlSheetName, 37, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 37, 7, actbalOnAdjstDateBaseAmountPick);
+		String expadjustmentsAmount1Pick                =	"50.00";
 		
-		String expbalOnAdjstDateLocalConversionRatePick =excelReader.getCellData(xlSheetName, 38, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 38, 7, actbalOnAdjstDateLocalConversionRatePick);
+		String expadjustmentsAmount2Pick                =	"50.00";
 		
-		String expbalOnAdjstDateAmtPick                 =excelReader.getCellData(xlSheetName, 39, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 39, 7, actbalOnAdjstDateAmtPick);
-
-		String expadjustmentsAmount1Pick                =excelReader.getCellData(xlSheetName, 40, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 40, 7, actadjustmentsAmount1Pick);
+		String expadjustmentsAmount3Pick                =	"3.50";
 		
-		String expadjustmentsAmount2Pick                =excelReader.getCellData(xlSheetName, 41, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 41, 7, actadjustmentsAmount2Pick);
+		String expadjustmentsAmount4Pick                =	"50.00";
 		
-		String expadjustmentsAmount3Pick                =excelReader.getCellData(xlSheetName, 42, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 42, 7, actadjustmentsAmount3Pick);
+		String expexchangeGainLossForBaseCurrencyPick   =	"0.00";
 		
-		String expadjustmentsAmount4Pick                =excelReader.getCellData(xlSheetName, 43, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 43, 7, actadjustmentsAmount4Pick);
+		String expexchangeGainLossForLocalCurrencyPick  =	"0.00";
 		
-		String expexchangeGainLossForBaseCurrencyPick   =excelReader.getCellData(xlSheetName, 44, 6);	
-		excelReader.setCellData(xlfile, xlSheetName, 44, 7, actexchangeGainLossForBaseCurrencyPick);
-		
-		String expexchangeGainLossForLocalCurrencyPick  =excelReader.getCellData(xlSheetName, 45, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 45, 7, actexchangeGainLossForLocalCurrencyPick);
-
 		System.out.println("*********************************************************************************************************");
 
 		System.out.println("Bill reference Adjustment Bills  :"+ actAdjustbills+"                          "+ "expDate :"+expAdjustbills);
@@ -368,43 +335,17 @@ public class ReceiptsVATVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));	
 		voucherSaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : "+docno);
-		expMessage.add("Saving in background.");*/
 		
-		/*String actMessage = SavingInBackground(2);
 
-		HashSet<String> expMsg = new HashSet();
-
-		expMsg.add(excelReader.getCellData(xlSheetName, 46, 6));
-		expMsg.add(excelReader.getCellData(xlSheetName, 47, 6)+docno);
-		excelReader.setCellData(xlfile, xlSheetName, 46, 7, actMessage);
-		
-		String expMessage = expMsg.toString();
-
-		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);*/
-
-		String expMessage1 = excelReader.getCellData(xlSheetName, 46, 6);
+		String expMessage1 = "Voucher saved successfully";
 		
 		String actMessage = checkValidationMessage(expMessage1);
-		String expMessage2 = excelReader.getCellData(xlSheetName, 47, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 46, 7, actMessage);
+		String expMessage2 = ": 1";
 	
 		System.out.println("Actual Message    : "+actMessage);
 		System.out.println("Expected Message  : "+expMessage1);
 
-		//if(actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+		
 		
 		if( actAdjustbills.equalsIgnoreCase(expAdjustbills)  && actBillNewReference.equalsIgnoreCase(expBillNewReference) && actBillTransactionCurrency.equalsIgnoreCase(expBillTransactionCurrency) && 
 				actBillBaseCurrency.equalsIgnoreCase(expBillBaseCurrency) && actBillLocalCurrency.equalsIgnoreCase(expBillLocalCurrency) && 
@@ -470,8 +411,7 @@ public class ReceiptsVATVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefPartyName));
 
 		String actPartyName = billRefPartyName.getText();
-		String expPartyName = excelReader.getCellData(xlSheetName, 48, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 48, 7, actPartyName);
+		String expPartyName ="Customer A (122-001)";
 
 		System.out.println("Bill wise Screen Cutomer Name "  + actPartyName + "  Value Expected  " + expPartyName);
 
@@ -479,9 +419,7 @@ public class ReceiptsVATVoucherPage extends BaseEngine
 
 		String actAdjustbills=Integer.toString(Adjustbills);
 
-		String expAdjustbills=excelReader.getCellData(xlSheetName, 49, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 49, 7, actAdjustbills);
+		String expAdjustbills="5";
 
 		System.err.println("actAdjustbills : "+actAdjustbills +" Value Expected  : "+expAdjustbills);
 
@@ -498,9 +436,7 @@ public class ReceiptsVATVoucherPage extends BaseEngine
 
 		String actDocumentNumberText=actbillwiseAdjustBillsDocList.toString();
 
-		String expDocumentNumberText=excelReader.getCellData(xlSheetName, 50, 6);
-
-		excelReader.setCellData(xlfile, xlSheetName, 50, 7, actDocumentNumberText);
+		String expDocumentNumberText="[NDT50:1, NDT50:4, NDT50:5, NDT50:6, NDT50:7]";
 
 		System.out.println("actDocumentNumberText   : "+actDocumentNumberText);
 		System.out.println("expDocumentNumberText   : "+expDocumentNumberText);
@@ -513,10 +449,10 @@ public class ReceiptsVATVoucherPage extends BaseEngine
 		Thread.sleep(2000);
 
 
-		System.out.println("Bill wise Screen Cutomer Name "  + actPartyName + "  Value Expected  " + expPartyName);
+		//System.out.println("Bill wise Screen Cutomer Name "  + actPartyName + "  Value Expected  " + expPartyName);
 
 
-		System.err.println("actAdjustbills : "+actAdjustbills +" Value Expected  : "+expAdjustbills);
+		//System.err.println("actAdjustbills : "+actAdjustbills +" Value Expected  : "+expAdjustbills);
 
 
 		Thread.sleep(2000);
@@ -534,31 +470,26 @@ public class ReceiptsVATVoucherPage extends BaseEngine
 		String actbillRefBalanceAmountAdjustInTrnasCurrency  = billRefBalanceAmountAdjustInTrnasCurrency.getText();
 		
 		
-		String expBillNewReference                      =excelReader.getCellData(xlSheetName, 51, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 51, 7, actBillNewReference);
+		String expBillNewReference                      =	"0.00";
 		
-		String expBillTransactionCurrency               =excelReader.getCellData(xlSheetName, 52, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 52, 7, actBillTransactionCurrency);
+		String expBillTransactionCurrency               =	"100.00";
 		
-		String expBillBaseCurrency                      =excelReader.getCellData(xlSheetName, 53, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 53, 7, actBillBaseCurrency);
+		String expBillBaseCurrency                      =	"100.00";
 		
-		String expBillLocalCurrency                     =excelReader.getCellData(xlSheetName, 54, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 54, 7, actBillLocalCurrency);
+		String expBillLocalCurrency                     =	"7.00";
 		
-		String expBillBalanceNewRefAmount               =excelReader.getCellData(xlSheetName, 55, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 55, 7, actBillBalanceNewRefAmount);
+		String expBillBalanceNewRefAmount               =	"0.00";
 		
-		String expbillRefAdjustAmountInTransCurency         =excelReader.getCellData(xlSheetName, 56, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 56, 7, actbillRefAdjustAmountInTransCurency);
+		String expbillRefAdjustAmountInTransCurency     =	"0.00";
 		
-		String expbillRefBalanceAmountAdjustInTrnasCurrency =excelReader.getCellData(xlSheetName, 57, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 57, 7, actbillRefBalanceAmountAdjustInTrnasCurrency);
-
+		String expbillRefBalanceAmountAdjustInTrnasCurrency =	"100.00";
+		
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefGridFirstRowAdjustmentAmtTxt));
 		billRefGridFirstRowAdjustmentAmtTxt.click();
+		
+		getAction().moveToElement(billRefPickIcon).build().perform();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefPickIcon));
 		billRefPickIcon.click();
@@ -601,90 +532,58 @@ public class ReceiptsVATVoucherPage extends BaseEngine
 		String actexchangeGainLossForLocalCurrencyPick   = exchangeGainLossForLocalCurrency.getText();
 
 		
-		String expBillNewReferencePick                          = excelReader.getCellData(xlSheetName, 58, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 58, 7, actBillNewReferencePick);
+		String expBillNewReferencePick                          = 	"0.00";
 		
-		String expBillTransactionCurrencyPick                   = excelReader.getCellData(xlSheetName, 59, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 59, 7, actBillTransactionCurrencyPick);
+		String expBillTransactionCurrencyPick                   = 	"100";
 		
-		String expBillBaseCurrencyPick                          = excelReader.getCellData(xlSheetName, 60, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 60, 7, actBillBaseCurrencyPick);
+		String expBillBaseCurrencyPick                          = 	"100";
 		
-		String expBillLocalCurrencyPick                         = excelReader.getCellData(xlSheetName, 61, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 61, 7, actBillLocalCurrencyPick);
+		String expBillLocalCurrencyPick                         = 	"7.00";
 		
-		String expBillBalanceNewRefAmountPick                   = excelReader.getCellData(xlSheetName, 62, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 62, 7, actBillBalanceNewRefAmountPick);
+		String expBillBalanceNewRefAmountPick                   = 	"0.00";
 		
-		String expbillRefAdjustAmountInTransCurencyPick         = excelReader.getCellData(xlSheetName, 63, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 63, 7, actbillRefAdjustAmountInTransCurencyPick);
+		String expbillRefAdjustAmountInTransCurencyPick         = 	"100.00";
 		
-		String expbillRefBalanceAmountAdjustInTrnasCurrencyPick = excelReader.getCellData(xlSheetName, 64, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 64, 7, actbillRefBalanceAmountAdjustInTrnasCurrencyPick);
-
-		String expbreakUpDetailsAccountPick             =excelReader.getCellData(xlSheetName, 65, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 65, 7, actbreakUpDetailsAccountPick);
+		String expbillRefBalanceAmountAdjustInTrnasCurrencyPick = 	"0.00";
 		
-		//String expbreakUpDetailsItemPick                =excelReader.getCellData(xlSheetName, 66, 6);
-		//excelReader.setCellData(xlfile, xlSheetName, 66, 7, actbreakUpDetailsItemPick);
+		String expbreakUpDetailsAccountPick             =	"071-001";
+	
+		String expbreakUpDetailsDepartmentPick          =	"DUBAI";
 		
-		String expbreakUpDetailsDepartmentPick          =excelReader.getCellData(xlSheetName, 67, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 67, 7, actbreakUpDetailsDepartmentPick);
+		String expconversationRateLocalCurrencyRatePick =	"0.0700000000";
 		
-		/*String expconversationRateBaseCurrencyRatePick  =excelReader.getCellData(xlSheetName, 68, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 68, 7, actconversationRateBaseCurrencyRatePick);*/
+		String expasOnEntryDateTransAmtPick             =	"100.00";
 		
-		String expconversationRateLocalCurrencyRatePick =excelReader.getCellData(xlSheetName, 69, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 69, 7, actconversationRateLocalCurrencyRatePick);
-
-		String expasOnEntryDateTransAmtPick             =excelReader.getCellData(xlSheetName, 70, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 70, 7, actasOnEntryDateTransAmtPick);
+		String expasOnEntryDateBaseConcersationRatePick =	"1.0000000000";
 		
-		String expasOnEntryDateBaseConcersationRatePick =excelReader.getCellData(xlSheetName, 71, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 71, 7, actasOnEntryDateBaseConcersationRatePick);
+		String expasOnEntryDateBaseAmountPick           =	"100.00";
 		
-		String expasOnEntryDateBaseAmountPick           =excelReader.getCellData(xlSheetName, 72, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 72, 7, actasOnEntryDateBaseAmountPick);
+		String expasOnEntryDateLocConversationRatePick  =	"0.0700000000";
 		
-		String expasOnEntryDateLocConversationRatePick  =excelReader.getCellData(xlSheetName, 73, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 73, 7, actasOnEntryDateLocConversationRatePick);
+		String expasOnEntryDateAmtPick                  =	"7.00";
 		
-		String expasOnEntryDateAmtPick                  =excelReader.getCellData(xlSheetName, 74, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 74, 7, actasOnEntryDateAmtPick);
+		String expbalOnAdjstDateTransAmtPick            =	"100.00";
 		
-		String expbalOnAdjstDateTransAmtPick            =excelReader.getCellData(xlSheetName, 75, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 75, 7, actbalOnAdjstDateTransAmtPick);
+		String expbalOnAdjstDateBasrConversionRatePick  =	"1";
 		
-		String expbalOnAdjstDateBasrConversionRatePick  =excelReader.getCellData(xlSheetName, 76, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 76, 7, actbalOnAdjstDateBasrConversionRatePick);
+		String expbalOnAdjstDateBaseAmountPick          =	"100.00";
 		
-		String expbalOnAdjstDateBaseAmountPick          =excelReader.getCellData(xlSheetName, 77, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 77, 7, actbalOnAdjstDateBaseAmountPick);
+		String expbalOnAdjstDateLocalConversionRatePick =	"0.0700000000";
 		
-		String expbalOnAdjstDateLocalConversionRatePick =excelReader.getCellData(xlSheetName, 78, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 78, 7, actbalOnAdjstDateLocalConversionRatePick);
+		String expbalOnAdjstDateAmtPick                 =	"7.00";
 		
-		String expbalOnAdjstDateAmtPick                 =excelReader.getCellData(xlSheetName, 79, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 79, 7, actbalOnAdjstDateAmtPick);
-
-		String expadjustmentsAmount1Pick                =excelReader.getCellData(xlSheetName, 80, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 80, 7, actadjustmentsAmount1Pick);
+		String expadjustmentsAmount1Pick                =	"0.00";
 		
-		String expadjustmentsAmount2Pick                =excelReader.getCellData(xlSheetName, 81, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 81, 7, actadjustmentsAmount2Pick);
+		String expadjustmentsAmount2Pick                =	"0.00";
 		
-		String expadjustmentsAmount3Pick                =excelReader.getCellData(xlSheetName, 82, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 82, 7, actadjustmentsAmount3Pick);
+		String expadjustmentsAmount3Pick                =	"0.00";
 		
-		String expadjustmentsAmount4Pick                =excelReader.getCellData(xlSheetName, 83, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 83, 7, actadjustmentsAmount4Pick);
+		String expadjustmentsAmount4Pick                =	"0.00";
 		
-		String expexchangeGainLossForBaseCurrencyPick   =excelReader.getCellData(xlSheetName, 84, 6);	
-		excelReader.setCellData(xlfile, xlSheetName, 84, 7, actexchangeGainLossForBaseCurrencyPick);
+		String expexchangeGainLossForBaseCurrencyPick   =	"0.00";
 		
-		String expexchangeGainLossForLocalCurrencyPick  =excelReader.getCellData(xlSheetName, 85, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 85, 7, actexchangeGainLossForLocalCurrencyPick);
-
+		String expexchangeGainLossForLocalCurrencyPick  =	"0.00";
+		
 		System.out.println("*********************************************************************************************************");
 
 		System.out.println("Bill reference Adjustment Bills  :"+ actAdjustbills+"                          "+ "expDate :"+expAdjustbills);
@@ -740,39 +639,11 @@ public class ReceiptsVATVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));	
 		voucherSaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : "+docno);
-		expMessage.add("Saving in background.");*/
 		
-		/*String actMessage = SavingInBackground(2);
-
-		HashSet<String> expMsg = new HashSet();
-
-		expMsg.add(excelReader.getCellData(xlSheetName, 86, 6));
-		expMsg.add(excelReader.getCellData(xlSheetName, 87, 6)+docno);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 86, 7, actMessage);
-		
-		String expMessage = expMsg.toString();
-
-		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
-*/
-		String expMessage1 = excelReader.getCellData(xlSheetName, 86, 6);
+		String expMessage1 ="Voucher saved successfully";
 		
 		String actMessage = checkValidationMessage(expMessage1);
-		String expMessage2 = excelReader.getCellData(xlSheetName, 87, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 86, 7, actMessage);
+		String expMessage2 = ": 1";
 	
 		System.out.println("Actual Message    : "+actMessage);
 		System.out.println("Expected Message  : "+expMessage1);
@@ -870,8 +741,7 @@ public class ReceiptsVATVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefPartyName));
 
 		String actPartyName = billRefPartyName.getText();
-		String expPartyName = excelReader.getCellData(xlSheetName, 88, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 88, 7, actPartyName);
+		String expPartyName = "Customer A (122-001)";
 
 		System.out.println("Bill wise Screen Cutomer Name "  + actPartyName + "  Value Expected  " + expPartyName);
 
@@ -879,9 +749,7 @@ public class ReceiptsVATVoucherPage extends BaseEngine
 
 		String actAdjustbills=Integer.toString(Adjustbills);
 
-		String expAdjustbills=excelReader.getCellData(xlSheetName, 89, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 89, 7, actAdjustbills);
+		String expAdjustbills="4";
 
 		System.err.println("actAdjustbills : "+actAdjustbills +" Value Expected  : "+expAdjustbills);
 
@@ -898,9 +766,7 @@ public class ReceiptsVATVoucherPage extends BaseEngine
 
 		String actDocumentNumberText=actbillwiseAdjustBillsDocList.toString();
 
-		String expDocumentNumberText=excelReader.getCellData(xlSheetName, 90, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 90, 7, actDocumentNumberText);
+		String expDocumentNumberText="[NDT50:4, NDT50:5, NDT50:6, NDT50:7]";
 
 		System.out.println("actDocumentNumberText   : "+actDocumentNumberText);
 		System.out.println("expDocumentNumberText   : "+expDocumentNumberText);
@@ -912,9 +778,9 @@ public class ReceiptsVATVoucherPage extends BaseEngine
 		
 		Thread.sleep(2000);
 
-		System.out.println("Bill wise Screen Cutomer Name "  + actPartyName + "  Value Expected  " + expPartyName);
+		//System.out.println("Bill wise Screen Cutomer Name "  + actPartyName + "  Value Expected  " + expPartyName);
 
-		System.err.println("actAdjustbills : "+actAdjustbills +" Value Expected  : "+expAdjustbills);
+		//System.err.println("actAdjustbills : "+actAdjustbills +" Value Expected  : "+expAdjustbills);
 
 
 		Thread.sleep(2000);
@@ -932,30 +798,24 @@ public class ReceiptsVATVoucherPage extends BaseEngine
 		String actbillRefAdjustAmountInTransCurency          = billRefAdjustAmountInTransCurency.getText();
 		String actbillRefBalanceAmountAdjustInTrnasCurrency  = billRefBalanceAmountAdjustInTrnasCurrency.getText();
 
-		String expBillNewReference                      =excelReader.getCellData(xlSheetName, 91, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 91, 7, actBillNewReference);
+		String expBillNewReference                      =	"0.00";
 		
-		String expBillTransactionCurrency               =excelReader.getCellData(xlSheetName, 92, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 92, 7, actBillTransactionCurrency);
+		String expBillTransactionCurrency               =	"50.00";
 		
-		String expBillBaseCurrency                      =excelReader.getCellData(xlSheetName, 93, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 93, 7, actBillBaseCurrency);
+		String expBillBaseCurrency                      =	"50.00";
 		
-		String expBillLocalCurrency                     =excelReader.getCellData(xlSheetName, 94, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 94, 7, actBillLocalCurrency);
+		String expBillLocalCurrency                     =	"3.50";
 		
-		String expBillBalanceNewRefAmount               =excelReader.getCellData(xlSheetName, 95, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 95, 7, actBillBalanceNewRefAmount);
+		String expBillBalanceNewRefAmount               =	"0.00";
 		
-		String expbillRefAdjustAmountInTransCurency         =excelReader.getCellData(xlSheetName, 96, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 96, 7, actbillRefAdjustAmountInTransCurency);
+		String expbillRefAdjustAmountInTransCurency         =	"50.00";
 		
-		String expbillRefBalanceAmountAdjustInTrnasCurrency =excelReader.getCellData(xlSheetName, 97, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 97, 7, actbillRefBalanceAmountAdjustInTrnasCurrency);
-
+		String expbillRefBalanceAmountAdjustInTrnasCurrency =	"0.00";
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefGridFirstRowAdjustmentAmtTxt));
 		billRefGridFirstRowAdjustmentAmtTxt.click();
+		
+		getAction().moveToElement(billRefPickIcon).build().perform();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefPickIcon));
 		billRefPickIcon.click();
@@ -998,89 +858,60 @@ public class ReceiptsVATVoucherPage extends BaseEngine
 		String actexchangeGainLossForLocalCurrencyPick   = exchangeGainLossForLocalCurrency.getText();
 
 		
-		String expBillNewReferencePick                          = excelReader.getCellData(xlSheetName, 98, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 98, 7, actBillNewReferencePick);
+		String expBillNewReferencePick                          = "0.00";
 		
-		String expBillTransactionCurrencyPick                   = excelReader.getCellData(xlSheetName, 99, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 99, 7, actBillTransactionCurrencyPick);
+		String expBillTransactionCurrencyPick                   = 	"50";
 		
-		String expBillBaseCurrencyPick                          = excelReader.getCellData(xlSheetName, 100, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 100, 7, actBillBaseCurrencyPick);
+		String expBillBaseCurrencyPick                          = 	"50";
 		
-		String expBillLocalCurrencyPick                         = excelReader.getCellData(xlSheetName, 101, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 101, 7, actBillLocalCurrencyPick);
+		String expBillLocalCurrencyPick                         = 	"3.50";
 		
-		String expBillBalanceNewRefAmountPick                   = excelReader.getCellData(xlSheetName, 102, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 102, 7, actBillBalanceNewRefAmountPick);
+		String expBillBalanceNewRefAmountPick                   = 	"0.00";
+				
+		String expbillRefAdjustAmountInTransCurencyPick         = 	"50.00";
 		
-		String expbillRefAdjustAmountInTransCurencyPick         = excelReader.getCellData(xlSheetName, 103, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 103, 7, actbillRefAdjustAmountInTransCurencyPick);
+		String expbillRefBalanceAmountAdjustInTrnasCurrencyPick = 	"0.00";
 		
-		String expbillRefBalanceAmountAdjustInTrnasCurrencyPick = excelReader.getCellData(xlSheetName, 104, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 104, 7, actbillRefBalanceAmountAdjustInTrnasCurrencyPick);
-
-		String expbreakUpDetailsAccountPick             =excelReader.getCellData(xlSheetName, 105, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 105, 7, actbreakUpDetailsAccountPick);
+		String expbreakUpDetailsAccountPick             =	"071-001";
 		
-		//String expbreakUpDetailsItemPick                =excelReader.getCellData(xlSheetName, 106, 6);
-		//excelReader.setCellData(xlfile, xlSheetName, 106, 7, actbreakUpDetailsItemPick);
 		
-		String expbreakUpDetailsDepartmentPick          =excelReader.getCellData(xlSheetName, 107, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 107, 7, actbreakUpDetailsDepartmentPick);
+		String expbreakUpDetailsDepartmentPick          =	"DUBAI";
 		
-		String expconversationRateBaseCurrencyRatePick  =excelReader.getCellData(xlSheetName, 108, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 108, 7, actconversationRateBaseCurrencyRatePick);
+		String expconversationRateBaseCurrencyRatePick  =	"071-001";
 		
-		String expconversationRateLocalCurrencyRatePick =excelReader.getCellData(xlSheetName, 109, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 109, 7, actconversationRateLocalCurrencyRatePick);
-
-		String expasOnEntryDateTransAmtPick             =excelReader.getCellData(xlSheetName, 110, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 110, 7, actasOnEntryDateTransAmtPick);
+		String expconversationRateLocalCurrencyRatePick =	"0.0700000000";
 		
-		String expasOnEntryDateBaseConcersationRatePick =excelReader.getCellData(xlSheetName, 111, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 111, 7, actasOnEntryDateBaseConcersationRatePick);
+		String expasOnEntryDateTransAmtPick             =	"60.00";
 		
-		String expasOnEntryDateBaseAmountPick           =excelReader.getCellData(xlSheetName, 112, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 112, 7, actasOnEntryDateBaseAmountPick);
+		String expasOnEntryDateBaseConcersationRatePick =	"1.0000000000";
 		
-		String expasOnEntryDateLocConversationRatePick  =excelReader.getCellData(xlSheetName, 113, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 113, 7, actasOnEntryDateLocConversationRatePick);
+		String expasOnEntryDateBaseAmountPick           =	"60.00";
 		
-		String expasOnEntryDateAmtPick                  =excelReader.getCellData(xlSheetName, 114, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 114, 7, actasOnEntryDateAmtPick);
+		String expasOnEntryDateLocConversationRatePick  =	"0.0700000000";
 		
-		String expbalOnAdjstDateTransAmtPick            =excelReader.getCellData(xlSheetName, 115, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 115, 7, actbalOnAdjstDateTransAmtPick);
+		String expasOnEntryDateAmtPick                  =	"4.20";
 		
-		String expbalOnAdjstDateBasrConversionRatePick  =excelReader.getCellData(xlSheetName, 116, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 116, 7, actbalOnAdjstDateBasrConversionRatePick);
+		String expbalOnAdjstDateTransAmtPick            =	"60.00";
 		
-		String expbalOnAdjstDateBaseAmountPick          =excelReader.getCellData(xlSheetName, 117, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 117, 7, actbalOnAdjstDateBaseAmountPick);
+		String expbalOnAdjstDateBasrConversionRatePick  =	"1";
 		
-		String expbalOnAdjstDateLocalConversionRatePick =excelReader.getCellData(xlSheetName, 118, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 118, 7, actbalOnAdjstDateLocalConversionRatePick);
+		String expbalOnAdjstDateBaseAmountPick          =	"60.00";
 		
-		String expbalOnAdjstDateAmtPick                 =excelReader.getCellData(xlSheetName, 119, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 119, 7, actbalOnAdjstDateAmtPick);
-
-		String expadjustmentsAmount1Pick                =excelReader.getCellData(xlSheetName, 120, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 120, 7, actadjustmentsAmount1Pick);
+		String expbalOnAdjstDateLocalConversionRatePick =	"0.0700000000";
 		
-		String expadjustmentsAmount2Pick                =excelReader.getCellData(xlSheetName, 121, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 121, 7, actadjustmentsAmount2Pick);
+		String expbalOnAdjstDateAmtPick                 =	"4.20";
+			
+		String expadjustmentsAmount1Pick                =	"50.00";
 		
-		String expadjustmentsAmount3Pick                =excelReader.getCellData(xlSheetName, 122, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 122, 7, actadjustmentsAmount3Pick);
+		String expadjustmentsAmount2Pick                =	"50.00";
 		
-		String expadjustmentsAmount4Pick                =excelReader.getCellData(xlSheetName, 123, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 123, 7, actadjustmentsAmount4Pick);
+		String expadjustmentsAmount3Pick                =	"3.50";
 		
-		String expexchangeGainLossForBaseCurrencyPick   =excelReader.getCellData(xlSheetName, 124, 6);	
-		excelReader.setCellData(xlfile, xlSheetName, 124, 7, actexchangeGainLossForBaseCurrencyPick);
+		String expadjustmentsAmount4Pick                =	"50.00";
 		
-		String expexchangeGainLossForLocalCurrencyPick  =excelReader.getCellData(xlSheetName, 125, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 125, 7, actexchangeGainLossForLocalCurrencyPick);
+		String expexchangeGainLossForBaseCurrencyPick   =	"0.00";
+		
+		String expexchangeGainLossForLocalCurrencyPick  =	"0.00";
 		
 
 		System.out.println("*********************************************************************************************************");
@@ -1225,8 +1056,11 @@ public class ReceiptsVATVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_DeleteBtn));
 		new_DeleteBtn.click();
 
-		getWaitForAlert();
-		getAlert().accept();
+	/*	getWaitForAlert();
+		getAlert().accept();*/
+		
+		  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucher_ConfirmYesBtn)); 
+		  voucher_ConfirmYesBtn.click();
 
 		String expMessage = excelReader.getCellData(xlSheetName, 128, 6);
 		String actMessage = checkValidationMessage(expMessage);
@@ -1323,6 +1157,131 @@ public class ReceiptsVATVoucherPage extends BaseEngine
 
 
 
+
+	public static boolean CheckLogin() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+	{
+	        Thread.sleep(3000);
+
+	        getDriver().navigate().refresh();
+
+	        LoginPage lp=new LoginPage(getDriver()); 
+
+	        lp.checkLoginPageTitleByURLInputInBrowser();
+
+	        String unamelt="su";
+
+	        String pawslt="su";
+
+	        lp.enterUserName(unamelt);
+
+	        lp.enterPassword(pawslt);
+
+	        Thread.sleep(2000);
+
+	        String compname = "Automation Company : 08/10/2020";
+
+	        Select oSelect = new Select(companyDropDownList);
+
+	        List<WebElement> elementCount = oSelect.getOptions();
+
+	        int cqSize = elementCount.size();
+
+	        System.out.println("CompanyDropdownList Count :" + cqSize);
+
+	        int i;
+
+	        for (i = 0; i < elementCount.size(); i++) {
+
+	                elementCount.get(i).getText();
+
+	                String optionName = elementCount.get(i).getText();
+	                if (optionName.toUpperCase().startsWith(compname.toUpperCase())) {
+	                        System.out.println("q" + elementCount.get(i).getText());
+	                        elementCount.get(i).click();
+	                }
+
+	        }
+
+	        Thread.sleep(2000);
+
+	        lp.clickOnSignInBtn();
+
+	        Thread.sleep(2000);
+
+	        String actUserInfo1=userNameDisplay.getText();
+
+	        System.out.println("User Info  : "+actUserInfo1);
+
+	        System.out.println("User Info Capture Text  :  "+userNameDisplay.getText());
+
+	        //getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
+	        //companyLogo.click();
+
+	        String getCompanyTxt1=Company_Name.getText();
+	        String getLoginCompanyName1=getCompanyTxt1.substring(0, 31);
+	        System.out.println("company name  :  "+ getLoginCompanyName1);
+	        //companyLogo.click();
+
+	        String expUserInfo1           ="SU";
+	        String expLoginCompanyName1   ="Automation Company : 08/10/2020";
+
+	        System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
+	        System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
+
+	        if(actUserInfo1.equalsIgnoreCase(expUserInfo1) && getLoginCompanyName1.contains(expLoginCompanyName1))
+	        {
+	                return true;
+	        }
+	        else
+	        {
+	                return false;
+	        }
+
+	}
+
+
+	public boolean checkLogoutReceiptsVATvoucherPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		getDriver().navigate().refresh();
+		Thread.sleep(2000);
+		 
+		 try
+			{
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplayLogo));
+			  userNameDisplayLogo.click();
+			  Thread.sleep(2000);
+			 
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
+			  logoutOption.click();
+			  
+			  Thread.sleep(2000);
+			  
+			  boolean actUserLoginPage              = username.isDisplayed() && username.isEnabled()
+	                                               && password.isDisplayed() && password.isEnabled();
+	                                      
+			  boolean expUserLoginPage              = true;
+			  
+			  if(actUserLoginPage==expUserLoginPage)  
+		      {
+				System.out.println("***Test Pass: Login Successfull***");
+				
+				return true;
+			  }
+		      else
+		      {
+		  	 
+				System.out.println("***Test Fail: Login Not Successfull***");
+				
+				return false;
+			  }
+			}
+			catch (Exception e)
+			{
+			 	String exception = e.getMessage();
+			 		
+				return false;
+			}
+		}
 
 
 

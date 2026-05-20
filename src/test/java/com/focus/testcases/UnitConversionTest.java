@@ -15,6 +15,12 @@ public class UnitConversionTest extends BaseEngine
 {
 	UnitConversionPage UCP;
 	
+	 @Test(priority=165)
+	 public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 UCP=new UnitConversionPage(getDriver());
+		 Assert.assertEquals(UCP.CheckLogin(), true);
+	 }
 	
 
 	 @Test(priority=166)
@@ -38,7 +44,14 @@ public class UnitConversionTest extends BaseEngine
 		 Assert.assertEquals(UCP.checkUpdatingUnitConversion(), true);
 	 }
 	 
-	
+	 
+	 
+	 @Test(priority=169)
+	 public void checkLogoutUnitConversionPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 UCP=new UnitConversionPage(getDriver());
+		 Assert.assertEquals(UCP.checkLogoutUnitConversionPage(), true);
+	 }
 	
 
 }

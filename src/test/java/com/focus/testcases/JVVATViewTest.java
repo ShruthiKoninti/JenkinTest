@@ -15,6 +15,15 @@ public class JVVATViewTest extends BaseEngine
 {
 	JVVATViewPage JV;
 
+	@Test(priority=335)
+	public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		JV=new JVVATViewPage(getDriver());
+		Assert.assertEquals(JV.CheckLogin(), true);
+	}
+	
+	
+	
 	@Test(priority=337)
 	public void checkSavingJVVATVocher1() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
@@ -52,4 +61,14 @@ public class JVVATViewTest extends BaseEngine
 	}
 
 
+	@Test(priority=343)
+	public void checkLogoutJVVATViewPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		JV=new JVVATViewPage(getDriver());
+		Assert.assertEquals(JV.checkLogoutJVVATViewPage(), true);
+	}
+	
+	
+	
+	
 }

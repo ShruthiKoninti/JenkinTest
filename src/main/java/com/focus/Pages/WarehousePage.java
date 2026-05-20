@@ -13,6 +13,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.focus.base.BaseEngine;
 import com.focus.supporters.ExcelReader;
@@ -58,8 +59,8 @@ public class WarehousePage extends BaseEngine
 				@FindBy(xpath="//i[@class='icon-font6 icon-group']")
 				public static WebElement masterGroupBtn; 
 				
-				@FindBy(xpath="//*[@id='toggle_ribbon']")
-				public static WebElement masterRibbonToExpandOptions; 
+				/*@FindBy(xpath="//*[@id='toggle_ribbon']")
+				public static WebElement masterRibbonToExpandOptions; */
 		
 				@FindBy(xpath="//i[@class='icon-font6 icon-delete-all']")
 				public static WebElement masterDeleteAllBtn; 
@@ -2698,20 +2699,20 @@ public class WarehousePage extends BaseEngine
 			    @FindBy(xpath="//*[@id='MCustomize_FontDialog_Modal']/div/div/div[3]/button[2]")
 			    private static WebElement extraFields_externalModulesForMatFieldDeatailsCanceBtn ;
 				        
-			 @FindBy(xpath="/html[1]/body[1]/section[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]")
+			/* @FindBy(xpath="/html[1]/body[1]/section[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]")
 			 private static WebElement extraFields_OkBtn;
 			    
 			 @FindBy(xpath="/html[1]/body[1]/section[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[2]")
-			 private static WebElement extraFields_CloseBtn;
+			 private static WebElement extraFields_CloseBtn;*/
 			 
-	 @FindBy(xpath="/html[1]/body[1]/section[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[7]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[4]")
-	 private static WebElement extraFields_CreatedByUserInHeaderDetailsTab;
+	/* @FindBy(xpath="/html[1]/body[1]/section[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[7]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[4]")
+	 private static WebElement extraFields_CreatedByUserInHeaderDetailsTab;*/
 			 
-	 @FindBy(xpath="/html[1]/body[1]/section[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[7]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[1]/i[1]")
+	/* @FindBy(xpath="/html[1]/body[1]/section[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[7]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[1]/i[1]")
 	 private static WebElement extraFields_EditOptionInHeaderDetailsTab;
 	 
 	 @FindBy(xpath="/html[1]/body[1]/section[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[7]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[1]/i[2]")
-	 private static WebElement extraFields_DeleteOptionInHeaderDetailsTab;
+	 private static WebElement extraFields_DeleteOptionInHeaderDetailsTab;*/
 	 
 	 @FindBy(xpath="/html[1]/body[1]/section[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[7]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[2]/td[4]")
 	 private static WebElement extraFields_SecondFieldInHeaderDetailsTab;
@@ -3038,8 +3039,11 @@ public class WarehousePage extends BaseEngine
 		/*@FindBy(xpath="/html[1]/body[1]/section[1]/div[2]/header[1]/nav[1]/div[1]/ul[1]/li[5]/a[1]/span[1]")
 		private static WebElement userNameDisplay;*/
 
-		@FindBy(xpath="//span[@class='hidden-xs']")
-		private static WebElement userNameDisplay;
+		/*@FindBy(xpath="//span[@class='hidden-xs']")
+		private static WebElement userNameDisplay;*/
+	    
+		@FindBy(xpath="//*[text()='SU']")
+		public static WebElement userNameDisplay;
 		
 		
 		@FindBy(xpath="//*[@id='companyLogo']")
@@ -3048,8 +3052,9 @@ public class WarehousePage extends BaseEngine
 		@FindBy(xpath="//*[@id='ulCompanyDetails_HomePage']/li[1]")
 		private static WebElement companyName;
 
-	    @FindBy(xpath="//*[@id='userprofile']/li/span[2]")
-        private static WebElement logoutOption;
+		//@FindBy(xpath="//*[contains(text(),'Logout')]")
+		@FindBy(xpath="//span[@class='icon icon-logout']")
+		public static WebElement logoutOption;
 		
 	    
 	    @FindBy(xpath="//input[@id='donotshow']")
@@ -11023,7 +11028,7 @@ public static boolean checkLoginAndRestoreOptionsCompanyAndLogin() throws Encryp
 private static List<WebElement> masterAccountsList;
 
 
-@FindBy(xpath="//*[@id='GenerateNewMasterModel']/div/div[1]/div[2]/div/ul/li[2]/button[5]")
+@FindBy(xpath="//*[@id='GenerateNewMasterModel']/div/div[1]/div[2]/div/ul/li[2]/button[6]")
 public static WebElement masterCloseBtn;
 
 
@@ -11326,10 +11331,12 @@ private static List<WebElement> masterItemsList;
 				
 			 String actMessage=checkValidationMessage(expMessage);
 			 
-			 Thread.sleep(1000);
+			 Thread.sleep(8000);
 			 
 			 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCloseBtn));
 			 masterCloseBtn.click();
+			 
+			 Thread.sleep(6000);
 			 
 			 System.out.println("Message     : "+actMessage+" Value Expected : "+expMessage);
 				
@@ -11471,7 +11478,7 @@ private static List<WebElement> masterItemsList;
 		@FindBy(xpath="//*[@id='btnAdvImportForMaster']")
 		public static WebElement advanceMasterImportExportBtn;;
 
-		@FindBy(xpath="//*[@id='viewheading']")
+		@FindBy(xpath="//*[contains(text(),'Advance Master Import/Export')]")
 		public static WebElement advanceMasterLabel;
 						 
 		@FindBy(xpath="//button[@id='btnFile']")
@@ -11500,18 +11507,18 @@ private static List<WebElement> masterItemsList;
 		
 		public boolean checkWarehouseListBeforeImportingDataFromExcel() throws InterruptedException
 		{
-			
+			Thread.sleep(4000);
 			 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 			   	homeMenu.click();
-			   	
+				Thread.sleep(2000);
 			   	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersMenu));
 			   	mastersMenu.click();
-			   	
+			   	Thread.sleep(2000);
 			   	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(warehouseMenu));
 				     
 			   	warehouseMenu.click();
 				   
-			   	Thread.sleep(2000);
+			   	Thread.sleep(8000);
 			   	
 			
 			 
@@ -11546,18 +11553,18 @@ private static List<WebElement> masterItemsList;
 
 		public boolean checkAdvanceMasterImportExportWarehouse() throws InterruptedException
 		{
-			Thread.sleep(2000);
+			Thread.sleep(6000);
 			
 		   	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(toggleRibbon));
 		   	toggleRibbon.click();
-		   	Thread.sleep(2000);
+		   	Thread.sleep(8000);
 		   	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(advanceMasterImportExportBtn));
 		   	advanceMasterImportExportBtn.click();
-		   	
+		 	Thread.sleep(4000);
 		   	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(advanceMasterLabel));
 		    System.out.println("Advance Master import/Export Label  "+advanceMasterLabel.getText());
 		      	
-		  	if(advanceMasterLabel.getText().equalsIgnoreCase("Advance Master Import/Export----> Warehouse"))
+		  	if(advanceMasterLabel.getText().equalsIgnoreCase("Advance Master Import/Export"))
 			{	
 				return true;
 			}	 
@@ -11582,7 +11589,7 @@ private static List<WebElement> masterItemsList;
 			Thread.sleep(2000);
 			
 			 Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\WarehouseImportFromExcel.exe");
-			 Thread.sleep(5000);
+			 Thread.sleep(15000);
 			 
 			 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(advMasterImportDataBtn));
 			 advMasterImportDataBtn.click();
@@ -11662,25 +11669,25 @@ private static List<WebElement> masterItemsList;
 		
 	public boolean checkImportedWarehouseDelete() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{		
-
+		Thread.sleep(2000);
 		 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		   	homeMenu.click();
-		   	
+		   	Thread.sleep(2000);
 		   	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersMenu));
 		   	mastersMenu.click();
-		   	
+		   	Thread.sleep(2000);
 		   	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(warehouseMenu));
 			     
 		   	warehouseMenu.click();
 			   
-		   	Thread.sleep(2000);
+		   	Thread.sleep(4000);
 		   	
 		 int count = masterGridBodyName.size();
 			
 			for (int i = 0; i < count; i++) 
 			{
 				String data = masterGridBodyName.get(i).getText();
-				
+				Thread.sleep(2000);
 				if (data.equalsIgnoreCase("WarehouseImport")) 
 				{
 					if (masterGridBodyChkbox.get(i).isSelected()==false) 
@@ -11691,12 +11698,12 @@ private static List<WebElement> masterItemsList;
 				}
 			}
 		    
-		    Thread.sleep(2000);	
+		    Thread.sleep(4000);	
 		 
 	  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterDeleteBtn));
 
 	  masterDeleteBtn.click();
-	  
+	  Thread.sleep(2000);
 	  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(getMsgOnDelete));
 	  System.out.println(getMsgOnDelete.getText());
 	  
@@ -11712,6 +11719,8 @@ private static List<WebElement> masterItemsList;
 	  System.out.println("********************************checkDeleteWarehouseBeforeCustomization***************************");
 			
 		 System.out.println("Message     : "+actMessage+" Value Expected : "+expMessage);
+		 
+		 Thread.sleep(6000);
 			
 		 if(actMessage.equalsIgnoreCase(expMessage))
 		 {
@@ -11735,19 +11744,24 @@ private static List<WebElement> masterItemsList;
 
 public boolean checkSavingWarehouseGroupinWarehouseMaster() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 {
-
+	
+	Thread.sleep(4000);
+	getDriver().navigate().refresh();
+	
+	Thread.sleep(4000);
 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 homeMenu.click();
-
+Thread.sleep(2000);
 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersMenu));
 mastersMenu.click();
-
+Thread.sleep(2000);
 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(warehouseMenu));
 warehouseMenu.click();
-Thread.sleep(2000);
+Thread.sleep(4000);
 
 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterAddGroupBtn));
 masterAddGroupBtn.click();
+Thread.sleep(4000);
 
 System.out.println("********************************checkSavingWarehouseGroupWarehouseMaster*****************************");
 
@@ -11773,7 +11787,7 @@ String actMessage=checkValidationMessage(expMessage);
 
 System.out.println("Message     : "+actMessage+" Value Expected : "+expMessage);
 
-Thread.sleep(2000);
+Thread.sleep(8000);
 
 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCloseBtn));
 masterCloseBtn.click();
@@ -11801,89 +11815,94 @@ public static WebElement accountGrp;
 
 
 
-@FindBy(xpath="//*[@id='ol_treeNavigation']/li[2]/span")
+@FindBy(xpath="//*[@id='ol_treeNavigation']/li[2]")
 public static WebElement GroupAccountLabel;
 
 public static boolean checkSavingWarehouseSubGroupinWarehouseMaster() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 {
-int accNameListCount = accNameList.size();
-
-for(int i=0;i<accNameListCount;i++)
-{
-String data = accNameList.get(i).getText();
-Thread.sleep(2000);
-if(data.equals("Group Warehouse"))
-{
-Thread.sleep(2000);
-getAction().doubleClick(accChkBoxList.get(i)).build().perform();
-Thread.sleep(2000);
-break;
-}
-}
-
-
-getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterAddGroupBtn));
-masterAddGroupBtn.click();
-
-System.out.println("********************************checkSavingWarehouseSubGroupWarehouseMaster*****************************");
-
-getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
-nameTxt.click();
-nameTxt.clear();
-nameTxt.sendKeys("SubGroup1 Warehouse");
-nameTxt.sendKeys(Keys.TAB);
-
-getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(codeTxt));
-codeTxt.click();
-codeTxt.clear();
-codeTxt.sendKeys("SubGroup1Warehouse");
-codeTxt.sendKeys(Keys.TAB);
-
-
-getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(saveBtn));
-saveBtn.click();
-
-Thread.sleep(2000);
-
-
-getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
-nameTxt.click();
-nameTxt.clear();
-nameTxt.sendKeys("SubGroup2 Warehouse");
-nameTxt.sendKeys(Keys.TAB);
-
-getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(codeTxt));
-codeTxt.click();
-codeTxt.clear();
-codeTxt.sendKeys("SubGroup2Warehouse");
-codeTxt.sendKeys(Keys.TAB);
-
-
-
-getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(saveBtn));
-saveBtn.click();
-
-
-String expMessage="Saved Successfully";
-
-String actMessage=checkValidationMessage(expMessage);
-
-System.out.println("Message     : "+actMessage+" Value Expected : "+expMessage);
-
-Thread.sleep(1000);
-
-getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCloseBtn));
-masterCloseBtn.click();
-
-if(actMessage.equalsIgnoreCase(expMessage))
-{
-return true;
-}
-else
-{
-return false;
-}
-
+	
+	
+	
+	Thread.sleep(2000);
+			int accNameListCount = accNameList.size();
+			
+			for(int i=0;i<accNameListCount;i++)
+			{
+			String data = accNameList.get(i).getText();
+			Thread.sleep(2000);
+			if(data.equals("Group Warehouse"))
+			{
+			Thread.sleep(2000);
+			getAction().doubleClick(accChkBoxList.get(i)).build().perform();
+			Thread.sleep(2000);
+			break;
+			}
+			}
+			
+			Thread.sleep(2000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterAddGroupBtn));
+			masterAddGroupBtn.click();
+			
+			System.out.println("********************************checkSavingWarehouseSubGroupWarehouseMaster*****************************");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
+			nameTxt.click();
+			nameTxt.clear();
+			nameTxt.sendKeys("SubGroup1 Warehouse");
+			nameTxt.sendKeys(Keys.TAB);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(codeTxt));
+			codeTxt.click();
+			codeTxt.clear();
+			codeTxt.sendKeys("SubGroup1Warehouse");
+			codeTxt.sendKeys(Keys.TAB);
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(saveBtn));
+			saveBtn.click();
+			
+			Thread.sleep(8000);
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
+			nameTxt.click();
+			nameTxt.clear();
+			nameTxt.sendKeys("SubGroup2 Warehouse");
+			nameTxt.sendKeys(Keys.TAB);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(codeTxt));
+			codeTxt.click();
+			codeTxt.clear();
+			codeTxt.sendKeys("SubGroup2Warehouse");
+			codeTxt.sendKeys(Keys.TAB);
+			
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(saveBtn));
+			saveBtn.click();
+			
+			Thread.sleep(2000);
+			String expMessage="Saved Successfully";
+			
+			String actMessage=checkValidationMessage(expMessage);
+			
+			System.out.println("Message     : "+actMessage+" Value Expected : "+expMessage);
+			
+			Thread.sleep(6000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCloseBtn));
+			masterCloseBtn.click();
+			
+			if(actMessage.equalsIgnoreCase(expMessage))
+			{
+			return true;
+			}
+			else
+			{
+			return false;
+			}
+			
 }
 
 public boolean checkCreatedGroupDisplayedonLeftPanel()
@@ -11906,121 +11925,159 @@ return false;
 public static List<WebElement> accChkBoxList;
 
 
-public boolean checkSavingWarehousesinSubGroupsinWarehouseMaster() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
-{
+	public boolean checkSavingWarehousesinSubGroupsinWarehouseMaster() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
+	{
+		
+		Thread.sleep(4000);
+		getDriver().navigate().refresh();
+		Thread.sleep(4000);
 
-int accNameListCount = accNameList.size();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
+		homeMenu.click();
+		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersMenu));
+		mastersMenu.click();
+		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(warehouseMenu));
+		warehouseMenu.click();
+		Thread.sleep(4000);
+		
+		int accNameListCount3 = accNameList.size();
 
-for(int i=0;i<accNameListCount;i++)
-{
-String data = accNameList.get(i).getText();
-Thread.sleep(2000);
-if(data.equals("SubGroup1 Warehouse"))
-{
-Thread.sleep(2000);
-getAction().doubleClick(accChkBoxList.get(i)).build().perform();
-Thread.sleep(2000);
-break;
+		for(int i=0;i<accNameListCount3;i++)
+		{
+		String data = accNameList.get(i).getText();
+		Thread.sleep(2000);
+		if(data.equals("Group Warehouse"))
+		{
+		Thread.sleep(2000);
+		getAction().doubleClick(accChkBoxList.get(i)).build().perform();
+		Thread.sleep(2000);
+		break;
+		}
+		}
+		
+		
+		Thread.sleep(2000);
+		
+		int accNameListCount = accNameList.size();
+		
+		for(int i=0;i<accNameListCount;i++)
+		{
+		String data = accNameList.get(i).getText();
+		Thread.sleep(2000);
+		if(data.equals("SubGroup1 Warehouse"))
+		{
+			Thread.sleep(2000);
+			getAction().doubleClick(accChkBoxList.get(i)).build().perform();
+			Thread.sleep(2000);
+			break;
+		}
+		}
+		
+		Thread.sleep(4000);
+		//new WebDriverWait(getDriver(), 500).until(ExpectedConditions.visibilityOf(masterNewBtn));
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));
+		masterNewBtn.click();
+		Thread.sleep(2000);
+		System.out.println("********************************checkSavingWarehouseSubGroupWarehouseMaster*****************************");
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
+		nameTxt.click();
+		nameTxt.clear();
+		nameTxt.sendKeys("Warehouse1");
+		nameTxt.sendKeys(Keys.TAB);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(codeTxt));
+		codeTxt.click();
+		codeTxt.clear();
+		codeTxt.sendKeys("Warehouse1");
+		codeTxt.sendKeys(Keys.TAB);
+		
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(saveBtn));
+		saveBtn.click();
+		
+		Thread.sleep(6000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCloseBtn));
+		masterCloseBtn.click();
+		Thread.sleep(6000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(GroupAccountLabel));
+		GroupAccountLabel.click();
+		Thread.sleep(4000);
+		
+		int accNameListCount1 = accNameList.size();
+		
+		for(int i=0;i<accNameListCount1;i++)
+		{
+		String data = accNameList.get(i).getText();
+		Thread.sleep(2000);
+		if(data.equals("SubGroup2 Warehouse"))
+		{
+		Thread.sleep(2000);
+		getAction().doubleClick(accChkBoxList.get(i)).build().perform();
+		Thread.sleep(2000);
+		break;
+		}
+		}
+		
+		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));
+		masterNewBtn.click();
+		
+		Thread.sleep(2000);
+		
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
+		nameTxt.click();
+		nameTxt.clear();
+		nameTxt.sendKeys("Warehouse2");
+		nameTxt.sendKeys(Keys.TAB);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(codeTxt));
+		codeTxt.click();
+		codeTxt.clear();
+		codeTxt.sendKeys("Warehouse2");
+		codeTxt.sendKeys(Keys.TAB);
+		
+		
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(saveBtn));
+		saveBtn.click();
+		
+		
+		String expMessage="Saved Successfully";
+		
+		String actMessage=checkValidationMessage(expMessage);
+		
+		System.out.println("Message     : "+actMessage+" Value Expected : "+expMessage);
+		
+		Thread.sleep(4000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCloseBtn));
+		masterCloseBtn.click();
+		
+		if(actMessage.equalsIgnoreCase(expMessage))
+		{
+		return true;
+		}
+		else
+		{
+		return false;
+		}
 }
-}
 
-
-getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));
-masterNewBtn.click();
-
-System.out.println("********************************checkSavingWarehouseSubGroupWarehouseMaster*****************************");
-
-getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
-nameTxt.click();
-nameTxt.clear();
-nameTxt.sendKeys("Warehouse1");
-nameTxt.sendKeys(Keys.TAB);
-
-getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(codeTxt));
-codeTxt.click();
-codeTxt.clear();
-codeTxt.sendKeys("Warehouse1");
-codeTxt.sendKeys(Keys.TAB);
-
-
-getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(saveBtn));
-saveBtn.click();
-
-Thread.sleep(2000);
-
-getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCloseBtn));
-masterCloseBtn.click();
-
-getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(GroupAccountLabel));
-GroupAccountLabel.click();
-Thread.sleep(2000);
-
-int accNameListCount1 = accNameList.size();
-
-for(int i=0;i<accNameListCount1;i++)
-{
-String data = accNameList.get(i).getText();
-Thread.sleep(2000);
-if(data.equals("SubGroup2 Warehouse"))
-{
-Thread.sleep(2000);
-getAction().doubleClick(accChkBoxList.get(i)).build().perform();
-Thread.sleep(2000);
-break;
-}
-}
-
-
-getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));
-masterNewBtn.click();
-
-
-
-
-getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
-nameTxt.click();
-nameTxt.clear();
-nameTxt.sendKeys("Warehouse2");
-nameTxt.sendKeys(Keys.TAB);
-
-getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(codeTxt));
-codeTxt.click();
-codeTxt.clear();
-codeTxt.sendKeys("Warehouse2");
-codeTxt.sendKeys(Keys.TAB);
-
-
-
-getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(saveBtn));
-saveBtn.click();
-
-
-String expMessage="Saved Successfully";
-
-String actMessage=checkValidationMessage(expMessage);
-
-System.out.println("Message     : "+actMessage+" Value Expected : "+expMessage);
-
-Thread.sleep(1000);
-
-getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCloseBtn));
-masterCloseBtn.click();
-
-if(actMessage.equalsIgnoreCase(expMessage))
-{
-return true;
-}
-else
-{
-return false;
-}
-}
-
+	
+	@FindBy(xpath="//*[@id='ol_treeNavigation']/li[1]")
+	public static WebElement DepartmentLabel;
 
 public static boolean checkWarehousesSavedinGroupsandSubGroupsinWarehouseMaster() throws InterruptedException
 {
-getDriver().navigate().refresh();
-Thread.sleep(2000);
+/*getDriver().navigate().refresh();
+Thread.sleep(4000);
 
 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 homeMenu.click();
@@ -12031,7 +12088,14 @@ mastersMenu.click();
 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(warehouseMenu));
 warehouseMenu.click();
 Thread.sleep(2000);
-
+*/
+	
+	Thread.sleep(2000);
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(DepartmentLabel));
+	
+	DepartmentLabel.click();
+	
+	Thread.sleep(2000);
 
 int accCount = accNameList.size();
 
@@ -12154,16 +12218,16 @@ System.out.println("Expected Warehouses in Sub Group2 List:  "+expSubGrpAcc2List
 if(actAccList.equalsIgnoreCase(expAccList) && actGrpAccList.equalsIgnoreCase(expGrpAccList)
 && actSubGrpAccList.equalsIgnoreCase(expSubGrpAccList) && actSubGrpAcc2List.equalsIgnoreCase(expSubGrpAcc2List))
 {
-getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(closeBtn));
-closeBtn.click();
+/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(closeBtn));
+closeBtn.click();*/
 
 return true;
 }
 else
 {
 
-getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(closeBtn));
-closeBtn.click();
+/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(closeBtn));
+closeBtn.click();*/
 return false;
 }
 
@@ -12173,15 +12237,24 @@ return false;
 
 public boolean checkDeleteGroupWarehouseinWarehouseMaster() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 {
+	
+	/*Thread.sleep(4000);	
 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 homeMenu.click();
-
+Thread.sleep(2000);	
 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersMenu));
 mastersMenu.click();
-
+Thread.sleep(2000);	
 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(warehouseMenu));
 warehouseMenu.click();
-Thread.sleep(2000);
+Thread.sleep(4000);*/
+	
+	Thread.sleep(2000);
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(DepartmentLabel));
+	
+	DepartmentLabel.click();
+	
+	Thread.sleep(2000);
 
 
 int count1 = masterGridBodyName.size();
@@ -12195,6 +12268,7 @@ if (data.equalsIgnoreCase("Group Warehouse"))
 if (masterGridBodyChkbox.get(i).isSelected()==false) 
 {
 	masterGridBodyChkbox.get(i).click();
+	Thread.sleep(2000);	
 	break;
 }
 }
@@ -12203,11 +12277,13 @@ if (masterGridBodyChkbox.get(i).isSelected()==false)
 
 
 
-Thread.sleep(2000);	
+Thread.sleep(4000);	
 
 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterDeleteBtn));
 
 masterDeleteBtn.click();
+
+Thread.sleep(2000);	
 
 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(getMsgOnDelete));
 System.out.println(getMsgOnDelete.getText());
@@ -12244,7 +12320,532 @@ return false;
 
 
 	
+///Adding ExtraField
+
+
+		public boolean checkCreatingExtraFieldsinWarehouseMaster() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+		{
+			
+			
+			Thread.sleep(2000);
+			
+			getDriver().navigate().refresh();
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
+			homeMenu.click();
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersMenu));
+			mastersMenu.click();
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(warehouseMenu));
+		    warehouseMenu.click();
+		   
+		   
+
+			
+			Thread.sleep(3000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterRibbonToExpandOptions));
+			masterRibbonToExpandOptions.click();
+					 
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCustamizemasterBtn));
+			masterCustamizemasterBtn.click();
+			
+			Thread.sleep(3000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterGeneralField));
+			masterGeneralField.click();
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterGeneralHeaderDetails));
+			masterGeneralHeaderDetails.click();
+			Thread.sleep(2000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customizeMasterCreateExtraFieldAddButton));
+			customizeMasterCreateExtraFieldAddButton.click();
+			Thread.sleep(2000);			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_FieldDetailsCaption));
+			extraFields_FieldDetailsCaption.sendKeys("Warehouse Extra Field ");
+			extraFields_FieldDetailsCaption.sendKeys(Keys.TAB);
+		         
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
+			extraFields_OkBtn.click();
+		         
+			String expMessage="Field Added Successfully.";
+			
+			String actMessage=checkValidationMessage(expMessage);
+			
+			
+			boolean actextraFields_CreatedByUserInHeaderDetailsTab =extraFields_CreatedByUserInHeaderDetailsTab.isDisplayed();
+			
+			
+			boolean expextraFields_CreatedByUserInHeaderDetailsTab =true;
+			
+			System.out.println("***************************checkCreatedFieldDisplayInCustomizeTab*****************************");
+			
+			
+			System.out.println("extraFields_CreatedByUserInHeaderDetailsTab : "+actextraFields_CreatedByUserInHeaderDetailsTab+" Value Expected : "+expextraFields_CreatedByUserInHeaderDetailsTab);
+					 
+			
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_SaveBtn));
+			extraFields_SaveBtn.click();
+			
+			
+			String expMessage1="Master updated successfully";
+			
+			String actMessage1=checkValidationMessage(expMessage1);
+			
+			System.out.println("********************************checkExtraFieldCreated***************************");
+			
+			System.out.println("Message     : "+actMessage+" Value Expected : "+expMessage);
+			System.out.println("Message     : "+actMessage1+" Value Expected : "+expMessage1);
+			
+			if(actMessage.equalsIgnoreCase(expMessage) && actMessage1.equalsIgnoreCase(expMessage1) &&actextraFields_CreatedByUserInHeaderDetailsTab==expextraFields_CreatedByUserInHeaderDetailsTab)
+			{
+				
+				
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_CloseBtn));
+				extraFields_CloseBtn.click();
+				
+				return true;
+			}
+			else
+			{
+			
+				return false;
+			}
+		}
+		 
+		 
+			
+			
+		@FindBy(xpath="//*[@id='newMasterDiv0']//div[22]//label/a")
+		public static WebElement createdextraFieldinGeneralTab;
+			
+			
+		public boolean checkAddedExtraFieldinGeneralTabofWarehouseMaster() throws InterruptedException
+		{
+			
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));
+			  masterNewBtn.click();
+			  Thread.sleep(2000);
+			  
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createdextraFieldinGeneralTab));
+			  String actCreatedExtraField=createdextraFieldinGeneralTab.getText();
+			  String expCreatedEXtraField="Warehouse Extra Field";
+			  
+				System.out.println("Message     : "+actCreatedExtraField+" Value Expected : "+expCreatedEXtraField);
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCloseBtn));
+				masterCloseBtn.click();
+					
+				if(actCreatedExtraField.equalsIgnoreCase(expCreatedEXtraField))
+				{
+					
+					
+					return true;
+				}
+				else
+				{
+					
+					return false;
+				}
+				 
+		}
+			
+
+
+		@FindBy(xpath="(//*[@id='example']/tbody/tr[6]/td[1]/i[1])[1]")
+		public static WebElement extraFields_EditOptionInHeaderDetailsTab;
+
+		@FindBy(xpath="(//*[@id='example']/tbody/tr[6]/td[1]/i[2])[1]")
+		public static WebElement extraFields_DeleteOptionInHeaderDetailsTab;
+
+
+		public boolean checkEditandUpdateExtraFieldinCustomizeMaster() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+		{
+			
+			Thread.sleep(2000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterRibbonToExpandOptions));
+			masterRibbonToExpandOptions.click();
+					 
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCustamizemasterBtn));
+			masterCustamizemasterBtn.click();
+			
+			Thread.sleep(3000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterGeneralField));
+			masterGeneralField.click();
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterGeneralHeaderDetails));
+			masterGeneralHeaderDetails.click();
+			Thread.sleep(2000);
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_EditOptionInHeaderDetailsTab));
+			extraFields_EditOptionInHeaderDetailsTab.click();
+					 
+			Thread.sleep(2000);
+					 
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_FieldDetailsCaption));
+			extraFields_FieldDetailsCaption.click();
+			extraFields_FieldDetailsCaption.clear();
+			extraFields_FieldDetailsCaption.sendKeys("Warehouse Extra Field Update");
+			Thread.sleep(1500);
+			extraFields_FieldDetailsCaption.sendKeys(Keys.TAB);	
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
+			extraFields_OkBtn.click();
+			Thread.sleep(2000);
+		         
+			String expMessage="Field Updated Successfully";
+			
+			String actMessage=checkValidationMessage(expMessage);
+			
+			Thread.sleep(2000);
+			
+			boolean actextraFields_CreatedByUserInHeaderDetailsTab =extraFields_CreatedByUserInHeaderDetailsTab.isDisplayed();
+			
+			
+			boolean expextraFields_CreatedByUserInHeaderDetailsTab =true;
+			
+			System.out.println("***************************checkCreatedFieldDisplayInCustomizeTab*****************************");
+			
+			
+			System.out.println("extraFields_CreatedByUserInHeaderDetailsTab : "+actextraFields_CreatedByUserInHeaderDetailsTab+" Value Expected : "+expextraFields_CreatedByUserInHeaderDetailsTab);
+					 
+			
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_SaveBtn));
+			extraFields_SaveBtn.click();
+			Thread.sleep(2000);
+			
+			String expMessage1="Master updated successfully";
+			
+			String actMessage1=checkValidationMessage(expMessage1);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_CloseBtn));
+			extraFields_CloseBtn.click();
+			
+			System.out.println("********************************checkExtraFieldCreated***************************");
+			
+			System.out.println("Message     : "+actMessage+" Value Expected : "+expMessage);
+			System.out.println("Message     : "+actMessage1+" Value Expected : "+expMessage1);
+			
+			if(actMessage.equalsIgnoreCase(expMessage) && actMessage1.equalsIgnoreCase(expMessage1) &&actextraFields_CreatedByUserInHeaderDetailsTab==expextraFields_CreatedByUserInHeaderDetailsTab)
+			{
+				
+				
+				
+				
+				return true;
+			}
+			else
+			{
+			
+				return false;
+			}
+		}
+			
+			
+		public boolean checkUpdatedExtraFieldinGeneralTabofWarehouseMaster() throws InterruptedException
+		{
+			  Thread.sleep(2000);
+			
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));
+			  masterNewBtn.click();
+			  Thread.sleep(2000);
+			  
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createdextraFieldinGeneralTab));
+			  String actCreatedExtraField=createdextraFieldinGeneralTab.getText();
+			  String expCreatedEXtraField="Warehouse Extra Field Update";
+			  
+				System.out.println("Message     : "+actCreatedExtraField+" Value Expected : "+expCreatedEXtraField);
+				
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCloseBtn));
+				masterCloseBtn.click();
+					
+				if(actCreatedExtraField.equalsIgnoreCase(expCreatedEXtraField))
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+				 
+		}
+			
+
+		@FindBy(xpath="(//*[@id='lblWarnMessage_FieldModal'])[1]")
+		public static WebElement getMsgonDelField;
+
+
+		@FindBy(xpath="//*[@id='MCustomize_DeleteField_Modal']//input[1]")
+		public static WebElement clickOnOkInDelField;
+
+		public boolean checkDeleteExtraFieldinCustomizeMaster() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
+		{
+			
+
+			
+			Thread.sleep(2000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterRibbonToExpandOptions));
+			masterRibbonToExpandOptions.click();
+					 
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCustamizemasterBtn));
+			masterCustamizemasterBtn.click();
+			
+			Thread.sleep(3000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterGeneralField));
+			masterGeneralField.click();
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterGeneralHeaderDetails));
+			masterGeneralHeaderDetails.click();
+			Thread.sleep(2000);
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_DeleteOptionInHeaderDetailsTab));
+			extraFields_DeleteOptionInHeaderDetailsTab.click();
+					 
+			Thread.sleep(3000);
+
+		         
+			 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(getMsgonDelField));
+		     System.out.println(getMsgonDelField.getText());
+		     
+		    
+		     
+		     getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickOnOkInDelField));
+		     clickOnOkInDelField.click();
+		     Thread.sleep(2000);
+		     
+		     String expMessage="Field deleted Successfully";
+				
+		     String actMessage=checkValidationMessage(expMessage);
+		     
+		    
+		     
+		     System.out.println("********************************checkDeleteWarehouseBeforeCustomization***************************");
+				
+			 System.out.println("Message     : "+actMessage+" Value Expected : "+expMessage);
+				
+			
+
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_SaveBtn));
+			extraFields_SaveBtn.click();
+			 Thread.sleep(2000);
+			
+			String expMessage1="Master updated successfully";
+			
+			String actMessage1=checkValidationMessage(expMessage1);
+			
+			System.out.println("********************************checkExtraFieldCreated***************************");
+			
+			System.out.println("Message     : "+actMessage+" Value Expected : "+expMessage);
+			System.out.println("Message     : "+actMessage1+" Value Expected : "+expMessage1);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_CloseBtn));
+			extraFields_CloseBtn.click();
+			
+			if(actMessage.equalsIgnoreCase(expMessage) && actMessage1.equalsIgnoreCase(expMessage1) )
+			{
+				
+				return true;
+			}
+			else
+			{
+			
+				return false;
+			}
+
+		}
+
+		@FindBy(xpath="//*[@id='newMasterDiv0']//div//label")
+		public static List<WebElement> detailsList;
+
+
+		public boolean checkDeletedExtraFieldinGeneralTabofWarehouseMaster() throws InterruptedException
+		{
+			  Thread.sleep(2000);
+			  boolean result=true;
+			
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));
+			  masterNewBtn.click();
+			  Thread.sleep(2000);
+			  
+			  for(WebElement e:detailsList)
+			  {
+				  
+				  if(e.getText().equals("Warehouse Extra Field Update"))
+				  {
+					  result=false;
+				  }
+				 
+			  }
+			
+				
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCloseBtn));
+				masterCloseBtn.click();
+					
+				if(result)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+				 
+		}
+
+		
 	
+		public static boolean CheckLogin() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+		{
+		        Thread.sleep(3000);
+
+		        getDriver().navigate().refresh();
+
+		        LoginPage lp=new LoginPage(getDriver()); 
+
+		        lp.checkLoginPageTitleByURLInputInBrowser();
+
+		        String unamelt="su";
+
+		        String pawslt="su";
+
+		        lp.enterUserName(unamelt);
+
+		        Thread.sleep(2000);
+		        
+		        lp.enterPassword(pawslt);
+
+		        Thread.sleep(2000);
+
+		        String compname = "Automation Company : 08/10/2020";
+
+		        Select oSelect = new Select(companyDropDownList);
+
+		        List<WebElement> elementCount = oSelect.getOptions();
+
+		        int cqSize = elementCount.size();
+
+		        System.out.println("CompanyDropdownList Count :" + cqSize);
+
+		        int i;
+
+		        for (i = 0; i < elementCount.size(); i++) {
+
+		                elementCount.get(i).getText();
+
+		                String optionName = elementCount.get(i).getText();
+		                if (optionName.toUpperCase().startsWith(compname.toUpperCase())) {
+		                        System.out.println("q" + elementCount.get(i).getText());
+		                        elementCount.get(i).click();
+		                }
+
+		        }
+
+		        Thread.sleep(2000);
+
+		        lp.clickOnSignInBtn();
+
+		        Thread.sleep(3000);
+
+		        String actUserInfo1=userNameDisplay.getText();
+
+		        System.out.println("User Info  : "+actUserInfo1);
+
+		        System.out.println("User Info Capture Text  :  "+userNameDisplay.getText());
+
+		     /*   getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
+		        companyLogo.click();*/
+
+		        String getCompanyTxt1=Company_Name.getText();
+		        String getLoginCompanyName1=getCompanyTxt1.substring(0, 31);
+		        System.out.println("company name  :  "+ getLoginCompanyName1);
+		        //companyLogo.click();
+
+		        String expUserInfo1           ="SU";
+		        String expLoginCompanyName1   ="Automation Company : 08/10/2020";
+
+		        System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
+		        System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
+
+		        if(actUserInfo1.equalsIgnoreCase(expUserInfo1) && getLoginCompanyName1.contains(expLoginCompanyName1))
+		        {
+		                return true;
+		        }
+		        else
+		        {
+		                return false;
+		        }
+
+		}
+
+
+		public boolean checkLogoutWarehousePage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+		{
+			getDriver().navigate().refresh();
+			Thread.sleep(2000);
+			 
+			 try
+				{
+				  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplayLogo));
+				  userNameDisplayLogo.click();
+				  Thread.sleep(2000);
+				 
+				  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
+				  logoutOption.click();
+				  
+				  Thread.sleep(3000);
+				  
+				  boolean actUserLoginPage              = username.isDisplayed() && username.isEnabled()
+		                                               && password.isDisplayed() && password.isEnabled();
+		                                      
+				  boolean expUserLoginPage              = true;
+				  
+				  if(actUserLoginPage==expUserLoginPage)  
+			      {
+					System.out.println("***Test Pass: Login Successfull***");
+					
+					return true;
+				  }
+			      else
+			      {
+			  	 
+					System.out.println("***Test Fail: Login Not Successfull***");
+					
+					return false;
+				  }
+				}
+				catch (Exception e)
+				{
+				 	String exception = e.getMessage();
+				 		
+					return false;
+				}
+			}
+
+
+
+
+
+
 	
 	
 	public WarehousePage(WebDriver driver) 

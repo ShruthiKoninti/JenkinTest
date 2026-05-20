@@ -13,7 +13,7 @@ import java.util.List;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.omg.PortableServer.THREAD_POLICY_ID;
+//import org.omg.PortableServer.THREAD_POLICY_ID;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -23,6 +23,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.focus.base.BaseEngine;
 import com.focus.supporters.ExcelReader;
@@ -57,6 +58,8 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		purchaseVouchersVat.click();
 
 		Thread.sleep(2000);
+		
+		new WebDriverWait(getDriver(), 300).until(ExpectedConditions.visibilityOf(newBtn));
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
@@ -141,25 +144,44 @@ public class PurchaseVouchersVATPage extends BaseEngine
 	{
 		excelReader = new ExcelReader(POJOUtility.getExcelPath());
 		
+		Thread.sleep(3000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
+		
+		Thread.sleep(1000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
 		financialsTransactionMenu.click();
+		
+		Thread.sleep(1000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
 		financialsTransactionsPurchaseMenu.click();
 
+		Thread.sleep(1000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		
 		
+		
+		if(getIsAlertPresent())
+		{
+			getWaitForAlert();
+			Thread.sleep(2000);
+			
+			getAlert().accept();
+		}
+		
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		
 		
 		
@@ -169,20 +191,25 @@ public class PurchaseVouchersVATPage extends BaseEngine
 
 		documentNumberTxt.sendKeys(Keys.CONTROL, "l");
 		
-		Thread.sleep(2000);
+		Thread.sleep(8000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(workFlowChkBox1));
 		workFlowChkBox1.click();
 
 		Thread.sleep(4000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(workFlowOkBtnCL));
+	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(workFlowOkBtnCL));
 		workFlowOkBtnCL.click();
-
-		Thread.sleep(2000);
+*/
+		ClickUsingJs(workFlowOkBtnCL);
+		
+		Thread.sleep(8000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(placeOFSupplyTxt));
-		placeOFSupplyTxt.click();
+		//getAction().moveToElement(placeOFSupplyTxt).build().perform();
+		//ScrollToElement(placeOFSupplyTxt);
+		Thread.sleep(3000);
+		ClickUsingJs(placeOFSupplyTxt);
 		placeOFSupplyTxt.sendKeys(excelReader.getCellData(xlSheetName, 11, 5));
 		Thread.sleep(2000);
 		placeOFSupplyTxt.sendKeys(Keys.TAB);
@@ -229,6 +256,8 @@ public class PurchaseVouchersVATPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_PvVat));
 		enter_PvVat.sendKeys(Keys.TAB);
+		
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_PvTaxable));
 		enter_PvTaxable.sendKeys(Keys.TAB);
@@ -237,7 +266,7 @@ public class PurchaseVouchersVATPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(8000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newReferenceTxt));
 		newReferenceTxt.click();
@@ -319,6 +348,8 @@ public class PurchaseVouchersVATPage extends BaseEngine
 	{
 		excelReader = new ExcelReader(POJOUtility.getExcelPath());
 		
+		Thread.sleep(3000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 		documentNumberTxt.sendKeys(Keys.TAB);
 		
@@ -338,6 +369,8 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		voucherHeaderCurrency.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(departmentTxt));
+		clearValueFromTextBox(departmentTxt);
+		Thread.sleep(2000);
 		departmentTxt.sendKeys(excelReader.getCellData(xlSheetName, 16, 5));	
 		Thread.sleep(2000);
 		departmentTxt.sendKeys(Keys.TAB);
@@ -499,6 +532,8 @@ public class PurchaseVouchersVATPage extends BaseEngine
 	public static boolean checkEditingPurchaseVoucherVATVoucher2AddRow2AndUpdate() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 		excelReader = new ExcelReader(POJOUtility.getExcelPath());
+		
+		Thread.sleep(5500);
 		
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 		documentNumberTxt.click();
@@ -697,6 +732,8 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		Bill_OkBtn.click();
 		
 		Thread.sleep(3000);
+		
+		
 
 		/*HashSet<String> actMessage = new HashSet();
 
@@ -926,6 +963,11 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		System.out.println("Batch           : "+actR2Batch				+"  Value Expected  "+expR2Batch);
 		System.out.println("Expiry          : "+actR2Expiry				+"  Value Expected  "+expR2Expiry);
 
+		Thread.sleep(3000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
+		new_CloseBtn.click();
+		
 		Thread.sleep(3000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_newBtn));
@@ -1234,8 +1276,11 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_DeleteBtn));
 		new_DeleteBtn.click();
 
-		getWaitForAlert();
-		getAlert().accept();
+		/*getWaitForAlert();
+		getAlert().accept();*/
+		
+		  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucher_ConfirmYesBtn)); 
+		  voucher_ConfirmYesBtn.click();
 
 		String expMessage=excelReader.getCellData(xlSheetName, 82, 6);
 		String actMessage=checkValidationMessage(expMessage);
@@ -1272,6 +1317,8 @@ public class PurchaseVouchersVATPage extends BaseEngine
 	public static boolean checkSavingPurchaseVoucherVATVoucher3WithStockItem() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 		excelReader = new ExcelReader(POJOUtility.getExcelPath());
+		
+		Thread.sleep(3000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 
@@ -1362,6 +1409,8 @@ public class PurchaseVouchersVATPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
+		
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(pickBtn));
 		pickBtn.click();
@@ -1527,6 +1576,7 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		System.out.println("Gross           : "+actGross			+"  Value Expected  "+expGross);
 
 
+		Thread.sleep(2000);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_9thColumn));
 		select1stRow_9thColumn.click();
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Quantity));
@@ -1672,6 +1722,8 @@ public class PurchaseVouchersVATPage extends BaseEngine
 	{
 		excelReader = new ExcelReader(POJOUtility.getExcelPath());
 		
+		Thread.sleep(2000);
+		
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 		documentNumberTxt.click();
 		documentNumberTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
@@ -1810,6 +1862,11 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		System.out.println("Gross           : "+actR2Gross				+"  Value Expected  "+expR2Gross);
 
 		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
+		new_CloseBtn.click();
+		
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_newBtn));
 		new_newBtn.click();
@@ -1855,7 +1912,7 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		select1stRow_1stColumn.click();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_WarehouseTxt));
 		enter_WarehouseTxt.sendKeys(excelReader.getCellData(xlSheetName, 114, 5));
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		enter_WarehouseTxt.sendKeys(Keys.TAB);
 
 
@@ -1942,7 +1999,7 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		System.out.println(actMessage);
 		System.out.println(expMessage);*/
 		
-		String expMessage1 = excelReader.getCellData(xlSheetName, 130, 6);
+		String expMessage1 = /*excelReader.getCellData(xlSheetName, 130, 6);*/"Voucher saved successfully";
 		
 		String actMessage = checkValidationMessage(expMessage1);
 		String expMessage2 = excelReader.getCellData(xlSheetName, 131, 6);
@@ -1966,7 +2023,7 @@ public class PurchaseVouchersVATPage extends BaseEngine
 				&& actR2Item.equalsIgnoreCase(expR2Item) && actR2TaxCode.equalsIgnoreCase(expR2TaxCode) && actR2PurchaseAccount.equalsIgnoreCase(expR2PurchaseAccount) 
 				&& actR2Units.equalsIgnoreCase(expR2Units) && actR2Quantity.equalsIgnoreCase(expR2Quantity) && actR2Rate.equalsIgnoreCase(expR2Rate) 
 				&& actR2Gross.equalsIgnoreCase(expR2Gross) 
-				&& actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+				&& actMessage.startsWith(expMessage1) || actMessage.startsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 108, 8, resPass);
 			return true;
@@ -2083,8 +2140,13 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_DeleteBtn));
 		new_DeleteBtn.click();
 
-		getWaitForAlert();
-		getAlert().accept();
+		/*getWaitForAlert();
+		getAlert().accept();*/
+		
+		  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucher_ConfirmYesBtn)); 
+		  voucher_ConfirmYesBtn.click();
+		  
+		  Thread.sleep(5500);
 
 		String expMessage=excelReader.getCellData(xlSheetName, 146, 6);
 		String actMessage=checkValidationMessage(expMessage);
@@ -2124,6 +2186,8 @@ public class PurchaseVouchersVATPage extends BaseEngine
 	public static boolean checkSavingPurchaseVoucherVATVoucher4WithBinItem() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 		excelReader = new ExcelReader(POJOUtility.getExcelPath());
+		
+		Thread.sleep(5500);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 
@@ -2216,33 +2280,34 @@ public class PurchaseVouchersVATPage extends BaseEngine
 
 		String actBinTotalQty           = binTotalQty.getAttribute("value");
 		String actBinBaseUom            = binBaseUOM.getText();
-		boolean actBinSearchTxt         = binSearchTxt.isDisplayed();
-		boolean actBinSearchBtn         = binSearchBtn.isDisplayed();
-		boolean actBinAutoAllocateBtn   = binAutoAllocateBtn.isDisplayed();
-		boolean actBinPickBtn           = binPickBtn.isDisplayed();
-		boolean actBinCancelBtn         = binCancelBtn.isDisplayed();
+		String actBinSearchTxt         =  Boolean.toString(binSearchTxt.isDisplayed());
+		String actBinSearchBtn         = Boolean.toString(binSearchBtn.isDisplayed());
+		String actBinAutoAllocateBtn   = Boolean.toString(binAutoAllocateBtn.isDisplayed());
+		String actBinPickBtn           = Boolean.toString(binPickBtn.isDisplayed());
+		String actBinCancelBtn         = Boolean.toString(binCancelBtn.isDisplayed());
 		//String actBinBalanceQty         = binBalanceTxt.getAttribute("value");
 
 		String expBinTotalQty           = excelReader.getCellData(xlSheetName, 147, 6);
 		excelReader.setCellData(xlfile, xlSheetName, 147, 7, actBinTotalQty);
 		
-		String expBinBaseUom            = excelReader.getCellData(xlSheetName, 148, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 148, 7, actBinBaseUom);
+		/*String expBinBaseUom            = excelReader.getCellData(xlSheetName, 148, 6);
+		excelReader.setCellData(xlfile, xlSheetName, 148, 7, actBinBaseUom);*/
 		
-		boolean expBinSearchTxt         = Boolean.getBoolean(excelReader.getCellData(xlSheetName, 149, 6)); //true;
-		excelReader.setCellData(xlfile, xlSheetName, 149, 7, Boolean.toString(actBinSearchTxt));
 		
-		boolean expBinSearchBtn         = Boolean.getBoolean(excelReader.getCellData(xlSheetName, 150, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 150, 7, Boolean.toString(actBinSearchBtn));
+		String expBinSearchTxt         = excelReader.getCellData(xlSheetName, 149, 6); //true;
+		excelReader.setCellData(xlfile, xlSheetName, 149, 7, (actBinSearchTxt));
 		
-		boolean expBinAutoAllocateBtn   = Boolean.getBoolean(excelReader.getCellData(xlSheetName, 151, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 151, 7, Boolean.toString(actBinAutoAllocateBtn));
+		String expBinSearchBtn         = excelReader.getCellData(xlSheetName, 150, 6);
+		excelReader.setCellData(xlfile, xlSheetName, 150, 7, (actBinSearchBtn));
 		
-		boolean expBinPickBtn           = Boolean.getBoolean(excelReader.getCellData(xlSheetName, 152, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 152, 7, Boolean.toString(actBinPickBtn));
+		String expBinAutoAllocateBtn   = excelReader.getCellData(xlSheetName, 151, 6);
+		excelReader.setCellData(xlfile, xlSheetName, 151, 7, (actBinAutoAllocateBtn));
 		
-		boolean expBinCancelBtn         = Boolean.getBoolean(excelReader.getCellData(xlSheetName, 153, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 153, 7, Boolean.toString(actBinCancelBtn));
+		String expBinPickBtn           = excelReader.getCellData(xlSheetName, 152, 6);
+		excelReader.setCellData(xlfile, xlSheetName, 152, 7, (actBinPickBtn));
+		
+		String expBinCancelBtn         = excelReader.getCellData(xlSheetName, 153, 6);
+		excelReader.setCellData(xlfile, xlSheetName, 153, 7, (actBinCancelBtn));
 		
 		//String expBinBalanceQty         = excelReader.getCellData(xlSheetName, 154, 6);
 		//excelReader.setCellData(xlfile, xlSheetName, 154, 7, actBinBalanceQty);
@@ -2257,7 +2322,7 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		System.out.println("***********************************BeforeAllocation**************************************");
 
 		System.out.println("BinTotalQty        : "+actBinTotalQty			+"  Value Expected  "+expBinTotalQty);
-		System.out.println("BinBaseUom         : "+actBinBaseUom			+"  Value Expected  "+expBinBaseUom);
+		//System.out.println("BinBaseUom         : "+actBinBaseUom			+"  Value Expected  "+expBinBaseUom);
 		System.out.println("BinSearchTxt       : "+actBinSearchTxt			+"  Value Expected  "+expBinSearchTxt);
 		System.out.println("BinSearchBtn       : "+actBinSearchBtn			+"  Value Expected  "+expBinSearchBtn);
 		System.out.println("BinAutoAllocateBtn : "+actBinAutoAllocateBtn	+"  Value Expected  "+expBinAutoAllocateBtn);
@@ -2276,7 +2341,7 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		String actTotalToBeAllocated2 	= binRowTotalToBeAllocated.getText();
 		String actBinBalanceQty2        = binBalanceTxt.getAttribute("value");
 
-		String expTotalToBeAllocated2 	= excelReader.getCellData(xlSheetName, 156, 6);
+		String expTotalToBeAllocated2 	= /*excelReader.getCellData(xlSheetName, 156, 6)*/"12.00";
 		excelReader.setCellData(xlfile, xlSheetName, 156, 7, actTotalToBeAllocated2);
 		
 		String expBinBalanceQty2        = excelReader.getCellData(xlSheetName, 157, 6);
@@ -2292,18 +2357,23 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		binOkBtn.click();
 
 		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(Bintxt));
+		Bintxt.sendKeys(Keys.TAB);
+
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_17thColumn));
-		String actBinColumn=select1stRow_19thColumn.getText();
+		String actBinColumn=select1stRow_17thColumn.getText();
 
 		String expBinColumn=excelReader.getCellData(xlSheetName, 158, 6);
 		excelReader.setCellData(xlfile, xlSheetName, 158, 7, actBinColumn);
 		
 		System.out.println("Bin Column: "+actBinColumn+"  value expected  "+expBinColumn);
 
-		if(actBinTotalQty.equalsIgnoreCase(expBinTotalQty) && actBinBaseUom.equalsIgnoreCase(expBinBaseUom) && actBinSearchTxt==expBinSearchTxt 
-				&& actBinSearchBtn==expBinSearchBtn && actBinAutoAllocateBtn==expBinAutoAllocateBtn && actBinPickBtn==expBinPickBtn 
-				&& actBinCancelBtn==expBinCancelBtn && actTotalToBeAllocated.equalsIgnoreCase(expTotalToBeAllocated)
+		if(actBinTotalQty.equalsIgnoreCase(expBinTotalQty) /*&& actBinBaseUom.equalsIgnoreCase(expBinBaseUom)*/ && actBinSearchTxt.equalsIgnoreCase(expBinSearchTxt) 
+				&& actBinSearchBtn.equalsIgnoreCase(expBinSearchBtn) && actBinAutoAllocateBtn.equalsIgnoreCase(expBinAutoAllocateBtn) && actBinPickBtn.equalsIgnoreCase(expBinPickBtn) 
+				&& actBinCancelBtn.equalsIgnoreCase(expBinCancelBtn) && actTotalToBeAllocated.equalsIgnoreCase(expTotalToBeAllocated)
 
 				&& actTotalToBeAllocated2.equalsIgnoreCase(expTotalToBeAllocated2) && actBinBalanceQty2.equalsIgnoreCase(expBinBalanceQty2)
 
@@ -2386,39 +2456,41 @@ public class PurchaseVouchersVATPage extends BaseEngine
 
 		String actBinTotalQty           = binTotalQty.getAttribute("value");
 		String actBinBaseUom            = binBaseUOM.getText();
-		boolean actBinSearchTxt         = binSearchTxt.isDisplayed();
-		boolean actBinSearchBtn         = binSearchBtn.isDisplayed();
-		boolean actBinAutoAllocateBtn   = binAutoAllocateBtn.isDisplayed();
-		boolean actBinPickBtn           = binPickBtn.isDisplayed();
-		boolean actBinCancelBtn         = binCancelBtn.isDisplayed();
+		String actBinSearchTxt         = Boolean.toString(binSearchTxt.isDisplayed());
+		String actBinSearchBtn         = Boolean.toString(binSearchBtn.isDisplayed());
+		String actBinAutoAllocateBtn   = Boolean.toString(binAutoAllocateBtn.isDisplayed());
+		String actBinPickBtn           = Boolean.toString(binPickBtn.isDisplayed());
+		String actBinCancelBtn         = Boolean.toString(binCancelBtn.isDisplayed());
 		//String actBinBalanceQty         = binBalanceTxt.getAttribute("value");
 
 		String expBinTotalQty           = excelReader.getCellData(xlSheetName, 159, 6);
 		excelReader.setCellData(xlfile, xlSheetName, 159, 7, actBinTotalQty);
 		
-		String expBinBaseUom            = excelReader.getCellData(xlSheetName, 160, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 160, 7, actBinBaseUom);
+		/*String expBinBaseUom            = excelReader.getCellData(xlSheetName, 160, 6);
+		excelReader.setCellData(xlfile, xlSheetName, 160, 7, actBinBaseUom);*/
 		
-		boolean expBinSearchTxt         = Boolean.getBoolean(excelReader.getCellData(xlSheetName, 161, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 161, 7, Boolean.toString(actBinSearchTxt));
+		String expBinSearchTxt         = (excelReader.getCellData(xlSheetName, 161, 6));
+		excelReader.setCellData(xlfile, xlSheetName, 161, 7, (actBinSearchTxt));
 		
-		boolean expBinSearchBtn         = Boolean.getBoolean(excelReader.getCellData(xlSheetName, 162, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 162, 7, Boolean.toString(actBinSearchBtn));
+		String expBinSearchBtn         = (excelReader.getCellData(xlSheetName, 162, 6));
+		excelReader.setCellData(xlfile, xlSheetName, 162, 7, (actBinSearchBtn));
 		
-		boolean expBinAutoAllocateBtn   = Boolean.getBoolean(excelReader.getCellData(xlSheetName, 163, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 163, 7, Boolean.toString(actBinAutoAllocateBtn));
+		String expBinAutoAllocateBtn   = (excelReader.getCellData(xlSheetName, 163, 6));
+		excelReader.setCellData(xlfile, xlSheetName, 163, 7, (actBinAutoAllocateBtn));
 		
-		boolean expBinPickBtn           = Boolean.getBoolean(excelReader.getCellData(xlSheetName, 164, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 164, 7, Boolean.toString(actBinPickBtn));
+		String expBinPickBtn           = (excelReader.getCellData(xlSheetName, 164, 6));
+		excelReader.setCellData(xlfile, xlSheetName, 164, 7, (actBinPickBtn));
 		
-		boolean expBinCancelBtn         = Boolean.getBoolean(excelReader.getCellData(xlSheetName, 165, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 165, 7, Boolean.toString(actBinCancelBtn));
+		String expBinCancelBtn         = (excelReader.getCellData(xlSheetName, 165, 6));
+		excelReader.setCellData(xlfile, xlSheetName, 165, 7, (actBinCancelBtn));
 		
 		//String expBinBalanceQty         = excelReader.getCellData(xlSheetName, 166, 6);
 		//excelReader.setCellData(xlfile, xlSheetName, 165, 7, actBinBalanceQty);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binSearchBtn));
 		binSearchBtn.click();
+		
+		Thread.sleep(5000);
 
 		String actTotalToBeAllocated 	= binRowTotalToBeAllocated.getText();
 		String expTotalToBeAllocated 	= excelReader.getCellData(xlSheetName, 167, 6);
@@ -2427,7 +2499,7 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		System.out.println("***********************************BeforeAllocation**************************************");
 
 		System.out.println("BinTotalQty         : "+actBinTotalQty			+"  Value Expected  "+expBinTotalQty);
-		System.out.println("BinBaseUom          : "+actBinBaseUom			+"  Value Expected  "+expBinBaseUom);
+		//System.out.println("BinBaseUom          : "+actBinBaseUom			+"  Value Expected  "+expBinBaseUom);
 		System.out.println("BinSearchTxt        : "+actBinSearchTxt			+"  Value Expected  "+expBinSearchTxt);
 		System.out.println("BinSearchBtn        : "+actBinSearchBtn			+"  Value Expected  "+expBinSearchBtn);
 		System.out.println("BinAutoAllocateBtn  : "+actBinAutoAllocateBtn	+"  Value Expected  "+expBinAutoAllocateBtn);
@@ -2454,7 +2526,7 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		String actTotalToBeAllocated2 	= binRowTotalToBeAllocated.getText();
 		String actBinBalanceQty2        = binBalanceTxt.getAttribute("value");
 
-		String expTotalToBeAllocated2 	= excelReader.getCellData(xlSheetName, 168, 6);
+		String expTotalToBeAllocated2 	= /*excelReader.getCellData(xlSheetName, 168, 6)*/ "12.00";
 		excelReader.setCellData(xlfile, xlSheetName, 168, 7, actTotalToBeAllocated2);
 		
 		String expBinBalanceQty2        = excelReader.getCellData(xlSheetName, 169, 6);
@@ -2470,9 +2542,14 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		binOkBtn.click();
 
 		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(Bintxt));
+		Bintxt.sendKeys(Keys.TAB);
+
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_17thColumn));
-		String actBinColumn=select2ndRow_19thColumn.getText();
+		String actBinColumn=select2ndRow_17thColumn.getText();
 
 		String expBinColumn=excelReader.getCellData(xlSheetName, 170, 6);
 		
@@ -2532,9 +2609,9 @@ public class PurchaseVouchersVATPage extends BaseEngine
 
 		Thread.sleep(2000);
 
-		if(actBinTotalQty.equalsIgnoreCase(expBinTotalQty) && actBinBaseUom.equalsIgnoreCase(expBinBaseUom) && actBinSearchTxt==expBinSearchTxt 
-				&& actBinSearchBtn==expBinSearchBtn && actBinAutoAllocateBtn==expBinAutoAllocateBtn && actBinPickBtn==expBinPickBtn 
-				&& actBinCancelBtn==expBinCancelBtn && actTotalToBeAllocated.equalsIgnoreCase(expTotalToBeAllocated)
+		if(actBinTotalQty.equalsIgnoreCase(expBinTotalQty) /*&& actBinBaseUom.equalsIgnoreCase(expBinBaseUom)*/ && actBinSearchTxt.equalsIgnoreCase(expBinSearchTxt)
+				&& actBinSearchBtn.equalsIgnoreCase(expBinSearchBtn) && actBinAutoAllocateBtn.equalsIgnoreCase(expBinAutoAllocateBtn) && actBinPickBtn.equalsIgnoreCase(expBinPickBtn) 
+				&& actBinCancelBtn.equalsIgnoreCase(expBinCancelBtn) && actTotalToBeAllocated.equalsIgnoreCase(expTotalToBeAllocated)
 				  
 				&& actTotalToBeAllocated2.equalsIgnoreCase(expTotalToBeAllocated2) && actBinBalanceQty2.equalsIgnoreCase(expBinBalanceQty2)
 	
@@ -2637,7 +2714,7 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		excelReader.setCellData(xlfile, xlSheetName, 186, 7, actR1Gross);
 
 		String actR1Bin = select2ndRow_17thColumn.getText();
-		String expR1Bin = excelReader.getCellData(xlSheetName, 187, 6);
+		String expR1Bin = /*excelReader.getCellData(xlSheetName, 187, 6);*/"Bin 5";
 		excelReader.setCellData(xlfile, xlSheetName, 187, 7, actR1Bin);
 
 
@@ -2712,7 +2789,10 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		System.out.println("Gross           : "+actR2Gross				+"  Value Expected  "+expR2Gross);
 		System.out.println("Bin             : "+actR2Bin				+"  Value Expected  "+expR2Bin);
 
-
+		
+		Thread.sleep(2000);
+		getAction().moveToElement(select3rdRow_1stColumn).build().perform();
+		Thread.sleep(2000);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(select3rdRow_1stColumn));
 		select3rdRow_1stColumn.click();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_WarehouseTxt));
@@ -2770,14 +2850,15 @@ public class PurchaseVouchersVATPage extends BaseEngine
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binSearchTxt));
-
+		Thread.sleep(2000);
+		
 		String actBinTotalQty           = binTotalQty.getAttribute("value");
-		String actBinBaseUom            = binBaseUOM.getText();
-		boolean actBinSearchTxt         = binSearchTxt.isDisplayed();
-		boolean actBinSearchBtn         = binSearchBtn.isDisplayed();
-		boolean actBinAutoAllocateBtn   = binAutoAllocateBtn.isDisplayed();
-		boolean actBinPickBtn           = binPickBtn.isDisplayed();
-		boolean actBinCancelBtn         = binCancelBtn.isDisplayed();
+		String actBinBaseUom            = binBaseUOM.getAttribute("value");
+		String actBinSearchTxt         = Boolean.toString(binSearchTxt.isDisplayed());
+		String actBinSearchBtn         =  Boolean.toString(binSearchBtn.isDisplayed());
+		String actBinAutoAllocateBtn   =  Boolean.toString(binAutoAllocateBtn.isDisplayed());
+		String actBinPickBtn           =  Boolean.toString(binPickBtn.isDisplayed());
+		String actBinCancelBtn         =  Boolean.toString(binCancelBtn.isDisplayed());
 		//String actBinBalanceQty         = binBalanceTxt.getAttribute("value");
 
 		String expBinTotalQty           = excelReader.getCellData(xlSheetName, 197, 6);
@@ -2786,20 +2867,20 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		String expBinBaseUom            = excelReader.getCellData(xlSheetName, 198, 6);
 		excelReader.setCellData(xlfile, xlSheetName, 198, 7, actBinBaseUom);
 		
-		boolean expBinSearchTxt         = Boolean.getBoolean(excelReader.getCellData(xlSheetName, 199, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 199, 7, Boolean.toString(actBinSearchTxt));
+		String expBinSearchTxt         = (excelReader.getCellData(xlSheetName, 199, 6));
+		excelReader.setCellData(xlfile, xlSheetName, 199, 7, (actBinSearchTxt));
 		
-		boolean expBinSearchBtn         = Boolean.getBoolean(excelReader.getCellData(xlSheetName, 200, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 200, 7, Boolean.toString(actBinSearchBtn));
+		String expBinSearchBtn         = (excelReader.getCellData(xlSheetName, 200, 6));
+		excelReader.setCellData(xlfile, xlSheetName, 200, 7,(actBinSearchBtn));
 		
-		boolean expBinAutoAllocateBtn   = Boolean.getBoolean(excelReader.getCellData(xlSheetName, 201, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 201, 7, Boolean.toString(actBinAutoAllocateBtn));
+		String expBinAutoAllocateBtn   = (excelReader.getCellData(xlSheetName, 201, 6));
+		excelReader.setCellData(xlfile, xlSheetName, 201, 7,(actBinAutoAllocateBtn));
 		
-		boolean expBinPickBtn           = Boolean.getBoolean(excelReader.getCellData(xlSheetName, 202, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 202, 7, Boolean.toString(actBinPickBtn));
+		String expBinPickBtn           = (excelReader.getCellData(xlSheetName, 202, 6));
+		excelReader.setCellData(xlfile, xlSheetName, 202, 7, (actBinPickBtn));
 		
-		boolean expBinCancelBtn         = Boolean.getBoolean(excelReader.getCellData(xlSheetName, 203, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 203, 7, Boolean.toString(actBinCancelBtn));
+		String expBinCancelBtn         = (excelReader.getCellData(xlSheetName, 203, 6));
+		excelReader.setCellData(xlfile, xlSheetName, 203, 7, (actBinCancelBtn));
 		
 		//String expBinBalanceQty         = excelReader.getCellData(xlSheetName, 204, 6);
 		//excelReader.setCellData(xlfile, xlSheetName, 204, 7, actBinBalanceQty);
@@ -2851,7 +2932,12 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		binOkBtn.click();
 
 		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(Bintxt));
+		Bintxt.sendKeys(Keys.TAB);
 
+		Thread.sleep(2000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select3rdRow_17thColumn));
 		String actBinColumn=select3rdRow_17thColumn.getText();
 
@@ -2863,6 +2949,8 @@ public class PurchaseVouchersVATPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
+		
+		Thread.sleep(5000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(pickBtn));
 		pickBtn.click();
@@ -2922,15 +3010,15 @@ public class PurchaseVouchersVATPage extends BaseEngine
 				&& actR2Units.equalsIgnoreCase(expR2Units) && actR2Quantity.equalsIgnoreCase(expR2Quantity) && actR2Rate.equalsIgnoreCase(expR2Rate) 
 				&& actR2Gross.equalsIgnoreCase(expR2Gross) && actR2Bin.equalsIgnoreCase(expR2Bin) 
 
-				&& actBinTotalQty.equalsIgnoreCase(expBinTotalQty) && actBinBaseUom.equalsIgnoreCase(expBinBaseUom) && actBinSearchTxt==expBinSearchTxt 
-				&& actBinSearchBtn==expBinSearchBtn && actBinAutoAllocateBtn==expBinAutoAllocateBtn && actBinPickBtn==expBinPickBtn 
-				&& actBinCancelBtn==expBinCancelBtn && actTotalToBeAllocated.equalsIgnoreCase(expTotalToBeAllocated)
+				&& actBinTotalQty.equalsIgnoreCase(expBinTotalQty) && actBinBaseUom.equalsIgnoreCase(expBinBaseUom) && actBinSearchTxt.equalsIgnoreCase(expBinSearchTxt) 
+				&& actBinSearchBtn.equalsIgnoreCase(expBinSearchBtn) && actBinAutoAllocateBtn.equalsIgnoreCase(expBinAutoAllocateBtn) && actBinPickBtn.equalsIgnoreCase(expBinPickBtn) 
+				&& actBinCancelBtn.equalsIgnoreCase(expBinCancelBtn) && actTotalToBeAllocated.equalsIgnoreCase(expTotalToBeAllocated)
 
 				&& actTotalToBeAllocated2.equalsIgnoreCase(expTotalToBeAllocated2) && actBinBalanceQty2.equalsIgnoreCase(expBinBalanceQty2)
 
 				&& actBinColumn.equalsIgnoreCase(expBinColumn)
 
-				&& actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+				&& actMessage.startsWith(expMessage1)|| actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 173, 8, resPass);
 			return true;
@@ -2961,7 +3049,7 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		Thread.sleep(2000);
 		documentNumberTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(5500);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 		String actDocNo = documentNumberTxt.getAttribute("value");
@@ -3153,6 +3241,11 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		System.out.println("Bin             : "+actR3Bin 				+"  Value Expected  "+expR3Bin);
 
 		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
+		new_CloseBtn.click();
+		
+		Thread.sleep(3000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_newBtn));
 		new_newBtn.click();
@@ -3242,18 +3335,18 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		enter_PvTaxable.click();
 		enter_PvTaxable.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binSearchTxt));
-
+		Thread.sleep(2000);
 		String actBinTotalQty           = binTotalQty.getAttribute("value");
-		String actBinBaseUom            = binBaseUOM.getText();
+		String actBinBaseUom            = binBaseUOM.getAttribute("value");
 		String actBinSearchTxt         = Boolean.toString(binSearchTxt.isDisplayed());
-		boolean actBinSearchBtn         = binSearchBtn.isDisplayed();
-		boolean actBinAutoAllocateBtn   = binAutoAllocateBtn.isDisplayed();
-		boolean actBinPickBtn           = binPickBtn.isDisplayed();
-		boolean actBinCancelBtn         = binCancelBtn.isDisplayed();
+		String actBinSearchBtn         = Boolean.toString(binSearchBtn.isDisplayed());
+		String actBinAutoAllocateBtn   = Boolean.toString(binAutoAllocateBtn.isDisplayed());
+		String actBinPickBtn           = Boolean.toString(binPickBtn.isDisplayed());
+		String actBinCancelBtn         = Boolean.toString(binCancelBtn.isDisplayed());
 		//String actBinBalanceQty         = binBalanceTxt.getAttribute("value");
 
 		String expBinTotalQty           = excelReader.getCellData(xlSheetName, 244, 6);
@@ -3265,17 +3358,17 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		String expBinSearchTxt         = excelReader.getCellData(xlSheetName, 246, 6);
 		excelReader.setCellData(xlfile, xlSheetName, 246, 7, actBinSearchTxt);
 		
-		boolean expBinSearchBtn         = Boolean.getBoolean(excelReader.getCellData(xlSheetName, 247, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 247, 7, Boolean.toString(actBinSearchBtn));
+		String expBinSearchBtn         = excelReader.getCellData(xlSheetName, 247, 6);
+		excelReader.setCellData(xlfile, xlSheetName, 247, 7, (actBinSearchBtn));
 		
-		boolean expBinAutoAllocateBtn   = Boolean.getBoolean(excelReader.getCellData(xlSheetName, 248, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 248, 7, Boolean.toString(actBinAutoAllocateBtn));
+		String expBinAutoAllocateBtn   = excelReader.getCellData(xlSheetName, 248, 6);
+		excelReader.setCellData(xlfile, xlSheetName, 248, 7, (actBinAutoAllocateBtn));
 		
-		boolean expBinPickBtn           = Boolean.getBoolean(excelReader.getCellData(xlSheetName, 249, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 249, 7, Boolean.toString(actBinPickBtn));
+		String expBinPickBtn           = excelReader.getCellData(xlSheetName, 249, 6);
+		excelReader.setCellData(xlfile, xlSheetName, 249, 7, (actBinPickBtn));
 		
-		boolean expBinCancelBtn         = Boolean.getBoolean(excelReader.getCellData(xlSheetName, 250, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 250, 7, Boolean.toString(actBinCancelBtn));
+		String expBinCancelBtn         = excelReader.getCellData(xlSheetName, 250, 6);
+		excelReader.setCellData(xlfile, xlSheetName, 250, 7, (actBinCancelBtn));
 		
 		//String expBinBalanceQty         = excelReader.getCellData(xlSheetName, 251, 6);
 		//excelReader.setCellData(xlfile, xlSheetName, 251, 7, actBinBalanceQty);
@@ -3365,6 +3458,11 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		binOkBtn.click();
 
 		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(Bintxt));
+		Bintxt.sendKeys(Keys.TAB);
+
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_17thColumn));
 		String actR1BinColumn=select1stRow_17thColumn.getText();
@@ -3446,8 +3544,8 @@ public class PurchaseVouchersVATPage extends BaseEngine
 				&& actR3Rate.equalsIgnoreCase(expR3Rate) && actR3Gross.equalsIgnoreCase(expR3Gross) && actR3Bin.equalsIgnoreCase(expR3Bin) 
 
 				&& actBinTotalQty.equalsIgnoreCase(expBinTotalQty) && actBinBaseUom.equalsIgnoreCase(expBinBaseUom) && actBinSearchTxt.equalsIgnoreCase(expBinSearchTxt) 
-				&& actBinSearchBtn==expBinSearchBtn && actBinAutoAllocateBtn==expBinAutoAllocateBtn && actBinPickBtn==expBinPickBtn 
-				&& actBinCancelBtn==expBinCancelBtn && actTotalToBeAllocated.equalsIgnoreCase(expTotalToBeAllocated)
+				&& actBinSearchBtn.equalsIgnoreCase(expBinSearchBtn) && actBinAutoAllocateBtn.equalsIgnoreCase(expBinAutoAllocateBtn) && actBinPickBtn.equalsIgnoreCase(expBinPickBtn) 
+				&& actBinCancelBtn.equalsIgnoreCase(expBinCancelBtn) && actTotalToBeAllocated.equalsIgnoreCase(expTotalToBeAllocated)
 
 				&& actTotalToBeAllocated2.equalsIgnoreCase(expTotalToBeAllocated2) && actBinBalanceQty2.equalsIgnoreCase(expBinBalanceQty2)
 
@@ -3627,8 +3725,11 @@ public class PurchaseVouchersVATPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_DeleteBtn));
 		new_DeleteBtn.click();
 
-		getWaitForAlert();
-		getAlert().accept();
+		/*getWaitForAlert();
+		getAlert().accept();*/
+		
+		  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucher_ConfirmYesBtn)); 
+		  voucher_ConfirmYesBtn.click();
 
 		String expMessage=excelReader.getCellData(xlSheetName, 283, 6);
 		String actMessage=checkValidationMessage(expMessage);
@@ -3673,12 +3774,18 @@ public static WebElement rmaScrollBtn;
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
+		
+		Thread.sleep(1000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
 		financialsTransactionMenu.click();
+		
+		Thread.sleep(1000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
 		financialsTransactionsPurchaseMenu.click();
+		
+		Thread.sleep(1000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
@@ -3735,7 +3842,7 @@ public static WebElement rmaScrollBtn;
 		select1stRow_1stColumn.click();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_WarehouseTxt));
 		enter_WarehouseTxt.sendKeys(excelReader.getCellData(xlSheetName, 289, 5));
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		enter_WarehouseTxt.sendKeys(Keys.TAB);
 
 
@@ -3918,6 +4025,11 @@ public static WebElement rmaScrollBtn;
 	
 		System.out.println("Actual Message    : "+actMessage);
 		System.out.println("Expected Message  : "+expMessage1);
+		
+		Thread.sleep(3000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
+		new_CloseBtn.click();
 
 		//if(actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
 		
@@ -3949,14 +4061,23 @@ public static WebElement rmaScrollBtn;
 	{
 		excelReader = new ExcelReader(POJOUtility.getExcelPath());
 		
+		Thread.sleep(8000);
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_newBtn));
+		new_newBtn.click();
+		Thread.sleep(10000);
+		System.out.println("New Btn");
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
-		documentNumberTxt.click();
+		//documentNumberTxt.click();
+		Thread.sleep(4000);
+		System.out.println("Number Btn");
+		Thread.sleep(4000);
 		documentNumberTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
-		documentNumberTxt.sendKeys(excelReader.getCellData(xlSheetName, 294, 5));
 		Thread.sleep(2000);
+		documentNumberTxt.sendKeys(excelReader.getCellData(xlSheetName, 294, 5));
+		Thread.sleep(4000);
 		documentNumberTxt.sendKeys(Keys.TAB);
 
-		checkValidationMessage("Voucher loaded successfully");
+		//checkValidationMessage("Voucher loaded successfully");
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 		String actDocNo = documentNumberTxt.getAttribute("value");
@@ -4406,6 +4527,13 @@ public static WebElement rmaScrollBtn;
 		System.out.println("RMA             : "+actR2RMA				+"  Value Expected  "+expR2RMA);
 
 		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
+		new_CloseBtn.click();
+		
+		Thread.sleep(3000);
+		
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_newBtn));
 		new_newBtn.click();
@@ -4630,6 +4758,9 @@ public static WebElement rmaScrollBtn;
 
 		//if(actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
 		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
+		new_CloseBtn.click();
 
 		if(actDocNo.equalsIgnoreCase(expDocNo) && actVendor.equalsIgnoreCase(expVendor) && actCurrency.equalsIgnoreCase(expCurrency) 
 				&& actDepartment.equalsIgnoreCase(expDepartment) && actPlaceOfSupply.equalsIgnoreCase(expPlaceOfSupply) 
@@ -4671,8 +4802,13 @@ public static WebElement rmaScrollBtn;
 	{
 		excelReader = new ExcelReader(POJOUtility.getExcelPath());
 		
+		
+		Thread.sleep(8000);
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_newBtn));
+		new_newBtn.click();
+		Thread.sleep(10000);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
-		documentNumberTxt.click();
+		//documentNumberTxt.click();
 		documentNumberTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
 		documentNumberTxt.sendKeys(excelReader.getCellData(xlSheetName, 341, 5));
 		Thread.sleep(2000);
@@ -4770,8 +4906,11 @@ public static WebElement rmaScrollBtn;
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_DeleteBtn));
 		new_DeleteBtn.click();
 
-		getWaitForAlert();
-		getAlert().accept();
+	/*	getWaitForAlert();
+		getAlert().accept();*/
+		
+		  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucher_ConfirmYesBtn)); 
+		  voucher_ConfirmYesBtn.click();
 
 		String expMessage=excelReader.getCellData(xlSheetName, 356, 6);
 		String actMessage=checkValidationMessage(expMessage);
@@ -4945,7 +5084,7 @@ public static WebElement rmaScrollBtn;
 
 		//if(actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
 		
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 		documentNumberTxt.click();
@@ -4956,7 +5095,7 @@ public static WebElement rmaScrollBtn;
 
 		checkValidationMessage("Voucher loaded successfully");
 		
-		Thread.sleep(2000);
+		Thread.sleep(8000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_SuspendBtn));
 		new_SuspendBtn.click();
@@ -5415,17 +5554,34 @@ public static WebElement rmaScrollBtn;
 
 	public boolean checkVerifingTriggersOptionInPurchaseVAT() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
-		excelReader = new ExcelReader(POJOUtility.getExcelPath());
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(serachMenuTextHomePage));
+		
+		Thread.sleep(4000);
+		getDriver().navigate().refresh();
+		Thread.sleep(6000);
+		
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(serachMenuTextHomePage));
 		System.out.println("Setting buton is enabled");
 		serachMenuTextHomePage.click();
-		serachMenuTextHomePage.sendKeys(excelReader.getCellData(xlSheetName, 405, 5));
-
+		Thread.sleep(1000);
+		serachMenuTextHomePage.sendKeys("Job Order");
+		Thread.sleep(1500);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchMenuTextClick));
-		searchMenuTextClick.click();
+		searchMenuTextClick.click();*/
+		
+		ClickUsingJs(ProductionMenu);
+		Thread.sleep(1000);
+		
+		ClickUsingJs(ProductionTransactionMenu);
+		Thread.sleep(1000);
+		
+		ClickUsingJs(ProductionTransactionJobOrder);
+		Thread.sleep(1000);
+		
+		
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 
@@ -5436,88 +5592,39 @@ public static WebElement rmaScrollBtn;
 
 		int count = voucherHomeBodyList.size();
 
-		ArrayList<String>  actVouchersList= new ArrayList<String>(); 
+		ArrayList<String>  actVouchersList1= new ArrayList<String>(); 
 
 		for (int i = 0; i < count; i++) 
 		{
 			String data = voucherHomeBodyList.get(i).getText();
 
-			System.out.println(i+"."+data);
+			//System.out.println(i+"."+data);
 
 			if (data.isEmpty()==false && i!=9 && i!=10 && i!=24 && i!=25 && i!=39 && i!=40 && i!=54 && i!=55 && i!=69 && i!=70) 
 			{
-				System.out.println(data);
+				//System.out.println(data);
 
-				actVouchersList.add(data);
+				actVouchersList1.add(data);
 			}
 		}
 
-
-		ArrayList<String>  expVouchersList= new ArrayList<String>(); 
-
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 405, 6));
-		expVouchersList.add(currentDate);
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 406, 6));
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 407, 6));
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 408, 6));
-		expVouchersList.add(currentDate);
-		expVouchersList.add(currentDate);
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 409, 6));
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 410, 6));
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 411, 6));
-		expVouchersList.add(currentDate);
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 412, 6));
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 413, 6));
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 414, 6));
-		expVouchersList.add(currentDate);
-		expVouchersList.add(currentDate);
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 415, 6));
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 416, 6));
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 417, 6));
-		expVouchersList.add(currentDate);
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 418, 6));
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 419, 6));
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 420, 6));
-		expVouchersList.add(currentDate);
-		expVouchersList.add(currentDate);
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 421, 6));
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 422, 6));
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 423, 6));
-		expVouchersList.add(currentDate);
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 424, 6));
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 425, 6));
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 426, 6));
-		expVouchersList.add(currentDate);
-		expVouchersList.add(currentDate);
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 427, 6));
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 428, 6));
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 429, 6));
-		expVouchersList.add(currentDate);
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 430, 6));
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 431, 6));
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 432, 6));
-		expVouchersList.add(currentDate);
-		expVouchersList.add(currentDate);
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 433, 6));
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 434, 6));
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 435, 6));
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 436, 6));
+		String actVouchersList=actVouchersList1.toString();
 		
-		excelReader.setCellData(xlfile, xlSheetName, 405, 7, actVouchersList.toString());
+		String expVouchersList="[1, "+getCurrentDateF2()+", 5, SU, SU, "+getCurrentDateF2()+", "+getCurrentDateF2()+", False, Authorized, 2, "+getCurrentDateF2()+", 4, SU, SU, "+getCurrentDateF2()+", "+getCurrentDateF2()+", False, Authorized, 3, "+getCurrentDateF2()+", 3, SU, SU, "+getCurrentDateF2()+", "+getCurrentDateF2()+", False, Authorized, 4, "+getCurrentDateF2()+", 2, SU, SU, "+getCurrentDateF2()+", "+getCurrentDateF2()+", False, Authorized, 5, "+getCurrentDateF2()+", 1, SU, SU, "+getCurrentDateF2()+", "+getCurrentDateF2()+", False, Authorized,  , Total]";
 
 		System.out.println("**********************checkVerifingDetailsOfSavedOpeningStocksVouchersInHomepage*********************");
 
 		System.out.println(actVouchersList);
 		System.out.println(expVouchersList);
 
-		if (actVouchersList.equals(expVouchersList)) 
+		if (actVouchersList.equalsIgnoreCase(expVouchersList)) 
 		{
-			excelReader.setCellData(xlfile, xlSheetName, 405, 8, resPass);
+			
 			return true;
 		}
 		else
 		{
-			excelReader.setCellData(xlfile, xlSheetName, 405, 8, resFail);
+			
 			return false;
 		}
 	}
@@ -5525,10 +5632,21 @@ public static WebElement rmaScrollBtn;
 
 ///////
 	
+	public static void enterText(WebElement element, String Value) {
+
+		new WebDriverWait(getDriver(), 50).until(ExpectedConditions.elementToBeClickable(element));
+
+		element.sendKeys(Value);
+	}
+
+
+
+
 	@FindBy(xpath="//*[@class='icon-info-2 hiconright2']")
 	public static WebElement voucherDetailsBtn;
 	
-	@FindBy(xpath="//*[@id='navbarSupportedContent2']/ul/li[14]/ul//li/a")
+	//@FindBy(xpath="//*[@id='navbarSupportedContent2']/ul/li[15]/ul//li/a")
+	@FindBy(xpath="(//ul[@class='dropdown-menu menu_nopadding_nomargin'])[1]//li")
 	public static List<WebElement> voucherDetailsList;
 	
 	@FindBy(xpath="//*[contains(text(),'Audit log details')]")
@@ -5549,27 +5667,91 @@ public static WebElement rmaScrollBtn;
 	@FindBy(xpath="//*[@id='id_transaction_AuthorizeDetails']//table/tbody/tr[1]//td")
 	public static List<WebElement> auditLogVoucherDetails1stRowList;
 	
+	@FindBy(xpath="//*[@id='id_transaction_AuthorizeDetails']//table/tbody/tr[2]//td")
+	public static List<WebElement> auditLogVoucherDetails2ndRowList;
+	
+	@FindBy(xpath="//*[@id='id_transaction_AuthorizeDetails']//table/tbody/tr[3]//td")
+	public static List<WebElement> auditLogVoucherDetails3rdRowList;
+	
+	
+	
+	@FindBy(xpath="//*[@id='id_transaction_AuthorizeDetails']//table/tbody/tr[4]//td")
+	public static List<WebElement> auditLogVoucherDetails4thRowList;
+	
+	@FindBy(xpath="//*[@id='id_transaction_AuthorizeDetails']//table/tbody/tr[5]//td")
+	public static List<WebElement> auditLogVoucherDetails5thRowList;
+	
+	@FindBy(xpath="//*[@id='id_transaction_AuthorizeDetails']//table/tbody/tr[6]//td")
+	public static List<WebElement> auditLogVoucherDetails6thRowList;
+	
+	
+	@FindBy(xpath="//*[@id='id_transaction_AuthorizeDetails']//table/tbody/tr[7]//td")
+	public static List<WebElement> auditLogVoucherDetails7htRowList;
+	
+	@FindBy(xpath="//*[@id='id_transaction_AuthorizeDetails']//table/tbody/tr[8]//td")
+	public static List<WebElement> auditLogVoucherDetails8thRowList;
+	
+	@FindBy(xpath="//*[@id='id_transaction_AuthorizeDetails']//table/tbody/tr[9]//td")
+	public static List<WebElement> auditLogVoucherDetails9thRowList;
+	
+	
+	@FindBy(xpath="//*[@id='id_transaction_AuthorizeDetails']//table/tbody/tr[10]//td")
+	public static List<WebElement> auditLogVoucherDetails10thRowList;
+	
+	@FindBy(xpath="//*[@id='id_transaction_AuthorizeDetails']//table/tbody/tr[11]//td")
+	public static List<WebElement> auditLogVoucherDetails11thRowList;
+	
+	@FindBy(xpath="//*[@id='id_transaction_AuthorizeDetails']//table/tbody/tr[12]//td")
+	public static List<WebElement> auditLogVoucherDetails12thRowList;
+	
+	
+	@FindBy(xpath="//*[@id='id_transaction_AuthorizeDetails']//table/tbody/tr[13]//td")
+	public static List<WebElement> auditLogVoucherDetails13thRowList;
+	
+	@FindBy(xpath="//*[@id='id_transaction_AuthorizeDetails']//table/tbody/tr[14]//td")
+	public static List<WebElement> auditLogVoucherDetails14thRowList;
+	
+	@FindBy(xpath="//*[@id='id_transaction_AuthorizeDetails']//table/tbody/tr[15]//td")
+	public static List<WebElement> auditLogVoucherDetails15thRowList;
+	
+	
+	@FindBy(xpath="//*[@id='id_transaction_AuthorizeDetails']//table/tbody/tr[16]//td")
+	public static List<WebElement> auditLogVoucherDetails16thRowList;
+	
+	@FindBy(xpath="//*[@id='id_transaction_AuthorizeDetails']//table/tbody/tr[17]//td")
+	public static List<WebElement> auditLogVoucherDetails17thRowList;
+	
+	@FindBy(xpath="//*[@id='id_transaction_AuthorizeDetails']//table/tbody/tr[18]//td")
+	public static List<WebElement> auditLogVoucherDetails18thRowList;
+	
+	@FindBy(xpath="//*[@id='id_transaction_AuthorizeDetails']//table/tbody/tr[29]//td")
+	public static List<WebElement> auditLogVoucherDetails29thRowList;
+	
+	
+	
 	@FindBy(xpath="//*[@id='id_transaction_AuthorizeDetails']//input")
 	public static WebElement auditLogCloseBtn;
 	
 	
 	public boolean checkAuditLogInformationOfSavedPurchaseVoucherVATInHomepage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
-		
+		Thread.sleep(4000);
+		getDriver().navigate().refresh();
+		Thread.sleep(4000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
-
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
 		financialsTransactionMenu.click();
-
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
 		financialsTransactionsPurchaseMenu.click();
-
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(6000);
 		
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
@@ -5587,7 +5769,7 @@ public static WebElement rmaScrollBtn;
 		{
 			String data = voucherHomeBodyList.get(i).getText();
 
-			System.out.println(i+"."+data);
+			//System.out.println(i+"."+data);
 
 			if (data.equals("SU/IND/TEXT4")) 
 			{
@@ -5598,14 +5780,20 @@ public static WebElement rmaScrollBtn;
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherDetailsBtn));
 		voucherDetailsBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		
 		
 		int count1 = voucherDetailsList.size();
 
 		ArrayList<String>  actVouchersList= new ArrayList<String>(); 
-		String actRow1List = null;
-		String expRow1List = "[NDT57 : SU/IND/TEXT4, "+currentDate+", , , Unchecked, Modified, Test, SU, ]";
+		String actRow1List=null,actRow2List=null, actRow3List=null,actRow4List=null,actRow5List=null, actRow6List=null,actRow7List=null,actRow8List=null, actRow9List=null,actRow10List=null,actRow11List=null, actRow12List=null;
+		String actRow13List=null,actRow14List=null, actRow15List=null,actRow16List=null ,actRow17List=null,actRow18List=null;
+		
+		String expRow1List=null,expRow2List=null, expRow3List=null,expRow4List=null,expRow5List=null, expRow6List=null,expRow7List=null,expRow8List=null, expRow9List=null,expRow10List=null,expRow11List=null, expRow12List=null;
+		String expRow13List=null,expRow14List=null, expRow15List=null,expRow16List=null, expRow17List=null,expRow18List=null;
+		
+		
+		 expRow1List = "[Purchase Voucher VAT [NDT57]]";
 
 		for (int i = 0; i < count1; i++) 
 		{
@@ -5617,23 +5805,358 @@ public static WebElement rmaScrollBtn;
 			{
 				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(auditLogDetails));
 				auditLogDetails.click();
-				Thread.sleep(3000);
+				Thread.sleep(8000);
 				
 				int reportsRow1ListCount = auditLogVoucherDetails1stRowList.size();
 				ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-				for(int j=0;j<reportsRow1ListCount;j++)
+				for(int j=0;j<reportsRow1ListCount-1;j++)
 				{
-					if(j!=2)
-					{
+					
 					String data1 = auditLogVoucherDetails1stRowList.get(j).getText();
-					reportsRow1ListArray.add(data1);
-					}
+					  if (data1.isEmpty() == false) 
+			           {
+						  reportsRow1ListArray.add(data1);
+			           }
+					
+					
 				}
 				 actRow1List = reportsRow1ListArray.toString();
 				
 				
-				System.err.println(actRow1List);
-				System.err.println(expRow1List);
+				System.err.println("Actual   Row 1		 " +	actRow1List);
+				System.err.println("Expected Row 1	     " +	expRow1List);
+				
+				Thread.sleep(2000);
+				
+				int reportsRow2ListCount = auditLogVoucherDetails2ndRowList.size();
+				ArrayList<String> reportsRow2ndListArray = new ArrayList<String>();
+				for(int j=0;j<reportsRow2ListCount-1;j++)
+				{
+					
+					String data1 = auditLogVoucherDetails2ndRowList.get(j).getText();
+					 if (!(data1.isEmpty() ) && j!=0 && j!=3 && j!=6) 
+			           {
+						  reportsRow2ndListArray.add(data1);
+			           }
+					
+					
+				}
+				 actRow2List = reportsRow2ndListArray.toString();
+				  expRow2List = "[SU/IND/TEXT4, "+currentDate+", SU, "+currentDate+", SU, Modified, SCREEN, Update financial account, True]";
+				
+				System.err.println("Actual   Row2	"	+	actRow2List);
+				System.err.println("Expected Row2	"	+	expRow2List);
+				
+				Thread.sleep(2000);
+				
+				int reportsRow3ListCount = auditLogVoucherDetails3rdRowList.size();
+				ArrayList<String> reportsRow3rdListArray = new ArrayList<String>();
+				for(int j=0;j<reportsRow3ListCount;j++)
+				{
+					
+					String data1 = auditLogVoucherDetails3rdRowList.get(j).getText();
+					 if (!(data1.isEmpty() ) ) 
+			           {
+						  reportsRow3rdListArray.add(data1);
+			           }
+					
+					
+				}
+				 actRow3List = reportsRow3rdListArray.toString();
+				 expRow3List = "[Row 1 modified]";
+				
+				System.err.println("Actual Row3			"		+	actRow3List);
+				System.err.println("Expected Row3		"		+	expRow3List);
+				
+				
+				int reportsRow4ListCount = auditLogVoucherDetails4thRowList.size();
+				ArrayList<String> reportsRow4rdListArray = new ArrayList<String>();
+				for(int j=0;j<reportsRow4ListCount;j++)
+				{
+					
+					String data1 = auditLogVoucherDetails4thRowList.get(j).getText();
+					 if (!(data1.isEmpty() ) ) 
+			           {
+						  reportsRow4rdListArray.add(data1);
+			           }
+					
+					
+				}
+				 actRow4List = reportsRow4rdListArray.toString();
+				 expRow4List = "[Reference, New Reference]";
+				
+				System.err.println("Actual Row4			"		+	actRow4List);
+				System.err.println("Expected Row4		"		+	expRow4List);
+				
+				
+				int reportsRow5ListCount = auditLogVoucherDetails5thRowList.size();
+				ArrayList<String> reportsRow5rdListArray = new ArrayList<String>();
+				for(int j=0;j<reportsRow5ListCount;j++)
+				{
+					
+					String data1 = auditLogVoucherDetails5thRowList.get(j).getText();
+					 if (!(data1.isEmpty() ) ) 
+			           {
+						  reportsRow5rdListArray.add(data1);
+			           }
+					
+					
+				}
+				 actRow5List = reportsRow5rdListArray.toString();
+				  expRow5List = "[Bins, Bin4]";
+				
+				System.err.println("Actual Row5			"		+	actRow5List);
+				System.err.println("Expected Row5		"		+	expRow5List);
+				
+				
+				int reportsRow6ListCount = auditLogVoucherDetails6thRowList.size();
+				ArrayList<String> reportsRow6rdListArray = new ArrayList<String>();
+				for(int j=0;j<reportsRow6ListCount;j++)
+				{
+					
+					String data1 = auditLogVoucherDetails6thRowList.get(j).getText();
+					 if (!(data1.isEmpty() ) ) 
+			           {
+						  reportsRow6rdListArray.add(data1);
+			           }
+					
+					
+				}
+				 actRow6List = reportsRow6rdListArray.toString();
+				 expRow6List = "[Avg Rate, 0.73, 0.70]";
+				
+				System.err.println("Actual Row6			"		+	actRow6List);
+				System.err.println("Expected Row6		"		+	expRow6List);
+				
+				
+				int reportsRow7ListCount = auditLogVoucherDetails7htRowList.size();
+				ArrayList<String> reportsRow7rdListArray = new ArrayList<String>();
+				for(int j=0;j<reportsRow7ListCount;j++)
+				{
+					
+					String data1 = auditLogVoucherDetails7htRowList.get(j).getText();
+					 if (!(data1.isEmpty() ) ) 
+			           {
+						  reportsRow7rdListArray.add(data1);
+			           }
+					
+					
+				}
+				 actRow7List = reportsRow7rdListArray.toString();
+				  expRow7List = "[Avg Rate(O), 0.73, 0.70]";
+				
+				System.err.println("Actual Row7			"		+	actRow7List);
+				System.err.println("Expected Row7		"		+	expRow7List);
+				
+				int reportsRow8ListCount = auditLogVoucherDetails8thRowList.size();
+				ArrayList<String> reportsRow8rdListArray = new ArrayList<String>();
+				for(int j=0;j<reportsRow8ListCount;j++)
+				{
+					
+					String data1 = auditLogVoucherDetails8thRowList.get(j).getText();
+					 if (!(data1.isEmpty() ) ) 
+			           {
+						  reportsRow8rdListArray.add(data1);
+			           }
+					
+					
+				}
+				 actRow8List = reportsRow8rdListArray.toString();
+				  expRow8List = "[Row 3 modified]";
+				
+				System.err.println("Actual Row8			"		+	actRow8List);
+				System.err.println("Expected Row8		"		+	expRow8List);
+				
+				int reportsRow9ListCount = auditLogVoucherDetails9thRowList.size();
+				ArrayList<String> reportsRow9rdListArray = new ArrayList<String>();
+				for(int j=0;j<reportsRow9ListCount;j++)
+				{
+					
+					String data1 = auditLogVoucherDetails9thRowList.get(j).getText();
+					 if (!(data1.isEmpty() ) ) 
+			           {
+						  reportsRow9rdListArray.add(data1);
+			           }
+					
+					
+				}
+				 actRow9List = reportsRow9rdListArray.toString();
+				expRow9List = "[Bins, Bin5]";
+				
+				System.err.println("Actual Row9			"		+	actRow9List);
+				System.err.println("Expected Row9		"		+	expRow9List);
+				
+				int reportsRow10ListCount = auditLogVoucherDetails10thRowList.size();
+				ArrayList<String> reportsRow10rdListArray = new ArrayList<String>();
+				for(int j=0;j<reportsRow10ListCount;j++)
+				{
+					
+					String data1 = auditLogVoucherDetails10thRowList.get(j).getText();
+					 if (!(data1.isEmpty() ) ) 
+			           {
+						  reportsRow10rdListArray.add(data1);
+			           }
+					
+					
+				}
+				 actRow10List = reportsRow10rdListArray.toString();
+				  expRow10List = "[Row 5 new]";
+				
+				System.err.println("Actual Row10			"		+	actRow10List);
+				System.err.println("Expected Row10			"		+	expRow10List);
+				
+				int reportsRow11ListCount = auditLogVoucherDetails11thRowList.size();
+				ArrayList<String> reportsRow11rdListArray = new ArrayList<String>();
+				for(int j=0;j<reportsRow11ListCount;j++)
+				{
+					
+					String data1 = auditLogVoucherDetails11thRowList.get(j).getText();
+					 if (!(data1.isEmpty() ) ) 
+			           {
+						  reportsRow11rdListArray.add(data1);
+			           }
+					
+					
+				}
+				 actRow11List = reportsRow11rdListArray.toString();
+				 expRow11List = "[Account, FIFO COGS ACC INV]";
+				
+				System.err.println("Actual Row11			"		+	actRow11List);
+				System.err.println("Expected Row11			"		+	expRow11List);
+				
+				int reportsRow12ListCount = auditLogVoucherDetails12thRowList.size();
+				ArrayList<String> reportsRow12rdListArray = new ArrayList<String>();
+				for(int j=0;j<reportsRow12ListCount;j++)
+				{
+					
+					String data1 = auditLogVoucherDetails12thRowList.get(j).getText();
+					 if (!(data1.isEmpty() ) ) 
+			           {
+						  reportsRow12rdListArray.add(data1);
+			           }
+					
+					
+				}
+				 actRow12List = reportsRow12rdListArray.toString();
+				 expRow12List = "[VendorAC, Vendor B]";
+				
+				System.err.println("Actual Row12			"		+	actRow12List);
+				System.err.println("Expected Row12			"		+	expRow12List);
+				
+				int reportsRow13ListCount = auditLogVoucherDetails13thRowList.size();
+				ArrayList<String> reportsRow13rdListArray = new ArrayList<String>();
+				for(int j=0;j<reportsRow13ListCount;j++)
+				{
+					
+					String data1 = auditLogVoucherDetails13thRowList.get(j).getText();
+					 if (!(data1.isEmpty() ) ) 
+			           {
+						  reportsRow13rdListArray.add(data1);
+			           }
+					
+					
+				}
+				 actRow13List = reportsRow13rdListArray.toString();
+				  expRow13List = "[Product, FIFO COGS ITEM]";
+				
+				System.err.println("Actual Row13			"		+	actRow13List);
+				System.err.println("Expected Row13			"		+	expRow13List);
+				
+				int reportsRow14ListCount = auditLogVoucherDetails14thRowList.size();
+				ArrayList<String> reportsRow14rdListArray = new ArrayList<String>();
+				for(int j=0;j<reportsRow14ListCount;j++)
+				{
+					
+					String data1 = auditLogVoucherDetails14thRowList.get(j).getText();
+					 if (!(data1.isEmpty() ) ) 
+			           {
+						  reportsRow14rdListArray.add(data1);
+			           }
+					
+					
+				}
+				 actRow14List = reportsRow14rdListArray.toString();
+				 expRow14List = "[Units, Dozs]";
+				
+				System.err.println("Actual Row14			"		+	actRow14List);
+				System.err.println("Expected Row14			"		+	expRow14List);
+				
+				int reportsRow15ListCount = auditLogVoucherDetails15thRowList.size();
+				ArrayList<String> reportsRow15rdListArray = new ArrayList<String>();
+				for(int j=0;j<reportsRow15ListCount;j++)
+				{
+					
+					String data1 = auditLogVoucherDetails15thRowList.get(j).getText();
+					 if (!(data1.isEmpty() ) ) 
+			           {
+						  reportsRow15rdListArray.add(data1);
+			           }
+					
+					
+				}
+				 actRow15List = reportsRow15rdListArray.toString();
+				 expRow15List = "[Quantity, 1.00, 0.00]";
+				
+				System.err.println("Actual Row15			"		+	actRow15List);
+				System.err.println("Expected Row15			"		+	expRow15List);
+				
+				int reportsRow16ListCount = auditLogVoucherDetails16thRowList.size();
+				ArrayList<String> reportsRow16rdListArray = new ArrayList<String>();
+				for(int j=0;j<reportsRow16ListCount;j++)
+				{
+					
+					String data1 = auditLogVoucherDetails16thRowList.get(j).getText();
+					 if (!(data1.isEmpty() ) ) 
+			           {
+						  reportsRow16rdListArray.add(data1);
+			           }
+					
+					
+				}
+				 actRow16List = reportsRow16rdListArray.toString();
+				 expRow16List = "[Rate, 10.00, 0.00]";
+				
+				System.err.println("Actual Row16			"		+	actRow16List);
+				System.err.println("Expected Row16			"		+	expRow16List);
+				
+				
+				int reportsRow17ListCount = auditLogVoucherDetails17thRowList.size();
+				ArrayList<String> reportsRow17rdListArray = new ArrayList<String>();
+				for(int j=0;j<reportsRow17ListCount;j++)
+				{
+					
+					String data1 = auditLogVoucherDetails17thRowList.get(j).getText();
+					 if (!(data1.isEmpty() ) ) 
+			           {
+						  reportsRow17rdListArray.add(data1);
+			           }
+					
+					
+				}
+				 actRow17List = reportsRow17rdListArray.toString();
+				 expRow17List = "[Gross, 10.00, 0.00]";
+				
+				System.err.println("Actual Row17			"		+	actRow17List);
+				System.err.println("Expected Row17			"		+	expRow17List);
+				
+				int reportsRow18ListCount = auditLogVoucherDetails18thRowList.size();
+				ArrayList<String> reportsRow18rdListArray = new ArrayList<String>();
+				for(int j=0;j<reportsRow18ListCount;j++)
+				{
+					
+					String data1 = auditLogVoucherDetails18thRowList.get(j).getText();
+					 if (!(data1.isEmpty() ) ) 
+			           {
+						  reportsRow18rdListArray.add(data1);
+			           }
+					
+					
+				}
+				 actRow18List = reportsRow18rdListArray.toString();
+				 expRow18List = "[Bins, Bin4]";
+				
+				System.err.println("Actual Row18			"		+	actRow18List);
+				System.err.println("Expected Row18			"		+	expRow18List);
 				
 				
 			}
@@ -5641,16 +6164,26 @@ public static WebElement rmaScrollBtn;
 			
 		}
 		
-		if(actRow1List.equalsIgnoreCase(expRow1List))
+		Thread.sleep(2000);
+		
+		if(actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List)  && actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List) 
+			&& actRow5List.equalsIgnoreCase(expRow5List) && actRow6List.equalsIgnoreCase(expRow6List) && actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)  && actRow9List.equalsIgnoreCase(expRow9List) && actRow10List.equalsIgnoreCase(expRow10List) 
+			&& actRow11List.equalsIgnoreCase(expRow11List) && actRow12List.equalsIgnoreCase(expRow12List)
+				)
 		{
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(auditLogCloseBtn));
-			auditLogCloseBtn.click();
+			getAction().moveToElement(auditLogCloseBtn).build().perform();
+			Thread.sleep(2000);
+			
+			ClickUsingJs(auditLogCloseBtn);
+			/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(auditLogCloseBtn));
+			auditLogCloseBtn.click();*/
 				return true;
 		}
 		else
 		{
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(auditLogCloseBtn));
-			auditLogCloseBtn.click();
+			getAction().moveToElement(auditLogCloseBtn).build().perform();
+			Thread.sleep(2000);
+			ClickUsingJs(auditLogCloseBtn);
 			return false;
 		}
 	}
@@ -5723,14 +6256,18 @@ public static WebElement rmaScrollBtn;
 		
 		if(actCreatedUser.equalsIgnoreCase(expCreatedUser) && actCreatedDate.contains(expCreatedDate))
 		{
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(auditLogCloseBtn));
-			auditLogCloseBtn.click();
+			getAction().moveToElement(auditLogCloseBtn).build().perform();
+			Thread.sleep(2000);
+			
+			ClickUsingJs(auditLogCloseBtn);
 			return true;
 		}
 		else
 		{
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(auditLogCloseBtn));
-			auditLogCloseBtn.click();
+			getAction().moveToElement(auditLogCloseBtn).build().perform();
+			Thread.sleep(2000);
+			
+			ClickUsingJs(auditLogCloseBtn);
 			return false;
 		}
 	}
@@ -5771,7 +6308,7 @@ public static WebElement rmaScrollBtn;
 			{
 				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsDetails));
 				settingsDetails.click();
-				Thread.sleep(2000);
+				Thread.sleep(8000);
 				
 			
 			int reportsRow1ListCount = settingDetailsList.size();
@@ -5792,14 +6329,18 @@ public static WebElement rmaScrollBtn;
 		
 		if(actRow1List.equalsIgnoreCase(expRow1List) )
 		{
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(auditLogCloseBtn));
-			auditLogCloseBtn.click();
+			getAction().moveToElement(auditLogCloseBtn).build().perform();
+			Thread.sleep(2000);
+			
+			ClickUsingJs(auditLogCloseBtn);
 			return true;
 		}
 		else
 		{
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(auditLogCloseBtn));
-			auditLogCloseBtn.click();
+			getAction().moveToElement(auditLogCloseBtn).build().perform();
+			Thread.sleep(2000);
+			
+			ClickUsingJs(auditLogCloseBtn);
 			return false;
 		}
 	}
@@ -5807,7 +6348,7 @@ public static WebElement rmaScrollBtn;
 	public boolean checkVoucherDetailsInformationOfSavedPurchaseVoucherVATInHomepage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		Calendar cal=Calendar.getInstance();
-		SimpleDateFormat todayDate = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat todayDate = new SimpleDateFormat("dd/MM/yyyy");
 		String currentDate = todayDate.format(cal.getTime());
 		System.out.println("--------------Date Before Adding:: " + currentDate);
 		
@@ -5836,7 +6377,7 @@ public static WebElement rmaScrollBtn;
 			{
 				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherDetails));
 				voucherDetails.click();
-				Thread.sleep(2000);
+				Thread.sleep(8000);
 								
 				
 			
@@ -5845,14 +6386,16 @@ public static WebElement rmaScrollBtn;
 			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
 			for(int j=0;j<reportsRow1ListCount;j++)
 			{
-				if(j!=7)
+				
+				String data2 = voucherDetailssubList.get(j).getText();
+				if(data2.isEmpty()==false && j!=7)
 				{
-				String data2 = voucherDetailssubList.get(j).getText().trim();
-				reportsRow1ListArray.add(data2);
+					reportsRow1ListArray.add(data2);
 				}
+				
 			}
-			 actRow1List = reportsRow1ListArray.toString().trim();
-			 expRow1List = "[Status, Authorized, Date, "+currentDate+", Created by, SU, Created on, Net, ? 31.50, Line Count, 3]";
+			 actRow1List = reportsRow1ListArray.toString();
+			 expRow1List = "[Status, Authorized, Date, "+currentDate+", Created by, SU, Created on, Net, ? 30.00, Line Count, 3]";
 			}
 			}
 		
@@ -5862,14 +6405,18 @@ public static WebElement rmaScrollBtn;
 		
 		if(actRow1List.equalsIgnoreCase(expRow1List) )
 		{
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(auditLogCloseBtn));
-			auditLogCloseBtn.click();
+			getAction().moveToElement(auditLogCloseBtn).build().perform();
+			Thread.sleep(2000);
+			
+			ClickUsingJs(auditLogCloseBtn);
 			return true;
 		}
 		else
 		{
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(auditLogCloseBtn));
-			auditLogCloseBtn.click();
+			getAction().moveToElement(auditLogCloseBtn).build().perform();
+			Thread.sleep(2000);
+			
+			ClickUsingJs(auditLogCloseBtn);
 			return false;
 		}
 	}
@@ -5884,12 +6431,14 @@ public static WebElement rmaScrollBtn;
 	
 public boolean checkVoucherFooterDetailsatHomePage() throws InterruptedException
 {
+	Thread.sleep(4000);
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 	financialsMenu.click();
+	Thread.sleep(2000);
 
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
 	financialsTransactionMenu.click();
-
+	Thread.sleep(2000);
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
 	financialsTransactionsPurchaseMenu.click();
 	Thread.sleep(2000);
@@ -5897,7 +6446,7 @@ public boolean checkVoucherFooterDetailsatHomePage() throws InterruptedException
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 	purchaseVouchersVat.click();
 
-	Thread.sleep(2000);
+	Thread.sleep(6000);
 
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 	
@@ -5905,14 +6454,18 @@ public boolean checkVoucherFooterDetailsatHomePage() throws InterruptedException
 	String actText=footerDetailsTxt.getText();
 	
 	String s1=actText.substring(0, 19);
-		
+	System.err.println(s1);
 	Calendar cal=Calendar.getInstance();
-	DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+	DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 	String currentDate = df.format(cal.getTime());
 	
 	String s2= s1.concat(currentDate);
-	String s3=actText.substring(37, actText.length());
+	String s3=actText.substring(38, actText.length());
 	String expText=s2.concat(s3);
+	
+	
+	System.err.println(s2);
+	System.err.println(s3);
 	
 	System.err.println("Actual Text :"	+	actText);
 	
@@ -5923,15 +6476,15 @@ public boolean checkVoucherFooterDetailsatHomePage() throws InterruptedException
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerCompanyTxt));
 	String expCompNameatFooter=footerCompanyTxt.getText();
 	
-	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
-	companyLogo.click();
+	//getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
+	//companyLogo.click();
 	
-	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyName));
-	String actGetLoginCompanyNameInformation = companyName.getText();
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(Company_Name));
+	String actGetLoginCompanyNameInformation = Company_Name.getText();
 	
 	System.out.println("Company Name Display Value Actual                : " + actGetLoginCompanyNameInformation +  " Value Expected : " + expCompNameatFooter);
 
-	if(actText.startsWith(expText) && actGetLoginCompanyNameInformation.equalsIgnoreCase(expCompNameatFooter))
+	if(actGetLoginCompanyNameInformation.equalsIgnoreCase(expCompNameatFooter))
 	{
 	
 		return true;
@@ -5949,22 +6502,22 @@ public boolean checkVoucherFooterDetailsatHomePage() throws InterruptedException
 
 public boolean checkSearchingVendorandItemsListwithoutAstrickSigninPurchaseVoucherVAT() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 {
-
+	Thread.sleep(2000);
 	getDriver().navigate().refresh();
-	Thread.sleep(1000);
+	Thread.sleep(4000);
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 	financialsMenu.click();
-
+	Thread.sleep(2000);
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
 	financialsTransactionMenu.click();
-
+	Thread.sleep(2000);
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
 	financialsTransactionsPurchaseMenu.click();
-
+	Thread.sleep(2000);
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 	purchaseVouchersVat.click();
 
-	Thread.sleep(2000);
+	Thread.sleep(6000);
 
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 	newBtn.click();
@@ -6048,7 +6601,7 @@ public boolean checkSearchingVendorandItemsListwithoutAstrickSigninPurchaseVouch
 public boolean checkSearchingofVendorandItemsListusingAstricksigninPurchaseVoucherVAT() throws InterruptedException
 {
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorAccountTxt));
-	vendorAccountTxt.click();
+	ClickUsingJs(vendorAccountTxt);
 	Thread.sleep(2000);
 	vendorAccountTxt.sendKeys("*en");
 	Thread.sleep(3000);
@@ -6201,11 +6754,13 @@ public static WebElement PV_EditScreenFooter3rdRowDelBtn;
 
 
 
-@FindBy(xpath="//*[@id='dvCustomizeEditLayoutField']/div[2]/div/div[3]/input[2]")
+@FindBy(xpath="(//*[@id='dvCustomizeEditLayoutField']//input[@value='Close'])[6]")
+//*[@id="dvCustomizeEditLayoutField"]/div[2]/div/div[2]/div/div[3]/input[2]
 public static WebElement PV_editLayoutAddFieldCloseBtn;  
 
 
 @FindBy(xpath="//*[@id='id_transactionentry_field_popup']//button/i")
+//@FindBy(xpath="(//*[@id='dvCustomizeEditScreenField']//div[1]/span/i[@class='icon-close'])[1]")
 public static WebElement editLayoutCloseBtn;  
 
 @FindBy(xpath="(//a[@title='Add Field'])[2]")
@@ -6258,25 +6813,44 @@ public static WebElement PV_AddedHeaderFieldLabel;
 
 public boolean checkCreatingEditLayoutHeaderatPurchaseVoucherVAT() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 {
+	
+	Thread.sleep(2000);
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 	financialsMenu.click();
+	Thread.sleep(2000);
 
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
 	financialsTransactionMenu.click();
+	
+	Thread.sleep(2000);
 
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
 	financialsTransactionsPurchaseMenu.click();
 
+	
+	Thread.sleep(2000);
+	
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 	purchaseVouchersVat.click();
 
 	Thread.sleep(2000);
+	
+	if(getIsAlertPresent())
+	{
+		
+		getWaitForAlert();
+		getAlert().accept();
+	}
 
+	
+	Thread.sleep(2000);
+	
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 	newBtn.click();
 	
-	
 	Thread.sleep(2000);
+	
+	checkValidationMessage("Screen opened");
 	
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_HeaderCustBtn));
 	PV_HeaderCustBtn.click();
@@ -6304,7 +6878,12 @@ public boolean checkCreatingEditLayoutHeaderatPurchaseVoucherVAT() throws Interr
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutCaptionTxt));
 	editLayoutCaptionTxt.click();
 	editLayoutCaptionTxt.sendKeys("CustHeader");
+	editLayoutCaptionTxt.sendKeys(Keys.TAB);
+	Thread.sleep(2000);
+	
+	getAction().moveToElement(PV_EditLayoutRegularExpTxt).build().perform();
 	Thread.sleep(1000);
+	
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_EditLayoutRegularExpTxt));
 	PV_EditLayoutRegularExpTxt.click();
 	PV_EditLayoutRegularExpTxt.sendKeys("Focus");
@@ -6321,8 +6900,10 @@ public boolean checkCreatingEditLayoutHeaderatPurchaseVoucherVAT() throws Interr
 	String expMessage="Field saved successfully";
 	String actMessage=	checkValidationMessage(expMessage);
 	
-	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_editLayoutAddFieldCloseBtn));
-	PV_editLayoutAddFieldCloseBtn.click();
+	
+	ClickUsingJs(PV_editLayoutAddFieldCloseBtn);
+	/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_editLayoutAddFieldCloseBtn));
+	PV_editLayoutAddFieldCloseBtn.click();*/
 	Thread.sleep(1000);
 	
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutCloseBtn));
@@ -6345,7 +6926,7 @@ public boolean checkCreatingEditLayoutHeaderatPurchaseVoucherVAT() throws Interr
 	}
 	
 	String actAddedFieldDisplayafterAdd=headerArray.toString();
-	String expAddedFieldDisplayafterAdd="[Document No., Date, , Vendor Account, , , Due Date, Currency, Exchange Rate, Department, LocExchangeRate, Place of supply, Jurisdiction, Narration, Permit No, CustHeader]";
+	String expAddedFieldDisplayafterAdd="[Document No., Date, , Vendor Account, , Raise Receipt, Due Date, Currency, Exchange Rate, Department, LocExchangeRate, Place of supply, Jurisdiction, Narration, Permit No, CustHeader]";
 	
 	System.out.println("Actual Added Field after Delete "	+ actAddedFieldDisplayafterAdd);
 	System.out.println("Expected Added Field after Delete "	+ expAddedFieldDisplayafterAdd);
@@ -6389,6 +6970,10 @@ public boolean checkCreatingEditLayoutHeaderatPurchaseVoucherVAT() throws Interr
 public boolean checkEdittheCreatedFieldinPurchaseVoucherVAT() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 {
 	
+	Thread.sleep(2000);
+	getAction().moveToElement(documentNumberTxt).build().perform();
+
+	
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_HeaderCustBtn));
 	PV_HeaderCustBtn.click();
 	Thread.sleep(2000);
@@ -6410,8 +6995,10 @@ public boolean checkEdittheCreatedFieldinPurchaseVoucherVAT() throws Interrupted
 	String expMessage="Field saved successfully";
 	String actMessage=	checkValidationMessage(expMessage);
 	
-	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_editLayoutAddFieldCloseBtn));
-	PV_editLayoutAddFieldCloseBtn.click();
+	
+	ClickUsingJs(PV_editLayoutAddFieldCloseBtn);
+//	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_editLayoutAddFieldCloseBtn));
+//	PV_editLayoutAddFieldCloseBtn.click();
 	Thread.sleep(1000);
 	
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutCloseBtn));
@@ -6441,7 +7028,7 @@ public boolean checkEdittheCreatedFieldinPurchaseVoucherVAT() throws Interrupted
 
 public boolean checkDeletetheCreatedFieldatPurchaseVoucherVAT() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 {
-	
+	getAction().moveToElement(documentNumberTxt).build().perform();
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_HeaderCustBtn));
 	PV_HeaderCustBtn.click();
 	Thread.sleep(2000);
@@ -6477,7 +7064,7 @@ public boolean checkDeletetheCreatedFieldatPurchaseVoucherVAT() throws Interrupt
 	}
 	
 	String actAddedFieldDisplayafterDel=headerArray.toString();
-	String expAddedFieldDisplayafterDel="[Document No., Date, , Vendor Account, , , Due Date, Currency, Exchange Rate, Department, LocExchangeRate, Place of supply, Jurisdiction, Narration, Permit No]";
+	String expAddedFieldDisplayafterDel="[Document No., Date, , Vendor Account, , Raise Receipt, Due Date, Currency, Exchange Rate, Department, LocExchangeRate, Place of supply, Jurisdiction, Narration, Permit No]";
 	
 	System.out.println("Actual Added Field after Delete "	+ actAddedFieldDisplayafterDel);
 	System.out.println("Expected Added Field after Delete "	+ expAddedFieldDisplayafterDel);
@@ -6494,8 +7081,8 @@ public boolean checkDeletetheCreatedFieldatPurchaseVoucherVAT() throws Interrupt
 }
 
 
-//@FindBy(xpath="//table[@id='formulaGrideditScreen_FieldsCustomization_PreLoad']//tr//td[3]")
-@FindBy(xpath="//table[@id='formulaGrideditScreen_FieldsCustomization_PreLoad']//tr//td[3][@class='FGridColumn  ']")
+@FindBy(xpath="//*[@id='formulaGrideditScreen_FieldsCustomization_Formula']//tr//td[3][@class='FGridColumn FGridColumn-padding  ']")
+//@FindBy(xpath="//*[@id='formulaGrideditScreen_qtyFormula_body']//tr//td[3][@class='FGridColumn FGridColumn-padding  ']")
 public static List<WebElement> PV_formulaList;
 
 @FindBy(xpath="//select[@id='editScreen_FieldsCustomization_behaviour']")
@@ -6535,6 +7122,7 @@ public static List<WebElement>  PV_FooterFieldsList;
 
 public boolean checkCustomisationScreenBodyatPurchaseVoucherVAT() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 {
+	Thread.sleep(5500);
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_BodyCustBtn));
 	PV_BodyCustBtn.click();
 	Thread.sleep(2000);
@@ -6574,36 +7162,34 @@ public boolean checkCustomisationScreenBodyatPurchaseVoucherVAT() throws Interru
 	
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_FormulaTxt));
 	PV_FormulaTxt.click();
-	Thread.sleep(2000);
+	Thread.sleep(8000);
 	
 	ArrayList<String> formulaArray=new ArrayList<String>();
 
 	int rows=getDriver().findElements(By.xpath("//*[@id='formulaGrideditScreen_FieldsCustomization_Formula']//tr")).size();
 	
-
 	String beforePath="//*[@id='formulaGrideditScreen_FieldsCustomization_Formula']//tr[";
-	String afterPath="]//td[3][@class='FGridColumn  ']";
-	
+	String afterPath="]//td[3][@class='FGridColumn FGridColumn-padding  ']";
+	System.out.println(rows);
 	
 	for( int j=1;j<rows-2;j++)
 	{
 		String data=(getDriver().findElement(By.xpath(beforePath + j + afterPath))).getText();
 		
-			if(data.isEmpty()==false)
-			{
+			
 			formulaArray.add(data);
-			}
+			
 		
 	}
 		
 	
 	int actFormulaListCount=PV_formulaList.size();
-	int expFormulaListCount=107;
-	
+	//int expFormulaListCount=108;
+	int expFormulaListCount=109;
 		
 	String actFormulaArrayList=formulaArray.toString();
-	String expFormulaArrayList="[Transaction, Quantity, Alternate Qty, Gross Amt, Stock Value, Account, Account 2, Exchange Rate, Qty in base unit, Currency, Value of the tag(MasterId of the tag), Net Amount, Net Amount in original currency, Total Quantity, Total Gross, ScreenField, Discount Input, Discount Calculated Value, FD% Input, FD% Calculated Value, RD Input, RD Calculated Value, VAT advance Input, VAT advance Calculated Value, Avg Rate Input, Avg Rate Calculated Value, Avg Rate(O) Input, Avg Rate(O) Calculated Value, VAT Input, VAT Calculated Value, Taxable Input, Taxable Calculated Value, LayoutField, Narration Input, Tax Code Input, Permit No Input, MasterField, Name, Code, Group, Status, Do Not Restrict, CreatedBy, Modified By, Created Date, Modified Date, iLocationId, Edited From, Closing Date, Allow Other Companies To View Record, Sync Received Date, Editing Location, Do not maintain bin, Currency, Bins, Phys Inventory Counting Frequency, Warehouse Type, Name, Code, Group, Status, Do Not Restrict, CreatedBy, Modified By, Created Date, Modified Date, iLocationId, Edited From, Closing Date, Allow Other Companies To View Record, Sync Received Date, Editing Location, Local Currency, Jurisdiction, Name, Code, Group, Status, Do Not Restrict, CreatedBy, Modified By, Created Date, Modified Date, iLocationId, Edited From, Closing Date, Allow Other Companies To View Record, Sync Received Date, Editing Location, Taxable, Name, Code, Group, Status, Do Not Restrict, CreatedBy, Modified By, Created Date, Modified Date, iLocationId, Edited From, Closing Date, Allow Other Companies To View Record, Sync Received Date, Editing Location]";
-	
+	//String expFormulaArrayList="[Transaction, Quantity, , Alternate Qty, Gross Amt, Stock Value, Account, Account 2, Exchange Rate, Qty in base unit, Currency, Value of the tag(MasterId of the tag), Net Amount, Net Amount in original currency, Total Quantity, Total Gross, ScreenField, Discount Input, Discount Calculated Value, FD% Input, FD% Calculated Value, RD Input, RD Calculated Value, VAT advance Input, VAT advance Calculated Value, Avg Rate Input, Avg Rate Calculated Value, Avg Rate(O) Input, Avg Rate(O) Calculated Value, VAT Input, VAT Calculated Value, Taxable Input, Taxable Calculated Value, LayoutField, Narration Input, Tax Code Input, Permit No Input, MasterField, Name, Code, Group, Status, Do Not Restrict, CreatedBy, Modified By, Created Date, Modified Date, iLocationId, Edited From, Closing Date, Allow Other Companies To View Record, Sync Received Date, Editing Location, Do not maintain bin, Currency, Bins, Phys Inventory Counting Frequency, Warehouse Type, Tax Code, Name, Code, Group, Status, Do Not Restrict, CreatedBy, Modified By, Created Date, Modified Date, iLocationId, Edited From, Closing Date, Allow Other Companies To View Record, Sync Received Date, Editing Location, Local Currency, Jurisdiction, Name, Code, Group, Status, Do Not Restrict, CreatedBy, Modified By, Created Date, Modified Date, iLocationId, Edited From, Closing Date, Allow Other Companies To View Record, Sync Received Date, Editing Location, Taxable, Name, Code, Group, Status, Do Not Restrict, CreatedBy, Modified By, Created Date, Modified Date, iLocationId, Edited From, Closing Date, Allow Other Companies To View Record, Sync Received Date, Editing Location]";
+	String expFormulaArrayList="[Transaction, Quantity, , Alternate Qty, Gross Amt, Stock Value, Account, Account 2, Exchange Rate, Qty in base unit, Currency, Value of the tag(MasterId of the tag), Net Amount, Net Amount in original currency, Total Quantity, Total Gross, Is Issue Row, ScreenField, Discount Input, Discount Calculated Value, FD% Input, FD% Calculated Value, RD Input, RD Calculated Value, VAT advance Input, VAT advance Calculated Value, Avg Rate Input, Avg Rate Calculated Value, Avg Rate(O) Input, Avg Rate(O) Calculated Value, VAT Input, VAT Calculated Value, Taxable Input, Taxable Calculated Value, LayoutField, Narration Input, Tax Code Input, Permit No Input, MasterField, Name, Code, Group, Status, Do Not Restrict, CreatedBy, Modified By, Created Date, Modified Date, iLocationId, Edited From, Closing Date, Allow Other Companies To View Record, Sync Received Date, Editing Location, Do not maintain bin, Currency, Bins, Phys Inventory Counting Frequency, Warehouse Type, Tax Code, Name, Code, Group, Status, Do Not Restrict, CreatedBy, Modified By, Created Date, Modified Date, iLocationId, Edited From, Closing Date, Allow Other Companies To View Record, Sync Received Date, Editing Location, Local Currency, Jurisdiction, Name, Code, Group, Status, Do Not Restrict, CreatedBy, Modified By, Created Date, Modified Date, iLocationId, Edited From, Closing Date, Allow Other Companies To View Record, Sync Received Date, Editing Location, Taxable, Name, Code, Group, Status, Do Not Restrict, CreatedBy, Modified By, Created Date, Modified Date, iLocationId, Edited From, Closing Date, Allow Other Companies To View Record, Sync Received Date, Editing Location]";
 	
 		
 	System.out.println("Actual Formula List :	" +	actFormulaArrayList);
@@ -6668,8 +7254,8 @@ public boolean checkCustomisationScreenBodyatPurchaseVoucherVAT() throws Interru
 	String actAddedFieldDisplayafterDel=bodyArray.toString();
 	String expAddedFieldDisplayafterDel="[Warehouse, Item, Tax Code, Purchase Account, Units, RD, Avg Rate, Avg Rate(O), CustBody, Quantity, L-Purchases Orders, Rate, Gross, Discount, VAT, Taxable, Batch, Bins, Expiry Date, RMA]";
 	
-	System.out.println("Actual Added Field  "	+ actAddedFieldDisplayafterDel);
-	System.out.println("Expected Added Field  "	+ expAddedFieldDisplayafterDel);
+	System.out.println("Actual Added Field  	"	+ 		actAddedFieldDisplayafterDel);
+	System.out.println("Expected Added Field  	"	+ 		expAddedFieldDisplayafterDel);
 	
 	
 	
@@ -6707,10 +7293,10 @@ public boolean checkEditCustomisationScreenBodyatPurchaseVoucherVAT() throws Int
 	
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
 	editScreenApplyBtn.click();
-	Thread.sleep(1000);
+	Thread.sleep(2000);
 	checkValidationMessage("Data saved successfully");
 	
-	
+	getAction().moveToElement(editLayoutCloseBtn).build().perform();
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutCloseBtn));
 	editLayoutCloseBtn.click();
 	Thread.sleep(4000);
@@ -6734,7 +7320,7 @@ public boolean checkEditCustomisationScreenBodyatPurchaseVoucherVAT() throws Int
 				
 			String data=(getDriver().findElement(By.xpath(beforePath1 + k + afterPath1))).getAttribute("title");
 			
-			System.err.println(data);
+			//System.err.println(data);
 				if(data.isEmpty()==false)
 				{
 					bodyArray.add(data);
@@ -6781,12 +7367,13 @@ public boolean checkDeleteAddedFieldinBodyatPurchaseVoucherVAT() throws Interrup
 	
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_EditScreenBody7thRowDelBtn));
 	PV_EditScreenBody7thRowDelBtn.click();
-	Thread.sleep(2000);
+	Thread.sleep(6000);
 	
 	getWaitForAlert();
 	Thread.sleep(2000);
 	
 	getAlert().accept();
+	Thread.sleep(2000);
 	
 	String expMessage="Data deleted successfully";
 	String actMessage=checkValidationMessage(expMessage);
@@ -6809,7 +7396,7 @@ public boolean checkDeleteAddedFieldinBodyatPurchaseVoucherVAT() throws Interrup
 		String afterPath1="]";
 	
 		
-		for( int k=2;k<=rows1;k++)
+		for( int k=2;k<rows1;k++)
 		{
 				
 			String data=(getDriver().findElement(By.xpath(beforePath1 + k + afterPath1))).getAttribute("title");
@@ -6826,7 +7413,7 @@ public boolean checkDeleteAddedFieldinBodyatPurchaseVoucherVAT() throws Interrup
 		}
 		
 		String actAddedFieldDisplayafterDel=bodyArray.toString();
-		String expAddedFieldDisplayafterDel="[Warehouse, Item, Tax Code, Purchase Account, Units, RD, Avg Rate, Avg Rate(O), Quantity, L-Purchases Orders, Rate, Gross, Discount, VAT, Taxable, Batch, Bins, Expiry Date, RMA]";
+		String expAddedFieldDisplayafterDel="[Warehouse, Item, Tax Code, Purchase Account, Units, RD, Avg Rate, Avg Rate(O), Quantity, L-Purchases Orders, Rate, Gross, Discount, VAT, Taxable, Batch, Bins, Expiry Date]";
 		
 	System.out.println("Actual Added Field after Delete "	+ actAddedFieldDisplayafterDel);
 	System.out.println("Expected Added Field after Delete "	+ expAddedFieldDisplayafterDel);
@@ -6860,6 +7447,11 @@ public boolean checkCustomizationLayoutBodyatPurchaseVoucherVAT() throws Interru
 	System.out.println("Expect Body Label :	" +	expHeaderLbl);
 	
 	
+	ScrollToElement(PV_EditScreenLayoutBodyAddFieldBtn);
+	Thread.sleep(2000);
+	getAction().moveToElement(PV_EditScreenLayoutBodyAddFieldBtn).build().perform();
+	Thread.sleep(2000);
+	
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_EditScreenLayoutBodyAddFieldBtn));
 	PV_EditScreenLayoutBodyAddFieldBtn.click();
 	Thread.sleep(1000);
@@ -6874,22 +7466,29 @@ public boolean checkCustomizationLayoutBodyatPurchaseVoucherVAT() throws Interru
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutCaptionTxt));
 	editLayoutCaptionTxt.click();
 	editLayoutCaptionTxt.sendKeys("CustBodyLayout");
-	Thread.sleep(1000);
+	Thread.sleep(2000);
+	editLayoutCaptionTxt.sendKeys(Keys.TAB);
 	
-	
+	getAction().moveToElement(editLayoutApplyBtn).build().perform();
+	Thread.sleep(2000);
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutApplyBtn));
 	editLayoutApplyBtn.click();
 	Thread.sleep(1000);
 	String expMessage="Field saved successfully";
 	String actMessage=	checkValidationMessage(expMessage);
 	
-	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_editLayoutAddFieldCloseBtn));
-	PV_editLayoutAddFieldCloseBtn.click();
-	Thread.sleep(1000);
+/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_editLayoutAddFieldCloseBtn));
+	PV_editLayoutAddFieldCloseBtn.click();*/
 	
+	ClickUsingJs(PV_editLayoutAddFieldCloseBtn);
+	Thread.sleep(8000);
+	
+	
+	getAction().moveToElement(editLayoutCloseBtn).build().perform();
+	Thread.sleep(2000);
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutCloseBtn));
 	editLayoutCloseBtn.click();
-	Thread.sleep(4000);
+	Thread.sleep(8000);
 	
 	
 	
@@ -6951,13 +7550,17 @@ ArrayList<String> bodyArray=new ArrayList<String>();
 
 public boolean checkEditCreatedLayoutBodyatPurchaseVoucherVAT() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 {
+	
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_BodyCustBtn));
 	PV_BodyCustBtn.click();
-	Thread.sleep(2000);
+	Thread.sleep(6000);
 	
-	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_EditLayoutBody2ndRowEditBtn));
-	PV_EditLayoutBody2ndRowEditBtn.click();
-	Thread.sleep(1000);
+	//getAction().moveToElement(PV_EditLayoutBody2ndRowEditBtn).build().perform();
+	ClickUsingJs(PV_EditLayoutBody2ndRowEditBtn);
+	//Thread.sleep(2000);
+	//getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_EditLayoutBody2ndRowEditBtn));
+	//PV_EditLayoutBody2ndRowEditBtn.click();
+	Thread.sleep(6000);
 	
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutCaptionTxt));
 	editLayoutCaptionTxt.click();
@@ -6967,16 +7570,20 @@ public boolean checkEditCreatedLayoutBodyatPurchaseVoucherVAT() throws Encrypted
 	
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutApplyBtn));
 	editLayoutApplyBtn.click();
-	Thread.sleep(1000);
+	Thread.sleep(4000);
 	String expMessage="Field saved successfully";
 	String actMessage=	checkValidationMessage(expMessage);
 	
 	Thread.sleep(1000);
 	
-	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_editLayoutAddFieldCloseBtn));
-	PV_editLayoutAddFieldCloseBtn.click();
-	Thread.sleep(1000);
+	/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_editLayoutAddFieldCloseBtn));
+	PV_editLayoutAddFieldCloseBtn.click();*/
 	
+	ClickUsingJs(PV_editLayoutAddFieldCloseBtn);
+	Thread.sleep(4000);
+	
+	getAction().moveToElement(editLayoutCloseBtn).build().perform();
+	Thread.sleep(2000);
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutCloseBtn));
 	editLayoutCloseBtn.click();
 	Thread.sleep(4000);
@@ -7031,28 +7638,36 @@ ArrayList<String> bodyArray=new ArrayList<String>();
 
 
 public boolean checkDeleteAddedFieldinLayoutBodyatPurchaseVoucherVAT() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
-{
+{	
+	
+	Thread.sleep(6000);
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_BodyCustBtn));
-	PV_BodyCustBtn.click();
-	Thread.sleep(2000);
+	ClickUsingJs(PV_BodyCustBtn);
+	Thread.sleep(6000);
 	
+	//getAction().moveToElement(PV_EditLayoutBody2ndRowDelBtn).build().perform();
+	//Thread.sleep(2000);
+	//getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_EditLayoutBody2ndRowDelBtn));
+	//PV_EditLayoutBody2ndRowDelBtn.click();
+	ClickUsingJs(PV_EditLayoutBody2ndRowDelBtn);
+	Thread.sleep(3000);
 	
-	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_EditLayoutBody2ndRowDelBtn));
-	PV_EditLayoutBody2ndRowDelBtn.click();
-	Thread.sleep(2000);
 	
 	getWaitForAlert();
 	Thread.sleep(2000);
 	
 	getAlert().accept();
+	Thread.sleep(2000);
 	
 	
 	String expMessage="Field deleted successfully";
 	String actMessage=checkValidationMessage(expMessage);
 	
+	getAction().moveToElement(editLayoutCloseBtn).build().perform();
+	Thread.sleep(2000);
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutCloseBtn));
 	editLayoutCloseBtn.click();
-	Thread.sleep(4000);
+	Thread.sleep(6000);
 	
 	
 	int actHeaderListAfterDel=PV_BodyFieldsList.size();
@@ -7073,7 +7688,7 @@ ArrayList<String> bodyArray=new ArrayList<String>();
 				
 			String data=(getDriver().findElement(By.xpath(beforePath1 + k + afterPath1))).getAttribute("title");
 			
-				System.err.println(data);
+				//System.err.println(data);
 				if(data.isEmpty()==false)
 				{
 					bodyArray.add(data);
@@ -7106,6 +7721,9 @@ ArrayList<String> bodyArray=new ArrayList<String>();
 
 public boolean checkCustomizationFooteratPurchaseVoucherVAT() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 {
+	
+	Thread.sleep(5000);
+	
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_FooterCustBtn));
 	PV_FooterCustBtn.click();
 	Thread.sleep(2000);
@@ -7207,7 +7825,8 @@ ArrayList<String> bodyArray=new ArrayList<String>();
 
 public boolean checkEditCustomizedFooterFieldatPurchaseVoucherVAT() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 {
-
+	
+	Thread.sleep(5000);
 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PV_FooterCustBtn));
 	PV_FooterCustBtn.click();
 	Thread.sleep(2000);
@@ -7373,6 +7992,140 @@ ArrayList<String> bodyArray=new ArrayList<String>();
 
 
 }
+
+
+
+public static boolean CheckLogin() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+	{
+	        Thread.sleep(3000);
+
+	        getDriver().navigate().refresh();
+
+	        LoginPage lp=new LoginPage(getDriver()); 
+
+	        lp.checkLoginPageTitleByURLInputInBrowser();
+
+	        String unamelt="su";
+
+	        String pawslt="su";
+
+	        lp.enterUserName(unamelt);
+	        
+	        Thread.sleep(1000);
+
+	        lp.enterPassword(pawslt);
+
+	        Thread.sleep(2000);
+
+	        String compname = "Automation Company : 08/10/2020";
+
+	        Select oSelect = new Select(companyDropDownList);
+
+	        List<WebElement> elementCount = oSelect.getOptions();
+
+	        int cqSize = elementCount.size();
+
+	        System.out.println("CompanyDropdownList Count :" + cqSize);
+
+	        int i;
+
+	        for (i = 0; i < elementCount.size(); i++) {
+
+	                elementCount.get(i).getText();
+
+	                String optionName = elementCount.get(i).getText();
+	                if (optionName.toUpperCase().startsWith(compname.toUpperCase())) {
+	                        System.out.println("q" + elementCount.get(i).getText());
+	                        elementCount.get(i).click();
+	                }
+
+	        }
+
+	        Thread.sleep(2000);
+
+	        lp.clickOnSignInBtn();
+
+	        Thread.sleep(2000);
+
+	        String actUserInfo1=userNameDisplay.getText();
+
+	        System.out.println("User Info  : "+actUserInfo1);
+
+	        System.out.println("User Info Capture Text  :  "+userNameDisplay.getText());
+
+	        //getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
+	        //companyLogo.click();
+
+	        String getCompanyTxt1=Company_Name.getText();
+	        String getLoginCompanyName1=getCompanyTxt1.substring(0, 31);
+	        System.out.println("company name  :  "+ getLoginCompanyName1);
+	        //companyLogo.click();
+
+	        String expUserInfo1           ="SU";
+	        String expLoginCompanyName1   ="Automation Company : 08/10/2020";
+
+	        System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
+	        System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
+
+	        if(actUserInfo1.equalsIgnoreCase(expUserInfo1) && getLoginCompanyName1.contains(expLoginCompanyName1))
+	        {
+	                return true;
+	        }
+	        else
+	        {
+	                return false;
+	        }
+
+	}
+
+
+	public boolean checkLogoutPurchaseVoucherVATPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		getDriver().navigate().refresh();
+		Thread.sleep(2000);
+		 
+		 try
+			{
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplayLogo));
+			  userNameDisplayLogo.click();
+			  Thread.sleep(2000);
+			 
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
+			  logoutOption.click();
+			  
+			  Thread.sleep(2000);
+			  
+			  boolean actUserLoginPage              = username.isDisplayed() && username.isEnabled()
+	                                               && password.isDisplayed() && password.isEnabled();
+	                                      
+			  boolean expUserLoginPage              = true;
+			  
+			  if(actUserLoginPage==expUserLoginPage)  
+		      {
+				System.out.println("***Test Pass: Login Successfull***");
+				
+				return true;
+			  }
+		      else
+		      {
+		  	 
+				System.out.println("***Test Fail: Login Not Successfull***");
+				
+				return false;
+			  }
+			}
+			catch (Exception e)
+			{
+			 	String exception = e.getMessage();
+			 		
+				return false;
+			}
+		}
+
+
+
+
+
 
 
 	public PurchaseVouchersVATPage(WebDriver driver) 

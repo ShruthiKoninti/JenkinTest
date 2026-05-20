@@ -15,6 +15,14 @@ public class PaymentsVATVoucherTest extends BaseEngine
 {
 
 	PaymentsVATVoucherPage PV;
+	
+	
+	@Test(priority=275)
+	public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		PV=new PaymentsVATVoucherPage(getDriver());
+		Assert.assertEquals(PV.CheckLogin(), true);
+	}
 
 	@Test(priority=276)
 	public void checkSavingPaymentVATVoucher1() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
@@ -49,6 +57,13 @@ public class PaymentsVATVoucherTest extends BaseEngine
 	{
 		PV=new PaymentsVATVoucherPage(getDriver());
 		Assert.assertEquals(PV.checkVerifingDetailsOfSavedPaymentVATVoucherInHomepage(), true);
+	}
+	
+	@Test(priority=282)
+	public void checkLogoutPaymentsVATVoucherPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		PV=new PaymentsVATVoucherPage(getDriver());
+		Assert.assertEquals(PV.checkLogoutPaymentsVATVoucherPage(), true);
 	}
 
 }

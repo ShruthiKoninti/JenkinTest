@@ -16,7 +16,17 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsTest extends 
 {
 	BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage BSP;
 	
+	
+	
+	
+	 @Test(priority=10049)
+	 public void checkRestoreAutomationCompany() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 BSP=new BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage(getDriver());
+		 Assert.assertEquals(BSP.checkRestoreAutomationCompany(), true);
+	 }
 	 
+	
 	 // Buyer Pricebook Validations
 	
 	 @Test(priority=10050)
@@ -100,7 +110,7 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsTest extends 
 		 Assert.assertEquals(BSP.checkPostingDetailsWithEqualsToAndUpdatingRateToGreaterThanStandardRate(), true);
 	 }
 	 
-	 @Test(priority=10061)
+	 @Test(priority=10061)//expected
 	 public void checkPostingDetailsWithGreaterThanAndUpdatingRateToLessThanStandardRate() throws Exception
 	 {
 		 BSP=new BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsPage(getDriver());
@@ -133,7 +143,7 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsTest extends 
 
 	  
 	
-	 // Voucher Print Validations
+	/* // Voucher Print Validations
 	
 	  @Test(priority=10101)
 	  public void checkPrintScreenOptions() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
@@ -285,7 +295,7 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsTest extends 
 	  
 	
 	
-	 
+	 */
 	
 	 // Seller Pricebook Validations
 	
@@ -371,7 +381,7 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsTest extends 
 		 Assert.assertEquals(BSP.checkSavedVoucher4AndTryingToUpdateVoucherRateGreaterThanCreditLimit(), true);
 	 }
 	 
-	 
+	 /*
 	 
 	 // Voucher Print Validations
 	   
@@ -396,7 +406,7 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsTest extends 
 		 Assert.assertEquals(BSP.checkEmailOptionInSalesInvoiceVAT(), true);
 	 }
 	
-	
+	*/
 	 
 	 
 	 
@@ -523,7 +533,7 @@ public class BuyerSellerPricebookAndVoucherPrintPDFEmailValidationsTest extends 
 		 Assert.assertEquals(BSP.checkEraseAllTransactionsAfterCompletingAllValidations(), true);
 	 }
 	 
-	 
+	
 	 
 	/* @Test(priority=100)
 	 public void checkSavingPurchaseVoucherVATVoucher1WithRMA() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException

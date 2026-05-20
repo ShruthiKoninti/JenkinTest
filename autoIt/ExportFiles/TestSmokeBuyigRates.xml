@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?><PriceBook><BuyerPriceBook MaxId="14"><PriceBookHeader PriceBookType="Buyer" PriceBookId="2" PriceBookName="TestSmokeBuyigRates" Active="True" LocationId="0" CustomizeDisplay="10922" MarkDeleted="False" ModifiedDate="17360293777475" SyncReceivedDate="0" EditingLocation="0" EditedFrom="False" sAbbr="TSBR"><PriceBookDetails><ProductId>2</ProductId>
+﻿<?xml version="1.0" encoding="utf-8"?><PriceBook><BuyerPriceBook MaxId="44"><PriceBookHeader PriceBookType="Buyer" PriceBookId="2" PriceBookName="TestSmokeBuyigRates" Active="True" LocationId="0" CustomizeDisplay="10922" MarkDeleted="False" ModifiedDate="17360293777475" SyncReceivedDate="0" EditingLocation="0" EditedFrom="False" sAbbr="TSBR"><PriceBookDetails><ProductId>2</ProductId>
 <AccountId>0</AccountId>
 <TagId>5</TagId>
 <CurrencyId>47</CurrencyId>

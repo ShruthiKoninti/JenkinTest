@@ -526,6 +526,7 @@ public class BuyerPriceBookPage extends BaseEngine
 		  	
 		  	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(buyerPriceBook_ImportFromExcel));
 		  	buyerPriceBook_ImportFromExcel.click();
+			Thread.sleep(2000);
 		  	
 		  	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(browseButton));
 			browseButton.click();
@@ -2159,7 +2160,132 @@ public class BuyerPriceBookPage extends BaseEngine
 		
 		
 		
-		
+		public static boolean CheckLogin() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+		{
+		        Thread.sleep(3000);
+
+		        getDriver().navigate().refresh();
+
+		        LoginPage lp=new LoginPage(getDriver()); 
+
+		        lp.checkLoginPageTitleByURLInputInBrowser();
+
+		        String unamelt="su";
+
+		        String pawslt="su";
+
+		        lp.enterUserName(unamelt);
+
+		        lp.enterPassword(pawslt);
+
+		        Thread.sleep(2000);
+
+		        String compname = "Automation Company : 08/10/2020";
+
+		        Select oSelect = new Select(companyDropDownList);
+
+		        List<WebElement> elementCount = oSelect.getOptions();
+
+		        int cqSize = elementCount.size();
+
+		        System.out.println("CompanyDropdownList Count :" + cqSize);
+
+		        int i;
+
+		        for (i = 0; i < elementCount.size(); i++) {
+
+		                elementCount.get(i).getText();
+
+		                String optionName = elementCount.get(i).getText();
+		                if (optionName.toUpperCase().startsWith(compname.toUpperCase())) {
+		                        System.out.println("q" + elementCount.get(i).getText());
+		                        elementCount.get(i).click();
+		                }
+
+		        }
+
+		        Thread.sleep(2000);
+
+		        lp.clickOnSignInBtn();
+
+		        Thread.sleep(2000);
+
+		        String actUserInfo1=userNameDisplay.getText();
+
+		        System.out.println("User Info  : "+actUserInfo1);
+
+		        System.out.println("User Info Capture Text  :  "+userNameDisplay.getText());
+
+		        getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
+		        companyLogo.click();
+
+		        String getCompanyTxt1=companyName.getText();
+		        String getLoginCompanyName1=getCompanyTxt1.substring(0, 31);
+		        System.out.println("company name  :  "+ getLoginCompanyName1);
+		        companyLogo.click();
+
+		        String expUserInfo1           ="SU";
+		        String expLoginCompanyName1   ="Automation Company : 08/10/2020";
+
+		        System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
+		        System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
+
+		        if(actUserInfo1.equalsIgnoreCase(expUserInfo1) && getLoginCompanyName1.contains(expLoginCompanyName1))
+		        {
+		                return true;
+		        }
+		        else
+		        {
+		                return false;
+		        }
+
+		}
+
+
+		public boolean checkLogoutBuyerPricebookPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+		{
+			getDriver().navigate().refresh();
+			Thread.sleep(2000);
+			 
+			 try
+				{
+				  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplayLogo));
+				  userNameDisplayLogo.click();
+				  Thread.sleep(2000);
+				 
+				  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
+				  logoutOption.click();
+				  
+				  Thread.sleep(2000);
+				  
+				  boolean actUserLoginPage              = username.isDisplayed() && username.isEnabled()
+		                                               && password.isDisplayed() && password.isEnabled();
+		                                      
+				  boolean expUserLoginPage              = true;
+				  
+				  if(actUserLoginPage==expUserLoginPage)  
+			      {
+					System.out.println("***Test Pass: Login Successfull***");
+					
+					return true;
+				  }
+			      else
+			      {
+			  	 
+					System.out.println("***Test Fail: Login Not Successfull***");
+					
+					return false;
+				  }
+				}
+				catch (Exception e)
+				{
+				 	String exception = e.getMessage();
+				 		
+					return false;
+				}
+			}
+
+
 		
 		
 		

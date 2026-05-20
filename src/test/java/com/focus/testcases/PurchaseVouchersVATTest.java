@@ -15,6 +15,15 @@ public class PurchaseVouchersVATTest extends BaseEngine
 {
 	 PurchaseVouchersVATPage PVV;
 	 
+	 
+	 @Test(priority=255)
+	 public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 PVV=new PurchaseVouchersVATPage(getDriver());
+		 Assert.assertEquals(PVV.CheckLogin(), true);
+	 }
+	
+	 
 	 @Test(priority=257)
 	 public void checkRulesInPurchaseVoucherVat() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -58,12 +67,6 @@ public class PurchaseVouchersVATTest extends BaseEngine
 		 Assert.assertEquals(PVV.checkVerifyingAndDeletingPurchaseVoucherVATVoucher3(), true);
 	 }
 	 
-	 
-	 
-	 
-	 
-	 
-	 
 	 @Test(priority=263)
 	 public void checkSavingPurchaseVoucherVATVoucher3WithStockItem() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -93,12 +96,7 @@ public class PurchaseVouchersVATTest extends BaseEngine
 	 }	 
 	 
 	 
-	 
-	 
-	 
-	 
-	 
-	 @Test(priority=267) // Bin Popup Total to be Allocated issuse
+	 @Test(priority=267) 
 	 public void checkSavingPurchaseVoucherVATVoucher4WithBinItem() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 PVV=new PurchaseVouchersVATPage(getDriver());
@@ -112,14 +110,15 @@ public class PurchaseVouchersVATTest extends BaseEngine
 		 Assert.assertEquals(PVV.checkSavingPurchaseVoucherVATVoucher4With2RowsAndBinItem(), true);
 	 }
 	 
-	 @Test(priority=269) // Bin Popup Total to be Allocated
+	 
+	 @Test(priority=269) 
 	 public void checkEditingPurchaseVoucherVATVoucher4AddRow3AndUpdate() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 PVV=new PurchaseVouchersVATPage(getDriver());
 		 Assert.assertEquals(PVV.checkEditingPurchaseVoucherVATVoucher4AddRow3AndUpdate(), true);
 	 }
 	 
-	 @Test(priority=270)//Expected
+	 @Test(priority=270)
 	 public void checkVerifyingPurchaseVoucherVATVoucher4SavingVoucher5() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 PVV=new PurchaseVouchersVATPage(getDriver());
@@ -135,7 +134,7 @@ public class PurchaseVouchersVATTest extends BaseEngine
 	 
 	 
 	 
-	 
+	//RMA 
 	 
 	 @Test(priority=272)
 	 public void checkSavingPurchaseVoucherVATVoucher5WithRMAItem() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
@@ -207,7 +206,7 @@ public class PurchaseVouchersVATTest extends BaseEngine
 	 
 	 //////Verifying Info button//////////////////
 	 
-	 @Test(priority=281)
+	 @Test(priority=281)//see
 	 public void checkAuditLogInformationOfSavedPurchaseVoucherVATInHomepage() throws Exception
 	 {
 		 PVV=new PurchaseVouchersVATPage(getDriver());
@@ -229,7 +228,7 @@ public class PurchaseVouchersVATTest extends BaseEngine
 		 Assert.assertEquals(PVV.checkSettingDetailsInformationOfSavedPurchaseVoucherVATInHomepage(), true);
 	 }
 	 
-	 @Test(priority=284)
+	 @Test(priority=284)//see
 	 public void checkVoucherDetailsInformationOfSavedPurchaseVoucherVATInHomepage() throws Exception
 	 {
 		 PVV=new PurchaseVouchersVATPage(getDriver());
@@ -299,8 +298,7 @@ public class PurchaseVouchersVATTest extends BaseEngine
 	 }
 	 
 	 
-	 
-	 @Test(priority=291)
+	 @Test(priority=291)//see
 	 public void checkCustomisationScreenBodyatPurchaseVoucherVAT() throws Exception
 	 {
 		 PVV=new PurchaseVouchersVATPage(getDriver());
@@ -370,9 +368,14 @@ public class PurchaseVouchersVATTest extends BaseEngine
 	 }
 	 
 	 
+	 
 	
-	
-	
+	 @Test(priority=300)
+	 public void  checkLogoutPurchaseVoucherVATPage() throws Exception
+	 {
+		 PVV=new PurchaseVouchersVATPage(getDriver());
+		 Assert.assertEquals(PVV. checkLogoutPurchaseVoucherVATPage(), true);
+	 }
 	
 	 
 	 

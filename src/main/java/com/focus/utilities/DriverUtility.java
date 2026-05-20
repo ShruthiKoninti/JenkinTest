@@ -10,6 +10,9 @@ public interface DriverUtility
 	String chromeValue="\\drivers\\chromedriver.exe";
 	String firefoxValue="\\drivers\\geckodriver.exe";
 	String ieValue="\\drivers\\IEDriverServer.exe";
+	//String FINUrl="https://focus-qa-17/focusx#";
+	String FINUrl="http://localhost/focusX#";
+	
 	
 	
 }

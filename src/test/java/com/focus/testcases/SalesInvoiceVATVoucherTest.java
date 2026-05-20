@@ -14,7 +14,14 @@ import com.focus.base.BaseEngine;
 public class SalesInvoiceVATVoucherTest extends BaseEngine
 {
 	SalesInvoiceVATVoucherPage SIV;
-/*	
+	
+	@Test(priority=305)
+	public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		SIV=new SalesInvoiceVATVoucherPage(getDriver());
+		Assert.assertEquals(SIV.CheckLogin(), true);
+	}
+	
 	@Test(priority=307)
 	public void checkSalesInvoiceVoucherToCheckLinkPopUpScreenWithCRTlPlusL() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
@@ -63,7 +70,7 @@ public class SalesInvoiceVATVoucherTest extends BaseEngine
 		SIV=new SalesInvoiceVATVoucherPage(getDriver());
 		Assert.assertEquals(SIV.checkSuspendOptionInSalesInvoiceHomePage(), true);
 	}
-*/
+
 	@Test(priority=314) // Trans Negative Message
 	public void checkSalesInvoiceVoucherToCheckRMAItemLinkPopUpScreenWithCRTlPlusL() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
@@ -71,14 +78,14 @@ public class SalesInvoiceVATVoucherTest extends BaseEngine
 		Assert.assertEquals(SIV.checkSalesInvoiceVoucherToCheckRMAItemLinkPopUpScreenWithCRTlPlusL(), true);
 	}
 
-	@Test(priority=315)//RMA Outward
+	@Test(priority=315)
 	public void checkSalesInvoiceVoucherLinewiseConsumingForRmaItem() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
 		SIV=new SalesInvoiceVATVoucherPage(getDriver());
 		Assert.assertEquals(SIV.checkSalesInvoiceVoucherLinewiseConsumingForRmaItem(), true);
 	}
 
-	@Test(priority=316)//check it
+	@Test(priority=316)
 	public void checkDeleteOptionInSalesInvoiceEntryPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
 		SIV=new SalesInvoiceVATVoucherPage(getDriver());
@@ -149,7 +156,7 @@ public class SalesInvoiceVATVoucherTest extends BaseEngine
 
 
 
-	@Test(priority=325)
+	//@Test(priority=325)
 	public void checkVoucherFooterDetailsatHomePage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
 		SIV=new SalesInvoiceVATVoucherPage(getDriver());
@@ -174,6 +181,13 @@ public class SalesInvoiceVATVoucherTest extends BaseEngine
 
 	
 	
+	
+	@Test(priority=329)
+	public void checkLogoutSalesInvoiceVATvoucherPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		SIV=new SalesInvoiceVATVoucherPage(getDriver());
+		Assert.assertEquals(SIV.checkLogoutSalesInvoiceVATvoucherPage(), true);
+	}
 	
 	
 }

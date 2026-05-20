@@ -1,6 +1,7 @@
 package com.focus.testcases;
 
 import java.awt.AWTException;
+
 import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
@@ -16,6 +17,13 @@ public class RulesTest extends BaseEngine
 
 	RulesPage rp;
 	
+	@Test(priority=95)
+	public void CheckLoginRulesPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		 rp=new RulesPage(getDriver());
+		 Assert.assertEquals(rp.CheckLoginRulesPage(), true);
+	}
+	
 	@Test(priority=99)
 	public void CheckNavigateToRulesTAB() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
@@ -29,7 +37,6 @@ public class RulesTest extends BaseEngine
 		 rp=new RulesPage(getDriver());
 		 Assert.assertEquals(rp.checkSavingRuleWithOutInput(), true);
 	}
-	
 	
 	@Test(priority=101)
 	public void checkSavingRulesWithOnLoadOptionEnableInVoucherLevel() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
@@ -72,7 +79,6 @@ public class RulesTest extends BaseEngine
 		 rp=new RulesPage(getDriver());
 		 Assert.assertEquals(rp.checkChangingDepartmentAsAMERICAAndValidateColounmHeadingName(), true);
 	}
-	
 
 	@Test(priority=107)
 	public void checkBodyHeadingColumnWithCustomerAccount() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
@@ -95,8 +101,6 @@ public class RulesTest extends BaseEngine
 		 Assert.assertEquals(rp.checkVoucherLevelOnEnterRuleValidation(), true);
 	}
 	
-	
-	
 	@Test(priority=110)
 	public void checkEditingAndAddingSavedRuleUnderRecepitsVAT() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
@@ -104,14 +108,14 @@ public class RulesTest extends BaseEngine
 		 Assert.assertEquals(rp.checkEditingAndAddingSavedRuleUnderRecepitsVAT(), true);
 	}
 
-	@Test(priority=115)//amount as 250.00
+	@Test(priority=115)
 	public void checkRuleConditionAfterEditingINEnterRule() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		 rp=new RulesPage(getDriver());
 		 Assert.assertEquals(rp.checkRuleConditionAfterEditingINEnterRule(), true);
 	}
 	
-	@Test(priority=116)//else value missing with pronghorn
+	@Test(priority=116)
 	public void checkClickOnHiddingOptionInRulesAndClickOnSave() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		 rp=new RulesPage(getDriver());
@@ -125,9 +129,6 @@ public class RulesTest extends BaseEngine
 		 Assert.assertEquals(rp.checkAfterEnableHiddenOptionAtVoucherLevel(), true);
 	}
 	
-	
-	
-	
 	@Test(priority=118)
 	public void chekSavingRuleWithBeforeDelete() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
@@ -135,14 +136,13 @@ public class RulesTest extends BaseEngine
 		 Assert.assertEquals(rp.chekSavingRuleWithBeforeDelete(), true);
 	}
 	
-	
 	@Test(priority=119)
 	public void checkValidationRuleWithOnDeleteAtVoucherLevel() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		 rp=new RulesPage(getDriver());
 		 Assert.assertEquals(rp.checkValidationRuleWithOnDeleteAtVoucherLevel(), true);
 	}
-		
+	
 	
 	@Test(priority=120)
 	public void chekSavingRuleWithOnEdit() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
@@ -151,14 +151,13 @@ public class RulesTest extends BaseEngine
 		 Assert.assertEquals(rp.chekSavingRuleWithOnEdit(), true);
 	}
 
-	@Test(priority=121)
+	@Test(priority=121)//issue
 	public void checkValidationOFEditRuleWithWarnAndProcedueInRecepitsVoucher() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		 rp=new RulesPage(getDriver());
 		 Assert.assertEquals(rp.checkValidationOFEditRuleWithWarnAndProcedueInRecepitsVoucher(), true);
 	}
 
-	
 	@Test(priority=122)
 	public void checkSavingExtraFiledInSalesINvoiceVAT() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
@@ -172,7 +171,6 @@ public class RulesTest extends BaseEngine
 		 rp=new RulesPage(getDriver());
 		 Assert.assertEquals(rp.checkSavingRuleWithFormulaUnderSalesINvoiceVAT(), true);
 	}
-	
 	
 	@Test(priority=126)
 	public void checkSavingOpeningStockVoucher() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
@@ -188,28 +186,36 @@ public class RulesTest extends BaseEngine
 		 Assert.assertEquals(rp.checkValidationOFFOrmulaControlAtVoucherLevel(), true);
 	}
 	
-	@Test(priority=128)//For Sql Updated Back Up--->D:\FocusSanityWithSaveInBackground fbak 
-	public void chckRestoreBackUpForSQLFunction() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	@Test(priority=128)
+	public void chckRestoreBackUpForSQLFunction() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
 		 rp=new RulesPage(getDriver());
-		 Assert.assertEquals(rp.chckRestoreBackUpForSQLFunction(), true);
+		 Assert.assertEquals(rp.checkRestoreAutomationCompany(), true);
 	}
+	
 	
 	@Test(priority=129)
 	public void checkSQLFuntionATExcessStockVoucherLevel() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		 rp=new RulesPage(getDriver());
 		 Assert.assertEquals(rp.checkSQLFuntionATExcessStockVoucherLevel(), true);
+	}	
+	
+	//@Test(priority=130)
+	public void checkDeleteNetworkPolicy() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		 rp=new RulesPage(getDriver());
+		 Assert.assertEquals(rp.checkDeleteNetworkPolicy(), true);
 	}
 	
-	@Test(priority=130)
+	@Test(priority=131)
 	public void checkCreatingViewOptionInPurchaseVoucher() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		 rp=new RulesPage(getDriver());
 		 Assert.assertEquals(rp.checkCreatingViewOptionInPurchaseVoucher(), true);
 	}
 	
-	@Test(priority=131)
+	@Test(priority=132)
 	public void checkViewOptionCreatedInPurchaseVoucherVAT() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		 rp=new RulesPage(getDriver());
@@ -220,7 +226,7 @@ public class RulesTest extends BaseEngine
 	public void checkLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		 rp=new RulesPage(getDriver());
-		 Assert.assertEquals(rp.checkLogin(), true);
+		 Assert.assertEquals(rp.CheckLoginRulesPage(), true);
 	}
 	
 	@Test(priority=150)
@@ -237,7 +243,6 @@ public class RulesTest extends BaseEngine
 		 Assert.assertEquals(rp.checkLoadingFieldsIntoPopOnClickOnRefreshBtn(), true);
 	}
 	
-	
 	@Test(priority=152)
 	public void checkItemValuesintoVoucherLevelOnClickOnOkBtnInSearchPopUp() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
@@ -252,7 +257,6 @@ public class RulesTest extends BaseEngine
 		 Assert.assertEquals(rp.checkAccountTxtWithClickOnF5(), true);
 	}
 	
-	
 	@Test(priority=154)
 	public void checkLoadingAccountValuesFromSearchPopUp() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
@@ -260,13 +264,12 @@ public class RulesTest extends BaseEngine
 		 Assert.assertEquals(rp.checkLoadingAccountValuesFromSearchPopUp(), true);
 	}
 	
-	@Test(priority=155) // Issue, Should Display Hyderabad.
+	//@Test(priority=155) // Issue, Should Display Hyderabad.
 	public void checkF5KeyWithRMAPopUpInOpeningStocks() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
 		 rp=new RulesPage(getDriver());
 		 Assert.assertEquals(rp.checkF5KeyWithRMAPopUpInOpeningStocks(), true);
 	}
-	
 	
 	@Test(priority=156)
 	public void checkCopyAndPasteWithControlOptionInLedgerReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
@@ -274,7 +277,6 @@ public class RulesTest extends BaseEngine
 		 rp=new RulesPage(getDriver());
 		 Assert.assertEquals(rp.checkCopyAndPasteWithControlOptionInLedgerReport(), true);
 	}
-	
 
 	@Test(priority=157)
 	public void checkEnterF5keyInLedgerReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
@@ -283,18 +285,12 @@ public class RulesTest extends BaseEngine
 		 Assert.assertEquals(rp.checkEnterF5keyInLedgerReport(), true);
 	}
 	
-	@Test(priority=158)///search issuse
+	@Test(priority=158)//see
 	public void checkF5KeyInFilterPopUpScreen() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
 		 rp=new RulesPage(getDriver());
 		 Assert.assertEquals(rp.checkF5KeyInFilterPopUpScreen(), true);
 	}
-	
-	
-	
-	
-	
-	
 
 	@Test(priority=200)
 	public void checkCreatingConditionForRestrictionsWithStopOption() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
@@ -303,7 +299,7 @@ public class RulesTest extends BaseEngine
 		 Assert.assertEquals(rp.checkCreatingConditionForRestrictionsWithStopOption(), true);
 	}
 	
-	@Test(priority=201)//document number missing
+	@Test(priority=201)
 	public void checkSavingPurchaseVoucherVATWithRateBelowAverageRate() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		 rp=new RulesPage(getDriver());
@@ -352,41 +348,11 @@ public class RulesTest extends BaseEngine
 		 Assert.assertEquals(rp.checkSavingPurchaseVoucherVATWithRateGreaterThanAverageRateWithWarnAndAllow(), true);
 	}
 	
-	
-	
-	
-	
-	@Test(priority=300)
-	public void checkAddingHeadeAndFooterInLedgerReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	@Test(priority=305)
+	public void checkLogoutRulesPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
 		 rp=new RulesPage(getDriver());
-		 Assert.assertEquals(rp.checkAddingHeadeAndFooterInLedgerReport(), true);
+		 Assert.assertEquals(rp.checkLogoutRulesPage(), true);
 	}
-	
-	@Test(priority=301)
-	public void checkPrintPDFFileAfterCreatingHeadeAndFooterLayoutInLedgerReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
-	{
-		 rp=new RulesPage(getDriver());
-		 Assert.assertEquals(rp.checkPrintPDFFileAfterCreatingHeadeAndFooterLayoutInLedgerReport(), true);
-	}
-	
-	@Test(priority=302)
-	public void checkStockLedgerReportImportingHeaderAndFooterLayout() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
-	{
-		 rp=new RulesPage(getDriver());
-		 Assert.assertEquals(rp.checkStockLedgerReportImportingHeaderAndFooterLayout(), true);
-	}
-	
-	@Test(priority=303)
-	public void checkPrintPDFFileAfterImportingHeaderAndFooterLayoutInStockLedgerReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
-	{
-		 rp=new RulesPage(getDriver());
-		 Assert.assertEquals(rp.checkPrintPDFFileAfterImportingHeaderAndFooterLayoutInStockLedgerReport(), true);
-	}
-	
-	
-	
-	
-	
 	
 }

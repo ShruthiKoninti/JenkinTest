@@ -20,15 +20,15 @@ public class LogoutTest extends BaseEngine
 	private static String lgnTitle;
 	private static String getCompanyInfo;
 
-
-/*	  @Test(priority=7)
+/*
+	  @Test(priority=7)
 	  public void verifyClickOnLogoutOptionInWrapperLayoutOptions() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	  {
 	       
 	       Assert.assertEquals(LoginPage.checkClickOnLogoutOptionInWrapperLayoutOptions(), true);
 	  }
-*/	  
-
+  
+*/
 	  /*//@Test(priority=3)
 	  public int getTheCompanyListCountBeforeCompanyList()
 	  {

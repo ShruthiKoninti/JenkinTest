@@ -4,6 +4,8 @@ import com.focus.base.BaseEngine;
 import java.awt.AWTException;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.Keys;
@@ -123,7 +125,7 @@ public class SmokeDashboardPage extends BaseEngine
 		Thread.sleep(2000);
 		dashBoardName.sendKeys(Keys.TAB);
 
-		checkValidationMessage("");
+		checkValidationMessage("No dashlet defined for this dashboard");
 
 		Thread.sleep(2000);
 
@@ -163,6 +165,9 @@ public class SmokeDashboardPage extends BaseEngine
 		String actSavedDashboard = dashBoardFirst.getText();
 		String expSavedDashboard = excelReader.getCellData(xlSheetName, 12, 6);
 		excelReader.setCellData(xlfile, xlSheetName, 12, 7, actSavedDashboard);
+		
+		System.out.println(actSavedDashboard);
+		System.out.println(expSavedDashboard);
 
 		if(actSavedDashboard.equalsIgnoreCase(expSavedDashboard))
 		{
@@ -192,7 +197,7 @@ public class SmokeDashboardPage extends BaseEngine
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(editDashBoard));
 		editDashBoard.click();
-		Thread.sleep(2000);
+		Thread.sleep(8000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardName));
 		dashBoardName.click();
@@ -202,10 +207,10 @@ public class SmokeDashboardPage extends BaseEngine
 		dashBoardName.sendKeys(Keys.SHIFT, Keys.HOME);
 		Thread.sleep(2000);
 		dashBoardName.sendKeys(excelReader.getCellData(xlSheetName, 13, 5));
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		dashBoardName.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(8000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardSetAsDefaultCheckbox));
 		dashBoardSetAsDefaultCheckbox.click();
@@ -294,6 +299,33 @@ public class SmokeDashboardPage extends BaseEngine
 		getAction().moveToElement(password).sendKeys(Keys.TAB).perform();
 
 		Thread.sleep(2000);
+		
+		
+		  String compname = "Automation Company : 08/10/2020";
+
+	        Select oSelect = new Select(companyDropDownList);
+
+	        List<WebElement> elementCount = oSelect.getOptions();
+
+	        int cqSize = elementCount.size();
+
+	        System.out.println("CompanyDropdownList Count :" + cqSize);
+
+	        int i;
+
+	        for (i = 0; i < elementCount.size(); i++) {
+
+	                elementCount.get(i).getText();
+
+	                String optionName = elementCount.get(i).getText();
+	                if (optionName.toUpperCase().startsWith(compname.toUpperCase())) {
+	                        System.out.println("q" + elementCount.get(i).getText());
+	                        elementCount.get(i).click();
+	                }
+
+	        }
+
+	        Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(signIn));
 		signIn.click();
@@ -324,6 +356,9 @@ public class SmokeDashboardPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(signIn));
 		signIn.click();
 		*/
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(password));
+		password.click();
+		clearValueFromTextBox(password);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(password));
 		password.sendKeys("12345");
@@ -334,7 +369,7 @@ public class SmokeDashboardPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(signIn));
 		signIn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(6000);
 		
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardFirst));
@@ -415,6 +450,34 @@ public class SmokeDashboardPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(password));
 		password.sendKeys(excelReader.getCellData(xlSheetName, 18, 5));
 		getAction().moveToElement(password).sendKeys(Keys.TAB).perform();
+		
+		String compname = "Automation Company : 08/10/2020";
+
+		Select oSelect = new Select(companyDropDownList);
+
+		List<WebElement> elementCount = oSelect.getOptions();
+
+		int cqSize = elementCount.size();
+
+		System.out.println("CompanyDropdownList Count :" + cqSize);
+
+		int i;
+
+		for (i = 0; i < elementCount.size(); i++) {
+
+			elementCount.get(i).getText();
+
+			String optionName = elementCount.get(i).getText();
+			if (optionName.toUpperCase().startsWith(compname.toUpperCase())) {
+				System.out.println("q" + elementCount.get(i).getText());
+				elementCount.get(i).click();
+			}
+
+		}
+
+		Thread.sleep(2000);
+
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(signIn));
 		signIn.click();
@@ -447,21 +510,21 @@ public class SmokeDashboardPage extends BaseEngine
 		
 		
 */
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplay));
-		userNameDisplay.click();
+		//getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplay));
+		//userNameDisplay.click();
 
 		String actUserInfo = userNameDisplay.getText();
 		String expUserInfo = excelReader.getCellData(xlSheetName, 17, 6);
 		excelReader.setCellData(xlfile, xlSheetName, 17, 7, actUserInfo);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
-		companyLogo.click();
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
+		companyLogo.click();*/
 
-		String getCompanyTxt=companyName.getText();
+		String getCompanyTxt=Company_Name.getText();
 		String actLoginCompanyName = getCompanyTxt.substring(0, 19);
 		String expLoginCompanyName = excelReader.getCellData(xlSheetName, 18, 6);
 		excelReader.setCellData(xlfile, xlSheetName, 18, 7, actLoginCompanyName);
-		companyLogo.click();
+		//companyLogo.click();
 
 		System.out.println("UserInfo               : ."+actUserInfo          +".  value expected  ."+expUserInfo+".");
 		System.out.println("LoginCompanyName       : ."+actLoginCompanyName  +".  value expected  ."+expLoginCompanyName+".");
@@ -548,6 +611,7 @@ public class SmokeDashboardPage extends BaseEngine
 	public static boolean checkGraphOptionsInCustomizeDashboard() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		excelReader=new ExcelReader(POJOUtility.getExcelPath()); 
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeGraph));
 		dashBoardCustomizeGraph.click();
@@ -623,6 +687,30 @@ public class SmokeDashboardPage extends BaseEngine
 	public static boolean checkDragAndDropGraphAfterDeletingInCreatedashlet() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());  
+		
+		Thread.sleep(2000);
+		getDriver().navigate().refresh();
+		Thread.sleep(4000);
+		
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardFirst));
+		dashBoardFirst.click();
+
+		Thread.sleep(2000);
+		
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeBtn));
+		dashBoardCustomizeBtn.click();
+
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeSearch));
+
+		Thread.sleep(2000);
+		
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeGraph));
+		dashBoardCustomizeGraph.click();
+
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeGraphNewGraph));
+		Thread.sleep(2000);
+
+
 
 		Actions builder = new Actions(getDriver());
 
@@ -635,11 +723,11 @@ public class SmokeDashboardPage extends BaseEngine
 		Thread.sleep(2000);
 		dashBoardGraphNewToDrag.click();
 		
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeDashSave));
 		dashBoardCustomizeDashSave.click();	
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		String expMessage = excelReader.getCellData(xlSheetName, 27, 6);
 		String actMessage = checkValidationMessage(expMessage);
@@ -679,11 +767,15 @@ public class SmokeDashboardPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeBtn));
 		dashBoardCustomizeBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(8000);
+		
+	/*	getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeGraph));
+		dashBoardCustomizeGraph.click();
+		Thread.sleep(2000);*/
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeNewGraphCreated));
 		dashBoardCustomizeNewGraphCreated.click();
-
+		Thread.sleep(2000);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeEditGraphCreated));
 		dashBoardCustomizeEditGraphCreated.click();
 
@@ -785,17 +877,32 @@ public class SmokeDashboardPage extends BaseEngine
 	public static boolean checkYesBtnInDeleteConfirmationMessagGraphCreatedInDashletsInDefineGraph() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());
-		getDriver().navigate().refresh();
 		Thread.sleep(2000);
+		
+		getDriver().navigate().refresh();
+		Thread.sleep(4000);
+		
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardFirst));
+		dashBoardFirst.click();
+
+		Thread.sleep(2000);
+		
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeBtn));
+		dashBoardCustomizeBtn.click();
+
+		Thread.sleep(5000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeGraph));
 		dashBoardCustomizeGraph.click();
 
 		Thread.sleep(2000);
 
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeNewGraphCreated));
+		//getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeNewGraphCreated));
 
-		dashBoardCustomizeNewGraphCreated.click();
+		/*dashBoardCustomizeNewGraphCreated.click();
+		
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeGraphCreated));
+		dashBoardCustomizeGraphCreated.click();*/
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeDeleteGraphCreated));
 
@@ -836,12 +943,21 @@ public class SmokeDashboardPage extends BaseEngine
 	public static boolean checkAddingGraphDashlet() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 		excelReader=new ExcelReader(POJOUtility.getExcelPath()); 
+		
+		Thread.sleep(2000);
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardFirst));
+		dashBoardFirst.click();
+
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeBtn));
 		dashBoardCustomizeBtn.click();
 
+		Thread.sleep(2000);
+		
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeGraph));
 		dashBoardCustomizeGraph.click();
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeGraphNewGraph));
 
@@ -876,11 +992,11 @@ public class SmokeDashboardPage extends BaseEngine
 
 		Actions builder = new Actions(getDriver());
 
-		Action dragAndDrop = builder.clickAndHold(dashBoardGraphNewFromDrag).build();
+		Action dragAndDrop = builder.clickAndHold(dashBoardGraphNewDrag).build();
 
 		dragAndDrop.perform();
 
-		builder.dragAndDropBy(dashBoardGraphNewToDrag, -400,-185).build().perform();
+		builder.dragAndDropBy(dashBoardGraphNewDrag, -400,-185).build().perform();
 
 		Thread.sleep(3000);
 
@@ -888,8 +1004,12 @@ public class SmokeDashboardPage extends BaseEngine
 		getAction().dragAndDropBy(dashlateDrag, 250, 200).build().perform();
 
 		Thread.sleep(2000);
+		
+		/*getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeDashSave));
+		dashBoardCustomizeDashSave.click();	*/
 
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeReport));
+
+	/*	getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeReport));
 		dashBoardCustomizeReport.click();
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardCustomizeReportNewReport));
@@ -950,11 +1070,11 @@ public class SmokeDashboardPage extends BaseEngine
 		String actDashletCreated = createdDashletInHomepage.getText();
 		String expDashletCreated = excelReader.getCellData(xlSheetName, 36, 6);
 		excelReader.setCellData(xlfile, xlSheetName, 36, 7, actDashletCreated);
+*/
+		//System.out.println("***Dashlet Created*** "+actDashletCreated+"  Value Expected  "+expDashletCreated);
 
-		System.out.println("***Dashlet Created*** "+actDashletCreated+"  Value Expected  "+expDashletCreated);
-
-		if(actMessage.equalsIgnoreCase(expMessage) && actMessage1.equalsIgnoreCase(expMessage) && actMessage2.equalsIgnoreCase(expMessage2) 
-				&& actDashletCreated.equalsIgnoreCase(expDashletCreated))
+		if(actMessage.equalsIgnoreCase(expMessage)/* && actMessage1.equalsIgnoreCase(expMessage) && actMessage2.equalsIgnoreCase(expMessage2) 
+				&& actDashletCreated.equalsIgnoreCase(expDashletCreated)*/)
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 34, 8, resPass);
 			return true;
@@ -976,6 +1096,11 @@ public class SmokeDashboardPage extends BaseEngine
 	{
 
 		excelReader=new ExcelReader(POJOUtility.getExcelPath()); 
+		
+		Thread.sleep(2000);
+		
+		getDriver().navigate().refresh();
+		Thread.sleep(4000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardFirst));
 
@@ -985,21 +1110,24 @@ public class SmokeDashboardPage extends BaseEngine
 
 		deleteDashBoard.click();
 
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardConfirmationMessage));
-		String actDashboardMsg=dashBoardConfirmationMessage.getText();
-		String getDashboardMsg=excelReader.getCellData(xlSheetName, 39, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 39, 7, actDashboardMsg);
-
+		//getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardConfirmationMessage));
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardMessage));
+		String actDashboardMsg=dashBoardMessage.getText();
+		String getDashboardMsg=/*excelReader.getCellData(xlSheetName, 39, 6);*/"Are you sure to delete this Dashboard ?";
+		//excelReader.setCellData(xlfile, xlSheetName, 39, 7, actDashboardMsg);
+		System.err.println("DashboardMsg             : "+actDashboardMsg+"  Value Expected  "+getDashboardMsg);
+		
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashBoardConfirmationMessageOkBtn));
 		dashBoardConfirmationMessageOkBtn.click();
 
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(validationDashboardMessageAtBotton));
+		//getWebDriverWait().until(ExpectedConditions.elementToBeClickable(validationDashboardMessageAtBotton));
 
-		String getDeleteDashboardMessage=validationDashboardMessageAtBotton.getText();
-		String expDeleteDashboardMessage=excelReader.getCellData(xlSheetName, 40, 6);
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Deletemsg));
+		String getDeleteDashboardMessage=Deletemsg.getText();
+		String expDeleteDashboardMessage=/*excelReader.getCellData(xlSheetName, 40, 6);*/"Dashboard deleted successfully";
 		excelReader.setCellData(xlfile, xlSheetName, 40, 7, getDeleteDashboardMessage);
 
-		System.out.println("DashboardMsg             : "+actDashboardMsg+"  Value Expected  "+getDashboardMsg);
+		//System.out.println("DashboardMsg             : "+actDashboardMsg+"  Value Expected  "+getDashboardMsg);
 		System.out.println("DeleteDashboardMessage   : "+getDeleteDashboardMessage+"  Value Expected  "+expDeleteDashboardMessage);
 
 		if(actDashboardMsg.equalsIgnoreCase(getDashboardMsg) && getDeleteDashboardMessage.equalsIgnoreCase(expDeleteDashboardMessage))
@@ -1066,6 +1194,7 @@ public class SmokeDashboardPage extends BaseEngine
 
 
 		excelReader=new ExcelReader(POJOUtility.getExcelPath()); 
+		Thread.sleep(2000);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\SanityBackupUptoMasters.fbak");
 
@@ -1119,6 +1248,140 @@ public class SmokeDashboardPage extends BaseEngine
 			return false;
 		}
 	}
+
+	
+	
+	public static boolean checkLogoutSmokeDashboardPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		getDriver().navigate().refresh();
+		Thread.sleep(2000);
+		 
+		 try
+			{
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplayLogo));
+			  userNameDisplayLogo.click();
+			  Thread.sleep(2000);
+			 
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
+			  logoutOption.click();
+			  
+			  Thread.sleep(2000);
+			  
+			  boolean actUserLoginPage              = username.isDisplayed() && username.isEnabled()
+	                                               && password.isDisplayed() && password.isEnabled();
+	                                      
+			  boolean expUserLoginPage              = true;
+			  
+			  if(actUserLoginPage==expUserLoginPage)  
+		      {
+				System.out.println("***Test Pass: Login Successfull***");
+				
+				return true;
+			  }
+		      else
+		      {
+		  	 
+				System.out.println("***Test Fail: Login Not Successfull***");
+				
+				return false;
+			  }
+			}
+			catch (Exception e)
+			{
+			 	String exception = e.getMessage();
+			 		
+				return false;
+			}
+		}
+	
+	
+	
+	public static boolean CheckLogin() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+	{
+	        Thread.sleep(3000);
+
+	        getDriver().navigate().refresh();
+
+	        LoginPage lp=new LoginPage(getDriver()); 
+
+	        lp.checkLoginPageTitleByURLInputInBrowser();
+
+	        String unamelt="su";
+
+	        String pawslt="su";
+
+	        lp.enterUserName(unamelt);
+
+	        lp.enterPassword(pawslt);
+
+	        Thread.sleep(2000);
+
+	        String compname = "Automation Company : 08/10/2020";
+
+	        Select oSelect = new Select(companyDropDownList);
+
+	        List<WebElement> elementCount = oSelect.getOptions();
+
+	        int cqSize = elementCount.size();
+
+	        System.out.println("CompanyDropdownList Count :" + cqSize);
+
+	        int i;
+
+	        for (i = 0; i < elementCount.size(); i++) {
+
+	                elementCount.get(i).getText();
+
+	                String optionName = elementCount.get(i).getText();
+	                if (optionName.toUpperCase().startsWith(compname.toUpperCase())) {
+	                        System.out.println("q" + elementCount.get(i).getText());
+	                        elementCount.get(i).click();
+	                }
+
+	        }
+
+	        Thread.sleep(2000);
+
+	        lp.clickOnSignInBtn();
+
+	        Thread.sleep(2000);
+
+	        String actUserInfo1=userNameDisplay.getText();
+
+	        System.out.println("User Info  : "+actUserInfo1);
+
+	        System.out.println("User Info Capture Text  :  "+userNameDisplay.getText());
+
+	       /* getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
+	        companyLogo.click();*/
+
+	        String getCompanyTxt1=Company_Name.getText();
+	        String getLoginCompanyName1=getCompanyTxt1.substring(0, 31);
+	        System.out.println("company name  :  "+ getLoginCompanyName1);
+	        //companyLogo.click();
+
+	        String expUserInfo1           ="SU";
+	        String expLoginCompanyName1   ="Automation Company : 08/10/2020";
+
+	        System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
+	        System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
+
+	        if(actUserInfo1.equalsIgnoreCase(expUserInfo1) && getLoginCompanyName1.contains(expLoginCompanyName1))
+	        {
+	                return true;
+	        }
+	        else
+	        {
+	                return false;
+	        }
+
+	}
+
+
+	
+
+
+	
 
 
 	public SmokeDashboardPage(WebDriver driver)

@@ -18,6 +18,8 @@ import org.testng.ITestResult;
 
 import org.testng.Reporter;
 
+import com.focus.base.BaseEngine;
+
 public class Listener implements ITestListener, ISuiteListener, IInvokedMethodListener {
 
 	// This belongs to ISuiteListener and will execute before the Suite start
@@ -94,6 +96,17 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
 	public void onTestSkipped(ITestResult arg0) {
 
 		printTestResults(arg0);
+		BaseEngine.extentReports.flush();
+		//Utility.logger = Utility.reports.createTest(arg0.getMethod().getDescription());
+		//Utility.logger.log(Status.SKIP, arg0.getMethod().getDescription());
+		//Utility.reports.flush();
+		
+		//BaseEngine.ExtentReports.flush();
+		//BaseEngine.getLogger() = Utility.extentReports.createTest(arg0.getMethod().getDescription());
+		//BaseEngine.getLogger().log(Status.SKIP, arg0.getMethod().getDescription());
+		
+		//BaseEngine.getLogger(Status.SKIP, arg0.getMethod().getDescription());
+		//BaseEngine.extentReports.flush();
 
 	}
 

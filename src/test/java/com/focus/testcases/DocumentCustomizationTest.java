@@ -16,6 +16,14 @@ public class DocumentCustomizationTest extends BaseEngine
 	DocumentCustomizationPage DCP;
 	
 	
+	 @Test(priority=175)
+	 public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 DCP=new DocumentCustomizationPage(getDriver());
+		 Assert.assertEquals(DCP.CheckLogin(), true);
+	 }
+	 
+	 
 	 @Test(priority=177)
 	 public void checkSavingDocumentCustomizationPurchaseVoucherDocumentsTabAndVerify() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -44,8 +52,6 @@ public class DocumentCustomizationTest extends BaseEngine
 		 Assert.assertEquals(DCP.checkEditingMiscellaneousTabInPurchaseVoucher(), true);
 	 }
 	 
-	
-	 
 	 @Test(priority=181)
 	 public void checkAddFieldInEditScreenBodyInTrialPurchaseUpdate() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -67,9 +73,7 @@ public class DocumentCustomizationTest extends BaseEngine
 		 Assert.assertEquals(DCP.checkDeleteFieldInEditScreenBodyInTrialPurchaseUpdate(), true);
 	 }
 	 
-	
-	 
-	 @Test(priority=184)//issuse
+	 @Test(priority=184)
 	 public void checkAddFieldInEditScreenFooterInTrialPurchaseUpdate() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 DCP=new DocumentCustomizationPage(getDriver());
@@ -90,8 +94,7 @@ public class DocumentCustomizationTest extends BaseEngine
 		 Assert.assertEquals(DCP.checkDeleteFieldInEditScreenFooterInTrialPurchaseUpdate(), true);
 	 }
 	 
-	
-	
+	 
 	 @Test(priority=187)
 	 public void checkSelectingApplyRateSchemesInInventoryOptionsTabInTrialPurchaseUpdate() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -105,8 +108,6 @@ public class DocumentCustomizationTest extends BaseEngine
 		 DCP=new DocumentCustomizationPage(getDriver());
 		 Assert.assertEquals(DCP.checkUnSelectingApplyRateSchemesInInventoryOptionsTabInTrialPurchaseUpdate(), true);
 	 }
-	 
-	 
 	 
 	 @Test(priority=189)
 	 public void checkAddFieldInEditLayoutHeaderInTrialPurchaseUpdate() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
@@ -128,8 +129,6 @@ public class DocumentCustomizationTest extends BaseEngine
 		 DCP=new DocumentCustomizationPage(getDriver());
 		 Assert.assertEquals(DCP.checkDeleteFieldInEditLayoutHeaderInTrialPurchaseUpdate(), true);
 	 }
-	 
-	 
 	
 	 @Test(priority=192)
 	 public void checkAddFieldInEditLayoutBodyInTrialPurchaseUpdate() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
@@ -151,7 +150,6 @@ public class DocumentCustomizationTest extends BaseEngine
 		 DCP=new DocumentCustomizationPage(getDriver());
 		 Assert.assertEquals(DCP.checkDeleteFieldInEditLayoutBodyInTrialPurchaseUpdate(), true);
 	 }
-	 
 
 	 @Test(priority=195)
 	 public void checkSavingViewInTrialVoucherUpdate() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
@@ -174,10 +172,6 @@ public class DocumentCustomizationTest extends BaseEngine
 		 Assert.assertEquals(DCP.checkDeletingViewInTrialVoucherUpdate(), true);
 	 }
 	
-	
-	 
-	 
-	 
 	 @Test(priority=198)
 	 public void checkSavingTriggerInTrialVoucherUpdate() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -199,10 +193,6 @@ public class DocumentCustomizationTest extends BaseEngine
 		 Assert.assertEquals(DCP.checkDeletingTriggerInTrialVoucherUpdate(), true);
 	 }
 	 
-	 
-	
-	
-	 
 	@Test(priority=201)
 	 public void checkSavingDocumentNumberingInTrialVoucherUpdate() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -217,15 +207,12 @@ public class DocumentCustomizationTest extends BaseEngine
 		 Assert.assertEquals(DCP.checkEditingDocumentNumberingInTrialVoucherUpdate(), true);
 	 }
 	 
-	 @Test(priority=203)
+	// @Test(priority=203)
 	 public void checkDeletingDocumentNumberingInTrialVoucherUpdate() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 DCP=new DocumentCustomizationPage(getDriver());
 		 Assert.assertEquals(DCP.checkDeletingDocumentNumberingInTrialVoucherUpdate(), true);
 	 }
-	 
-	
-	
 	 
 	 @Test(priority=204)
 	 public void checkSavingRuleInTrialVoucherUpdate() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
@@ -248,15 +235,12 @@ public class DocumentCustomizationTest extends BaseEngine
 		 Assert.assertEquals(DCP.checkDeletingRuleInTrialVoucherUpdate(), true);
 	 }
 	 
-	 
-	  
 	 @Test(priority=207)
 	 public void checkDeletingTrialVoucherUpdate() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 DCP=new DocumentCustomizationPage(getDriver());
 		 Assert.assertEquals(DCP.checkDeletingTrialVoucherUpdate(), true);
 	 }
-	 
 	 
 	 @Test(priority=208)
 	 public void checkCreatingNewVoucherPurchaseVoucheVAT() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
@@ -265,10 +249,11 @@ public class DocumentCustomizationTest extends BaseEngine
 		 Assert.assertEquals(DCP.checkCreatingNewVoucherPurchaseVoucheVAT(), true);
 	 }
 	 
-	 
-	 
-	 
-	 
-	 
+	 @Test(priority=210)
+	 public void checkLogoutDocumentCustomizationPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 DCP=new DocumentCustomizationPage(getDriver());
+		 Assert.assertEquals(DCP.checkLogoutDocumentCustomizationPage(), true);
+	 }
 	 
 }

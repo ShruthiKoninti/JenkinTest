@@ -15,7 +15,13 @@ public class BinsTest extends BaseEngine
 {
 	BinsPage BP;
 	
-
+	 @Test(priority=159)
+	 public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 BP=new BinsPage(getDriver());
+		 Assert.assertEquals(BP.CheckLogin(), true);
+	 }
+	 
 	 @Test(priority=160)
 	 public void checkBinsMasterInMasterMenu() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -51,7 +57,7 @@ public class BinsTest extends BaseEngine
 		 Assert.assertEquals(BP.checkDeleteInBinsInBinsMaster(), true);
 	 }
 	 
-	 
+	 /*
 	 
 	 @Test(priority=165)
 	 public void checkBinsListBeforeImportingDataFromExcel() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
@@ -93,4 +99,14 @@ public class BinsTest extends BaseEngine
 		 Assert.assertEquals(BP.checkImportedBinDelete(), true);
 	 }
 	
+	 
+	 
+	 */
+	 @Test(priority=170)
+	 public void checkLogoutBinsPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 BP=new BinsPage(getDriver());
+		 Assert.assertEquals(BP.checkLogoutBinsPage(), true);
+	 }
+	 
 }

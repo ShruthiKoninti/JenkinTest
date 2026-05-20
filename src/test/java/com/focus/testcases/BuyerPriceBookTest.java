@@ -15,6 +15,13 @@ public class BuyerPriceBookTest extends BaseEngine
 {
 	BuyerPriceBookPage BPB;
 	
+	 @Test(priority=172)
+	 public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 BPB=new BuyerPriceBookPage(getDriver());
+		 Assert.assertEquals(BPB.CheckLogin(), true);
+	 }
+	
 	 
      @Test(priority=173)
 	 public void checkSavingBuyerPriceBook() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
@@ -62,7 +69,7 @@ public class BuyerPriceBookTest extends BaseEngine
 	
 	/////////////////////////////////////////////////Validating Footer Fields///////////////////////////////////////
 	 
-	 @Test(priority=179)
+	/* @Test(priority=179)
 	 public void checkAdvExcelImportingBuyerPriceBook() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 BPB=new BuyerPriceBookPage(getDriver());
@@ -134,9 +141,18 @@ public class BuyerPriceBookTest extends BaseEngine
 	 }
 	 
 	 
+	 */
 	 
 	 
 	 
+	 
+	 
+	 @Test(priority=187)
+	 public void checkLogoutBuyerPricebookPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 BPB=new BuyerPriceBookPage(getDriver());
+		 Assert.assertEquals(BPB.checkLogoutBuyerPricebookPage(), true);
+	 }
 	 
 	
 

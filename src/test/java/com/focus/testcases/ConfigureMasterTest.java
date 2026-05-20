@@ -14,6 +14,13 @@ public class ConfigureMasterTest extends BaseEngine
 	
 	ConfigureMasterPage cmp;
 	
+	@Test(priority = 100)
+	public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException 
+	{
+		 cmp=new ConfigureMasterPage(getDriver());
+		  Assert.assertEquals(cmp.CheckLogin(), true);
+	}
+	
 	@Test(priority = 101)
 	public void checkconfigureMasters() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException 
 	{
@@ -49,16 +56,12 @@ public class ConfigureMasterTest extends BaseEngine
 		  Assert.assertEquals(cmp.checkSavingMasterForRecordCreation(), true);
 	}
 	
-	
 	@Test(priority = 106)
 	public void checkSavedMaserInMastersListAndSaveRecord() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException 
 	{
 		 cmp=new ConfigureMasterPage(getDriver());
 		  Assert.assertEquals(cmp.checkSavedMaserInMastersListAndSaveRecord(), true);
 	}
-	
-	
-	
 	
 	@Test(priority = 108)
 	public void checkAddingGroupMasterInConfigureMaster() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException 
@@ -88,9 +91,11 @@ public class ConfigureMasterTest extends BaseEngine
 		  Assert.assertEquals(cmp.checkAddingGroupMasterForDeletion(), true);
 	}
 	
-	
-	
-	
-	
+	@Test(priority = 112)
+	public void checkLogoutConfigureMasterPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException 
+	{
+		 cmp=new ConfigureMasterPage(getDriver());
+		  Assert.assertEquals(cmp.checkLogoutConfigureMasterPage(), true);
+	}
 	
 }

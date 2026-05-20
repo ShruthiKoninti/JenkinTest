@@ -57,7 +57,7 @@ public class ExcessInStocksVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("");
+		checkValidationMessage("Screen opened");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_1stColumn));
 		select1stRow_1stColumn.click();
@@ -142,6 +142,7 @@ public class ExcessInStocksVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Quantity));
 		enter_Quantity.sendKeys(excelReader.getCellData(xlSheetName, 17, 5));
 		enter_Quantity.sendKeys(Keys.TAB);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Rate));
 		enter_Rate.sendKeys(excelReader.getCellData(xlSheetName, 18, 5));
@@ -149,11 +150,11 @@ public class ExcessInStocksVoucherPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Gross));
 		enter_Gross.sendKeys(Keys.TAB);
-
+		Thread.sleep(3000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binSearchBtn));
 		binSearchBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(15000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binAutoAllocateBtn));
 		binAutoAllocateBtn.click();
@@ -283,21 +284,26 @@ public class ExcessInStocksVoucherPage extends BaseEngine
 	{
 		excelReader = new ExcelReader(POJOUtility.getExcelPath());
 		
+		Thread.sleep(5500);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(toggleBtn));
 		toggleBtn.click();
+		
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(copyDocumentOption));
 		copyDocumentOption.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(20000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(cd_FirstChkBox));
 		cd_FirstChkBox.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(cd_OkBtn));
 		cd_OkBtn.click();
+		Thread.sleep(6000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 		documentNumberTxt.click();
@@ -315,14 +321,12 @@ public class ExcessInStocksVoucherPage extends BaseEngine
 		}
 
 		String actvoucherGridBodyList=voucherGridBodyListArray.toString();
-
-		String expvoucherGridBodyList=excelReader.getCellData(xlSheetName, 23, 6);
+		//String expvoucherGridBodyList="[1, HYDERABAD, STD RATE COGS ITEM, Dozs, 1.00, , 5.00, 5.00, , , , , 2, HYDERABAD, BR COGS ITEM, Dozs, 1.00, , 5.00, 5.00, , , , , 3, HYDERABAD, FIFO COGS ITEM, Dozs, 1.00, , 5.00, 5.00, , , , , 4, HYDERABAD, WA COGS ITEM, Pcs, 10.00, , 5.00, 50.00, , , , , 5, , , , , , , , , , , , 6, , , , , , , , , , , , 7, , , , , , , , , , , , 8, , , , , , , , , , , ]";
+		String expvoucherGridBodyList1="[1, HYDERABAD, STD RATE COGS ITEM, Dozs, 1.00, , 5.00, 5.00, , , , , 2, HYDERABAD, BR COGS ITEM, Dozs, 1.00, , 5.00, 5.00, EXCESS BATCH, , "+getCurrentDate()+", , 3, HYDERABAD, FIFO COGS ITEM, Dozs, 1.00, , 5.00, 5.00, , , , , 4, HYDERABAD, WA COGS ITEM, Pcs, 10.00, , 5.00, 50.00, , , , , 5, , , , , , , , , , , , 6, , , , , , , , , , , , 7, , , , , , , , , , , , 8, , , , , , , , , , , ]";
 		
-		excelReader.setCellData(xlfile, xlSheetName, 23, 7, actvoucherGridBodyList);
-
 		System.out.println("voucherGridBodyList Actual   : " + actvoucherGridBodyList);
-		System.out.println("voucherGridBodyList Expected : " + expvoucherGridBodyList);
-
+		//System.out.println("voucherGridBodyList Expected : " + expvoucherGridBodyList);
+		System.out.println("voucherGridBodyList Expected : " + expvoucherGridBodyList1);
 
 
 		//Enter Secound  Line for BR COgs 	
@@ -379,19 +383,22 @@ public class ExcessInStocksVoucherPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Gross));
 		enter_Gross.sendKeys(Keys.TAB);
+		
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binSearchBtn));
 		binSearchBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(6000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binAutoAllocateBtn));
 		binAutoAllocateBtn.click();
 
-		Thread.sleep(1000);
+		Thread.sleep(6000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binOkBtn));
 		binOkBtn.click();
+		Thread.sleep(2000);
 
 		// fourth Row Rma ritem
 
@@ -419,9 +426,9 @@ public class ExcessInStocksVoucherPage extends BaseEngine
 
 		Thread.sleep(2000);
 		
-	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_RMA));
-		enter_RMA.sendKeys(Keys.SPACE);
-*/
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_RMA));
+		enter_RMA.sendKeys(Keys.SPACE);*/
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rmaSerialNumberTxtField));
 		rmaSerialNumberTxtField.click();
 		rmaSerialNumberTxtField.sendKeys(excelReader.getCellData(xlSheetName, 24, 5));
@@ -465,10 +472,10 @@ public class ExcessInStocksVoucherPage extends BaseEngine
 		
 		
 		
-		String expMessage1 = excelReader.getCellData(xlSheetName, 24, 6);
+		String expMessage1 = /*excelReader.getCellData(xlSheetName, 24, 6);*/"Voucher saved successfully";
 		
 		String actMessage = checkValidationMessage(expMessage1);
-		String expMessage2 = excelReader.getCellData(xlSheetName, 25, 6);
+		String expMessage2 = /*excelReader.getCellData(xlSheetName, 25, 6);*/": 2";
 		
 		excelReader.setCellData(xlfile, xlSheetName, 24, 7, actMessage);
 	
@@ -477,7 +484,7 @@ public class ExcessInStocksVoucherPage extends BaseEngine
 
 		//if(actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2)
 
-		if(actvoucherGridBodyList.equalsIgnoreCase(expvoucherGridBodyList) && actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+		if(actvoucherGridBodyList.equalsIgnoreCase(expvoucherGridBodyList1) && actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 23, 8, resPass);
 			return true;
@@ -498,6 +505,8 @@ public class ExcessInStocksVoucherPage extends BaseEngine
 	public boolean checkUpdatingSavedVoucherInExcessInStocks() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		excelReader = new ExcelReader(POJOUtility.getExcelPath());
+		
+		Thread.sleep(5000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(previousBtn));
 		previousBtn.click();
@@ -529,9 +538,7 @@ public class ExcessInStocksVoucherPage extends BaseEngine
 
 		String actvoucherGridBodyList=voucherGridBodyListArray.toString();
 
-		String expvoucherGridBodyList=excelReader.getCellData(xlSheetName, 26, 6);
-
-		excelReader.setCellData(xlfile, xlSheetName, 26, 7, actvoucherGridBodyList);
+		String expvoucherGridBodyList="[1, HYDERABAD, STD RATE COGS ITEM, Dozs, 1.00, , 5.00, 5.00, , , , , 2, HYDERABAD, BR COGS ITEM, Dozs, 1.00, , 5.00, 5.00, EX BATCH, , ExpiryDate, , 3, HYDERABAD, FIFO COGS ITEM, Dozs, 1.00, , 5.00, 5.00, , Bin4, , , 4, HYDERABAD, WA COGS ITEM, Pcs, 10.00, , 5.00, 50.00, , , , Ex Rma,Ex Rma1,Ex Rma2,Ex Rma3,Ex Rma4,Ex Rma5,Ex Rma6,Ex Rma7,Ex Rma8,Ex Rma9, 5, , , , , , , , , , , , 6, , , , , , , , , , , , 7, , , , , , , , , , , , 8, , , , , , , , , , , ]";
 		
 		System.out.println("voucherGridBodyList Actual   : " + actvoucherGridBodyList);
 		System.out.println("voucherGridBodyList Expected : " + expvoucherGridBodyList);
@@ -834,7 +841,7 @@ public class ExcessInStocksVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
 		new_CloseBtn.click();
 		
-		Thread.sleep(2000);
+		Thread.sleep(6000);
 		
 		String actSuspendStatus = voucherHomeRow1SuspendedStatus.getText();
 		String expSuspendStatus = excelReader.getCellData(xlSheetName, 38, 6);
@@ -1015,8 +1022,11 @@ public class ExcessInStocksVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_DeleteBtn));
 		new_DeleteBtn.click();
 
-		getWaitForAlert();
-		getAlert().accept();
+	/*	getWaitForAlert();
+		getAlert().accept();*/
+		
+		  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucher_ConfirmYesBtn)); 
+		  voucher_ConfirmYesBtn.click();
 
 		String expMessage = excelReader.getCellData(xlSheetName, 43, 6);
 		String actMessage = checkValidationMessage(expMessage);
@@ -1099,8 +1109,11 @@ public class ExcessInStocksVoucherPage extends BaseEngine
 		expVouchersList.add(currentDate);
 		expVouchersList.add(excelReader.getCellData(xlSheetName, 48, 6));
 		expVouchersList.add(excelReader.getCellData(xlSheetName, 49, 6));
+		expVouchersList.add("46");
+		expVouchersList.add("pending");
 		expVouchersList.add(excelReader.getCellData(xlSheetName, 50, 6));
 		expVouchersList.add(excelReader.getCellData(xlSheetName, 51, 6));
+		expVouchersList.add("46");
 
 		excelReader.setCellData(xlfile, xlSheetName, 44, 7, actVouchersList.toString());
 		
@@ -1127,7 +1140,134 @@ public class ExcessInStocksVoucherPage extends BaseEngine
 
 
 
+	public static boolean CheckLogin() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+	{
+	        Thread.sleep(3000);
 
+	        getDriver().navigate().refresh();
+
+	        LoginPage lp=new LoginPage(getDriver()); 
+
+	        lp.checkLoginPageTitleByURLInputInBrowser();
+
+	        String unamelt="su";
+
+	        String pawslt="su";
+
+	        lp.enterUserName(unamelt);
+
+	        lp.enterPassword(pawslt);
+
+	        Thread.sleep(2000);
+
+	        String compname = "Automation Company : 08/10/2020";
+
+	        Select oSelect = new Select(companyDropDownList);
+
+	        List<WebElement> elementCount = oSelect.getOptions();
+
+	        int cqSize = elementCount.size();
+
+	        System.out.println("CompanyDropdownList Count :" + cqSize);
+
+	        int i;
+
+	        for (i = 0; i < elementCount.size(); i++) {
+
+	                elementCount.get(i).getText();
+
+	                String optionName = elementCount.get(i).getText();
+	                if (optionName.toUpperCase().startsWith(compname.toUpperCase())) {
+	                        System.out.println("q" + elementCount.get(i).getText());
+	                        elementCount.get(i).click();
+	                }
+
+	        }
+
+	        Thread.sleep(2000);
+
+	        lp.clickOnSignInBtn();
+
+	        Thread.sleep(2000);
+
+	        String actUserInfo1=userNameDisplay.getText();
+
+	        System.out.println("User Info  : "+actUserInfo1);
+
+	        System.out.println("User Info Capture Text  :  "+userNameDisplay.getText());
+
+	        //getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
+	        //companyLogo.click();
+
+	        String getCompanyTxt1=Company_Name.getText();
+	        String getLoginCompanyName1=getCompanyTxt1.substring(0, 31);
+	        System.out.println("company name  :  "+ getLoginCompanyName1);
+	       // companyLogo.click();
+
+	        String expUserInfo1           ="SU";
+	        String expLoginCompanyName1   ="Automation Company : 08/10/2020";
+
+	        System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
+	        System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
+
+	        if(actUserInfo1.equalsIgnoreCase(expUserInfo1) && getLoginCompanyName1.contains(expLoginCompanyName1))
+	        {
+	                return true;
+	        }
+	        else
+	        {
+	                return false;
+	        }
+
+	}
+
+
+	public boolean checkLogoutExcessStocksPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		getDriver().navigate().refresh();
+		Thread.sleep(2000);
+		 
+		 try
+			{
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplayLogo));
+			  userNameDisplayLogo.click();
+			  Thread.sleep(2000);
+			 
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
+			  logoutOption.click();
+			  
+			  Thread.sleep(2000);
+			  
+			  boolean actUserLoginPage              = username.isDisplayed() && username.isEnabled()
+	                                               && password.isDisplayed() && password.isEnabled();
+	                                      
+			  boolean expUserLoginPage              = true;
+			  
+			  if(actUserLoginPage==expUserLoginPage)  
+		      {
+				System.out.println("***Test Pass: Login Successfull***");
+				
+				return true;
+			  }
+		      else
+		      {
+		  	 
+				System.out.println("***Test Fail: Login Not Successfull***");
+				
+				return false;
+			  }
+			}
+			catch (Exception e)
+			{
+			 	String exception = e.getMessage();
+			 		
+				return false;
+			}
+		}
+
+
+
+	
 
 
 

@@ -16,7 +16,15 @@ public class UnitsTest extends BaseEngine
 {
 	UnitsPage UP;
 	
+	
+	 @Test(priority=127)
+	 public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 UP=new UnitsPage(getDriver());
+		 Assert.assertEquals(UP.CheckLogin(), true);
+	 }
 
+	 
 	 @Test(priority=128)
 	 public void checkUnitMasterInMAsterMenu() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -50,6 +58,16 @@ public class UnitsTest extends BaseEngine
 	 {
 		 UP=new UnitsPage(getDriver());
 		 Assert.assertEquals(UP.checkDeleteUnitsInUnitsMaster(), true);
+	 }
+	 
+	 
+	 
+	 
+	 @Test(priority=133)
+	 public void checkLogoutUnitsPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 UP=new UnitsPage(getDriver());
+		 Assert.assertEquals(UP.checkLogoutUnitsPage(), true);
 	 }
 	 
 }

@@ -759,7 +759,43 @@ public class ExcelReader extends BaseEngine
 
 		
 
-	
+	///////////////////
+	    
+	    public static ArrayList<String[]> readContentFromExcel(String filename) throws IOException
+    	{
+        FileInputStream inputStream = new FileInputStream(new File(filename));
+        XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
+        XSSFSheet sheet = workbook.getSheetAt(0);
+        int rowCount = sheet.getPhysicalNumberOfRows();
+        XSSFCell firstColumnCell = null;
+        int firstColumnRowCount = 0;
+        int columnCount=sheet.getRow(0).getPhysicalNumberOfCells();
+        
+        ArrayList<String[]> ExcelRows = new ArrayList<String[]>();
+        Iterator<Row>  rowIterator= sheet.iterator();
+        int cellIndex=0;
+        while(rowIterator.hasNext())
+        {
+        	Row row= rowIterator.next();
+        	Iterator<Cell> cellIterator= row.cellIterator();
+        	String[] cellValues=new String[columnCount];
+        	
+        	while(cellIterator.hasNext())
+        	{
+        		Cell cell=cellIterator.next();
+        		cellValues[cellIndex++]=cell.getStringCellValue();
+        		//System.out.println(cell.getStringCellValue() +"\t\t");
+        		
+        	}
+        	ExcelRows.add(cellValues);
+        	
+        	cellIndex=0;
+        }
+        
+        workbook.close();
+       
+        return ExcelRows;
+    	}
 	
 	
 	

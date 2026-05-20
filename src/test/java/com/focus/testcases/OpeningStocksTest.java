@@ -16,7 +16,17 @@ public class OpeningStocksTest extends BaseEngine
 	OpeningStocksPage OSP;
 	
 	
-	// @Test(priority=100)
+	 @Test(priority=99)
+	 public void checkLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 OSP=new OpeningStocksPage(getDriver());
+		 Assert.assertEquals(OSP.CheckLogin(), true);
+	 }
+	
+	
+	
+	
+	 @Test(priority=100)
 	 public void checkRestoreAutomationCompany() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 OSP=new OpeningStocksPage(getDriver());
@@ -103,14 +113,14 @@ public class OpeningStocksTest extends BaseEngine
 	 
 	 
 	 
-	 @Test(priority=230) // Bin Popup//balance issue
+	 @Test(priority=230) 
 	 public void checkOpeningStockVoucher3Row1WithBinItemWithAutoAllocationOption() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 OSP=new OpeningStocksPage(getDriver());
 		 Assert.assertEquals(OSP.checkOpeningStockVoucher3Row1WithBinItemWithAutoAllocationOption(), true);
 	 }
 	 
-	 @Test(priority=231)// Bin Popup//balance issue
+	 @Test(priority=231)
 	 public void checkSavingOpeningStockVoucher3With2RowsAndBinItemDoubleClickInIndex() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 OSP=new OpeningStocksPage(getDriver());
@@ -270,4 +280,17 @@ public class OpeningStocksTest extends BaseEngine
 		 OSP=new OpeningStocksPage(getDriver());
 		 Assert.assertEquals(OSP.checkDeletedViewinHomePageofOpeningStocks(), true);
 	 }*/
+	 
+	 
+	 
+	 
+	 
+	 @Test(priority=304)
+	 public void checkLogoutOpeningStocksPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 OSP=new OpeningStocksPage(getDriver());
+		 Assert.assertEquals(OSP.checkLogoutOpeningStocksPage(), true);
+	 }
+	 
+	 
 }

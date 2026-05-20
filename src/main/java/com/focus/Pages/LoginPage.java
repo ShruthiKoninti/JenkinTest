@@ -74,10 +74,15 @@ public class LoginPage extends BaseEngine
 	
 	System.out.println("*************************************** checkLoginScreenTitleByURLInputInBrowser *********************************************************");
 	         
-    String actURLValue= excelReader.getCellData(xlSheetName, 6, 6);
+   // String actURLValue=/* excelReader.getCellData(xlSheetName, 6, 6);*/"https://focus-qa-17/focusx#";
+	String actURLValue="http://localhost/focusX#";
+	
+	
  
     enterUrl(actURLValue);
-   // enterUrl("http://192.168.5.38/focusX#");
+    
+    getDriver().manage().deleteAllCookies();
+   // enterUrl("https://focus-qa-17/focusx#");
    
     String actLoginTitle = getDriver().getTitle();
     String expLoginTitle="Focus";
@@ -96,6 +101,33 @@ public class LoginPage extends BaseEngine
     }   	       
    }
 	
+  public static boolean checkLoginPageTitleByURLInputInBrowserLicense() throws EncryptedDocumentException, InvalidFormatException, IOException 
+  {
+	
+	System.out.println("*************************************** checkLoginScreenTitleByURLInputInBrowser *********************************************************");
+	         
+    String actURLValue="https://focus-qa-17/focus10LR#";
+ 
+    enterUrl(actURLValue);
+   
+   
+    String actLoginTitle = getDriver().getTitle();
+    String expLoginTitle="Focus";
+
+    System.out.println("Login Screen Page Title Value Actual      : " + actLoginTitle +    "  Value Expected : " + expLoginTitle);
+   
+    if(actLoginTitle.equalsIgnoreCase(expLoginTitle))
+    {
+	   
+	   return true;
+    }
+    else
+    {
+	   return false;
+    }   	       
+   }
+  
+ 
 	
 	
    

@@ -13,6 +13,16 @@ import com.focus.base.BaseEngine;
 public class PDCTest extends BaseEngine
 {
 	static PDCPage spdcp;
+	
+	@Test(priority=700396)
+	public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		spdcp=new PDCPage(getDriver());
+		Assert.assertEquals(spdcp.CheckLogin(),true);
+	}
+
+	
+	
 
 	@Test(priority=700398)
 	public void checkPDCOptionsUnderSettings() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
@@ -63,6 +73,8 @@ public class PDCTest extends BaseEngine
 		spdcp=new PDCPage(getDriver());
 		Assert.assertEquals(spdcp.checkConvertingVouchersInPDCVoucherScreenWithOutPostOnDate(),true);
 	}
+	
+	
 
 	@Test(priority=700418)
 	public void checkAddExtraFieldPDCInHeaderFieldOFReceipts() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
@@ -279,5 +291,16 @@ public class PDCTest extends BaseEngine
 	}
 
 
+	
+	
+	
+	@Test(priority=700528)
+	public void checkLogoutPDCPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		spdcp=new PDCPage(getDriver());
+		Assert.assertEquals(spdcp.checkLogoutPDCPage(),true);
+	}
+	
+	
 
 }

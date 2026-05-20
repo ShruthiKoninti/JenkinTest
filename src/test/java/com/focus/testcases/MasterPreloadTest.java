@@ -19,6 +19,15 @@ public class MasterPreloadTest extends BaseEngine
 	// Master Preload Values in Purchase Voucher
 	
 	
+	
+	@Test(priority=2996)
+	public void CheckLogin() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException, AWTException
+	{
+		MPP=new MasterPreloadPage(getDriver());
+		Assert.assertEquals(MPP.CheckLogin(), true);
+	}
+	
+	
 	@Test(priority=2999)
 	public void checkRestoreAutomationCompany() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException, AWTException
 	{
@@ -26,8 +35,10 @@ public class MasterPreloadTest extends BaseEngine
 		Assert.assertEquals(MPP.checkRestoreAutomationCompany(), true);
 	}
 	
+	
+	
 	@Test(priority=3000)
-	public void checkCreatingCostCenterWithStockCostCenter() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+	public void checkCreatingCostCenterWithStockCostCenter() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException, AWTException
 	{
 		MPP=new MasterPreloadPage(getDriver());
 		Assert.assertEquals(MPP.checkCreatingCostCenterWithStockCostCenter(), true);
@@ -75,12 +86,14 @@ public class MasterPreloadTest extends BaseEngine
 		Assert.assertEquals(MPP.CheckSavingPurchaseVoucherWithStockItemAndSTDRateItem(), true);
 	}
 	
+	
 	@Test(priority=3007)
 	public void CheckCostCenterInSavedVoucherWithStockItemAndSTDRateItem() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 		MPP=new MasterPreloadPage(getDriver());
 		Assert.assertEquals(MPP.CheckCostCenterInSavedVoucherWithStockItemAndSTDRateItem(), true);
 	}
+	
 	
 	@Test(priority=3008)
 	public void CheckEditingPurchaseVoucher1WithStockItemAndSTDRateItem() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
@@ -95,10 +108,7 @@ public class MasterPreloadTest extends BaseEngine
 		MPP=new MasterPreloadPage(getDriver());
 		Assert.assertEquals(MPP.checkSavedPurchaseVoucherAfterEditingVoucher(), true);
 	}
-	
-	
-	
-	
+
 	// Inventory Item Rate Options
 	
 	@Test(priority=3015)
@@ -122,7 +132,7 @@ public class MasterPreloadTest extends BaseEngine
 		Assert.assertEquals(MPP.checkUpdatingItemRateCannotBeChangedForSalesInvoiceVAT(), true);
 	}
 	
-	@Test(priority=3018)
+	@Test(priority=3018)//
 	public void checkValidatingCannotBeChangedInSavedVoucher() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 		MPP=new MasterPreloadPage(getDriver());
@@ -134,11 +144,8 @@ public class MasterPreloadTest extends BaseEngine
 	{
 		MPP=new MasterPreloadPage(getDriver());
 		Assert.assertEquals(MPP.checkUpdatingItemRateEditableForSalesInvoiceVAT(), true);
+		
 	}
-	
-	
-	
-	
 	
 	@Test(priority=30000)
 	public void checkEraseAllTransactionsAfterCompletingAllValidations() throws Exception
@@ -147,15 +154,11 @@ public class MasterPreloadTest extends BaseEngine
 		Assert.assertEquals(MPP.checkEraseAllTransactionsAfterCompletingAllValidations(), true);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@Test(priority=30005)
+	public void checkLogoutMasterLoadPage() throws Exception
+	{
+		MPP=new MasterPreloadPage(getDriver());
+		Assert.assertEquals(MPP.checkLogoutMasterLoadPage(), true);
+	}	
 	
 }

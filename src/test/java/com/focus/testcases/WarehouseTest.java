@@ -9,12 +9,20 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.focus.Pages.WarehousePage;
+import com.focus.Pages.WarehousePage;
 import com.focus.base.BaseEngine;
 
 public class WarehouseTest extends BaseEngine
 {
 	WarehousePage WP;
 	
+	
+	 @Test(priority=152)
+	 public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 WP=new WarehousePage(getDriver());
+		 Assert.assertEquals(WP.CheckLogin(), true);
+	 }
 
 	 @Test(priority=154)
 	 public void checkWarehouseMasterInMAsterMenu() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
@@ -50,7 +58,8 @@ public class WarehouseTest extends BaseEngine
 		 WP=new WarehousePage(getDriver());
 		 Assert.assertEquals(WP.checkDeleteInWarehouseInWarehouseMaster(), true);
 	 }
-	
+	 
+	/*
 	 @Test(priority=159)
 	 public void checkWarehouseListBeforeImportingDataFromExcel() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -91,7 +100,7 @@ public class WarehouseTest extends BaseEngine
 
 	 
 	 
-	 
+	 */
 	 ////////////////////////Checking New Groups and SubGroups added/////////////////////////////
 	 
 		
@@ -143,6 +152,78 @@ public class WarehouseTest extends BaseEngine
 	 }
 	 
 	 
+	 
+	 
+///////////////Creating Extra Fields//////////////////////
+	 
+	/* 
+	 
+		@Test(priority=170)
+		public void checkCreatingExtraFieldsinWarehouseMaster() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+		{
+		WP=new WarehousePage(getDriver());
+		Assert.assertEquals(WP.checkCreatingExtraFieldsinWarehouseMaster(), true);
+		}
+		
+		
+		
+		@Test(priority=171)
+		public void checkAddedExtraFieldinGeneralTabofWarehouseMaster() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+		{
+		WP=new WarehousePage(getDriver());
+		Assert.assertEquals(WP.checkAddedExtraFieldinGeneralTabofWarehouseMaster(), true);
+		}
+		
+		
+		
+		
+		@Test(priority=172)
+		public void checkEditandUpdateExtraFieldinCustomizeMaster() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+		{
+		WP=new WarehousePage(getDriver());
+		Assert.assertEquals(WP.checkEditandUpdateExtraFieldinCustomizeMaster(), true);
+		}
+		
+		
+		
+		
+		
+		
+		@Test(priority=173)
+		public void checkUpdatedExtraFieldinGeneralTabofWarehouseMaster() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+		{
+		WP=new WarehousePage(getDriver());
+		Assert.assertEquals(WP.checkUpdatedExtraFieldinGeneralTabofWarehouseMaster(), true);
+		}
+		
+		
+		
+		
+		@Test(priority=174)
+		public void checkDeleteExtraFieldinCustomizeMaster() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+		{
+		WP=new WarehousePage(getDriver());
+		Assert.assertEquals(WP.checkDeleteExtraFieldinCustomizeMaster(), true);
+		}
+		
+		
+		@Test(priority=175)
+		public void checkDeletedExtraFieldinGeneralTabofWarehouseMaster() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+		{
+		WP=new WarehousePage(getDriver());
+		Assert.assertEquals(WP.checkDeletedExtraFieldinGeneralTabofWarehouseMaster(), true);
+		}
+		
+		*/
+			 
+		
+		
+		@Test(priority=176)
+		public void checkLogoutWarehousePage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+		{
+		WP=new WarehousePage(getDriver());
+		Assert.assertEquals(WP.checkLogoutWarehousePage(), true);
+		}
 	 
 	 
 }

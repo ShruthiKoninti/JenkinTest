@@ -17,6 +17,13 @@ public class MaterialRequisitionTest extends BaseEngine
 	MaterialRequisitionPage MRP;
 	
 	
+	 @Test(priority=240)
+	 public void checkLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 MRP=new MaterialRequisitionPage(getDriver());
+		 Assert.assertEquals(MRP.CheckLogin(), true);   
+	 }
+	
 	 @Test(priority=245)
 	 public void checkSavingMaterialRequisitionVoucher1() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -80,7 +87,11 @@ public class MaterialRequisitionTest extends BaseEngine
 		 Assert.assertEquals(MRP.checkVerifingDetailsOfSavedMaterialRequisitionVouchersInHomepage(), true);
 	 }
 	 
-	 
-	 
+	 @Test(priority=255)
+	 public void checkLogoutMaterialRequisitionPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 MRP=new MaterialRequisitionPage(getDriver());
+		 Assert.assertEquals(MRP.checkLogoutMaterialRequisitionPage(), true);
+	 }
 
 }

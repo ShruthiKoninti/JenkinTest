@@ -16,6 +16,13 @@ public class TransactionAuthorizationTest extends BaseEngine
 	TransactionAuthorizationPage TP;
 	
 	
+	 @Test(priority=205)
+	 public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 TP=new TransactionAuthorizationPage(getDriver());
+		 Assert.assertEquals(TP.CheckLogin(), true);
+	 }
+	
 	 @Test(priority=208)
 	 public void checkSavingTransactionAuthorizationInPurchaseReturns() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -35,6 +42,13 @@ public class TransactionAuthorizationTest extends BaseEngine
 	 {
 		 TP=new TransactionAuthorizationPage(getDriver());
 		 Assert.assertEquals(TP.checkDeletingTransactionAuthorizationInPurchaseReturns(), true);
+	 } 
+	 
+	 @Test(priority=212)
+	 public void checkLogoutTransactionAuthorizationPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 TP=new TransactionAuthorizationPage(getDriver());
+		 Assert.assertEquals(TP.checkLogoutTransactionAuthorizationPage(), true);
 	 } 
 	 
 }

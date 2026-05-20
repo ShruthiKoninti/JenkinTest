@@ -14,8 +14,16 @@ import com.focus.base.BaseEngine;
 public class MasterAuthorizationTest extends BaseEngine
 {
 	MasterAuthorizationPage MP;
-
-/*	 @Test(priority=211)
+	
+	
+	 @Test(priority=208)
+	 public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 MP=new MasterAuthorizationPage(getDriver());
+		 Assert.assertEquals(MP.CheckLogin(), true);
+	 }
+	
+	 @Test(priority=211)
 	 public void checkSavingMasterAuthorization() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 MP=new MasterAuthorizationPage(getDriver());
@@ -63,7 +71,7 @@ public class MasterAuthorizationTest extends BaseEngine
 		 MP=new MasterAuthorizationPage(getDriver());
 		 Assert.assertEquals(MP.checkVerifyingWarehouseInPurchaseVoucherAfterAuthorization(), true);
 	 }
-	 */
+	 
 	 @Test(priority=219)
 	 public void checkEditingMasterAuthorization() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -125,6 +133,13 @@ public class MasterAuthorizationTest extends BaseEngine
 	 {
 		 MP=new MasterAuthorizationPage(getDriver());
 		 Assert.assertEquals(MP.checkDeletingMasterAuthorization(), true);
+	 }
+	 
+	 @Test(priority=230)
+	 public void checkLogoutMasterAuthorizationPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 MP=new MasterAuthorizationPage(getDriver());
+		 Assert.assertEquals(MP.checkLogoutMasterAuthorizationPage(), true);
 	 }
 	 
 }

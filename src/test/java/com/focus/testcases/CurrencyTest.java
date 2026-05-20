@@ -15,7 +15,14 @@ public class CurrencyTest extends BaseEngine
 {
 	CurrencyPage CP;
 	
-	
+	 @Test(priority=130)
+	 public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 CP=new CurrencyPage(getDriver());
+		 Assert.assertEquals(CP.CheckLogin(), true);
+	 }
+	 
+	 
 	 @Test(priority=134)
 	 public void checkOpenCurrencyMenu() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -38,4 +45,15 @@ public class CurrencyTest extends BaseEngine
 	 }
 	 
 
+	 
+
+	 @Test(priority=137)
+	 public void checkLogoutCurrencyPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 CP=new CurrencyPage(getDriver());
+		 Assert.assertEquals(CP.checkLogoutCurrencyPage(), true);
+	 }
+	 
+	 
+	 
 }

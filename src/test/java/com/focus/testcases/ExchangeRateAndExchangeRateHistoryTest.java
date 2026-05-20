@@ -16,6 +16,15 @@ public class ExchangeRateAndExchangeRateHistoryTest extends BaseEngine
 {
 	ExchangeRateAndExchangeRateHistoryPage ER;
 	
+	 @Test(priority=139)
+	 public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 ER=new ExchangeRateAndExchangeRateHistoryPage(getDriver());
+		 Assert.assertEquals(ER.CheckLogin(), true);
+	 }
+	 
+	
+	
 	 @Test(priority=140)
 	 public void checkOpenExchangeRate() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -131,6 +140,14 @@ public class ExchangeRateAndExchangeRateHistoryTest extends BaseEngine
 	 
 	 
 	 
+	 
+	 
+	 @Test(priority=156)
+	 public void checkLogoutExchangeRatePage() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
+	 {
+		 ER=new ExchangeRateAndExchangeRateHistoryPage(getDriver());
+		 Assert.assertEquals(ER.checkLogoutExchangeRatePage(), true);
+	 }
 	 
 
 }

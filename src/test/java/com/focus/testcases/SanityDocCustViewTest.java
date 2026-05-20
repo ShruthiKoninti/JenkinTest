@@ -23,7 +23,7 @@ public class SanityDocCustViewTest extends BaseEngine
 		 dcp=new SanityDocCustViewPage(getDriver());
 		 Assert.assertEquals(dcp.checkLoginCompanyWithValidCredentials(), true);
 	}
-
+	
 
 	@Test(priority=1035)
 	public void checkUserCreatedVoucherDisplayWithDocumentTabInDocumentCustomization() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
@@ -46,6 +46,7 @@ public class SanityDocCustViewTest extends BaseEngine
 		Assert.assertEquals(dcp.checkCreatedVoucherEditScreenTabInDocumentCustoimization(), true);
 	}
 
+	
 
 	@Test(priority=1049)
 	public void checktheNarrationinHeaderTabEditLayoutinPVVATVIEW() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
@@ -110,9 +111,6 @@ public class SanityDocCustViewTest extends BaseEngine
 		Assert.assertEquals(dcp.checkSavedFieldsinPvVatViewVoucherDocumentNUmberingTab(), true);
 	}
 
-
-
-
 	@Test(priority=1079)
 	public void checkRaiseDocumentOptionInTriggers() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
@@ -146,7 +144,7 @@ public class SanityDocCustViewTest extends BaseEngine
 
 
 
-	@Test(priority=1083)
+	@Test(priority=1083)//see
 	public void checkEditingInTriggersTabUnderPVVATView() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		dcp=new SanityDocCustViewPage(getDriver());	
@@ -169,12 +167,8 @@ public class SanityDocCustViewTest extends BaseEngine
 		Assert.assertEquals(dcp.checkLoginCompanyWithValidCredentials(), true);
 	}
 
-
 	
 	 //////////////////////////Creating View for adding new fields in edit screen////////
-	 
-	 
-	 
 	 
 	 
 	 @Test(priority=1186)
@@ -218,7 +212,32 @@ public class SanityDocCustViewTest extends BaseEngine
 		}
 	 
 	 
+	 
+	// @Test(priority=1191)
+		public void   checkAddingNewFieldsinEditLayoutinPVVAT() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+		{
+		 dcp=new SanityDocCustViewPage(getDriver());	
+			  Assert.assertEquals(dcp.  checkAddingNewFieldsinEditLayoutinPVVAT(), true);
+		}
+	 
+	 
+	 
+	 
+	// @Test(priority=1192)
+		public void   checkAddedFieldsinPVVATVoucher() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+		{
+		 dcp=new SanityDocCustViewPage(getDriver());	
+			  Assert.assertEquals(dcp.  checkAddedFieldsinPVVATVoucher(), true);
+		}
+	 
+	 
 	
-	
+	 @Test(priority=1196)
+		public void   checkLogoutSanityDocCustViewPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+		{
+		 dcp=new SanityDocCustViewPage(getDriver());	
+			  Assert.assertEquals(dcp.  checkLogoutSanityDocCustViewPage(), true);
+		}
+	 
 
 }

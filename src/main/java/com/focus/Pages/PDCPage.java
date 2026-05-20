@@ -40,6 +40,7 @@ public class PDCPage extends BaseEngine
 	public boolean checkPDCOptionsUnderSettings() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
 		excelReader = new ExcelReader(POJOUtility.getExcelPath());
+		getAction().moveToElement(SettingsMenu).build().perform();
 		
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SettingsMenu));
 		SettingsMenu.click();
@@ -683,8 +684,7 @@ String expMessage1 = excelReader.getCellData(xlSheetName, 28, 6);
 		excelReader.setCellData(xlfile, xlSheetName, 32, 7, actAmount);
 
 		String actReassignedVouNo=pdcGridRow1Col8.getText();
-		String expReassignedVouNo=excelReader.getCellData(xlSheetName, 33, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 33, 7, actReassignedVouNo);
+		String expReassignedVouNo="01";
 		
 		System.out.println("******************checkSavedVouchersInPDCVoucherScreenWithOUTPostOnDate********************************");
 		System.out.println(" Number         : "+actNumber           +" Value Expected  : "+expNumber);
@@ -719,11 +719,11 @@ String expMessage1 = excelReader.getCellData(xlSheetName, 28, 6);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(pdcVoucherOkIcon));
 		pdcVoucherOkIcon.click();
 
-		String expValidationMessage=excelReader.getCellData(xlSheetName, 34, 6);
+		String expValidationMessage="Create PDCNo Field in Header Of Receipts Voucher";
 
 		String actValidationMessage=checkValidationMessage(expValidationMessage);
 
-		excelReader.setCellData(xlfile, xlSheetName, 34, 7, actValidationMessage);
+		
 		
 		if (actValidationMessage.equalsIgnoreCase(expValidationMessage) )
 		{
@@ -776,6 +776,9 @@ String expMessage1 = excelReader.getCellData(xlSheetName, 28, 6);
 		editLayoutCaptionTxt.sendKeys(excelReader.getCellData(xlSheetName, 35, 5));
 		editLayoutCaptionTxt.sendKeys(Keys.TAB);
 
+		Thread.sleep(3000);
+		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutApplyBtn));
 		editLayoutApplyBtn.click();
 
@@ -783,25 +786,11 @@ String expMessage1 = excelReader.getCellData(xlSheetName, 28, 6);
 
 		Thread.sleep(3000);
 
-		for (int i = 0; i < 5; i++) 
-		{
-			if (getIsAlertPresent()==true) 
-			{
-				getAlert().accept();
-			}
-		}
-
+	
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingUpdateIcon));
 		settingUpdateIcon.click();
 
-		for (int i = 0; i < 5; i++) 
-		{
-			if (getIsAlertPresent()==true) 
-			{
-				getAlert().accept();
-			}
-		}
-
+		
 		String expValidationMessage=excelReader.getCellData(xlSheetName, 35, 6);
 
 		String actValidationMessage=checkValidationMessage(expValidationMessage);
@@ -1001,9 +990,12 @@ String expMessage1 = excelReader.getCellData(xlSheetName, 28, 6);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_DeleteBtn));
 		new_DeleteBtn.click();
 
-		getWaitForAlert();
+	/*	getWaitForAlert();
 
-		getAlert().accept();
+		getAlert().accept();*/
+		
+		  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucher_ConfirmYesBtn)); 
+		  voucher_ConfirmYesBtn.click();
 
 		String expValidationMessage=excelReader.getCellData(xlSheetName, 46, 6);
 
@@ -1105,6 +1097,9 @@ String expMessage1 = excelReader.getCellData(xlSheetName, 28, 6);
 	public boolean checkUpdateinPDCUnderSettingMenuForEnableReversePostingInRecepits() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		excelReader = new ExcelReader(POJOUtility.getExcelPath());
+		
+		getAction().moveToElement(SettingsMenu).build().perform();
+		Thread.sleep(2000);
 		
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SettingsMenu));
 		SettingsMenu.click();
@@ -1230,27 +1225,45 @@ String expMessage1 = excelReader.getCellData(xlSheetName, 28, 6);
 
 		String pawslt="su";
 		
-		String compname="Automation Company";
+		//String compname="Automation Company";
 
 		lp.enterUserName(unamelt);
 
 		lp.enterPassword(pawslt);
+		
+		 String compname = "Automation Company : 08/10/2020";
+
+	        Select oSelect = new Select(companyDropDownList);
+
+	        List<WebElement> elementCount = oSelect.getOptions();
+
+	        int cqSize = elementCount.size();
+
+	        System.out.println("CompanyDropdownList Count :" + cqSize);
+
+	        int i;
+
+	        for (i = 0; i < elementCount.size(); i++) {
+
+	                elementCount.get(i).getText();
+
+	                String optionName = elementCount.get(i).getText();
+	                if (optionName.toUpperCase().startsWith(compname.toUpperCase())) {
+	                        System.out.println("q" + elementCount.get(i).getText());
+	                        elementCount.get(i).click();
+	                }
+
+	        }
+
+	        Thread.sleep(2000);
+
 
 		lp.clickOnSignInBtn();
 		
-		Thread.sleep(2000);
+		Thread.sleep(10000);
 		
-		Select s1=new Select(companyList);
-        s1.selectByValue("36");
+		
 	
-		
-		reLogin(unamelt, pawslt, compname);
-
-		//checkRefershPopOnlogin();
-
-		//checkPopUpWindow();
-
-		Thread.sleep(6000);
 
 		String actUserInfo=userNameDisplay.getText();
 
@@ -1258,13 +1271,13 @@ String expMessage1 = excelReader.getCellData(xlSheetName, 28, 6);
 
 		System.out.println("User Info Capture Text  :  "+userNameDisplay.getText());
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
-		companyLogo.click();
+		//getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
+		//companyLogo.click();
 
-		String getCompanyTxt=companyName.getText();
+		String getCompanyTxt=Company_Name.getText();
 		String getLoginCompanyName=getCompanyTxt.substring(0, 19);
 		System.out.println("company name  :  "+ getLoginCompanyName);
-		companyLogo.click();
+		//companyLogo.click();
 
 
 		String expUserInfo           ="su";
@@ -1449,8 +1462,7 @@ String expMessage1 = excelReader.getCellData(xlSheetName, 28, 6);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefPartyName));
 		String actPartyName = billRefPartyName.getText();
-		String expPartyName = excelReader.getCellData(xlSheetName, 56, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 56, 7, actPartyName);
+		String expPartyName = "Customer A (122-001)";
 
 		System.out.println("Bill wise Screen Cutomer Name "  + actPartyName + "  Value Expected  " + expPartyName);
 
@@ -1462,8 +1474,7 @@ String expMessage1 = excelReader.getCellData(xlSheetName, 28, 6);
 		billRefPickIcon.click();
 
 		String actbillRefNewReferenceTxt=billRefNewReferenceTxt.getAttribute("value");
-		String expbillRefNewReferenceTxt=excelReader.getCellData(xlSheetName, 57, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 57, 7, actbillRefNewReferenceTxt);
+		String expbillRefNewReferenceTxt="6.00";
 		
 		System.err.println(" billRefNewReferenceTxt : "+actbillRefNewReferenceTxt +" Value Expected : "+expbillRefNewReferenceTxt);
 
@@ -1473,44 +1484,18 @@ String expMessage1 = excelReader.getCellData(xlSheetName, 28, 6);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet<String>();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet<String>();
-
-		expMessage.add("Voucher saved successfully : "+docno);
-		expMessage.add("Saving in background.");*/
-		
-		/*String actMessage = SavingInBackground(2);
-
-		HashSet<String> expMsg = new HashSet();
-
-		expMsg.add(excelReader.getCellData(xlSheetName, 58, 6));
-		expMsg.add(excelReader.getCellData(xlSheetName, 59, 6)+docno);
-		excelReader.setCellData(xlfile, xlSheetName, 58, 7, actMessage);
-		
-		String expMessage = expMsg.toString();
-
-		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);*/
 		
 		
-String expMessage1 = excelReader.getCellData(xlSheetName, 58, 6);
+		
+		String expMessage1 = "Voucher saved successfully";
 		
 		String actMessage = checkValidationMessage(expMessage1);
-		String expMessage2 = excelReader.getCellData(xlSheetName, 59, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 58, 7, actMessage);
+		String expMessage2 = ": 2";
 	
 		System.out.println("Actual Message    : "+actMessage);
 		System.out.println("Expected Message  : "+expMessage1);
 
-		//if(actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+		
 
 		if(actbillRefNewReferenceTxt.equalsIgnoreCase(expbillRefNewReferenceTxt) && 
 				actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
@@ -1567,8 +1552,7 @@ String expMessage1 = excelReader.getCellData(xlSheetName, 58, 6);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefPartyName));
 		String actPartyName = billRefPartyName.getText();
-		String expPartyName = excelReader.getCellData(xlSheetName, 65, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 65, 7, actPartyName);
+		String expPartyName = "Customer A (122-001)";
 
 		System.out.println("Bill wise Screen Cutomer Name "  + actPartyName + "  Value Expected  " + expPartyName);
 
@@ -1579,8 +1563,7 @@ String expMessage1 = excelReader.getCellData(xlSheetName, 58, 6);
 		billRefPickIcon.click();
 
 		String actbillRefNewReferenceTxt=billRefNewReferenceTxt.getAttribute("value");
-		String expbillRefNewReferenceTxt=excelReader.getCellData(xlSheetName, 66, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 66, 7, actbillRefNewReferenceTxt);
+		String expbillRefNewReferenceTxt="6.00";
 
 		System.err.println(" billRefNewReferenceTxt : "+actbillRefNewReferenceTxt +" Value Expected : "+expbillRefNewReferenceTxt);
 
@@ -1592,43 +1575,15 @@ String expMessage1 = excelReader.getCellData(xlSheetName, 58, 6);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet<String>();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet<String>();
-
-		expMessage.add("Voucher saved successfully : "+docno);
-		expMessage.add("Saving in background.");*/
-		
-		/*String actMessage = SavingInBackground(2);
-
-		HashSet<String> expMsg = new HashSet();
-
-		expMsg.add(excelReader.getCellData(xlSheetName, 67, 6));
-		expMsg.add(excelReader.getCellData(xlSheetName, 68, 6)+docno);
-		excelReader.setCellData(xlfile, xlSheetName, 67, 7, actMessage);
-		
-		String expMessage = expMsg.toString();
-
-		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);*/
-		
-String expMessage1 = excelReader.getCellData(xlSheetName, 67, 6);
+		String expMessage1 = "Voucher saved successfully";
 		
 		String actMessage = checkValidationMessage(expMessage1);
-		String expMessage2 = excelReader.getCellData(xlSheetName, 68, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 67, 7, actMessage);
+		String expMessage2 = ": 3";
 	
 		System.out.println("Actual Message    : "+actMessage);
 		System.out.println("Expected Message  : "+expMessage1);
 
-		//if(actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+	
 
 		if(actbillRefNewReferenceTxt.equalsIgnoreCase(expbillRefNewReferenceTxt) && 
 				actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
@@ -1659,9 +1614,12 @@ String expMessage1 = excelReader.getCellData(xlSheetName, 67, 6);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_DeleteBtn));
 		new_DeleteBtn.click();
 
-		getWaitForAlert();
+	/*	getWaitForAlert();
 
-		getAlert().accept();
+		getAlert().accept();*/
+		
+		  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucher_ConfirmYesBtn)); 
+		  voucher_ConfirmYesBtn.click();
 
 		String expValidationMessage=excelReader.getCellData(xlSheetName, 69, 6);
 
@@ -1808,7 +1766,7 @@ String expMessage1 = excelReader.getCellData(xlSheetName, 67, 6);
 		{
 			String voucherNo = grid_VoucherNoList.get(i).getText();
 
-			if (voucherNo.equalsIgnoreCase(excelReader.getCellData(xlSheetName, 74, 5))) 
+			if (voucherNo.equalsIgnoreCase("02")) 
 			{
 				getAction().doubleClick(grid_VoucherNoList.get(i)).build().perform();
 				break;
@@ -1891,6 +1849,8 @@ String expMessage1 = excelReader.getCellData(xlSheetName, 67, 6);
 	public boolean checkUpdateinPDCUnderSettingMenuForDisableEnableReversePostingInRecepits() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		excelReader = new ExcelReader(POJOUtility.getExcelPath());
+		
+		getAction().moveToElement(SettingsMenu).build().perform();
 		
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SettingsMenu));
 		SettingsMenu.click();
@@ -2668,9 +2628,12 @@ String expMessage1 = excelReader.getCellData(xlSheetName, 119, 6);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_DeleteBtn));
 		new_DeleteBtn.click();
 
-		getWaitForAlert();
+		/*getWaitForAlert();
 
-		getAlert().accept();
+		getAlert().accept();*/
+		
+		  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucher_ConfirmYesBtn)); 
+		  voucher_ConfirmYesBtn.click();
 
 		String expValidationMessage=excelReader.getCellData(xlSheetName, 121, 6);
 
@@ -3585,6 +3548,131 @@ String expMessage1 = excelReader.getCellData(xlSheetName, 153, 6);
 		}
 	}
 
+
+	public static boolean CheckLogin() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+	{
+	        Thread.sleep(3000);
+
+	        getDriver().navigate().refresh();
+
+	        LoginPage lp=new LoginPage(getDriver()); 
+
+	        lp.checkLoginPageTitleByURLInputInBrowser();
+
+	        String unamelt="su";
+
+	        String pawslt="su";
+
+	        lp.enterUserName(unamelt);
+
+	        lp.enterPassword(pawslt);
+
+	        Thread.sleep(2000);
+
+	        String compname = "Automation Company : 08/10/2020";
+
+	        Select oSelect = new Select(companyDropDownList);
+
+	        List<WebElement> elementCount = oSelect.getOptions();
+
+	        int cqSize = elementCount.size();
+
+	        System.out.println("CompanyDropdownList Count :" + cqSize);
+
+	        int i;
+
+	        for (i = 0; i < elementCount.size(); i++) {
+
+	                elementCount.get(i).getText();
+
+	                String optionName = elementCount.get(i).getText();
+	                if (optionName.toUpperCase().startsWith(compname.toUpperCase())) {
+	                        System.out.println("q" + elementCount.get(i).getText());
+	                        elementCount.get(i).click();
+	                }
+
+	        }
+
+	        Thread.sleep(2000);
+
+	        lp.clickOnSignInBtn();
+
+	        Thread.sleep(2000);
+
+	        String actUserInfo1=userNameDisplay.getText();
+
+	        System.out.println("User Info  : "+actUserInfo1);
+
+	        System.out.println("User Info Capture Text  :  "+userNameDisplay.getText());
+
+	        //getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
+	        //companyLogo.click();
+
+	        String getCompanyTxt1=Company_Name.getText();
+	        String getLoginCompanyName1=getCompanyTxt1.substring(0, 31);
+	        System.out.println("company name  :  "+ getLoginCompanyName1);
+	       // companyLogo.click();
+
+	        String expUserInfo1           ="SU";
+	        String expLoginCompanyName1   ="Automation Company : 08/10/2020";
+
+	        System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
+	        System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
+
+	        if(actUserInfo1.equalsIgnoreCase(expUserInfo1) && getLoginCompanyName1.contains(expLoginCompanyName1))
+	        {
+	                return true;
+	        }
+	        else
+	        {
+	                return false;
+	        }
+
+	}
+
+
+	public boolean checkLogoutPDCPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		getDriver().navigate().refresh();
+		Thread.sleep(2000);
+		 
+		 try
+			{
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplayLogo));
+			  userNameDisplayLogo.click();
+			  Thread.sleep(2000);
+			 
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
+			  logoutOption.click();
+			  
+			  Thread.sleep(2000);
+			  
+			  boolean actUserLoginPage              = username.isDisplayed() && username.isEnabled()
+	                                               && password.isDisplayed() && password.isEnabled();
+	                                      
+			  boolean expUserLoginPage              = true;
+			  
+			  if(actUserLoginPage==expUserLoginPage)  
+		      {
+				System.out.println("***Test Pass: Login Successfull***");
+				
+				return true;
+			  }
+		      else
+		      {
+		  	 
+				System.out.println("***Test Fail: Login Not Successfull***");
+				
+				return false;
+			  }
+			}
+			catch (Exception e)
+			{
+			 	String exception = e.getMessage();
+			 		
+				return false;
+			}
+		}
 
 
 

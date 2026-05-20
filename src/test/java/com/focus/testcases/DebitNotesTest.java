@@ -14,6 +14,14 @@ import com.focus.base.BaseEngine;
 public class DebitNotesTest extends BaseEngine
 {
 	DebitNotesPage DN;
+	
+	
+	@Test(priority=330)
+	public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		DN=new DebitNotesPage(getDriver());
+		Assert.assertEquals(DN.CheckLogin(), true);
+	}
 
 	@Test(priority=332)
 	public void checkCustomizationOptionInDebitNotes() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
@@ -58,5 +66,15 @@ public class DebitNotesTest extends BaseEngine
 		Assert.assertEquals(DN.checkVerifingDetailsOfSavedDebitNotesVoucherInHomepage(), true);
 	}
 
+	
+	
+	@Test(priority=339)
+	public void checkLogoutDebitNotesPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		DN=new DebitNotesPage(getDriver());
+		Assert.assertEquals(DN.checkLogoutDebitNotesPage(), true);
+	}
 
+	
+	
 }

@@ -7,5 +7,5 @@ EndFunc
 
 
 _WinWaitActivate("Open","")
-Send(@WorkingDir&"\backup\FORSQLFUNTIONINSANITY.fbak{ENTER}")
+Send(@WorkingDir&"\backup\FORSQLFUNTIONINSANITYNEW.fbak{ENTER}")
 

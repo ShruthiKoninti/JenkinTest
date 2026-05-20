@@ -17,6 +17,14 @@ public class DesignWorkFlowTest extends BaseEngine
 	
 	
 	
+	 @Test(priority=213)
+	 public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 DWP=new DesignWorkFlowPage(getDriver());
+		 Assert.assertEquals(DWP.CheckLogin(), true);
+	 }
+
+	 
 	 @Test(priority=214)
 	 public void checkSavingTestWorkFlow() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -24,7 +32,7 @@ public class DesignWorkFlowTest extends BaseEngine
 		 Assert.assertEquals(DWP.checkSavingTestWorkFlow(), true);
 	 }
 	 
-	// @Test(priority=215)
+	 @Test(priority=215)
 	 public void checkEditingSavedTestWorkFlow() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 DWP=new DesignWorkFlowPage(getDriver());
@@ -45,5 +53,14 @@ public class DesignWorkFlowTest extends BaseEngine
 		 DWP=new DesignWorkFlowPage(getDriver());
 		 Assert.assertEquals(DWP.checkEditingPurchasesFlow(), true);
 	 }
-
+	 
+	 @Test(priority=219)
+	 public void checkLogoutDesignWorkFlowPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 DWP=new DesignWorkFlowPage(getDriver());
+		 Assert.assertEquals(DWP.checkLogoutDesignWorkFlowPage(), true);
+	 }
+	 
+	 
+	 
 }

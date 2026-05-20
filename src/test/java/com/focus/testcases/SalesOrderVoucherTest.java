@@ -18,7 +18,15 @@ import com.focus.base.BaseEngine;
 public class SalesOrderVoucherTest extends BaseEngine
 {
 	SalesOrderVoucherPage SO;
-/*
+	
+	
+	@Test(priority=285)
+	public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		SO=new SalesOrderVoucherPage(getDriver());
+		Assert.assertEquals(SO.CheckLogin(), true);
+	}
+
 	//@Test(priority=289)
 	public void checkSalesOrderVoucherCustomization() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
@@ -84,7 +92,7 @@ public class SalesOrderVoucherTest extends BaseEngine
 		Assert.assertEquals(SO.checkVerifyingSalesOrderVoucher3AndDeleting(), true);
 	}
 
-	@Test(priority=298)
+	@Test(priority=298)//changed code//Bin4
 	public void checkSavingSalesOrderVoucherWithBinItem() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
 		SO=new SalesOrderVoucherPage(getDriver());
@@ -92,13 +100,13 @@ public class SalesOrderVoucherTest extends BaseEngine
 	}
 
 
-	@Test(priority=299)
+	@Test(priority=299)//changed code//Bin5
 	public void checkEditingSalesOrderVoucher3AndAdding2ndRow() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
 		SO=new SalesOrderVoucherPage(getDriver());
 		Assert.assertEquals(SO.checkEditingSalesOrderVoucher3AndAdding2ndRow(), true);
 	}
-*/
+
 
 	@Test(priority=300)
 	public void checkSavingSalesOrderVoucher4WithBinItem() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
@@ -174,5 +182,18 @@ public class SalesOrderVoucherTest extends BaseEngine
 	}
 
 
+	
+	
+	
+	
+	@Test(priority=310)
+	public void checkLogoutSalesOrdervoucherPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		SO=new SalesOrderVoucherPage(getDriver());
+		Assert.assertEquals(SO.checkLogoutSalesOrdervoucherPage(), true);
+	}
+	
+	
+	
 
 }

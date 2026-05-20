@@ -15,6 +15,15 @@ import com.focus.base.BaseEngine;
 public class ReceiptsVATVoucherTest extends BaseEngine
 {
 	ReceiptsVATVoucherPage RV;
+	
+
+	@Test(priority=320)
+	public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		RV=new ReceiptsVATVoucherPage(getDriver());
+		Assert.assertEquals(RV.CheckLogin(), true);
+	}
+	
 
 	@Test(priority=323)
 	public void checkSavingRecepitsVATVocher1() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
@@ -51,4 +60,16 @@ public class ReceiptsVATVoucherTest extends BaseEngine
 		Assert.assertEquals(RV.checkVerifingDetailsOfSavedReceiptsVATVoucherInHomepage(), true);
 	}
 
+	
+	
+	
+	@Test(priority=329)
+	public void checkLogoutReceiptsVATvoucherPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		RV=new ReceiptsVATVoucherPage(getDriver());
+		Assert.assertEquals(RV.checkLogoutReceiptsVATvoucherPage(), true);
+	}
+
+	
+	
 }

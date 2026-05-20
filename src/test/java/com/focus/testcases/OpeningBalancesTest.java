@@ -15,7 +15,16 @@ public class OpeningBalancesTest extends BaseEngine
 {
 	OpeningBalancesPage OP;
 
-/*
+	
+	
+	@Test(priority=228)
+	public void checkLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		OP=new OpeningBalancesPage(getDriver());
+		Assert.assertEquals(OP.CheckLogin(), true);
+	}
+
+	
 	@Test(priority=230)
 	public void checkOpeningBalanceCustomizationRemovingLinkStatusColumn() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
@@ -23,13 +32,14 @@ public class OpeningBalancesTest extends BaseEngine
 		Assert.assertEquals(OP.checkOpeningBalanceCustomizationRemovingLinkStatusColumn(), true);
 	}
 
-	@Test(priority=231)//issue not hidding Col
+	@Test(priority=231)
 	public void checkOpeningBalanceCustomizationHideBalanceLinkValueColumn() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
 		OP=new OpeningBalancesPage(getDriver());
 		Assert.assertEquals(OP.checkOpeningBalanceCustomizationHideBalanceLinkValueColumn(), true);
 	}
 
+	
 	@Test(priority=232)
 	public void checkOpeningBalanceCustomizationAddingDepartmentColumn() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
@@ -38,7 +48,7 @@ public class OpeningBalancesTest extends BaseEngine
 	}
 
 
-*/
+
 
 	@Test(priority=241)
 	public void checkSavingOpeningBalanceVoucher1WithCurrencyAsINR() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
@@ -47,6 +57,7 @@ public class OpeningBalancesTest extends BaseEngine
 		Assert.assertEquals(OP.checkSavingOpeningBalanceVoucher1WithCurrencyAsINR(), true);
 	}
 
+	
 	@Test(priority=242)
 	public void checkVerifyAndDeleteOpeningBalanceVoucher1() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
@@ -101,6 +112,12 @@ public class OpeningBalancesTest extends BaseEngine
 
 
 
+	@Test(priority=249)
+	public void checkLogoutOpeningBalancesPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		OP=new OpeningBalancesPage(getDriver());
+		Assert.assertEquals(OP.checkLogoutOpeningBalancesPage(), true);
+	}
 
 
 

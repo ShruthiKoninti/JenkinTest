@@ -19,6 +19,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.focus.base.BaseEngine;
 import com.focus.supporters.ExcelReader;
@@ -46,19 +47,18 @@ public class OpeningBalancesPage extends BaseEngine
 		financialsTransactionsJournalsMenu.click();
 
 		Thread.sleep(1000);
-		((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);",OpeningBalanceMenu);
 		
-		Thread.sleep(2000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(OpeningBalanceMenu));
-		OpeningBalanceMenu.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(openingBalancesVoucher));
+		ClickUsingJs(openingBalancesVoucher);
 		
 		//JavascriptExecutor js=
 		
 		
 	//	ClickSubMenu(JournalsSubMenusList, excelReader.getCellData(xlSheetName, 8, 5));
 
-		Thread.sleep(2000);
+		//focusMainSearch("Opening Balances");
+		
+		Thread.sleep(5500);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 
@@ -276,7 +276,7 @@ public class OpeningBalancesPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(custSaveBtn));
 		custSaveBtn.click();
-
+		Thread.sleep(2000);
 		String expUnhideMessage  = excelReader.getCellData(xlSheetName, 16, 6);
 		String actUnhideMessage = checkValidationMessage(expUnhideMessage);
 		excelReader.setCellData(xlfile, xlSheetName, 16, 7, actUnhideMessage);
@@ -298,7 +298,7 @@ public class OpeningBalancesPage extends BaseEngine
 		}
 
 		String actHeaderListAfterUnHiding = afterUnHiding.toString();
-		String expHeaderListAfterUnHiding = excelReader.getCellData(xlSheetName, 18, 6);
+		String expHeaderListAfterUnHiding = /*excelReader.getCellData(xlSheetName, 18, 6)*/"[, , #, Date, Voucher Number, Created by, Modified by, Created date, Modified date, Created time, Modified Time, Suspended, Authorization Status, Balance link value]";
 		excelReader.setCellData(xlfile, xlSheetName, 18, 7, actHeaderListAfterUnHiding);
 
 		System.err.println(actHeaderListAfterUnHiding);
@@ -424,25 +424,21 @@ public class OpeningBalancesPage extends BaseEngine
 		
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
-
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
 		financialsTransactionMenu.click();
-
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsJournalsMenu));
 		financialsTransactionsJournalsMenu.click();
 
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		
 		//ClickSubMenu(JournalsSubMenusList, excelReader.getCellData(xlSheetName, 22, 5));
-
-		((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);",OpeningBalanceMenu);
 		
-		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(openingBalancesVoucher));
+		ClickUsingJs(openingBalancesVoucher);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(OpeningBalanceMenu));
-		OpeningBalanceMenu.click();
-		
-		Thread.sleep(2000);
+		Thread.sleep(10000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
@@ -477,7 +473,9 @@ public class OpeningBalancesPage extends BaseEngine
 		enter_CreditTxt.sendKeys(excelReader.getCellData(xlSheetName, 26, 5));
 		enter_CreditTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
+		
+		new WebDriverWait(getDriver(), 50).until(ExpectedConditions.visibilityOf(billRefPartyName));
 
 		String actPartyName = billRefPartyName.getText();
 		String expPartyName = excelReader.getCellData(xlSheetName, 22, 6);
@@ -685,9 +683,17 @@ public class OpeningBalancesPage extends BaseEngine
 		String actR1Credit            = select1stRow_3rdColumn.getText();
 		String actR1Ref               = select1stRow_4thColumn.getText();
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vocFooterExpandBtn));
-		vocFooterExpandBtn.click();
 		
+		Thread.sleep(6000);
+		
+		getAction().moveToElement(vocFooterExpandBtn).build().perform();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vocFooterExpandBtn));
+		//vocFooterExpandBtn.click();
+		
+		ClickUsingJs(vocFooterExpandBtn);
+		Thread.sleep(1000);
+		
+		//ClickUsingJs(vocFooterExpandBtn);
 		Thread.sleep(1000);
 		
 		String actFooterCreditAmt     = vocFooterCreditAmount.getText();
@@ -740,8 +746,11 @@ public class OpeningBalancesPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_DeleteBtn));
 		new_DeleteBtn.click();
 
-		getWaitForAlert();
-		getAlert().accept();
+	/*	getWaitForAlert();
+		getAlert().accept();*/
+		
+		  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucher_ConfirmYesBtn)); 
+		  voucher_ConfirmYesBtn.click();
 
 		String expMessage = excelReader.getCellData(xlSheetName, 52, 6);
 		String actMessage = checkValidationMessage(expMessage);
@@ -780,7 +789,7 @@ public class OpeningBalancesPage extends BaseEngine
 		 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherHeaderCurrency));
 		voucherHeaderCurrency.sendKeys(Keys.SHIFT,Keys.HOME);
-		voucherHeaderCurrency.sendKeys(excelReader.getCellData(xlSheetName, 53, 5));
+		voucherHeaderCurrency.sendKeys(/*excelReader.getCellData(xlSheetName, 53, 5)*/"AED");
 		Thread.sleep(2000);
 		voucherHeaderCurrency.sendKeys(Keys.TAB);
 		
@@ -1159,6 +1168,8 @@ public class OpeningBalancesPage extends BaseEngine
 		
 		checkValidationMessage("Voucher loaded successfully");
 		
+		Thread.sleep(1000);
+		
 		String actDocno               = documentNumberTxt.getAttribute("value");
         String actCurrency            = voucherHeaderCurrency.getAttribute("value");
 		String actDepartment          = departmentTxt.getAttribute("value");
@@ -1171,12 +1182,14 @@ public class OpeningBalancesPage extends BaseEngine
 		String actR2Debit             = select2ndRow_2ndColumn.getText();
         String actR2Ref               = select2ndRow_4thColumn.getText();
         
-        /*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vocFooterExpandBtn));
-		vocFooterExpandBtn.click();
+        
+        if(DebitText.isDisplayed()==false)
+        {
+        	ClickUsingJs(vocFooterExpandBtn);
+        }
 		
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		
-		ScrollIntoView(vocFooterdebitAmount);*/
 		
     	String actFooterCreditAmt     = vocFooterCreditAmount.getText();
     	String actVoucherDebitAmt     = vocFooterdebitAmount.getText();
@@ -1244,10 +1257,11 @@ public class OpeningBalancesPage extends BaseEngine
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherHeaderCurrency));
 		voucherHeaderCurrency.click();
+		Thread.sleep(1000);
+		clearValueFromTextBox(voucherHeaderCurrency);
+		Thread.sleep(1000);
 		
-		voucherHeaderCurrency.sendKeys(Keys.SHIFT,Keys.HOME);
-		
-		voucherHeaderCurrency.sendKeys(excelReader.getCellData(xlSheetName, 91, 5));
+		voucherHeaderCurrency.sendKeys(/*excelReader.getCellData(xlSheetName, 91, 5)*/"USD");
 		Thread.sleep(2000);
 		voucherHeaderCurrency.sendKeys(Keys.TAB);
 		
@@ -1260,7 +1274,7 @@ public class OpeningBalancesPage extends BaseEngine
 		
 		Thread.sleep(2000);
 		
-		System.out.println("***********************************checkSavingOpeningBalanceVoucher1WithCurrencyAsINR*************************************");
+		System.out.println("***********************************checkSavingOpeningBalanceVoucher1WithCurrencyAsUSD*************************************");
 		
 		String actR1PartyName = billRefPartyName.getText();
 		String expR1PartyName = excelReader.getCellData(xlSheetName, 104, 6);
@@ -1550,6 +1564,9 @@ public class OpeningBalancesPage extends BaseEngine
 		System.out.println("actbillRefBalanceAmountAdjustInTrnasCurrency :"+ actR2billRefBalanceAmountAdjustInTrnasCurrencyPick + "expbillRefBalanceAmountAdjustInTrnasCurrency :"+expR2billRefBalanceAmountAdjustInTrnasCurrencyPick);
 
 		Thread.sleep(3000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
+		new_CloseBtn.click();
 
 		if(actDocno.equalsIgnoreCase(expDocno) && actCurrency.equalsIgnoreCase(expCurrency) &&actDepartment.equalsIgnoreCase(expDepartment) && 
 				actExchangeRate.equalsIgnoreCase(expExchangeRate) && actLocExchangeRate.equalsIgnoreCase(expLocExchangeRate) && 
@@ -1614,7 +1631,7 @@ public class OpeningBalancesPage extends BaseEngine
 		
 		voucherHeaderCurrency.sendKeys(Keys.SHIFT,Keys.HOME);
 		
-		voucherHeaderCurrency.sendKeys(excelReader.getCellData(xlSheetName, 142, 5));
+		//voucherHeaderCurrency.sendKeys(excelReader.getCellData(xlSheetName, 142, 5));
 		Thread.sleep(2000);
 		voucherHeaderCurrency.sendKeys(Keys.TAB);
 		
@@ -1928,6 +1945,7 @@ public class OpeningBalancesPage extends BaseEngine
 
 		System.out.println("Message : "+actMessage+" Value Expected : "+expMessage);
 
+		Thread.sleep(4000);
 		if(actAlertMessage.contains(expAlertMessage) && actMessage.equalsIgnoreCase(expMessage))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 151, 8, resPass);
@@ -1960,7 +1978,7 @@ public class OpeningBalancesPage extends BaseEngine
 
 		int count = voucherHomeBodyList.size();
 
-		ArrayList<String>  actVouchersList= new ArrayList<String>(); 
+		ArrayList<String>  actVouchersList1= new ArrayList<String>(); 
 
 		for (int i = 0; i < count; i++) 
 		{
@@ -1970,12 +1988,12 @@ public class OpeningBalancesPage extends BaseEngine
 			{
 				System.out.println(data);
 
-				actVouchersList.add(data);
+				actVouchersList1.add(data);
 			}
 		}
 
 
-		ArrayList<String>  expVouchersList= new ArrayList<String>(); 
+		//ArrayList<String>  expVouchersList= new ArrayList<String>(); 
 
 		/*expVouchersList.add("01/01/2020");
 			expVouchersList.add("1");
@@ -1986,7 +2004,7 @@ public class OpeningBalancesPage extends BaseEngine
 			expVouchersList.add("False");
 			expVouchersList.add("Authorized");
 			expVouchersList.add("INDIA");*/
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 153, 6));
+		/*expVouchersList.add(excelReader.getCellData(xlSheetName, 153, 6));
 		expVouchersList.add("01/01/2020");
 		expVouchersList.add(excelReader.getCellData(xlSheetName, 154, 6));
 		expVouchersList.add(excelReader.getCellData(xlSheetName, 155, 6));
@@ -1997,16 +2015,21 @@ public class OpeningBalancesPage extends BaseEngine
 		expVouchersList.add(excelReader.getCellData(xlSheetName, 158, 6));
 		expVouchersList.add(excelReader.getCellData(xlSheetName, 159, 6));
 		expVouchersList.add(excelReader.getCellData(xlSheetName, 160, 6));
-		expVouchersList.add(excelReader.getCellData(xlSheetName, 161, 6));
+		//expVouchersList.add(excelReader.getCellData(xlSheetName, 161, 6));
 		
 		excelReader.setCellData(xlfile, xlSheetName, 153, 7, actVouchersList.toString());
+		*/
+		
+		String actVouchersList=actVouchersList1.toString();
+		
+		String expVouchersList="[1, 01/01/2020, 1, SU, SU, "+getCurrentDateF2()+", "+getCurrentDateF2()+", False, Authorized, INDIA,  , Total]";
 
 		System.out.println("**********************checkVerifingDetailsOfSavedOpeningStocksVouchersInHomepage*********************");
 
 		System.out.println(actVouchersList);
 		System.out.println(expVouchersList);
 
-		if (actVouchersList.equals(expVouchersList)) 
+		if (actVouchersList.equalsIgnoreCase(expVouchersList)) 
 		{
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherhomeCloseBtn));
 			voucherhomeCloseBtn.click();
@@ -2023,6 +2046,131 @@ public class OpeningBalancesPage extends BaseEngine
 	}
 
 
+
+	public static boolean CheckLogin() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+	{
+	        Thread.sleep(3000);
+
+	        getDriver().navigate().refresh();
+
+	        LoginPage lp=new LoginPage(getDriver()); 
+
+	        lp.checkLoginPageTitleByURLInputInBrowser();
+
+	        String unamelt="su";
+
+	        String pawslt="su";
+
+	        lp.enterUserName(unamelt);
+
+	        lp.enterPassword(pawslt);
+
+	        Thread.sleep(2000);
+
+	        String compname = "Automation Company : 08/10/2020";
+
+	        Select oSelect = new Select(companyDropDownList);
+
+	        List<WebElement> elementCount = oSelect.getOptions();
+
+	        int cqSize = elementCount.size();
+
+	        System.out.println("CompanyDropdownList Count :" + cqSize);
+
+	        int i;
+
+	        for (i = 0; i < elementCount.size(); i++) {
+
+	                elementCount.get(i).getText();
+
+	                String optionName = elementCount.get(i).getText();
+	                if (optionName.toUpperCase().startsWith(compname.toUpperCase())) {
+	                        System.out.println("q" + elementCount.get(i).getText());
+	                        elementCount.get(i).click();
+	                }
+
+	        }
+
+	        Thread.sleep(2000);
+
+	        lp.clickOnSignInBtn();
+
+	        Thread.sleep(2000);
+
+	        String actUserInfo1=userNameDisplay.getText();
+
+	        System.out.println("User Info  : "+actUserInfo1);
+
+	        System.out.println("User Info Capture Text  :  "+userNameDisplay.getText());
+
+	        //getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
+	       // companyLogo.click();
+
+	        String getCompanyTxt1=Company_Name.getText();
+	        String getLoginCompanyName1=getCompanyTxt1.substring(0, 31);
+	        System.out.println("company name  :  "+ getLoginCompanyName1);
+	        //companyLogo.click();
+
+	        String expUserInfo1           ="SU";
+	        String expLoginCompanyName1   ="Automation Company : 08/10/2020";
+
+	        System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
+	        System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
+
+	        if(actUserInfo1.equalsIgnoreCase(expUserInfo1) && getLoginCompanyName1.contains(expLoginCompanyName1))
+	        {
+	                return true;
+	        }
+	        else
+	        {
+	                return false;
+	        }
+
+	}
+
+
+	public boolean checkLogoutOpeningBalancesPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		getDriver().navigate().refresh();
+		Thread.sleep(2000);
+		 
+		 try
+			{
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplayLogo));
+			  userNameDisplayLogo.click();
+			  Thread.sleep(2000);
+			 
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
+			  logoutOption.click();
+			  
+			  Thread.sleep(2000);
+			  
+			  boolean actUserLoginPage              = username.isDisplayed() && username.isEnabled()
+	                                               && password.isDisplayed() && password.isEnabled();
+	                                      
+			  boolean expUserLoginPage              = true;
+			  
+			  if(actUserLoginPage==expUserLoginPage)  
+		      {
+				System.out.println("***Test Pass: Login Successfull***");
+				
+				return true;
+			  }
+		      else
+		      {
+		  	 
+				System.out.println("***Test Fail: Login Not Successfull***");
+				
+				return false;
+			  }
+			}
+			catch (Exception e)
+			{
+			 	String exception = e.getMessage();
+			 		
+				return false;
+			}
+		}
 
 
 

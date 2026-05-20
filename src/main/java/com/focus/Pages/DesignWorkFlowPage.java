@@ -1,11 +1,15 @@
 package com.focus.Pages;
 
 import java.io.IOException;
+import java.util.List;
+
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -70,76 +74,130 @@ public class DesignWorkFlowPage extends BaseEngine
 	{
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
-		settingsmenuBtn.click();
-
-		int count = SettingsSubMenusList.size();
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = SettingsSubMenusList.get(i).getText();
-
-			System.err.println(data);
-
-			ScrollIntoView(SettingsSubMenusList.get(i));
-
-			if (data.equalsIgnoreCase(excelReader.getCellData(xlSheetName, 8, 5))) 
-			{
-				SettingsSubMenusList.get(i).click();
-				break;
-			}
-		}
-
+		ClickUsingJs(settingsmenuBtn);
 		Thread.sleep(2000);
-
+		ClickUsingJs(DesignWorkFlowBut);
+		
+		
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(workflowNameTxt));
 		workflowNameTxt.click();
-		workflowNameTxt.sendKeys(excelReader.getCellData(xlSheetName, 9, 5));
-		Thread.sleep(1000);
+		Thread.sleep(1500);
+		workflowNameTxt.sendKeys("TestFlow");
+		Thread.sleep(1500);
+
 		workflowNameTxt.sendKeys(Keys.TAB);
 
 		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(requestForQuoteDragAndDrop));
 		requestForQuoteDragAndDrop.click();
+		Thread.sleep(2000);
 
-		getAction().dragAndDropBy(requestForQuoteDragAndDrop, 350, -250).build().perform();
+		// getAction().dragAndDropBy(purchasesOrdersDragAndDrop, 350,
+		// -250).build().perform();
+		getAction().dragAndDropBy(requestForQuoteDragAndDrop, 350, -100).build().perform();
 
+		//click(purchasesVouchersExpandBtn);
 		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchasesQuotationsDragAndDrop));
 		purchasesQuotationsDragAndDrop.click();
 
-		getAction().dragAndDropBy(purchasesQuotationsDragAndDrop, 650, 28).build().perform();
-		
-		//getAction().dragAndDropBy(SecondDraggedElement, 350, 0).build().perform();
+		getAction().dragAndDropBy(purchasesQuotationsDragAndDrop, 650, 0).build().perform();
 
-		Thread.sleep(2000);
+		//getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(FirstDraggedElement));
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(draggedPurchasesQuotations));
+		/*boolean actFirstDraggedElement = FirstDraggedElement.isDisplayed();
+		boolean actdraggedPurchasesVouchersN = draggedPurchasesVouchersN1.isDisplayed();
 
-		getAction().contextClick(draggedPurchasesQuotations).build().perform();
+		System.err.println(actFirstDraggedElement);
+		System.err.println(actdraggedPurchasesVouchersN);
 
-		Thread.sleep(2000);
+		boolean expFirstDraggedElement = true;
+		boolean expdraggedPurchasesVouchersN = true;*/
+
+		getAction().contextClick(FirstDraggedElement).build().perform();
+
+		Thread.sleep(10000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(draggedlinkBtn));
-		draggedlinkBtn.click();
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(linkNode1Left));
+
+		boolean actdraggedlinkBtn = draggedlinkBtn.isDisplayed();
+		boolean actdraggeddeleteBtn = draggeddeleteBtn.isDisplayed();
+
+		System.err.println("actdraggedlinkBtn is :" + actdraggedlinkBtn);
+		System.err.println("actdraggeddeleteBtn is :" + actdraggeddeleteBtn);
+
+		boolean expdraggedlinkBtn = true;
+		boolean expdraggeddeleteBtn = true;
+
+		click(draggedlinkBtn);
+		System.err.println("hello");
+
+		Thread.sleep(4000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(linkNode0Right));
+		linkNode0Right.click();
+		
+		
+		Thread.sleep(2000);
+		
 		linkNode1Left.click();
 
-	
-		JavascriptExecutor js = (JavascriptExecutor) getDriver();
-		js.executeScript("document.querySelector('#line0 > path').setAttribute('stroke-width', '8')"); 
+		Thread.sleep(2000);
 
+		JavascriptExecutor js = (JavascriptExecutor) getDriver();
+		js.executeScript("document.querySelector('#line0 > path').setAttribute('stroke-width', '21')");
+
+		boolean actlink0TO1 = link0TO1.isDisplayed();
+		boolean explink0TO1 = true;
+
+		Thread.sleep(2000);
+		System.err.println("actlink0TO1 is :" + actlink0TO1);
+
+		// getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(linkNode1Left));
+		// linkNode1Left.click();
+
+		//Thread.sleep(2000);
+		//moveToElement(link5TO6);
+
+		/*
+		 * Thread.sleep(2000); moveToElement(link0TO1); ScrollIntoView(link0TO1);
+		 * Thread.sleep(2000); click(link0TO1);
+		 */
+		 getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(link0TO1));
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(link0TO1));
-		getAction().moveToElement(link0TO1).pause(2000).click().build().perform();
-		//link0TO1.click();
+		link0TO1.click();
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(DefinitionTab));
+		DefinitionTab.click();
+
+		Thread.sleep(2000);
+
+		Select s = new Select(DefinitionLinkValueDropdown);
+
+		s.selectByVisibleText("Quantity");
+
+		int definitionTabChkBoxNameListCount = definitionTabChkBoxNameList.size();
+
+		for (int i = 1; i < definitionTabChkBoxNameListCount; i++) {
+			String data = definitionTabChkBoxNameList.get(i).getText();
+
+			if (data.equalsIgnoreCase("ITEM")) {
+				definitionTabChkBoxList.get(i).click();
+			}
+		}
+
+		// getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(OkBtn));
+		// OkBtn.click();
+		ClickUsingJs(OkBtn);*/
 		
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(DefinitionLinkValueDropdown));
 		Select s=new Select(DefinitionLinkValueDropdown);
-		s.selectByVisibleText(excelReader.getCellData(xlSheetName, 10, 5));
+		s.selectByVisibleText(/* excelReader.getCellData(xlSheetName, 10, 5) */"Quantity");
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(materialRequiitionAndPquotationsitemchkbox));
 		materialRequiitionAndPquotationsitemchkbox.click();
@@ -147,14 +205,17 @@ public class DesignWorkFlowPage extends BaseEngine
 		
 		//getAction().moveToElement(OkBtn).build().perform();
 		
-		((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", OkBtn);
+		//((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", OkBtn);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(OkBtn));
-		OkBtn.click();
+		ClickUsingJs(OkBtn);
 		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(dwSaveBtn));
 		dwSaveBtn.click();
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(dwCloseBtn));
+		dwCloseBtn.click();
 
 		System.out.println("********************************checkSavingTestWorkFlow***********************************");
 
@@ -177,47 +238,75 @@ public class DesignWorkFlowPage extends BaseEngine
 
 
 
-
+	
+	
+	@FindBy(xpath="//*[@id='idNode_0']")
+	public static WebElement base;
 
 
 	public boolean checkEditingSavedTestWorkFlow() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());
 		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
+		ClickUsingJs(settingsmenuBtn);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(DesignWorkFlowBut));
+		DesignWorkFlowBut.click();
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(workflowNameTxt));
 		workflowNameTxt.click();
-		workflowNameTxt.sendKeys(Keys.END);
-		workflowNameTxt.sendKeys(Keys.SHIFT, Keys.HOME);
-		workflowNameTxt.sendKeys(excelReader.getCellData(xlSheetName, 11, 5));
-		Thread.sleep(2000);
+		Thread.sleep(1000);
+		clearValueFromTextBox(workflowNameTxt);
+		Thread.sleep(1000);
+		workflowNameTxt.sendKeys(/*excelReader.getCellData(xlSheetName, 11, 5)*/"TestFlow");
+		Thread.sleep(1000);
 		workflowNameTxt.sendKeys(Keys.TAB);
-
-		Thread.sleep(2000);
+		Thread.sleep(1200);
+		base.click();
 		
-		
-		
-		//ScrollIntoView(link0TO1);
+		//ClickUsingJs(Link0T01Click);
+		/*ScrollIntoView(link0TO1);
 		
 		JavascriptExecutor js = (JavascriptExecutor) getDriver();
 		js.executeScript("document.querySelector('#line0 > path').setAttribute('stroke-width', '8')");
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(link0TO1));
-		getAction().moveToElement(link0TO1).pause(2000).click().build().perform();
+		getAction().moveToElement(link0TO1).pause(2000).click().build().perform();*/
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
+		JavascriptExecutor js = (JavascriptExecutor) getDriver();
+		js.executeScript("document.querySelector('#line0 > path').setAttribute('stroke-width', '25')");
+		Thread.sleep(1500);
+		
+		moveToElement(link0TO1);
+
+		 //getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(link0TO1));
+		//getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(link0TO1));
+		//link0TO1.click();
+		Thread.sleep(2000);
+			
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(DefinitionLinkValueDropdown));
 		Select s=new Select(DefinitionLinkValueDropdown);
 		s.selectByVisibleText(excelReader.getCellData(xlSheetName, 12, 5));
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerAccountChkbox));
-		customerAccountChkbox.click();
 		
-		Thread.sleep(2000);
-		((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", OkBtn);
+		Thread.sleep(1200);
+		
+		System.err.println("customer account chkbox is :" + CheckcustomerAccountChkbox.isSelected());
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(OkBtn));
-		OkBtn.click();
+		if(CheckcustomerAccountChkbox.isSelected()==false)
+		{
+		customerAccountChkbox.click();
+		}
+		Thread.sleep(2000);
+		
+		ClickUsingJs(OkBtn);
+		
+		//((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", OkBtn);
+
+		//getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(OkBtn));
+		//OkBtn.click();
 		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(dwSaveBtn));
@@ -255,7 +344,7 @@ public class DesignWorkFlowPage extends BaseEngine
 		workflowNameTxt.click();
 		workflowNameTxt.sendKeys(Keys.END);
 		workflowNameTxt.sendKeys(Keys.SHIFT, Keys.HOME);
-		workflowNameTxt.sendKeys(excelReader.getCellData(xlSheetName, 13, 5));
+		workflowNameTxt.sendKeys(/*excelReader.getCellData(xlSheetName, 13, 5)*/"TestFlow");
 		Thread.sleep(2000);
 		workflowNameTxt.sendKeys(Keys.TAB);
 		
@@ -299,7 +388,7 @@ public class DesignWorkFlowPage extends BaseEngine
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
-		settingsmenuBtn.click();
+		ClickUsingJs(settingsmenuBtn);
 
 		int count = SettingsSubMenusList.size();
 
@@ -340,7 +429,9 @@ public class DesignWorkFlowPage extends BaseEngine
 
 		//getAction().dragAndDrop(purchasesVouchersVATDragAndDrop, draggedMaterialRequisition).build().perform();
 
-		getAction().dragAndDropBy(purchasesVouchersVATDragAndDrop, 800, -250).build().perform();
+		getAction().dragAndDropBy(purchasesVouchersVATDragAndDrop, 800, -150).build().perform();
+		
+		Thread.sleep(2000);
 
 		getAction().contextClick(draggedPurchasesOrders).build().perform();
 
@@ -363,11 +454,12 @@ public class DesignWorkFlowPage extends BaseEngine
 		Thread.sleep(2000);
 		
 		JavascriptExecutor js = (JavascriptExecutor) getDriver();
-		js.executeScript("document.querySelector('#line4 > path').setAttribute('stroke-width', '8')");
+		js.executeScript("document.querySelector('#line4 > path').setAttribute('stroke-width', '25')");
 
-		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(link4TO5));
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(link4TO5));
-		link4TO5.click();
+        Thread.sleep(1500);
+		
+		moveToElement(link4TO5);
+		
 		
 		Thread.sleep(2000);
 
@@ -408,19 +500,18 @@ public class DesignWorkFlowPage extends BaseEngine
 
 		Thread.sleep(2000);
 
-		((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", OkBtn);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(OkBtn));
-		OkBtn.click();
+		ClickUsingJs(OkBtn);
 
 		Thread.sleep(3000);
 		
 		JavascriptExecutor js1 = (JavascriptExecutor) getDriver();
-		js1.executeScript("document.querySelector('#line5 > path').setAttribute('stroke-width', '8')");
+		js1.executeScript("document.querySelector('#line5 > path').setAttribute('stroke-width', '25')");
 		
-		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(link5TO6));
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(link5TO6));
-		link5TO6.click();
+        Thread.sleep(1500);
+		
+		moveToElement(link5TO6);
+		
 
 		Thread.sleep(3000);
 
@@ -456,14 +547,11 @@ public class DesignWorkFlowPage extends BaseEngine
 
 		Thread.sleep(2000);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(OkBtn));
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(OkBtn));
-		OkBtn.click();
+		ClickUsingJs(OkBtn);
 
 		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(dwSaveBtn));
-		dwSaveBtn.click();
+		
+		ClickUsingJs(dwSaveBtn);
 
 		System.out.println("************************checkSavingPurchasesFlow*************************************");
 
@@ -491,6 +579,134 @@ public class DesignWorkFlowPage extends BaseEngine
 	}
 
 
+	public static boolean CheckLogin() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+	{
+	        Thread.sleep(3000);
+
+	        getDriver().navigate().refresh();
+
+	        LoginPage lp=new LoginPage(getDriver()); 
+
+	        lp.checkLoginPageTitleByURLInputInBrowser();
+
+	        String unamelt="su";
+
+	        String pawslt="su";
+
+	        lp.enterUserName(unamelt);
+
+	        lp.enterPassword(pawslt);
+
+	        Thread.sleep(2000);
+
+	        String compname = "Automation Company : 08/10/2020";
+
+	        Select oSelect = new Select(companyDropDownList);
+
+	        List<WebElement> elementCount = oSelect.getOptions();
+
+	        int cqSize = elementCount.size();
+
+	        System.out.println("CompanyDropdownList Count :" + cqSize);
+
+	        int i;
+
+	        for (i = 0; i < elementCount.size(); i++) {
+
+	                elementCount.get(i).getText();
+
+	                String optionName = elementCount.get(i).getText();
+	                if (optionName.toUpperCase().startsWith(compname.toUpperCase())) {
+	                        System.out.println("q" + elementCount.get(i).getText());
+	                        elementCount.get(i).click();
+	                }
+
+	        }
+
+	        Thread.sleep(2000);
+
+	        lp.clickOnSignInBtn();
+
+	        Thread.sleep(2000);
+
+	        String actUserInfo1=userNameDisplay.getText();
+
+	        System.out.println("User Info  : "+actUserInfo1);
+
+	        System.out.println("User Info Capture Text  :  "+userNameDisplay.getText());
+
+	       /* getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
+	        companyLogo.click();*/
+
+	        String getCompanyTxt1=Company_Name.getText();
+	        String getLoginCompanyName1=getCompanyTxt1.substring(0, 31);
+	        System.out.println("company name  :  "+ getLoginCompanyName1);
+	        //companyLogo.click();
+
+	        String expUserInfo1           ="SU";
+	        String expLoginCompanyName1   ="Automation Company : 08/10/2020";
+
+	        System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
+	        System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
+
+	        if(actUserInfo1.equalsIgnoreCase(expUserInfo1) && getLoginCompanyName1.contains(expLoginCompanyName1))
+	        {
+	                return true;
+	        }
+	        else
+	        {
+	                return false;
+	        }
+
+	}
+
+
+	public boolean checkLogoutDesignWorkFlowPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		getDriver().navigate().refresh();
+		Thread.sleep(2000);
+		 
+		 try
+			{
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplayLogo));
+			  userNameDisplayLogo.click();
+			  Thread.sleep(2000);
+			 
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
+			  logoutOption.click();
+			  
+			  Thread.sleep(2000);
+			  
+			  boolean actUserLoginPage              = username.isDisplayed() && username.isEnabled()
+	                                               && password.isDisplayed() && password.isEnabled();
+	                                      
+			  boolean expUserLoginPage              = true;
+			  
+			  if(actUserLoginPage==expUserLoginPage)  
+		      {
+				System.out.println("***Test Pass: Login Successfull***");
+				
+				return true;
+			  }
+		      else
+		      {
+		  	 
+				System.out.println("***Test Fail: Login Not Successfull***");
+				
+				return false;
+			  }
+			}
+			catch (Exception e)
+			{
+			 	String exception = e.getMessage();
+			 		
+				return false;
+			}
+		}
+
+
+
+
 
 
 
@@ -509,8 +725,6 @@ public class DesignWorkFlowPage extends BaseEngine
 	{
 		PageFactory.initElements(driver, this);
 	}
-
-
 
 
 }

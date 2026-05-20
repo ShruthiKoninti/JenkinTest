@@ -15,6 +15,15 @@ import com.focus.base.BaseEngine;
 public class StockTransferVoucherTest extends BaseEngine
 {
 	StockTransferVoucherPage STV;
+	
+	
+	@Test(priority=282)
+	public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		STV=new StockTransferVoucherPage(getDriver());
+		Assert.assertEquals(STV.CheckLogin(), true);
+	}
+
 
 	@Test(priority=284)
 	public void checkSavingStockTransferVoucher() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
@@ -30,7 +39,7 @@ public class StockTransferVoucherTest extends BaseEngine
 		Assert.assertEquals(STV.checkSuspendOptionInSalesOrdersVoucherWithTransferedStock(), true);
 	}
 
-	@Test(priority=286) //
+	@Test(priority=286) 
 	public void checkSavingVoucherUsingCopyDocumentInStockTransfer() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
 		STV=new StockTransferVoucherPage(getDriver());
@@ -50,6 +59,7 @@ public class StockTransferVoucherTest extends BaseEngine
 		STV=new StockTransferVoucherPage(getDriver());
 		Assert.assertEquals(STV.checkDeletingVoucherInStockTransfer(), true);
 	}
+	
 
 	@Test(priority=289)
 	public void checkSavingAndSuspendingStockTransferVoucherFromHomepage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
@@ -71,6 +81,12 @@ public class StockTransferVoucherTest extends BaseEngine
 		STV=new StockTransferVoucherPage(getDriver());
 		Assert.assertEquals(STV.checkVerifingDetailsOfSavedStockTransferVoucherInHomepage(), true);
 	}
-
+	
+	@Test(priority=293)
+	public void checkLogoutStockTransfersPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		STV=new StockTransferVoucherPage(getDriver());
+		Assert.assertEquals(STV.checkLogoutStockTransfersPage(), true);
+	}	
 
 }

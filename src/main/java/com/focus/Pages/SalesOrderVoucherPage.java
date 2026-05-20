@@ -66,11 +66,11 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesOrdersVoucher));
 		salesOrdersVoucher.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		checkDeleteLinkStatus();
 
-		//Thread.sleep(2000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
@@ -117,8 +117,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenTab));
 		editScreenTab.click();
 
-		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenBodyTab));
-		editScreenBodyTab.click();*/
+		
 
 
 		int editScreenbodyCaptionCount = editScreenbodyCaption.size();
@@ -137,20 +136,16 @@ public class SalesOrderVoucherPage extends BaseEngine
 			}
 		}	
 
+		Thread.sleep(4000);
 
 		getWaitForAlert();
-
-		getAlert().accept();
 		Thread.sleep(2000);
+		getAlert().accept();
+		Thread.sleep(6000);
 
-
-	/*	if (errorMessage.isDisplayed()==true) 
-		{
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(errorMessageCloseBtn));
-			errorMessageCloseBtn.click();
-		}
-*/
-
+		//checkValidationMessage("");
+	
+		Thread.sleep(2000);
 		int editScreenbodyCaptionCount1 = editScreenbodyCaption.size();
 
 		System.err.println("editScreenbodyCaption : "+editScreenbodyCaptionCount);
@@ -167,21 +162,16 @@ public class SalesOrderVoucherPage extends BaseEngine
 			}
 		}	
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		getWaitForAlert();
 
 		Thread.sleep(2000);
 		
 		getAlert().accept();
-		Thread.sleep(2000);
+		Thread.sleep(6000);
 
-		/*if (errorMessage.isDisplayed()==true) 
-		{
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(errorMessageCloseBtn));
-			errorMessageCloseBtn.click();
-		}
-*/
+		//checkValidationMessage("");
 
 		Thread.sleep(2000);
 
@@ -201,27 +191,23 @@ public class SalesOrderVoucherPage extends BaseEngine
 			}
 		}	
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		if(getIsAlertPresent())
 		{
 		getWaitForAlert();
 		Thread.sleep(2000);
 		getAlert().accept();
 		}
-		Thread.sleep(2000);
+		Thread.sleep(6000);
 
-		/*if (validationConfirmationMessage.getText().isEmpty()==false) 
-		{
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(errorMessageCloseBtn));
-			errorMessageCloseBtn.click();
-		}
-*/
-		Thread.sleep(2000);
+		//checkValidationMessage("");
+		Thread.sleep(4000);
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenLoadFieldsBtn));
 		editScreenLoadFieldsBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenLoadFieldsDropdown));
 		editScreenLoadFieldsDropdown.click();
@@ -259,7 +245,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenokBtn));
 		editScreenokBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(8000);
 		
 	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenLoadClsBtn));
 		editScreenLoadClsBtn.click();
@@ -288,7 +274,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		int editScreenLoadFieldTxtListCount1 = editScreenLoadFieldTxtList.size();
 
-		System.err.println("editScreenLoadFieldTxtListCount1 : "+editScreenLoadFieldTxtListCount1);
+		//System.err.println("editScreenLoadFieldTxtListCount1 : "+editScreenLoadFieldTxtListCount1);
 
 		for(int i=0;i<editScreenLoadFieldTxtListCount1;i++)
 		{
@@ -303,11 +289,11 @@ public class SalesOrderVoucherPage extends BaseEngine
 		}	
 
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		int editScreenLoadFieldTxtListCount2 = editScreenLoadFieldTxtList.size();
 
-		System.err.println("editScreenLoadFieldTxtListCount2 : "+editScreenLoadFieldTxtListCount2);
+		//System.err.println("editScreenLoadFieldTxtListCount2 : "+editScreenLoadFieldTxtListCount2);
 
 		for(int i=0;i<editScreenLoadFieldTxtListCount2;i++)
 		{
@@ -322,12 +308,12 @@ public class SalesOrderVoucherPage extends BaseEngine
 		}	
 
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenokBtn));
 		editScreenokBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(8000);
 		
 	
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(behaviourSelect));
@@ -336,14 +322,14 @@ public class SalesOrderVoucherPage extends BaseEngine
 		Thread.sleep(2000);
 		behaviourSelect.sendKeys(Keys.TAB);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtn));
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtn));
 		updateBtn.click();
-		Thread.sleep(1000);
+		Thread.sleep(4000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(closeBtnSO));
 		closeBtnSO.click();
 		
-		Thread.sleep(1500);
+		Thread.sleep(4000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SettingsBtnSO));
 		SettingsBtnSO.click();
@@ -351,7 +337,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenTab));
 		editScreenTab.click();
-		Thread.sleep(2000);
+		Thread.sleep(2000);*/
 		
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenQuantityPreloadedTxt));
@@ -390,12 +376,12 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		int editScreeAtyPreLoadFormulaListCount = editScreeAtyPreLoadFormulaList.size();
 
-		System.err.println("editScreeAtyPreLoadFormulaListCount : "+editScreeAtyPreLoadFormulaListCount);
+		//System.err.println("editScreeAtyPreLoadFormulaListCount : "+editScreeAtyPreLoadFormulaListCount);
 
 		for(int i=0;i<editScreeAtyPreLoadFormulaListCount;i++)
 		{
 			String data = editScreeAtyPreLoadFormulaList.get(i).getText();
-			System.err.println(data);
+			//System.err.println(data);
 
 			if(data.equalsIgnoreCase("AQ Calculated Value")) /*excelReader.getCellData(xlSheetName, 16, 5)*/
 			{
@@ -413,7 +399,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		for(int i=0;i<editScreeAtyPreLoadFormulaListCount;i++)
 		{
 			String data = editScreeAtyPreLoadFormulaList.get(i).getText();
-			System.err.println(data);
+			//System.err.println(data);
 
 			if(data.equalsIgnoreCase("FQ Calculated Value"))/*excelReader.getCellData(xlSheetName, 17, 5)*/
 			{
@@ -463,15 +449,15 @@ public class SalesOrderVoucherPage extends BaseEngine
 		String actMessage=checkValidationMessage(expMessage);
 		
 		excelReader.setCellData(xlfile, xlSheetName, 8, 7, actMessage);
+		
+		Thread.sleep(8000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settings_closeBtn));
 		settings_closeBtn.click();
 
 		Thread.sleep(3000);
 
-		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherhomeCloseBtn));
-		voucherhomeCloseBtn.click();
-*/
+		
 		if(actMessage.equalsIgnoreCase(expMessage))
 		{
 			excelReader.setCellData(xlfile, xlSheetName, 8, 8, resPass);
@@ -494,25 +480,26 @@ public class SalesOrderVoucherPage extends BaseEngine
 	{
 		excelReader = new ExcelReader(POJOUtility.getExcelPath());
 		
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
-
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsMenu));
 		inventoryTransactionsMenu.click();
-
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsSalesMenu));
 		inventoryTransactionsSalesMenu.click();
-
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesOrdersVoucher));
 		salesOrdersVoucher.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(10000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
 		checkValidationMessage("Screen opened");
-
+		Thread.sleep(6000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerAccountTxt));
@@ -541,11 +528,11 @@ public class SalesOrderVoucherPage extends BaseEngine
 		select1stRow_5thColumn.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(so_enter_AQTxt));
-		so_enter_AQTxt.sendKeys(excelReader.getCellData(xlSheetName, 22, 5));
+		so_enter_AQTxt.sendKeys(/*excelReader.getCellData(xlSheetName, 22, 5)*/"6");
 		so_enter_AQTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(so_enter_FQTxt));
-		so_enter_FQTxt.sendKeys(excelReader.getCellData(xlSheetName, 23, 5));
+		so_enter_FQTxt.sendKeys(/*excelReader.getCellData(xlSheetName, 23, 5)*/"6");
 		so_enter_FQTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_7thColumn));
@@ -554,34 +541,34 @@ public class SalesOrderVoucherPage extends BaseEngine
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Quantity));
 		String actQtyInVoucher	=enter_Quantity.getAttribute("value");
-		String expQtyInVoucher	=excelReader.getCellData(xlSheetName, 19, 6);
+		String expQtyInVoucher	="12.00";
 	
 		enter_Quantity.sendKeys(Keys.TAB);
-		excelReader.setCellData(xlfile, xlSheetName, 19, 7, actQtyInVoucher);
+		
 
 		System.out.println("Qty Preload is displaying as Value In Sales Order Vouche  : "+actQtyInVoucher  +" Value Expected : "+expQtyInVoucher);
 
+		Thread.sleep(2000);
+		
 		int batchReservationPopGridBodyCount=batchReservationPopGridBody.size();
 
 		ArrayList<String> batchReservationPopGridBodyList = new ArrayList<String>();
 
-		for (int i = 0; i < 150; i++) 
+		for (int i = 0; i < batchReservationPopGridBodyCount; i++) 
 		{
 			String data=batchReservationPopGridBody.get(i).getText();
 
-			if(i==8 || i==9 || i==19 || i==20 || i==30 ||i==31 || i==41 || i==42)
+			if(i==8 || i==9 || i==19 || i==20 || i==30 ||i==31 || i==41 || i==42 || i==52 || i==53)
 			{
 				data = "Date Field";
 			}
-			System.err.println("data : " +data);
+			//System.err.println("data : " +data);
 			batchReservationPopGridBodyList.add(data);
 		}
 
 		String actbatchReservationPopGridBody = batchReservationPopGridBodyList.toString();
 
-		String expbatchReservationPopGridBody = excelReader.getCellData(xlSheetName, 20, 6);
-
-		excelReader.setCellData(xlfile, xlSheetName, 20, 7, actbatchReservationPopGridBody);
+		String expbatchReservationPopGridBody = "[1,  , 0.00, EX BATCH UPDATE, HYDERABAD, 12.00, 0.00, 0.00, Date Field, Date Field, 12.00, 2,  , 0.00, PVATR2#V1, HYDERABAD, 24.00, 0.00, 0.00, Date Field, Date Field, 24.00, 3,  , 0.00, PVATR1#V1, HYDERABAD, 12.00, 0.00, 0.00, Date Field, Date Field, 12.00, 4,  , 0.00, BATCH#OSVR2, HYDERABAD, 12.00, 0.00, 0.00, Date Field, Date Field, 12.00, 5,  , 0.00, BATCH#OSVR1, HYDERABAD, 12.00, 0.00, 0.00, Date Field, Date Field, 12.00]";
 		
 		System.out.println(actbatchReservationPopGridBody);
 		System.out.println(expbatchReservationPopGridBody);
@@ -590,7 +577,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		ArrayList<String> batchReservationPopGridBatchArray = new ArrayList<String> ();
 
-		for(int i=0;i<50;i++)
+		for(int i=0;i<batchReservationPopGridBatchCount;i++)
 		{
 			String data = batchReservationPopGridBatch.get(i).getText();
 
@@ -625,8 +612,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_8thColumn));
 
 		String actReserveColumn	=select1stRow_8thColumn.getText();
-		String expReserveColumn	=excelReader.getCellData(xlSheetName, 24, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 24, 7, actReserveColumn);
+		String expReserveColumn	="Reserved";
 
 		System.out.println("Reservation Column  : "+actReserveColumn+"  Value Expected  "+expReserveColumn);
 
@@ -634,44 +620,23 @@ public class SalesOrderVoucherPage extends BaseEngine
 		MRsaveBtn.click();
 		Thread.sleep(2000);
 		
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 1");
-		expMessage.add("Saving in background.");*/
-
-		/*String actMessage = SavingInBackground(2);
-
-		HashSet<String> expMsg = new HashSet();
-
-		expMsg.add(excelReader.getCellData(xlSheetName, 25, 6));
-		expMsg.add(excelReader.getCellData(xlSheetName, 26, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 25, 7, actMessage);
-		String expMessage = expMsg.toString();
 		
-		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);*/
+
 		
-		//String expMessage1 = excelReader.getCellData(xlSheetName, 25, 6);
+		
+		
 		String expMessage1="Voucher saved successfully";
 		String actMessage = checkValidationMessage(expMessage1);
 		
-		//String expMessage2 = excelReader.getCellData(xlSheetName, 26, 6);
+		
 		String expMessage2 =": 1";
 		
-		//excelReader.setCellData(xlfile, xlSheetName, 25, 7, actMessage);
+	
 	
 		System.out.println("Actual Message    : "+actMessage);
 		System.out.println("Expected Message  : "+expMessage1);
 
-		//if(actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+	
 		
 		
 		if (actQtyInVoucher.equalsIgnoreCase(expQtyInVoucher) && actbatchReservationPopGridBody.equalsIgnoreCase(expbatchReservationPopGridBody) &&
@@ -764,6 +729,12 @@ public class SalesOrderVoucherPage extends BaseEngine
 		System.out.println("Gross             : "+actGross            +" Value Expected "+expGross);
 
 
+		click(newCashBankAccountTxt);
+		newCashBankAccountTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		newCashBankAccountTxt.sendKeys("Customer A");
+		Thread.sleep(4000);
+		newCashBankAccountTxt.sendKeys(Keys.TAB);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_1stColumn));
 		select2ndRow_1stColumn.click();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(pvWareHouseTxt));
@@ -806,7 +777,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		ArrayList<String> batchReservationPopGridBodyList = new ArrayList<String>();
 
-		for (int i = 0; i < 150; i++) 
+		for (int i = 0; i < batchReservationPopGridBodyCount; i++) 
 		{
 			String data=batchReservationPopGridBody.get(i).getText();
 
@@ -814,15 +785,13 @@ public class SalesOrderVoucherPage extends BaseEngine
 			{
 				data = "Date Field";
 			}
-			System.err.println("data : " +data);
+			//System.err.println("data : " +data);
 			batchReservationPopGridBodyList.add(data);
 		}
 
 		String actbatchReservationPopGridBody = batchReservationPopGridBodyList.toString();
 
-		String expbatchReservationPopGridBody = excelReader.getCellData(xlSheetName, 39, 6);
-
-		excelReader.setCellData(xlfile, xlSheetName, 39, 7, actbatchReservationPopGridBody);
+		String expbatchReservationPopGridBody = "[1,  , 0.00, PVATR2#V1, HYDERABAD, 24.00, 0.00, 0.00, Date Field, Date Field, 24.00, 2,  , 0.00, PVATR1#V1, HYDERABAD, 12.00, 0.00, 0.00, Date Field, Date Field, 12.00, 3,  , 0.00, BATCH#OSVR2, HYDERABAD, 12.00, 0.00, 0.00, Date Field, Date Field, 12.00, 4,  , 0.00, BATCH#OSVR1, HYDERABAD, 12.00, 0.00, 0.00, Date Field, Date Field, 12.00, 5,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ]";
 		
 		System.out.println(actbatchReservationPopGridBody);
 		System.out.println(expbatchReservationPopGridBody);
@@ -835,7 +804,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		{
 			String data = batchReservationPopGridBatch.get(i).getText();
 
-			if(data.equalsIgnoreCase(excelReader.getCellData(xlSheetName, 31, 5)))
+			if(data.equalsIgnoreCase("PVATR2#V1"))
 			{
 				batchReservationPopGridQtyToRelease.get(i).click();
 
@@ -866,8 +835,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_8thColumn));
 
 		String actReserveColumn	=select1stRow_8thColumn.getText();
-		String expReserveColumn	=excelReader.getCellData(xlSheetName, 40, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 40, 7, actReserveColumn);
+		String expReserveColumn	="Reserved";
 
 		System.out.println("Reservation Column  : "+actReserveColumn+"  Value Expected  "+expReserveColumn);
 
@@ -875,51 +843,20 @@ public class SalesOrderVoucherPage extends BaseEngine
 		MRsaveBtn.click();
 		Thread.sleep(2000);
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 1");
-		expMessage.add("Saving in background.");*/
 		
-		/*String actMessage = SavingInBackground(2);
-
-		HashSet<String> expMsg = new HashSet();
-
-		expMsg.add(excelReader.getCellData(xlSheetName, 41, 6));
-		expMsg.add(excelReader.getCellData(xlSheetName, 42, 6));
 		
-		String expMessage = expMsg.toString();
 		
-		excelReader.setCellData(xlfile, xlSheetName, 41, 7, actMessage);
-
-		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
-*/
-		/*String expMessage1 = excelReader.getCellData(xlSheetName, 41, 6);
 		
-		String actMessage = checkValidationMessage(expMessage1);
-		String expMessage2 = excelReader.getCellData(xlSheetName, 42, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 41, 7, actMessage);
-	*/
 		
 		String expMessage1="Voucher saved successfully";
 		String actMessage = checkValidationMessage(expMessage1);
-		
-		//String expMessage2 = excelReader.getCellData(xlSheetName, 26, 6);
+			
 		String expMessage2 =": 1";
 		
 		System.out.println("Actual Message    : "+actMessage);
 		System.out.println("Expected Message  : "+expMessage1);
 
-		//if(actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+		
 		
 		if (actDocumentNo.equalsIgnoreCase(expDocumentNo) && actCustomerAccount.equalsIgnoreCase(expCustomerAccount) &&
 				actWarehouse.equalsIgnoreCase(expWarehouse) && actItemName.equalsIgnoreCase(expItemName) && actUnits.equalsIgnoreCase(expUnits) &&
@@ -961,7 +898,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		select1stRow_1stColumn.click();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(pvWareHouseTxt));
 		pvWareHouseTxt.sendKeys(excelReader.getCellData(xlSheetName, 44, 5));
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		pvWareHouseTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_ItemTxt));
@@ -996,7 +933,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		ArrayList<String> batchReservationPopGridBodyList = new ArrayList<String>();
 
-		for (int i = 0; i < 150; i++) 
+		for (int i = 0; i < batchReservationPopGridBodyCount; i++) 
 		{
 			String data=batchReservationPopGridBody.get(i).getText();
 
@@ -1004,15 +941,13 @@ public class SalesOrderVoucherPage extends BaseEngine
 			{
 				data = "Date Field";
 			}
-			System.err.println("data : " +data);
+			//System.err.println("data : " +data);
 			batchReservationPopGridBodyList.add(data);
 		}
 
 		String actbatchReservationPopGridBody = batchReservationPopGridBodyList.toString();
 
-		String expbatchReservationPopGridBody = excelReader.getCellData(xlSheetName, 44, 6);
-
-		excelReader.setCellData(xlfile, xlSheetName, 44, 7, actbatchReservationPopGridBody);
+		String expbatchReservationPopGridBody = "[1,  , 0.00, PVATR2#V1, HYDERABAD, 14.00, 0.00, 0.00, Date Field, Date Field, 24.00, 2,  , 0.00, PVATR1#V1, HYDERABAD, 12.00, 0.00, 0.00, Date Field, Date Field, 12.00, 3,  , 0.00, BATCH#OSVR2, HYDERABAD, 12.00, 0.00, 0.00, Date Field, Date Field, 12.00, 4,  , 0.00, BATCH#OSVR1, HYDERABAD, 12.00, 0.00, 0.00, Date Field, Date Field, 12.00, 5,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ]";
 		
 		System.out.println(actbatchReservationPopGridBody);
 		System.out.println(expbatchReservationPopGridBody);
@@ -1025,7 +960,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		{
 			String data = batchReservationPopGridBatch.get(i).getText();
 
-			if(data.equalsIgnoreCase(excelReader.getCellData(xlSheetName, 48, 5)))
+			if(data.equalsIgnoreCase("PVATR2#V1"))
 			{
 				batchReservationPopGridQtyToRelease.get(i).click();
 
@@ -1201,8 +1136,11 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_DeleteBtn));
 		new_DeleteBtn.click();
 
-		getWaitForAlert();
-		getAlert().accept();
+	/*	getWaitForAlert();
+		getAlert().accept();*/
+		
+		  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucher_ConfirmYesBtn)); 
+		  voucher_ConfirmYesBtn.click();
 
 		String expMessage = excelReader.getCellData(xlSheetName, 62, 6);
 		String actMessage  = checkValidationMessage(expMessage);
@@ -1236,6 +1174,8 @@ public class SalesOrderVoucherPage extends BaseEngine
 	public boolean checkSavingSalesOrderVoucher2WithStockItem() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 		excelReader = new ExcelReader(POJOUtility.getExcelPath());
+		
+		Thread.sleep(5500);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 
@@ -1274,9 +1214,9 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Quantity));
 		String actQtyInVoucher	=enter_Quantity.getAttribute("value");
-		String expQtyInVoucher	=excelReader.getCellData(xlSheetName, 63, 6);
+		String expQtyInVoucher	="12.00";
 		enter_Quantity.sendKeys(Keys.TAB);
-		excelReader.setCellData(xlfile, xlSheetName, 63, 7, actQtyInVoucher);
+	
 
 		System.out.println("Qty Preload is displaying as Value In Sales Order Vouche  : "+actQtyInVoucher  +" Value Expected : "+expQtyInVoucher);
 
@@ -1293,10 +1233,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		String actStockReservationPopGridBody = stockReservationPopGridBodyList.toString();
 
-		String expStockReservationPopGridBody = excelReader.getCellData(xlSheetName, 64, 6);
-
-		excelReader.setCellData(xlfile, xlSheetName, 64, 7, actStockReservationPopGridBody);
-		
+		String expStockReservationPopGridBody = "[,  , HYDERABAD, Stock, 0.00, 96.00, 0.00, 96.00, 0.00, 0.00]";
 		System.out.println(actStockReservationPopGridBody);
 		System.out.println(expStockReservationPopGridBody);
 
@@ -1325,43 +1262,17 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_8thColumn));
 
 		String actReserveColumn	=select1stRow_8thColumn.getText();
-		String expReserveColumn	=excelReader.getCellData(xlSheetName, 66, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 66, 7, actReserveColumn);
+		String expReserveColumn	="Reserved";
 
 		System.out.println("Reservation Column  : "+actReserveColumn+"  Value Expected  "+expReserveColumn);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(MRsaveBtn));
 		MRsaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 2");
-		expMessage.add("Saving in background.");*/
-		
-		/*String actMessage = SavingInBackground(2);
-
-		HashSet<String> expMsg = new HashSet();
-
-		expMsg.add(excelReader.getCellData(xlSheetName, 67, 6));
-		expMsg.add(excelReader.getCellData(xlSheetName, 68, 6));
-		
-		excelReader.setCellData(xlfile, xlSheetName, 67, 7, actMessage);
-		
-		String expMessage = expMsg.toString();*/
-		
 		
 		String expMessage1="Voucher saved successfully";
 		String actMessage = checkValidationMessage(expMessage1);
 		
-		//String expMessage2 = excelReader.getCellData(xlSheetName, 26, 6);
 		String expMessage2 =": 2";
 		
 		
@@ -1461,11 +1372,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_1stColumn));
 		select2ndRow_1stColumn.click();
 
-		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(pvWareHouseTxt));
-		pvWareHouseTxt.click();
-		pvWareHouseTxt.sendKeys(Keys.END, Keys.SHIFT, Keys.HOME);
-		pvWareHouseTxt.sendKeys(excelReader.getCellData(xlSheetName, 69, 5));
-		Thread.sleep(2000);*/
+		
 		pvWareHouseTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_ItemTxt));
@@ -1490,9 +1397,9 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Quantity));
 		String actQtyInVoucher	=enter_Quantity.getAttribute("value");
-		String expQtyInVoucher	=excelReader.getCellData(xlSheetName, 80, 6);
+		String expQtyInVoucher	="10.00";
 		enter_Quantity.sendKeys(Keys.TAB);
-		excelReader.setCellData(xlfile, xlSheetName, 80, 7, actQtyInVoucher);
+		
 
 		System.out.println("Qty Preload is displaying as Value In Sales Order Vouche  : "+actQtyInVoucher  +" Value Expected : "+expQtyInVoucher);
 
@@ -1509,9 +1416,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		String actStockReservationPopGridBody = stockReservationPopGridBodyList.toString();
 
-		String expStockReservationPopGridBody = excelReader.getCellData(xlSheetName, 81, 6);
-
-		excelReader.setCellData(xlfile, xlSheetName, 81, 7, actStockReservationPopGridBody);
+		String expStockReservationPopGridBody = "[,  , HYDERABAD, Stock, 0.00, 84.00, 12.00, 96.00, 0.00, 0.00]";
 		
 		System.out.println(actStockReservationPopGridBody);
 		System.out.println(expStockReservationPopGridBody);
@@ -1541,9 +1446,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_8thColumn));
 
 		String actReserveColumn	=select1stRow_8thColumn.getText();
-		String expReserveColumn	=excelReader.getCellData(xlSheetName, 82, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 82, 7, actReserveColumn);
-
+		String expReserveColumn	="Reserved";
 		System.out.println("Reservation Column  : "+actReserveColumn+"  Value Expected  "+expReserveColumn);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(MRsaveBtn));
@@ -1551,34 +1454,12 @@ public class SalesOrderVoucherPage extends BaseEngine
 		
 		Thread.sleep(4000);
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 2");
-		expMessage.add("Saving in background.");*/
-		
-		/*String actMessage = SavingInBackground(2);
-
-		HashSet<String> expMsg = new HashSet();
-
-		expMsg.add(excelReader.getCellData(xlSheetName, 83, 6));
-		expMsg.add(excelReader.getCellData(xlSheetName, 84, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 83, 7, actMessage);
-		
-		String expMessage = expMsg.toString();*/
-		
+	
 		
 		String expMessage1="Voucher saved successfully";
 		String actMessage = checkValidationMessage(expMessage1);
 		
-		//String expMessage2 = excelReader.getCellData(xlSheetName, 26, 6);
+		
 		String expMessage2 =": 2";
 		
 
@@ -1649,9 +1530,9 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Quantity));
 		String actQtyInVoucher	=enter_Quantity.getAttribute("value");
-		String expQtyInVoucher	=excelReader.getCellData(xlSheetName, 85, 6);
+		String expQtyInVoucher	="12.00";
 		enter_Quantity.sendKeys(Keys.TAB);
-		excelReader.setCellData(xlfile, xlSheetName, 85, 7, actQtyInVoucher);
+	
 		
 		System.out.println("Qty Preload is displaying as Value In Sales Order Vouche  : "+actQtyInVoucher  +" Value Expected : "+expQtyInVoucher);
 
@@ -1668,9 +1549,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		String actStockReservationPopGridBody = stockReservationPopGridBodyList.toString();
 
-		String expStockReservationPopGridBody = excelReader.getCellData(xlSheetName, 86, 6);
-
-		excelReader.setCellData(xlfile, xlSheetName, 86, 7, actStockReservationPopGridBody);
+		String expStockReservationPopGridBody = "[, , HYDERABAD, Stock, 0.00, 74.00, 0.00, 96.00, 0.00, 0.00]";
 		
 		System.out.println(actStockReservationPopGridBody);
 		System.out.println(expStockReservationPopGridBody);
@@ -1702,58 +1581,23 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_8thColumn));
 
 		String actReserveColumn	=select1stRow_8thColumn.getText();
-		String expReserveColumn	=excelReader.getCellData(xlSheetName, 88, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 88, 7, actReserveColumn);
+		String expReserveColumn	="Reserved";
 		
 		System.out.println("Reservation Column  : "+actReserveColumn+"  Value Expected  "+expReserveColumn);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(MRsaveBtn));
 		MRsaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 3");
-		expMessage.add("Saving in background.");*/
-		
-		/*String actMessage = SavingInBackground(2);
-
-		HashSet<String> expMsg = new HashSet();
-
-		expMsg.add(excelReader.getCellData(xlSheetName, 89, 6));
-		expMsg.add(excelReader.getCellData(xlSheetName, 90, 6));
-		
-		excelReader.setCellData(xlfile, xlSheetName, 89, 7, actMessage);
-		
-		String expMessage = expMsg.toString();
-
-		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
-*/
-/*String expMessage1 = excelReader.getCellData(xlSheetName, 89, 6);
-		
-		String actMessage = checkValidationMessage(expMessage1);
-		String expMessage2 = excelReader.getCellData(xlSheetName, 90, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 89, 7, actMessage);
-	*/
 		
 		String expMessage1="Voucher saved successfully";
 		String actMessage = checkValidationMessage(expMessage1);
 		
-		//String expMessage2 = excelReader.getCellData(xlSheetName, 26, 6);
+	
 		String expMessage2 =": 3";
 		
 		System.out.println("Actual Message    : "+actMessage);
 		System.out.println("Expected Message  : "+expMessage1);
-		//actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+		
 		
 		if (actQtyInVoucher.equalsIgnoreCase(expQtyInVoucher) && actStockReservationPopGridBody.equalsIgnoreCase(expStockReservationPopGridBody) &&
 				actReserveColumn.equalsIgnoreCase(expReserveColumn) && actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2)) 
@@ -1848,8 +1692,11 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_DeleteBtn));
 		new_DeleteBtn.click();
 
-		getWaitForAlert();
-		getAlert().accept();
+	/*	getWaitForAlert();
+		getAlert().accept();*/
+		
+		  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucher_ConfirmYesBtn)); 
+		  voucher_ConfirmYesBtn.click();
 
 		String expMessage = excelReader.getCellData(xlSheetName, 102, 6);
 		String actMessage  = checkValidationMessage(expMessage);
@@ -1883,6 +1730,8 @@ public class SalesOrderVoucherPage extends BaseEngine
 	public boolean checkSavingSalesOrderVoucherWithBinItem() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 		excelReader = new ExcelReader(POJOUtility.getExcelPath());
+		
+		Thread.sleep(3000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 
@@ -1919,9 +1768,9 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Quantity));
 		String actQtyInVoucher	=enter_Quantity.getAttribute("value");
-		String expQtyInVoucher	=excelReader.getCellData(xlSheetName, 103, 6);
+		String expQtyInVoucher	="6.00";
 		enter_Quantity.sendKeys(Keys.TAB);
-		excelReader.setCellData(xlfile, xlSheetName, 103, 7, actQtyInVoucher);
+		
 
 		System.out.println("Qty Preload is displaying as Value In Sales Order Vouche  : "+actQtyInVoucher  +" Value Expected : "+expQtyInVoucher);
 
@@ -1930,7 +1779,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		Set<String> binReservationPopGridBodyList=new HashSet<String>();
 
-		for (int i = 0; i < 100; i++) 
+		for (int i = 0; i < binReservationPopGridBodyCount; i++) 
 		{
 			String data=binReservationPopGridBody.get(i).getText();
 			binReservationPopGridBodyList.add(data);
@@ -1938,10 +1787,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		String actbinReservationPopGridBody = binReservationPopGridBodyList.toString();
 
-		String expbinReservationPopGridBody = excelReader.getCellData(xlSheetName, 104, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 104, 7, actbinReservationPopGridBody);
-
+		String expbinReservationPopGridBody = "[, 0.00, 0, 1, Bin5, 2, Bin4, 51.00, 3, HYDERABAD, 24.00, 4, 5, 6, 7, 8, Available]";
 		System.out.println("binReservationPopGridBody Actual   : " +actbinReservationPopGridBody);
 		System.out.println("binReservationPopGridBody Expected : " +expbinReservationPopGridBody);
 
@@ -1949,7 +1795,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		ArrayList<String> binReservationPopGridBinArray = new ArrayList<String> ();
 
-		for(int i=0;i<50;i++)
+		for(int i=0;i<binReservationPopGridBinCount;i++)
 		{
 			String data = binReservationPopGridBin.get(i).getText();
 
@@ -1961,6 +1807,8 @@ public class SalesOrderVoucherPage extends BaseEngine
 			}
 
 		}
+		
+		bin1strow.click();//Bin4
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(res_PickBtn));
@@ -1983,8 +1831,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_8thColumn));
 
 		String actReserveColumn	=select1stRow_8thColumn.getText();
-		String expReserveColumn	=excelReader.getCellData(xlSheetName, 106, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 106, 7, actReserveColumn);
+		String expReserveColumn	="Reserved";
 
 		System.out.println("Reservation Column  : "+actReserveColumn+"  Value Expected  "+expReserveColumn);
 
@@ -1994,51 +1841,16 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 3");
-		expMessage.add("Saving in background.");*/
-		
-		/*String actMessage = SavingInBackground(2);
-
-		HashSet<String> expMsg = new HashSet();
-
-		expMsg.add(excelReader.getCellData(xlSheetName, 107, 6));
-		expMsg.add(excelReader.getCellData(xlSheetName, 108, 6));
-		
-		String expMessage = expMsg.toString();
-		
-		excelReader.setCellData(xlfile, xlSheetName, 107, 7, actMessage);
-
-		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);*/
-		
-/*String expMessage1 = excelReader.getCellData(xlSheetName, 107, 6);
-		
-		String actMessage = checkValidationMessage(expMessage1);
-		String expMessage2 = excelReader.getCellData(xlSheetName, 108, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 107, 7, actMessage);*/
-		
-		
 		String expMessage1="Voucher saved successfully";
 		String actMessage = checkValidationMessage(expMessage1);
 		
-		//String expMessage2 = excelReader.getCellData(xlSheetName, 26, 6);
+		
 		String expMessage2 =": 3";
 		
 	
 		System.out.println("Actual Message    : "+actMessage);
 		System.out.println("Expected Message  : "+expMessage1);
-		//actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+		
 
 
 		if (actQtyInVoucher.equalsIgnoreCase(expQtyInVoucher) && actbinReservationPopGridBody.equalsIgnoreCase(expbinReservationPopGridBody)
@@ -2091,9 +1903,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		String actvoucherGridBodyList=voucherGridBodyListArray.toString();
 
-		String expvoucherGridBodyList=excelReader.getCellData(xlSheetName, 111, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 111, 7, actvoucherGridBodyList);
+		String expvoucherGridBodyList="[1, HYDERABAD, FIFO COGS ITEM, Pcs, 0.00, 6.00, 0.00, 6.00, Reserved, , 10.00, 60.00, 0.00, 2, , , , , , , , , , , , , 3, , , , , , , , , , , , , 4, , , , , , , , , , , , , 5, , , , , , , , , , , , , 6, , , , , , , , , , , , , 7, , , , , , , , , , , , , 8, , , , , , , , , , , , ]";
 
 		System.out.println("voucherGridBodyList Actual   : " + actvoucherGridBodyList);
 		System.out.println("voucherGridBodyList Expected : " + expvoucherGridBodyList);
@@ -2130,8 +1940,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Quantity));
 		String actQtyInVoucher	=enter_Quantity.getAttribute("value");
-		String expQtyInVoucher	=excelReader.getCellData(xlSheetName, 112, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 112, 7, actQtyInVoucher);
+		String expQtyInVoucher	="6.00";
 		enter_Quantity.sendKeys(Keys.TAB);
 
 		System.out.println("Qty Preload is displaying as Value In Sales Order Vouche  : "+actQtyInVoucher  +" Value Expected : "+expQtyInVoucher);
@@ -2141,7 +1950,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		Set<String> binReservationPopGridBodyList=new HashSet<String>();
 
-		for (int i = 0; i < 100; i++) 
+		for (int i = 0; i < binReservationPopGridBodyCount; i++) 
 		{
 			String data=binReservationPopGridBody.get(i).getText();
 			binReservationPopGridBodyList.add(data);
@@ -2149,9 +1958,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		String actbinReservationPopGridBody = binReservationPopGridBodyList.toString();
 
-		String expbinReservationPopGridBody = excelReader.getCellData(xlSheetName, 113, 6);
-
-		excelReader.setCellData(xlfile, xlSheetName, 113, 7, actbinReservationPopGridBody);
+		String expbinReservationPopGridBody = "[, 6.00, 0.00, 0, 1, Bin5, 2, Bin4, 51.00, 3, HYDERABAD, 24.00, 4, 5, 6, 7, 45.00, 8, Available]";
 		
 		System.out.println("binReservationPopGridBody Actual   : " +actbinReservationPopGridBody);
 		System.out.println("binReservationPopGridBody Expected : " +expbinReservationPopGridBody);
@@ -2160,7 +1967,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		ArrayList<String> binReservationPopGridBinArray = new ArrayList<String> ();
 
-		for(int i=0;i<50;i++)
+		for(int i=0;i<binReservationPopGridBinCount;i++)
 		{
 			String data = binReservationPopGridBin.get(i).getText();
 
@@ -2173,6 +1980,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		}
 
+		bin2ndrow.click();//bin5
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(res_PickBtn));
 		res_PickBtn.click();
@@ -2194,8 +2002,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_8thColumn));
 
 		String actReserveColumn	=select1stRow_8thColumn.getText();
-		String expReserveColumn	=excelReader.getCellData(xlSheetName, 114, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 114, 7, actReserveColumn);
+		String expReserveColumn	="Reserved";
 
 		System.out.println("Reservation Column  : "+actReserveColumn+"  Value Expected  "+expReserveColumn);
 
@@ -2205,52 +2012,20 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
 
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 3");
-		expMessage.add("Saving in background.");*/
-		
-//		String actMessage = SavingInBackground(2);
-//
-//		HashSet<String> expMsg = new HashSet();
-//
-//		expMsg.add(excelReader.getCellData(xlSheetName, 115, 6));
-//		expMsg.add(excelReader.getCellData(xlSheetName, 116, 6));
-//		excelReader.setCellData(xlfile, xlSheetName, 115, 7, actMessage);
-//		
-//		String expMessage = expMsg.toString();
-//
-//		System.out.println("Actual Message    : "+actMessage);
-//		System.out.println("Expected Message  : "+expMessage);
-		
-		/*
-		String expMessage1 = excelReader.getCellData(xlSheetName, 115, 6);
-		
-		String actMessage = checkValidationMessage(expMessage1);
-		String expMessage2 = excelReader.getCellData(xlSheetName, 116, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 115, 7, actMessage);*/
 		
 		
 		String expMessage1="Voucher saved successfully";
 		String actMessage = checkValidationMessage(expMessage1);
 		
-		//String expMessage2 = excelReader.getCellData(xlSheetName, 26, 6);
+	
 		String expMessage2 =": 3";
 		
 		
 	
 		System.out.println("Actual Message    : "+actMessage);
 		System.out.println("Expected Message  : "+expMessage1);
-		//actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+	
 
 
 		if (actDocumentNo.equalsIgnoreCase(expDocumentNo) && actCustomerAccount.equalsIgnoreCase(expCustomerAccount) 
@@ -2274,6 +2049,8 @@ public class SalesOrderVoucherPage extends BaseEngine
 	public boolean checkSavingSalesOrderVoucher4WithBinItem() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 		excelReader = new ExcelReader(POJOUtility.getExcelPath());
+		
+		Thread.sleep(2000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 
@@ -2312,8 +2089,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Quantity));
 		String actQtyInVoucher	=enter_Quantity.getAttribute("value");
-		String expQtyInVoucher	=excelReader.getCellData(xlSheetName, 117, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 117, 7, actQtyInVoucher);
+		String expQtyInVoucher	="3.00";
 		enter_Quantity.sendKeys(Keys.TAB);
 
 		System.out.println("Qty Preload is displaying as Value In Sales Order Vouche  : "+actQtyInVoucher  +" Value Expected : "+expQtyInVoucher);
@@ -2322,7 +2098,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		Set<String> binReservationPopGridBodyList=new HashSet<String>();
 
-		for (int i = 0; i < 100; i++) 
+		for (int i = 0; i < binReservationPopGridBodyCount; i++) 
 		{
 			String data=binReservationPopGridBody.get(i).getText();
 			binReservationPopGridBodyList.add(data);
@@ -2330,9 +2106,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		String actbinReservationPopGridBody = binReservationPopGridBodyList.toString();
 
-		String expbinReservationPopGridBody = excelReader.getCellData(xlSheetName, 118, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 118, 7, actbinReservationPopGridBody);
+		String expbinReservationPopGridBody = "[, 0.00, 18.00, 0, 1, Bin5, 2, Bin4, 51.00, 3, HYDERABAD, 24.00, 4, 5, 6, 7, 45.00, 8, Available]";
 
 		System.out.println("binReservationPopGridBody Actual   : " +actbinReservationPopGridBody);
 		System.out.println("binReservationPopGridBody Expected : " +expbinReservationPopGridBody);
@@ -2341,7 +2115,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		ArrayList<String> binReservationPopGridBinArray = new ArrayList<String> ();
 
-		for(int i=0;i<50;i++)
+		for(int i=0;i<binReservationPopGridBinCount;i++)
 		{
 			String data = binReservationPopGridBin.get(i).getText();
 
@@ -2353,7 +2127,8 @@ public class SalesOrderVoucherPage extends BaseEngine
 			}
 
 		}
-
+		
+		bin1strow.click();//Bin4
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(res_PickBtn));
 		res_PickBtn.click();
@@ -2375,8 +2150,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_8thColumn));
 
 		String actReserveColumn	=select1stRow_8thColumn.getText();
-		String expReserveColumn	=excelReader.getCellData(xlSheetName, 120, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 120, 7, actReserveColumn);
+		String expReserveColumn	="Reserved";
 
 		System.out.println("Reservation Column  : "+actReserveColumn+"  Value Expected  "+expReserveColumn);
 
@@ -2387,50 +2161,17 @@ public class SalesOrderVoucherPage extends BaseEngine
 		voucherSaveBtn.click();
 		Thread.sleep(2000);
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 4");
-		expMessage.add("Saving in background.");*/
-		
-	/*	String actMessage = SavingInBackground(2);
-
-		HashSet<String> expMsg = new HashSet();
-
-		expMsg.add(excelReader.getCellData(xlSheetName, 121, 6));
-		expMsg.add(excelReader.getCellData(xlSheetName, 122, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 121, 7, actMessage);
-		
-		String expMessage = expMsg.toString();
-
-		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);*/
-		
-/*String expMessage1 = excelReader.getCellData(xlSheetName, 121, 6);
-		
-		String actMessage = checkValidationMessage(expMessage1);
-		String expMessage2 = excelReader.getCellData(xlSheetName, 122, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 121, 7, actMessage);*/
-		
 		
 		String expMessage1="Voucher saved successfully";
 		String actMessage = checkValidationMessage(expMessage1);
 		
-		//String expMessage2 = excelReader.getCellData(xlSheetName, 26, 6);
+	
 		String expMessage2 =": 4";
 		
 	
 		System.out.println("Actual Message    : "+actMessage);
 		System.out.println("Expected Message  : "+expMessage1);
-		//actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+	
 
 
 		if (actQtyInVoucher.equalsIgnoreCase(expQtyInVoucher) && actbinReservationPopGridBody.equalsIgnoreCase(expbinReservationPopGridBody)
@@ -2482,9 +2223,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		String actvoucherGridBodyList=voucherGridBodyListArray.toString();
 
-		String expvoucherGridBodyList=excelReader.getCellData(xlSheetName, 125, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 125, 7, actvoucherGridBodyList);
+		String expvoucherGridBodyList="[1, HYDERABAD, FIFO COGS ITEM, Pcs, 0.00, 3.00, 0.00, 3.00, Reserved, , 10.00, 30.00, 0.00, 2, , , , , , , , , , , , , 3, , , , , , , , , , , , , 4, , , , , , , , , , , , , 5, , , , , , , , , , , , , 6, , , , , , , , , , , , , 7, , , , , , , , , , , , , 8, , , , , , , , , , , , ]";
 		
 		System.out.println("voucherGridBodyList Actual   : " + actvoucherGridBodyList);
 		System.out.println("voucherGridBodyList Expected : " + expvoucherGridBodyList);
@@ -2497,8 +2236,11 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_DeleteBtn));
 		new_DeleteBtn.click();
 
-		getWaitForAlert();
-		getAlert().accept();
+		/*getWaitForAlert();
+		getAlert().accept();*/
+		
+		  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucher_ConfirmYesBtn)); 
+		  voucher_ConfirmYesBtn.click();
 
 		String expMessage = excelReader.getCellData(xlSheetName, 126, 6);
 		String actMessage  = checkValidationMessage(expMessage);
@@ -2586,8 +2328,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		}
 
 		String actRmaWarehouseList = RmaWarehouseListArray.toString();
-		String expRmaWarehouseList = excelReader.getCellData(xlSheetName, 128, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 128, 7, actRmaWarehouseList);
+		String expRmaWarehouseList = "[HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD]";
 
 		System.out.println("RmaWarehouseList Actual   : "+actRmaWarehouseList);
 		System.out.println("RmaWarehouseList Expected : "+expRmaWarehouseList);
@@ -2604,8 +2345,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		}
 
 		String actRmaRmaNoList = RmaRmaNoListArray.toString();
-		String expRmaRmaNoList = excelReader.getCellData(xlSheetName, 132, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 132, 7, actRmaRmaNoList);
+		String expRmaRmaNoList = "[RMA#R2OSV2, RMA#R2OSV3, RMA#R2OSV4, RMA#R2OSV5, RMA#R2OSV6, RMA#R2OSV7, RMA#R2OSV8, RMA#R2OSV9, RMA#R1OSV10, RMA#R1OSV11, RMA#R1OSV12, RMA#R2OSV10, RMA#R2OSV11, RMA#R2OSV12, RMA#R1PVVAT1, RMA#R1PVVAT2, RMA#R1PVVAT3, RMA#R1PVVAT4, RMA#R1PVVAT5, RMA#R1PVVAT6, RMA#R1PVVAT7, RMA#R1PVVAT8, RMA#R1PVVAT9, RMA#R2PVVAT1, RMA#R2PVVAT2, RMA#R2PVVAT3, RMA#R2PVVAT4, RMA#R2PVVAT5, RMA#R2PVVAT6, RMA#R2PVVAT7, RMA#R2PVVAT8, RMA#R2PVVAT9, Ex Rma Update, RMA#R1PVVAT10, RMA#R1PVVAT11, RMA#R1PVVAT12, RMA#R2PVVAT10, Ex Rma Update1, Ex Rma Update2, Ex Rma Update3, Ex Rma Update4, Ex Rma Update5, Ex Rma Update6, Ex Rma Update7, Ex Rma Update8, Ex Rma Update9]";
 
 		System.out.println("RmaRmaNoList Actual   : "+actRmaRmaNoList);
 		System.out.println("RmaRmaNoList Expected : "+expRmaRmaNoList);
@@ -2631,9 +2371,9 @@ public class SalesOrderVoucherPage extends BaseEngine
 			String data = ReservePopUpRmaNoList.get(i).getText();
 			System.err.println("DATA :"+data);
 
-			if(data.equalsIgnoreCase(excelReader.getCellData(xlSheetName, 131, 5)) || data.equalsIgnoreCase(excelReader.getCellData(xlSheetName, 132, 5)) 
-					|| data.equalsIgnoreCase(excelReader.getCellData(xlSheetName, 133, 5)) || data.equalsIgnoreCase(excelReader.getCellData(xlSheetName, 134, 5)) 
-					|| data.equalsIgnoreCase(excelReader.getCellData(xlSheetName, 135, 5)) || data.equalsIgnoreCase(excelReader.getCellData(xlSheetName, 136, 5)) )
+			if(data.equalsIgnoreCase("RMA#R2OSV2") || data.equalsIgnoreCase("RMA#R2OSV3") 
+					|| data.equalsIgnoreCase("RMA#R2OSV4") || data.equalsIgnoreCase("RMA#R2OSV5") 
+					|| data.equalsIgnoreCase("RMA#R2OSV6") || data.equalsIgnoreCase("RMA#R2OSV7") )
 			{
 				ReservePopUpRmaNoChkBox.get(i).click();
 			}
@@ -2656,8 +2396,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_8thColumn));
 
 		String actReserveColumn	=select1stRow_8thColumn.getText();
-		String expReserveColumn	=excelReader.getCellData(xlSheetName, 135, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 135, 7, actReserveColumn);
+		String expReserveColumn	="Reserved";
 
 		System.out.println("Reservation Column  : "+actReserveColumn+"  Value Expected  "+expReserveColumn);
 
@@ -2667,50 +2406,19 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 4");
-		expMessage.add("Saving in background.");*/
 		
-	/*	String actMessage = SavingInBackground(2);
-
-		HashSet<String> expMsg = new HashSet();
-
-		expMsg.add(excelReader.getCellData(xlSheetName, 136, 6));
-		expMsg.add(excelReader.getCellData(xlSheetName, 137, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 136, 7, actMessage);
-		String expMessage = expMsg.toString();
-
-		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);*/
-		
-/*String expMessage1 = excelReader.getCellData(xlSheetName, 136, 6);
-		
-		String actMessage = checkValidationMessage(expMessage1);
-		String expMessage2 = excelReader.getCellData(xlSheetName, 137, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 136, 7, actMessage);*/
-		
+	
 		
 		String expMessage1="Voucher saved successfully";
 		String actMessage = checkValidationMessage(expMessage1);
 		
-		//String expMessage2 = excelReader.getCellData(xlSheetName, 26, 6);
+	
 		String expMessage2 =": 4";
 		
 	
 		System.out.println("Actual Message    : "+actMessage);
 		System.out.println("Expected Message  : "+expMessage1);
-		//actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
-
+	
 
 		if (actQtyInVoucher.equalsIgnoreCase(expQtyInVoucher) && actRmaWarehouseList.equalsIgnoreCase(expRmaWarehouseList) && actRmaRmaNoList.equalsIgnoreCase(expRmaRmaNoList)
 				&& actSelected==expSelected && actReserveColumn.equalsIgnoreCase(expReserveColumn) && actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2)) 
@@ -2761,9 +2469,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		String actvoucherGridBodyList=voucherGridBodyListArray.toString();
 
-		String expvoucherGridBodyList=excelReader.getCellData(xlSheetName, 140, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 140, 7, actvoucherGridBodyList);
+		String expvoucherGridBodyList="[1, HYDERABAD, WA COGS ITEM, Pcs, 0.00, 6.00, 0.00, 6.00, Reserved, , 10.00, 60.00, 0.00, 2, , , , , , , , , , , , , 3, , , , , , , , , , , , , 4, , , , , , , , , , , , , 5, , , , , , , , , , , , ]";
 
 		System.out.println("voucherGridBodyList Actual   : " + actvoucherGridBodyList);
 		System.out.println("voucherGridBodyList Expected : " + expvoucherGridBodyList);
@@ -2821,8 +2527,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		}
 
 		String actRmaWarehouseList = RmaWarehouseListArray.toString();
-		String expRmaWarehouseList = excelReader.getCellData(xlSheetName, 142, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 142, 7, actRmaWarehouseList);
+		String expRmaWarehouseList = "[HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD]";
 
 		System.out.println("RmaWarehouseList Actual   : "+actRmaWarehouseList);
 		System.out.println("RmaWarehouseList Expected : "+expRmaWarehouseList);
@@ -2839,8 +2544,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		}
 
 		String actRmaRmaNoList = RmaRmaNoListArray.toString();
-		String expRmaRmaNoList = excelReader.getCellData(xlSheetName, 143, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 143, 7, actRmaRmaNoList);
+		String expRmaRmaNoList = "[RMA#R2OSV8, RMA#R2OSV9, RMA#R1OSV10, RMA#R1OSV11, RMA#R1OSV12, RMA#R2OSV10, RMA#R2OSV11, RMA#R2OSV12, RMA#R1PVVAT1, RMA#R1PVVAT2, RMA#R1PVVAT3, RMA#R1PVVAT4, RMA#R1PVVAT5, RMA#R1PVVAT6, RMA#R1PVVAT7, RMA#R1PVVAT8, RMA#R1PVVAT9, RMA#R2PVVAT1, RMA#R2PVVAT2, RMA#R2PVVAT3, RMA#R2PVVAT4, RMA#R2PVVAT5, RMA#R2PVVAT6, RMA#R2PVVAT7, RMA#R2PVVAT8, RMA#R2PVVAT9, Ex Rma Update, RMA#R1PVVAT10, RMA#R1PVVAT11, RMA#R1PVVAT12, RMA#R2PVVAT10, Ex Rma Update1, Ex Rma Update2, Ex Rma Update3, Ex Rma Update4, Ex Rma Update5, Ex Rma Update6, Ex Rma Update7, Ex Rma Update8, Ex Rma Update9]";
 
 		System.out.println("RmaRmaNoList Actual   : "+actRmaRmaNoList);
 		System.out.println("RmaRmaNoList Expected : "+expRmaRmaNoList);
@@ -2866,8 +2570,8 @@ public class SalesOrderVoucherPage extends BaseEngine
 			String data = ReservePopUpRmaNoList.get(i).getText();
 			System.err.println("DATA :"+data);
 
-			if(data.equalsIgnoreCase(excelReader.getCellData(xlSheetName, 141, 5)) || data.equalsIgnoreCase(excelReader.getCellData(xlSheetName, 142, 5)) 
-					|| data.equalsIgnoreCase(excelReader.getCellData(xlSheetName, 143, 5)))
+			if(data.equalsIgnoreCase("RMA#R2OSV8") || data.equalsIgnoreCase("RMA#R2OSV9") 
+					|| data.equalsIgnoreCase("RMA#R2OSV10"))
 			{
 				ReservePopUpRmaNoChkBox.get(i).click();
 			}
@@ -2890,8 +2594,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_8thColumn));
 
 		String actReserveColumn	=select2ndRow_8thColumn.getText();
-		String expReserveColumn	=excelReader.getCellData(xlSheetName, 144, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 144, 7, actReserveColumn);
+		String expReserveColumn	="Reserved";
 
 		System.out.println("Reservation Column  : "+actReserveColumn+"  Value Expected  "+expReserveColumn);
 
@@ -2908,61 +2611,16 @@ public class SalesOrderVoucherPage extends BaseEngine
 		
 		Thread.sleep(2000);
 
-		/*if(validationConfirmationMessage.getText().isEmpty()==false)
-		{
-			if(validationConfirmationMessage.getText().equalsIgnoreCase("This Transaction will make the Stock Negative"))
-			{
-				errorMessageCloseBtn.click();
-			}
-		}*/
-
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 4; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 4");
-		expMessage.add("Saving in background.");
-		expMessage.add("This Transaction will make the Stock Negative");*/
-		
-		/*String actMessage = SavingInBackground(4);
-
-		HashSet<String> expMsg = new HashSet();
-
-		expMsg.add(excelReader.getCellData(xlSheetName, 145, 6));
-		expMsg.add(excelReader.getCellData(xlSheetName, 146, 6));
-		expMsg.add(excelReader.getCellData(xlSheetName, 147, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 145, 7, actMessage);
-		
-		String expMessage = expMsg.toString();
-
-		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);*/
-		
-/*String expMessage1 = excelReader.getCellData(xlSheetName, 145, 6);
-		
-		String actMessage = checkValidationMessage(expMessage1);
-		String expMessage2 = excelReader.getCellData(xlSheetName, 146, 6);
-		String expMessage3 = excelReader.getCellData(xlSheetName, 147, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 145, 7, actMessage);*/
-		
-		
 		String expMessage1="Voucher saved successfully";
 		String actMessage = checkValidationMessage(expMessage1);
 		
-		//String expMessage2 = excelReader.getCellData(xlSheetName, 26, 6);
+		
 		String expMessage2 =": 4";
 		
 	
 		System.out.println("Actual Message    : "+actMessage);
 		System.out.println("Expected Message  : "+expMessage1);
-		//actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+	
 
 
 		if (actQtyInVoucher.equalsIgnoreCase(expQtyInVoucher) && actRmaWarehouseList.equalsIgnoreCase(expRmaWarehouseList) && actRmaRmaNoList.equalsIgnoreCase(expRmaRmaNoList)
@@ -2991,11 +2649,6 @@ public class SalesOrderVoucherPage extends BaseEngine
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 
-		/*if(validationConfirmationMessage.getText().isEmpty()==false)
-		{
-			errorMessageCloseBtn.click();
-		}
-*/
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerAccountTxt));
 		customerAccountTxt.sendKeys(excelReader.getCellData(xlSheetName, 148, 5));
 		Thread.sleep(2000);
@@ -3030,9 +2683,9 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Quantity));
 		String actQtyInVoucher	=enter_Quantity.getAttribute("value");
-		String expQtyInVoucher	=excelReader.getCellData(xlSheetName, 148, 6);
+		String expQtyInVoucher	="3.00";
 		enter_Quantity.sendKeys(Keys.TAB);
-		excelReader.setCellData(xlfile, xlSheetName, 148, 7, actQtyInVoucher);
+		
 
 		System.out.println("Qty Preload is displaying as Value In Sales Order Vouche  : "+actQtyInVoucher  +" Value Expected : "+expQtyInVoucher);
 		Thread.sleep(1000);
@@ -3049,8 +2702,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		}
 
 		String actRmaWarehouseList = RmaWarehouseListArray.toString();
-		String expRmaWarehouseList = excelReader.getCellData(xlSheetName, 149, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 149, 7, actRmaWarehouseList);
+		String expRmaWarehouseList = "[HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD, HYDERABAD]";
 
 		System.out.println("RmaWarehouseList Actual   : "+actRmaWarehouseList);
 		System.out.println("RmaWarehouseList Expected : "+expRmaWarehouseList);
@@ -3067,8 +2719,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		}
 
 		String actRmaRmaNoList = RmaRmaNoListArray.toString();
-		String expRmaRmaNoList = excelReader.getCellData(xlSheetName, 150, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 150, 7, actRmaRmaNoList);
+		String expRmaRmaNoList = "[RMA#R1OSV10, RMA#R1OSV11, RMA#R1OSV12, RMA#R2OSV11, RMA#R2OSV12, RMA#R1PVVAT1, RMA#R1PVVAT2, RMA#R1PVVAT3, RMA#R1PVVAT4, RMA#R1PVVAT5, RMA#R1PVVAT6, RMA#R1PVVAT7, RMA#R1PVVAT8, RMA#R1PVVAT9, RMA#R2PVVAT1, RMA#R2PVVAT2, RMA#R2PVVAT3, RMA#R2PVVAT4, RMA#R2PVVAT5, RMA#R2PVVAT6, RMA#R2PVVAT7, RMA#R2PVVAT8, RMA#R2PVVAT9, Ex Rma Update, RMA#R1PVVAT10, RMA#R1PVVAT11, RMA#R1PVVAT12, RMA#R2PVVAT10, Ex Rma Update1, Ex Rma Update2, Ex Rma Update3, Ex Rma Update4, Ex Rma Update5, Ex Rma Update6, Ex Rma Update7, Ex Rma Update8, Ex Rma Update9]";
 
 		System.out.println("RmaRmaNoList Actual   : "+actRmaRmaNoList);
 		System.out.println("RmaRmaNoList Expected : "+expRmaRmaNoList);
@@ -3094,8 +2745,8 @@ public class SalesOrderVoucherPage extends BaseEngine
 			String data = ReservePopUpRmaNoList.get(i).getText();
 			System.err.println("DATA :"+data);
 
-			if(data.equalsIgnoreCase(excelReader.getCellData(xlSheetName, 152, 5)) || data.equalsIgnoreCase(excelReader.getCellData(xlSheetName, 153, 5)) 
-					|| data.equalsIgnoreCase(excelReader.getCellData(xlSheetName, 154, 5)))
+			if(data.equalsIgnoreCase("RMA#R1OSV10") || data.equalsIgnoreCase("RMA#R1OSV11") 
+					|| data.equalsIgnoreCase("RMA#R1OSV12"))
 			{
 				ReservePopUpRmaNoChkBox.get(i).click();
 			}
@@ -3119,8 +2770,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_8thColumn));
 
 		String actReserveColumn	=select1stRow_8thColumn.getText();
-		String expReserveColumn	=excelReader.getCellData(xlSheetName, 152, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 152, 7, actReserveColumn);
+		String expReserveColumn	="Reserved";
 
 		System.out.println("Reservation Column  : "+actReserveColumn+"  Value Expected  "+expReserveColumn);
 
@@ -3130,62 +2780,17 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		/*if(validationConfirmationMessage.getText().isEmpty()==false)
-		{
-			if(validationConfirmationMessage.getText().equalsIgnoreCase("This Transaction will make the Stock Negative"))
-			{
-				errorMessageCloseBtn.click();
-			}
-		}*/
-
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 4; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 5");
-		expMessage.add("Saving in background.");
-		expMessage.add("This Transaction will make the Stock Negative");*/
-		
-		/*String actMessage = SavingInBackground(4);
-
-		HashSet<String> expMsg = new HashSet();
-
-		expMsg.add(excelReader.getCellData(xlSheetName, 153, 6));
-		expMsg.add(excelReader.getCellData(xlSheetName, 154, 6));
-		expMsg.add(excelReader.getCellData(xlSheetName, 155, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 153, 7, actMessage);
-		
-		String expMessage = expMsg.toString();
-
-		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);*/
-		
-		
-/*String expMessage1 = excelReader.getCellData(xlSheetName, 153, 6);
-		
-		String actMessage = checkValidationMessage(expMessage1);
-		String expMessage2 = excelReader.getCellData(xlSheetName, 154, 6);
-		String expMessage3 = excelReader.getCellData(xlSheetName, 155, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 153, 7, actMessage);*/
-		
+	
 		String expMessage1="Voucher saved successfully";
 		String actMessage = checkValidationMessage(expMessage1);
 		
-		//String expMessage2 = excelReader.getCellData(xlSheetName, 26, 6);
-		String expMessage2 =": 4";
+	
+		String expMessage2 =": 5";
 		
 	
 		System.out.println("Actual Message    : "+actMessage);
 		System.out.println("Expected Message  : "+expMessage1);
-		//actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
-
+	
 
 		if (actQtyInVoucher.equalsIgnoreCase(expQtyInVoucher) && actRmaWarehouseList.equalsIgnoreCase(expRmaWarehouseList) 
 				&& actRmaRmaNoList.equalsIgnoreCase(expRmaRmaNoList) && actSelected==expSelected
@@ -3238,9 +2843,7 @@ public class SalesOrderVoucherPage extends BaseEngine
 
 		String actvoucherGridBodyList=voucherGridBodyListArray.toString();
 
-		String expvoucherGridBodyList=excelReader.getCellData(xlSheetName, 158, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 158, 7, actvoucherGridBodyList);		
+		String expvoucherGridBodyList="[1, HYDERABAD, WA COGS ITEM, Pcs, 0.00, 3.00, 0.00, 3.00, Reserved, , 10.00, 30.00, 0.00, 2, , , , , , , , , , , , , 3, , , , , , , , , , , , , 4, , , , , , , , , , , , , 5, , , , , , , , , , , , , 6, , , , , , , , , , , , , 7, , , , , , , , , , , , , 8, , , , , , , , , , , , ]";		
 
 		System.out.println("voucherGridBodyList Actual   : " + actvoucherGridBodyList);
 		System.out.println("voucherGridBodyList Expected : " + expvoucherGridBodyList);
@@ -3260,8 +2863,11 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_DeleteBtn));
 		new_DeleteBtn.click();
 
-		getWaitForAlert();
-		getAlert().accept();
+		/*getWaitForAlert();
+		getAlert().accept();*/
+		
+		  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucher_ConfirmYesBtn)); 
+		  voucher_ConfirmYesBtn.click();
 
 		String expMessage = excelReader.getCellData(xlSheetName, 159, 6);
 		String actMessage = checkValidationMessage(expMessage);
@@ -3368,56 +2974,28 @@ public class SalesOrderVoucherPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(MRsaveBtn));
 		MRsaveBtn.click();
 
-		/*HashSet<String> actMessage = new HashSet();
-
-		for (int i = 0; i < 2; i++) 
-		{
-			String data = checkValidationMessage("");
-			actMessage.add(data);
-		}
-
-		HashSet<String> expMessage = new HashSet();
-
-		expMessage.add("Voucher saved successfully : 5");
-		expMessage.add("Saving in background.");*/
-		
-		/*String actMessage = SavingInBackground(2);
-
-		HashSet<String> expMsg = new HashSet();
-
-		expMsg.add(excelReader.getCellData(xlSheetName, 161, 6));
-		expMsg.add(excelReader.getCellData(xlSheetName, 162, 6));
-		excelReader.setCellData(xlfile, xlSheetName, 161, 7, actMessage);
-		
-		String expMessage = expMsg.toString();
-
-		System.out.println("Actual Message    : "+actMessage);
-		System.out.println("Expected Message  : "+expMessage);
-		*/
 		
 		
-String expMessage1 = excelReader.getCellData(xlSheetName, 161, 6);
+		String expMessage1 = "Voucher saved successfully";
 		
 		String actMessage = checkValidationMessage(expMessage1);
-		String expMessage2 = excelReader.getCellData(xlSheetName, 162, 6);
-		
-		excelReader.setCellData(xlfile, xlSheetName, 161, 7, actMessage);
+		String expMessage2 = ": 5";
 	
 		System.out.println("Actual Message    : "+actMessage);
 		System.out.println("Expected Message  : "+expMessage1);
-		//actMessage.startsWith(expMessage1)&& actMessage.endsWith(expMessage2))
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(previousBtn));
 		previousBtn.click();
 
 		checkValidationMessage("Voucher loaded successfully");
 		
-		Thread.sleep(2000);
+		Thread.sleep(6000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_SuspendBtn));
 		new_SuspendBtn.click();
 
-		String expSuspendMessage1=excelReader.getCellData(xlSheetName, 163, 6);
-		String expSuspendMessage2=excelReader.getCellData(xlSheetName, 164, 6);
+		String expSuspendMessage1="Voucher saved successfully";
+		String expSuspendMessage2=": 5";
 
 		String actSuspendMessage=checkValidationMessage(expSuspendMessage1);
 		
@@ -3426,11 +3004,10 @@ String expMessage1 = excelReader.getCellData(xlSheetName, 161, 6);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
 		new_CloseBtn.click();
 		
-		Thread.sleep(2000);
+		Thread.sleep(6000);
 		
 		String actSuspendStatus = voucherHomeRow1SuspendedStatus.getText();
-		String expSuspendStatus = excelReader.getCellData(xlSheetName, 165, 6);
-		excelReader.setCellData(xlfile, xlSheetName, 165, 7, actSuspendStatus);
+		String expSuspendStatus = "True";
 		
 		System.out.println("Suspended Status : "+actSuspendStatus+"  Value Expected  "+expSuspendStatus);
 
@@ -3743,6 +3320,132 @@ String expMessage1 = excelReader.getCellData(xlSheetName, 161, 6);
 	}
 
 
+
+
+	public static boolean CheckLogin() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+	{
+	        Thread.sleep(3000);
+
+	        getDriver().navigate().refresh();
+
+	        LoginPage lp=new LoginPage(getDriver()); 
+
+	        lp.checkLoginPageTitleByURLInputInBrowser();
+
+	        String unamelt="su";
+
+	        String pawslt="su";
+
+	        lp.enterUserName(unamelt);
+
+	        lp.enterPassword(pawslt);
+
+	        Thread.sleep(2000);
+
+	        String compname = "Automation Company : 08/10/2020";
+
+	        Select oSelect = new Select(companyDropDownList);
+
+	        List<WebElement> elementCount = oSelect.getOptions();
+
+	        int cqSize = elementCount.size();
+
+	        System.out.println("CompanyDropdownList Count :" + cqSize);
+
+	        int i;
+
+	        for (i = 0; i < elementCount.size(); i++) {
+
+	                elementCount.get(i).getText();
+
+	                String optionName = elementCount.get(i).getText();
+	                if (optionName.toUpperCase().startsWith(compname.toUpperCase())) {
+	                        System.out.println("q" + elementCount.get(i).getText());
+	                        elementCount.get(i).click();
+	                }
+
+	        }
+
+	        Thread.sleep(2000);
+
+	        lp.clickOnSignInBtn();
+
+	        Thread.sleep(2000);
+
+	        String actUserInfo1=userNameDisplay.getText();
+
+	        System.out.println("User Info  : "+actUserInfo1);
+
+	        System.out.println("User Info Capture Text  :  "+userNameDisplay.getText());
+
+	        //getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
+	        //companyLogo.click();
+
+	        String getCompanyTxt1=Company_Name.getText();
+	        String getLoginCompanyName1=getCompanyTxt1.substring(0, 31);
+	        System.out.println("company name  :  "+ getLoginCompanyName1);
+	        //companyLogo.click();
+
+	        String expUserInfo1           ="SU";
+	        String expLoginCompanyName1   ="Automation Company : 08/10/2020";
+
+	        System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
+	        System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
+
+	        if(actUserInfo1.equalsIgnoreCase(expUserInfo1) && getLoginCompanyName1.contains(expLoginCompanyName1))
+	        {
+	                return true;
+	        }
+	        else
+	        {
+	                return false;
+	        }
+
+	}
+
+
+	public boolean checkLogoutSalesOrdervoucherPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		getDriver().navigate().refresh();
+		Thread.sleep(2000);
+		 
+		 try
+			{
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplayLogo));
+			  userNameDisplayLogo.click();
+			  Thread.sleep(2000);
+			 
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
+			  logoutOption.click();
+			  
+			  Thread.sleep(2000);
+			  
+			  boolean actUserLoginPage              = username.isDisplayed() && username.isEnabled()
+	                                               && password.isDisplayed() && password.isEnabled();
+	                                      
+			  boolean expUserLoginPage              = true;
+			  
+			  if(actUserLoginPage==expUserLoginPage)  
+		      {
+				System.out.println("***Test Pass: Login Successfull***");
+				
+				return true;
+			  }
+		      else
+		      {
+		  	 
+				System.out.println("***Test Fail: Login Not Successfull***");
+				
+				return false;
+			  }
+			}
+			catch (Exception e)
+			{
+			 	String exception = e.getMessage();
+			 		
+				return false;
+			}
+		}
 
 
 

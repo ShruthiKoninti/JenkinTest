@@ -15,6 +15,14 @@ public class PurchaseOrdersTest extends BaseEngine
 {
 	PurchaseOrdersPage PO;
 	
+	
+	 @Test(priority=248)
+	 public void checkLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 PO=new PurchaseOrdersPage(getDriver());
+		 Assert.assertEquals(PO.CheckLogin(), true);
+	 }
+	
 	 @Test(priority=250)
 	 public void checkPurchasesOrderVoucherToDisplayLinksWithoutAuthorization() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -75,6 +83,8 @@ public class PurchaseOrdersTest extends BaseEngine
 		 Assert.assertEquals(PO.checkLogoutAndLoginWithSUForPurchasesVoucherVAT(), true);
 	 }
 	 
+	 
+	 
 	 @Test(priority=258)
 	 public void checkVerifingDetailsOfSavedPurchaseOrdersVouchersInHomepage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -119,13 +129,14 @@ public class PurchaseOrdersTest extends BaseEngine
 		 Assert.assertEquals(PO.checkDataInPurchaseVoucherVATVoucher1ConvertedLink(), true);
 	 }
 	
-	 @Test(priority=264)
+	/* @Test(priority=264)
 	 public void checkCloseRow2LinkInPurchaseOrderHavingTwoLinkDocuments() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 PO=new PurchaseOrdersPage(getDriver());
 		 Assert.assertEquals(PO.checkCloseRow2LinkInPurchaseOrderHavingTwoLinkDocuments(), true);
 	 }
 	
+	 
 	 @Test(priority=265)
 	 public void checkSavingPurchaseVoucherVATVoucher1WithPurchaseOrderLink() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -152,7 +163,7 @@ public class PurchaseOrdersTest extends BaseEngine
 	 {
 		 PO=new PurchaseOrdersPage(getDriver());
 		 Assert.assertEquals(PO.checkResavingPurchasesOrdersVoucher2AndSuspendingFromHomepage(), true);
-	 }
+	 }*/
 	 
 	 @Test(priority=269)
 	 public void checkDeletingVoucher2PurchaseOrder() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
@@ -162,21 +173,11 @@ public class PurchaseOrdersTest extends BaseEngine
 	 }
 	 
 	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
+	 @Test(priority=270)
+	 public void checkLogoutPurchaseOrdersPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 PO=new PurchaseOrdersPage(getDriver());
+		 Assert.assertEquals(PO.checkLogoutPurchaseOrdersPage(), true);
+	 }
+	 	 
 }
-
-

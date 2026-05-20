@@ -2,6 +2,8 @@ package com.focus.Pages;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.JavascriptExecutor;
@@ -11,6 +13,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+
 import com.focus.base.BaseEngine;
 import com.focus.supporters.ExcelReader;
 import com.focus.utilities.POJOUtility;
@@ -69,34 +73,47 @@ public class ConfigureMasterPage extends BaseEngine
 	{
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
-		settingsmenuBtn.click();
-		Thread.sleep(2000);
+		//getAction().moveToElement(settingsmenuBtn).build().perform();
 		
-		((JavascriptExecutor)getDriver()).executeScript("window.scrollBy(0,300)","");
-		Thread.sleep(2000);
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
+		settingsmenuBtn.click();*/
+		//ClickUsingJs(settingsmenuBtn);
+		//Thread.sleep(2000);
+		
+		/*((JavascriptExecutor)getDriver()).executeScript("window.scrollBy(0,300)","");
+		Thread.sleep(2000);*/
 		
 		
 
-		int count = settingsSubMenusList.size();
+		//int count = settingsSubMenusList.size();
 		
-		for (int i = 1; i < count; i++) 
-		{
-			String data = settingsSubMenusList.get(i).getText();
-			System.err.println(data);
+		//for (int i = 1; i < count; i++) 
+		//{
+		//	String data = settingsSubMenusList.get(i).getText();
+		//	System.err.println(data);
 			
-			JavascriptExecutor js = (JavascriptExecutor) getDriver(); 
+		/*	JavascriptExecutor js = (JavascriptExecutor) getDriver(); 
 			
-			js.executeScript("arguments[0].scrollIntoView();", settingsSubMenusList.get(i));
+			js.executeScript("arguments[0].scrollIntoView();", settingsSubMenusList.get(i));*/
 			
-			if (data.equalsIgnoreCase(excelReader.getCellData(xlSheetName, 8, 5))) 
-			{
-				settingsSubMenusList.get(i).click();
-				break;
-			}
-		}		
-
+			//getAction().moveToElement(settingsSubMenusList.get(i)).build().perform();
+			
+		//	if (data.equalsIgnoreCase(excelReader.getCellData(xlSheetName, 8, 5))) 
+			//{
+			//	settingsSubMenusList.get(i).click();
+			//	break;
+			//}
+	//	}		
+		
 		Thread.sleep(2000);
+		
+		ClickUsingJs(settingsmenuBtn);
+		Thread.sleep(2000);
+		
+		ClickUsingJs(customizemaster);
+		
+
+		Thread.sleep(5000);
 		
 		int configMastersRibbonControlCount = configMastersRibbonControl.size();
 
@@ -333,7 +350,7 @@ private static WebElement definitionTab;
 		
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());
 		
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameComboBox));
 		nameComboBox.click();
@@ -354,7 +371,7 @@ private static WebElement definitionTab;
 
 			System.err.println("Data : " + data);
 
-			if(data.equalsIgnoreCase(excelReader.getCellData(xlSheetName, 17, 5)))
+			if(data.equalsIgnoreCase("Test"/*excelReader.getCellData(xlSheetName, 17, 5)*/))
 			{
 				nameComboBoxList.get(i).click();
 				break;
@@ -475,7 +492,7 @@ private static WebElement definitionTab;
 
 
 
-	@FindBy(xpath="//*[@id='GenerateNewMasterModel']/div/div[1]/div[2]/div/ul/li[2]/button[5]/i")
+	@FindBy(xpath="//*[@id='GenerateNewMasterModel']/div/div[1]/div[2]/div/ul/li[2]/button[6]/i")
 	private static WebElement newClsBtn;
 
 
@@ -485,9 +502,10 @@ private static WebElement definitionTab;
 		
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());
 		
+		Thread.sleep(3000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		homeMenu.click();
-
+		Thread.sleep(3000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersMenu));
 		mastersMenu.click();
 
@@ -514,11 +532,13 @@ private static WebElement definitionTab;
 			ConfigMasterInMastersList.click();
 		}
 
-		Thread.sleep(3000);
+		Thread.sleep(6000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));
 		masterNewBtn.click();
 
+		Thread.sleep(6000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(NameTxt));
 		NameTxt.sendKeys(excelReader.getCellData(xlSheetName, 22, 5));
 
@@ -527,7 +547,7 @@ private static WebElement definitionTab;
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(saveBtn));
 		saveBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newClsBtn));
 		newClsBtn.click();
@@ -538,6 +558,7 @@ private static WebElement definitionTab;
 		excelReader.setCellData(xlfile, xlSheetName, 23, 7, actSaveMessage);
 
 
+		Thread.sleep(6000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(closeBtn));
 		closeBtn.click();
 
@@ -564,19 +585,28 @@ private static WebElement definitionTab;
 	{
 		
 		 excelReader=new ExcelReader(POJOUtility.getExcelPath());
+		 
+		 getDriver().navigate().refresh();
+		 Thread.sleep(4000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
-		settingsmenuBtn.click();
+		getAction().moveToElement(settingsmenuBtn).build().perform();
+		Thread.sleep(2000);
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
+		settingsmenuBtn.click();*/
+		
+		ClickUsingJs(settingsmenuBtn);
 		Thread.sleep(2000);
 		
-		((JavascriptExecutor)getDriver()).executeScript("window.scrollBy(0,300)","");
-		Thread.sleep(2000);
+	/*	((JavascriptExecutor)getDriver()).executeScript("window.scrollBy(0,300)","");
+		Thread.sleep(2000);*/
 		
-		JavascriptExecutor js = (JavascriptExecutor) getDriver(); 
+		/*JavascriptExecutor js = (JavascriptExecutor) getDriver(); 
 		js.executeScript("arguments[0].scrollIntoView(true);", settingsConfigureMasters);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsConfigureMasters));
-		settingsConfigureMasters.click();
+		getAction().moveToElement(settingsConfigureMasters).build().perform();
+		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsConfigureMasters));*/
+		ClickUsingJs(settingsConfigureMasters);
 
 		Thread.sleep(2000);
 
@@ -746,25 +776,16 @@ private static WebElement definitionTab;
 	public static boolean checkAddingGroupMasterForDeletion() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
 		
-		
+		Thread.sleep(2000);
 		excelReader=new ExcelReader(POJOUtility.getExcelPath());
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
-		settingsmenuBtn.click();
-		Thread.sleep(2000);
-		
-		
-		((JavascriptExecutor)getDriver()).executeScript("window.scrollBy(0,300)","");
-		Thread.sleep(2000);
-		
-		getAction().moveToElement(settingsConfigureMasters).build().perform();
+		ClickUsingJs(settingsmenuBtn);
 		
 		Thread.sleep(1500);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsConfigureMasters));
-		settingsConfigureMasters.click();
+		ClickUsingJs(settingsConfigureMasters);
 
-		Thread.sleep(3000);
+		Thread.sleep(10000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenuExpandBtn));
 		homeMenuExpandBtn.click();
@@ -775,6 +796,10 @@ private static WebElement definitionTab;
 		masterMenuBtn.click();
 
 		Thread.sleep(1000);
+		
+		masterBtn.click();
+		
+		Thread.sleep(1000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(addGroupBtnInconfigureMaster));
 		addGroupBtnInconfigureMaster.click();
@@ -784,8 +809,8 @@ private static WebElement definitionTab;
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(okBtnInAddgroupPopup));
 		okBtnInAddgroupPopup.click();
-
-		Thread.sleep(3000);
+		
+		Thread.sleep(5500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenuExpandBtn));
 		homeMenuExpandBtn.click();
@@ -797,11 +822,13 @@ private static WebElement definitionTab;
 
 		Thread.sleep(1000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(GroupMasterToDeleteMenuBtn));
-		GroupMasterToDeleteMenuBtn.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(deleteGroupBtnInconfigureMaster));
-		deleteGroupBtnInconfigureMaster.click();
+		ClickUsingJs(GroupMasterToDeleteMenuBtn);
+		
+		Thread.sleep(2000);
+		
+		ClickUsingJs(deleteGroupBtnInconfigureMaster);
+		
+		Thread.sleep(2000);
 
 		String expDeleteMessage = excelReader.getCellData(xlSheetName, 28, 6);
 		String actDeleteMessage = checkValidationMessageString(expDeleteMessage);
@@ -823,6 +850,134 @@ private static WebElement definitionTab;
 		} 
 	}
 
+
+
+	public static boolean CheckLogin() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+	{
+	        Thread.sleep(3000);
+
+	        getDriver().navigate().refresh();
+
+	        LoginPage lp=new LoginPage(getDriver()); 
+
+	        lp.checkLoginPageTitleByURLInputInBrowser();
+
+	        String unamelt="su";
+
+	        String pawslt="su";
+
+	        lp.enterUserName(unamelt);
+	        
+	        Thread.sleep(1000);
+	        
+	        lp.enterPassword(pawslt);
+
+	        Thread.sleep(2000);
+
+	        String compname = "Automation Company : 08/10/2020";
+
+	        Select oSelect = new Select(companyDropDownList);
+
+	        List<WebElement> elementCount = oSelect.getOptions();
+
+	        int cqSize = elementCount.size();
+
+	        System.out.println("CompanyDropdownList Count :" + cqSize);
+
+	        int i;
+
+	        for (i = 0; i < elementCount.size(); i++) {
+
+	                elementCount.get(i).getText();
+
+	                String optionName = elementCount.get(i).getText();
+	                if (optionName.toUpperCase().startsWith(compname.toUpperCase())) {
+	                        System.out.println("q" + elementCount.get(i).getText());
+	                        elementCount.get(i).click();
+	                }
+
+	        }
+
+	        Thread.sleep(2000);
+
+	        lp.clickOnSignInBtn();
+
+	        Thread.sleep(2000);
+
+	        String actUserInfo1=userNameDisplay.getText();
+
+	        System.out.println("User Info  : "+actUserInfo1);
+
+	        System.out.println("User Info Capture Text  :  "+userNameDisplay.getText());
+	       
+	      /*  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
+	        companyLogo.click();*/
+
+	        String getCompanyTxt1=Company_Name.getText();
+	        String getLoginCompanyName1=getCompanyTxt1.substring(0, 31);
+	        System.out.println("company name  :  "+ getLoginCompanyName1);
+	        //companyLogo.click();
+
+	        String expUserInfo1           ="SU";
+	        String expLoginCompanyName1   ="Automation Company : 08/10/2020";
+
+	        System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
+	        System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
+
+	        if(actUserInfo1.equalsIgnoreCase(expUserInfo1) && getLoginCompanyName1.contains(expLoginCompanyName1))
+	        {
+	                return true;
+	        }
+	        else
+	        {
+	                return false;
+	        }
+
+	}
+
+
+	public boolean checkLogoutConfigureMasterPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		getDriver().navigate().refresh();
+		Thread.sleep(2000);
+		 
+		 try
+			{
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplayLogo));
+			  userNameDisplayLogo.click();
+			  Thread.sleep(2000);
+			 
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
+			  logoutOption.click();
+			  
+			  Thread.sleep(2000);
+			  
+			  boolean actUserLoginPage              = username.isDisplayed() && username.isEnabled()
+	                                               && password.isDisplayed() && password.isEnabled();
+	                                      
+			  boolean expUserLoginPage              = true;
+			  
+			  if(actUserLoginPage==expUserLoginPage)  
+		      {
+				System.out.println("***Test Pass: Login Successfull***");
+				
+				return true;
+			  }
+		      else
+		      {
+		  	 
+				System.out.println("***Test Fail: Login Not Successfull***");
+				
+				return false;
+			  }
+			}
+			catch (Exception e)
+			{
+			 	String exception = e.getMessage();
+			 		
+				return false;
+			}
+		}
 
 
 

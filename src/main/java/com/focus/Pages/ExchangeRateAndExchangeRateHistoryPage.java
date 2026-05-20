@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -89,10 +90,11 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(exchangeRateDefinitionSaveIcon));
 
 		String expected = excelReader.getCellData(xlSheetName, 8, 6);
-
 		String actual = Boolean.toString(exchangeRateDefinitionSaveIcon.isDisplayed());
 
-		System.out.println("Save Button is Displayed : "+actual+"  "+expected);
+		System.out.println("Act Save Button is Displayed : "+actual);
+		System.out.println("Exp Save Button is Displayed : "+expected);
+		
 
 		excelReader.setCellData(xlfile, xlSheetName, 8, 7, actual);
 
@@ -126,25 +128,27 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 		baseCurrencyTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(exchnageRateDeleteOption));
-
 		exchnageRateDeleteOption.click();
 
 		getWaitForAlert();
 
 		String actCompanySaveMsg=getAlert().getText();
+		String expCompanySaveMsg="Are you sure that you want to delete all rows";
 
 		getAlert().accept();
 
 		System.out.println("*******************************checkDeleteOptionInExchangeRate********************************");
 
-		System.out.println("Company message is displaying as "+ actCompanySaveMsg);
+		System.out.println("Act Company message is displaying as "+ actCompanySaveMsg);
+		System.out.println("Exp Company message is displaying as "+ expCompanySaveMsg);
+		
 
 		String expMessage=excelReader.getCellData(xlSheetName, 9, 6);
-
 		String actMessage=checkValidationMessage(expMessage);
-
 		excelReader.setCellData(xlfile, xlSheetName, 9, 7, actMessage);
 
+		System.out.println("actMessage: "+actMessage);
+		System.out.println("expMessage: "+expMessage);
 
 		if(actMessage.equalsIgnoreCase(expMessage))
 		{
@@ -180,48 +184,60 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 		baseCurrencyTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(withEffectiveDateTxt));
-
-		withEffectiveDateTxt.click();
-
-		getAction().moveToElement(withEffectiveDateTxt).sendKeys(Keys.TAB).perform();
+		withEffectiveDateTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gridcurrencyName1Txt));
-
+		//gridcurrencyName1Txt.click();
+		//Thread.sleep(1000);
+		clearValueFromTextBox(gridcurrencyName1Txt);
+		Thread.sleep(1000);
+		gridcurrencyName1Txt.sendKeys("USD");
+		Thread.sleep(3000);
 		gridcurrencyName1Txt.sendKeys(Keys.TAB);
 
 		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gridDefineAsTxt));
-
+		clearValueFromTextBox(gridDefineAsTxt);
+		Thread.sleep(1000);
+		gridDefineAsTxt.sendKeys("INR");
+		Thread.sleep(2000);
 		gridDefineAsTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gridRateTxt));
 		gridRateTxt.sendKeys(excelReader.getCellData(xlSheetName, 11, 5));
+		Thread.sleep(2000);
 		gridRateTxt.sendKeys(Keys.TAB);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gridcurrencyName1Txt));
-
+		gridcurrencyName1Txt.click();
+		gridcurrencyName1Txt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		gridcurrencyName1Txt.sendKeys("AED");
+		Thread.sleep(3000);
 		gridcurrencyName1Txt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gridDefineAsTxt));
-
+		clearValueFromTextBox(gridDefineAsTxt);
+		Thread.sleep(1000);
+		gridDefineAsTxt.sendKeys("INR");
+		Thread.sleep(2000);
 		gridDefineAsTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gridRateTxt));
 		gridRateTxt.sendKeys(excelReader.getCellData(xlSheetName, 12, 5));
-		gridRateTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(exchangeRateDefinitionSaveIcon));
 		exchangeRateDefinitionSaveIcon.click();
-
+		Thread.sleep(2000);
+		
 		System.out.println("***************checkSavingCurrencyExchnageRate***************");
 
-		String expMessage=excelReader.getCellData(xlSheetName, 10, 6);
-
+		String expMessage="Exchange Rate updated successfully.";
 		String actMessage=checkValidationMessage(expMessage);
 
-		excelReader.setCellData(xlfile, xlSheetName, 10, 7, actMessage);
+		System.out.println("actMessage: "+actMessage);
+		System.out.println("expMessage: "+expMessage);
 
 		if(actMessage.equalsIgnoreCase(expMessage))
 		{	
@@ -263,10 +279,11 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 
 		Thread.sleep(2000);  
 		String expected = excelReader.getCellData(xlSheetName, 13, 6);
-
 		String actual = Boolean.toString(loadIcon.isDisplayed());
 
-		System.out.println("Load Button is Displayed : "+actual+"  "+expected);
+		System.out.println("Act Load Button is Displayed : "+actual);
+		System.out.println("Exp Load Button is Displayed : "+expected);
+		
 
 		excelReader.setCellData(xlfile, xlSheetName, 13, 7, actual);
 
@@ -299,9 +316,9 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(loadIcon));
 		loadIcon.click();
+		Thread.sleep(2000);
 
 		String expMessage=excelReader.getCellData(xlSheetName, 14, 6);
-
 		String actMessage=checkValidationMessage(expMessage);
 
 		excelReader.setCellData(xlfile, xlSheetName, 14, 7, actMessage);
@@ -336,12 +353,12 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 
 		System.out.println("********************************checkExchangeRateHistorySelectINR***********************************");
 
-		System.out.println("valueUSD            "+actValueUSD       +"Value Excepted   :"+expValueUSD);
-		System.out.println("ValueAED            "+actValueAED       +"Value Excepted   :"+expValueAED);
-		System.out.println("selCurrencyOne      "+actselCurrencyOne +"Value Excepted   :"+expselCurrencyOne);
-		System.out.println("selCurrecnyTwo      "+actselCurrecnyTwo +"Value Excepted   :"+expselCurrecnyTwo);
-		System.out.println("defCurrecnyOne      "+actdefCurrecnyOne +"Value Excepted   :"+expdefCurrecnyOne);
-		System.out.println("defCurrecnyTwo      "+actdefCurrecnyTwo +"Value Excepted   :"+expdefCurrecnyTwo);
+		System.out.println("valueUSD            "+actValueUSD       + "Value Excepted   :"+expValueUSD);
+		System.out.println("ValueAED            "+actValueAED       + "Value Excepted   :"+expValueAED);
+		System.out.println("selCurrencyOne      "+actselCurrencyOne + "Value Excepted   :"+expselCurrencyOne);
+		System.out.println("selCurrecnyTwo      "+actselCurrecnyTwo + "Value Excepted   :"+expselCurrecnyTwo);
+		System.out.println("defCurrecnyOne      "+actdefCurrecnyOne + "Value Excepted   :"+expdefCurrecnyOne);
+		System.out.println("defCurrecnyTwo      "+actdefCurrecnyTwo + "Value Excepted   :"+expdefCurrecnyTwo);
 
 
 		excelReader.setCellData(xlfile, xlSheetName, 15, 7, actValueUSD);
@@ -353,7 +370,6 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(exchangeRateHistoryCloseIcon));
-
 		exchangeRateHistoryCloseIcon.click();
 
 		if (actValueUSD.equalsIgnoreCase(expValueUSD)&& actValueAED.equalsIgnoreCase(expValueAED) && 
@@ -441,10 +457,11 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 		System.out.println("*************************checkUpdateExchangeRate*************************");
 
 		String expMessage=excelReader.getCellData(xlSheetName, 21, 6);
-
 		String actMessage=checkValidationMessage(expMessage);
-
 		excelReader.setCellData(xlfile, xlSheetName, 21, 7, actMessage);
+		
+		System.out.println("actMessage: "+actMessage);
+		System.out.println("expMessage: "+expMessage);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(exchangeRateDefinitionPageCloseIcon));
 		exchangeRateDefinitionPageCloseIcon.click();
@@ -486,7 +503,7 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(exchangeRateHistoryMenu));
 		exchangeRateHistoryMenu.click();
 
-		Thread.sleep(2000);  
+		Thread.sleep(4000);  
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(baseCurrencyInExchangeRateHistory));
 
@@ -516,12 +533,12 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 
 		System.out.println("********************************checkExchangeRateHistoryAfterUpdating***********************************");
 
-		System.out.println("valueUSD            "+actValueUSD       +"Value Excepted   :"+expValueUSD);
-		System.out.println("ValueAED            "+actValueAED       +"Value Excepted   :"+expValueAED);
-		System.out.println("selCurrencyOne      "+actselCurrencyOne +"Value Excepted   :"+expselCurrencyOne);
-		System.out.println("selCurrecnyTwo      "+actselCurrecnyTwo +"Value Excepted   :"+expselCurrecnyTwo);
-		System.out.println("defCurrecnyOne      "+actdefCurrecnyOne +"Value Excepted   :"+expdefCurrecnyOne);
-		System.out.println("defCurrecnyTwo      "+actdefCurrecnyTwo +"Value Excepted   :"+expdefCurrecnyTwo);
+		System.out.println("valueUSD            "+actValueUSD       + "Value Excepted   :"+expValueUSD);
+		System.out.println("ValueAED            "+actValueAED       + "Value Excepted   :"+expValueAED);
+		System.out.println("selCurrencyOne      "+actselCurrencyOne + "Value Excepted   :"+expselCurrencyOne);
+		System.out.println("selCurrecnyTwo      "+actselCurrecnyTwo + "Value Excepted   :"+expselCurrecnyTwo);
+		System.out.println("defCurrecnyOne      "+actdefCurrecnyOne + "Value Excepted   :"+expdefCurrecnyOne);
+		System.out.println("defCurrecnyTwo      "+actdefCurrecnyTwo + "Value Excepted   :"+expdefCurrecnyTwo);
 
 		excelReader.setCellData(xlfile, xlSheetName, 24, 7, actValueUSD);
 		excelReader.setCellData(xlfile, xlSheetName, 25, 7, actValueAED);
@@ -569,6 +586,7 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 	
 	public boolean checkDateRangeOptionAsOnDateinExchangeRateHistory() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
+		  Thread.sleep(2000);  
 		 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		    homeMenu.click();
 			
@@ -581,18 +599,13 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 	        getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(exchangeRateHistoryMenu));
 	        exchangeRateHistoryMenu.click();
 	        
-	        Thread.sleep(2000);  
-	        
-	   
+	        Thread.sleep(4000);  
 		
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(baseCurrencyInExchangeRateHistory));
-			
 			baseCurrencyInExchangeRateHistory.sendKeys("INR");
-			
-			Thread.sleep(2000);
-			
+			Thread.sleep(4000);
 			baseCurrencyInExchangeRateHistory.sendKeys(Keys.TAB);
-			
+
 			Thread.sleep(2000);
 			
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectDateRange));
@@ -604,6 +617,8 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 			String actFromDate=FromDateTxt.getAttribute("value");
 			String expFromDate="02/01/2020";
 					
+			System.out.println("Act From Date "	+ actFromDate);
+			System.out.println("Exp From Date "	+ expFromDate);
 			
 			Calendar cal=Calendar.getInstance();
 			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
@@ -615,10 +630,13 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 			String actToDate=ToDateTxt.getAttribute("value");
 			String expToDate=currentDate;
 			
+			System.out.println("Act To Date "	+ actToDate);
+			System.out.println("Exp To Date "	+ expToDate);
 						
 		 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(loadIcon));
 			loadIcon.click();
 			
+			Thread.sleep(2000);
 					
 			System.out.println(defCurrecnyOne.getText());
 			
@@ -633,7 +651,7 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 			String actdefCurrecnyOne            = defCurrecnyOne.getText();
 			String actdefCurrecnyTwo            = defCurrecnyTwo.getText();
 			
-			String expEffectiveDate				= currentDate1;
+			String expEffectiveDate				= currentDate;
 			String expValueUSD                  = "70.0000000000";
 			String expValueAED                  = "14.0000000000";
 			String expselCurrencyOne            = "USD";
@@ -644,20 +662,15 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 			System.out.println("********************************checkExchangeRateHistorySelectINR***********************************");
 			
 			
-			System.out.println("From Date		 "	+ actFromDate 	+"Expected		"	+ expFromDate);
-			System.out.println("To Date			 "	+ actToDate 	+"Expected		"	+ expToDate);
-			System.out.println("Effective Date	 "	+ actEffectiveDate 	+"Expected		"	+ expEffectiveDate);
-			System.out.println("valueUSD            "+actValueUSD       +"Value Excepted   :"+expValueUSD);
-			System.out.println("ValueAED            "+actValueAED       +"Value Excepted   :"+expValueAED);
-			System.out.println("selCurrencyOne      "+actselCurrencyOne +"Value Excepted   :"+expselCurrencyOne);
-			System.out.println("selCurrecnyTwo      "+actselCurrecnyTwo +"Value Excepted   :"+expselCurrecnyTwo);
-			System.out.println("defCurrecnyOne      "+actdefCurrecnyOne +"Value Excepted   :"+expdefCurrecnyOne);
-			System.out.println("defCurrecnyTwo      "+actdefCurrecnyTwo +"Value Excepted   :"+expdefCurrecnyTwo);
 			
+			System.out.println("Effective Date	: "+ actEffectiveDate + "Expected		 : "+ expEffectiveDate);
+			System.out.println("valueUSD        : "+actValueUSD       + "Value Excepted  : "+expValueUSD);
+			System.out.println("ValueAED        : "+actValueAED       + "Value Excepted  : "+expValueAED);
+			System.out.println("selCurrencyOne  : "+actselCurrencyOne + "Value Excepted  : "+expselCurrencyOne);
+			System.out.println("selCurrecnyTwo  : "+actselCurrecnyTwo + "Value Excepted  : "+expselCurrecnyTwo);
+			System.out.println("defCurrecnyOne  : "+actdefCurrecnyOne + "Value Excepted  : "+expdefCurrecnyOne);
+			System.out.println("defCurrecnyTwo  : "+actdefCurrecnyTwo + "Value Excepted  : "+expdefCurrecnyTwo);
 			
-		/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(exchangeRateHistoryCloseIcon));
-		     
-			exchangeRateHistoryCloseIcon.click();*/
 			
 			if (actValueUSD.equalsIgnoreCase(expValueUSD)&& actValueAED.equalsIgnoreCase(expValueAED) && 
 				actselCurrencyOne.equalsIgnoreCase(expselCurrencyOne) && actselCurrecnyTwo.equalsIgnoreCase(expselCurrecnyTwo) && 
@@ -689,9 +702,10 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 	public boolean checkDateOptionasCurrentMonthinExchangeRateHistory() throws InterruptedException
 	{
 		
+		Thread.sleep(5500);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(baseCurrencyInExchangeRateHistory));
-		baseCurrencyInExchangeRateHistory.sendKeys(Keys.END , Keys.SHIFT ,Keys.HOME);
-				
+		clearValueFromTextBox(baseCurrencyInExchangeRateHistory);
 		baseCurrencyInExchangeRateHistory.sendKeys("AED");
 		
 		Thread.sleep(2000);
@@ -703,9 +717,11 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectDateRange));
 		Select s=new Select(selectDateRange);
 		s.selectByValue("2");
-		Thread.sleep(1500);
+		Thread.sleep(4000);
 		selectDateRange.sendKeys(Keys.TAB);
 		
+		
+		Thread.sleep(8000);
 		//current Month
 		
 		Calendar cal=Calendar.getInstance();
@@ -723,11 +739,15 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 		String actFromDate=FromDateTxt.getAttribute("value");
 		String expFromDate=f.format(fromDate);
 		
+		System.out.println("Act From Date : "+ actFromDate);
+		System.out.println("Exp From Date : "+ expFromDate);
 		
 		String actToDate=ToDateTxt.getAttribute("value");
 		String expToDate=f.format(toDate);
 		
-					
+		System.out.println("Act To Date	: "	+ actToDate);
+		System.out.println("Exp To Date	: "	+ expToDate);
+			
 	 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(loadIcon));
 		loadIcon.click();
 		
@@ -745,7 +765,7 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 		String actdefCurrecnyOne            = defCurrecnyOne.getText();
 		String actdefCurrecnyTwo            = defCurrecnyTwo.getText();
 		
-		String expEffectiveDate				= f1.format(fromDate);
+		String expEffectiveDate				= f.format(fromDate);
 		String expValueUSD                  = "4.2800000000";
 		String expValueAED                  = "0.0700000000";
 		String expselCurrencyOne            = "USD";
@@ -755,22 +775,16 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 		
 		System.out.println("********************************checkExchangeRateHistoryCurrentMonthSelectAED***********************************");
 		
-		
-		System.out.println("From Date		:"	+ actFromDate 	+	"Expected		:"	+ expFromDate);
-		System.out.println("To Date			:"	+ actToDate 	+	"Expected		:"	+ expToDate);
+	
 		System.out.println("Effective Date	 "	+ actEffectiveDate 	+"Expected		"	+ expEffectiveDate);
-		System.out.println("valueUSD            "+actValueUSD       +"Value Excepted   :"+expValueUSD);
-		System.out.println("ValueAED            "+actValueAED       +"Value Excepted   :"+expValueAED);
-		System.out.println("selCurrencyOne      "+actselCurrencyOne +"Value Excepted   :"+expselCurrencyOne);
-		System.out.println("selCurrecnyTwo      "+actselCurrecnyTwo +"Value Excepted   :"+expselCurrecnyTwo);
-		System.out.println("defCurrecnyOne      "+actdefCurrecnyOne +"Value Excepted   :"+expdefCurrecnyOne);
+		System.out.println("valueUSD         "+actValueUSD       +"Value Excepted   :"+expValueUSD);
+		System.out.println("ValueAED         "+actValueAED       +"Value Excepted   :"+expValueAED);
+		System.out.println("selCurrencyOne   "+actselCurrencyOne +"Value Excepted   :"+expselCurrencyOne);
+		System.out.println("selCurrecnyTwo   "+actselCurrecnyTwo +"Value Excepted   :"+expselCurrecnyTwo);
+		System.out.println("defCurrecnyOne   "+actdefCurrecnyOne +"Value Excepted   :"+expdefCurrecnyOne);
 		System.out.println("defCurrecnyTwo      "+actdefCurrecnyTwo +"Value Excepted   :"+expdefCurrecnyTwo);
 		
-		
-	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(exchangeRateHistoryCloseIcon));
-	     
-		exchangeRateHistoryCloseIcon.click();
-		*/
+	
 		if (actValueUSD.equalsIgnoreCase(expValueUSD)&& actValueAED.equalsIgnoreCase(expValueAED) && 
 			actselCurrencyOne.equalsIgnoreCase(expselCurrencyOne) && actselCurrecnyTwo.equalsIgnoreCase(expselCurrecnyTwo) && 
 			actdefCurrecnyOne.equalsIgnoreCase(expdefCurrecnyOne) && actdefCurrecnyTwo.equalsIgnoreCase(expdefCurrecnyTwo)
@@ -789,12 +803,9 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 	public boolean checkDateOptionasLastMonthinExchangeRateHistory() throws InterruptedException
 	{
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(baseCurrencyInExchangeRateHistory));
-		baseCurrencyInExchangeRateHistory.sendKeys(Keys.END , Keys.SHIFT ,Keys.HOME);
-		
+		clearValueFromTextBox(baseCurrencyInExchangeRateHistory);
 		baseCurrencyInExchangeRateHistory.sendKeys("AED");
-		
 		Thread.sleep(2000);
-		
 		baseCurrencyInExchangeRateHistory.sendKeys(Keys.TAB);
 		
 		Thread.sleep(2000);
@@ -845,7 +856,7 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 		String actdefCurrecnyTwo            = defCurrecnyTwo.getText();
 		
 		
-		String expEffectiveDate				= f1.format(fromDate);
+		String expEffectiveDate				= f.format(fromDate);
 		String expValueUSD                  = "4.2800000000";
 		String expValueAED                  = "0.0700000000";
 		String expselCurrencyOne            = "USD";
@@ -866,10 +877,6 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 		System.out.println("defCurrecnyOne      "+actdefCurrecnyOne +"Value Excepted   :"+expdefCurrecnyOne);
 		System.out.println("defCurrecnyTwo      "+actdefCurrecnyTwo +"Value Excepted   :"+expdefCurrecnyTwo);
 		
-		
-		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(exchangeRateHistoryCloseIcon));
-	     
-		exchangeRateHistoryCloseIcon.click();*/
 		
 		if (actValueUSD.equalsIgnoreCase(expValueUSD)&& actValueAED.equalsIgnoreCase(expValueAED) && 
 			actselCurrencyOne.equalsIgnoreCase(expselCurrencyOne) && actselCurrecnyTwo.equalsIgnoreCase(expselCurrecnyTwo) && 
@@ -894,7 +901,7 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 		baseCurrencyInExchangeRateHistory.sendKeys(Keys.END , Keys.SHIFT ,Keys.HOME);
 		baseCurrencyInExchangeRateHistory.sendKeys("USD");
 		
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		
 		baseCurrencyInExchangeRateHistory.sendKeys(Keys.TAB);
 		
@@ -903,9 +910,9 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectDateRange));
 		Select s=new Select(selectDateRange);
 		s.selectByValue("4");
-		Thread.sleep(1500);
+		Thread.sleep(4000);
 		selectDateRange.sendKeys(Keys.TAB);
-		
+		Thread.sleep(3000);
 		//Current Week
 		
 		Calendar cal=Calendar.getInstance();	
@@ -927,7 +934,7 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 					
 	 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(loadIcon));
 		loadIcon.click();
-		
+		Thread.sleep(5000);
 				
 		System.out.println(defCurrecnyOne.getText());
 		
@@ -944,7 +951,7 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 		String actdefCurrecnyOne            = defCurrecnyOne.getText();
 		String actdefCurrecnyTwo            = defCurrecnyTwo.getText();
 		
-		String expEffectiveDate				= f1.format(fromDate);
+		String expEffectiveDate				= f.format(fromDate);
 		String expValueUSD                  = "0.2300000000";
 		String expValueAED                  = "0.0100000000";
 		String expselCurrencyOne            = "AED";
@@ -996,7 +1003,7 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 		
 		baseCurrencyInExchangeRateHistory.sendKeys(Keys.TAB);
 		
-		Thread.sleep(2000);
+		Thread.sleep(6000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectDateRange));
 		Select s=new Select(selectDateRange);
@@ -1045,7 +1052,7 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 		String actdefCurrecnyOne            = defCurrecnyOne.getText();
 		String actdefCurrecnyTwo            = defCurrecnyTwo.getText();
 		
-		String expEffectiveDate				= f1.format(fromDate);
+		String expEffectiveDate				= f.format(fromDate);
 		String expValueUSD                  = "0.2300000000";
 		String expValueAED                  = "0.0100000000";
 		String expselCurrencyOne            = "AED";
@@ -1102,6 +1109,8 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 		Thread.sleep(1500);
 		selectDateRange.sendKeys(Keys.TAB);
 		
+		Thread.sleep(6000);
+		
 		//Today
 		
 		Calendar cal=Calendar.getInstance();
@@ -1138,7 +1147,7 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 		String actdefCurrecnyOne            = defCurrecnyOne.getText();
 		String actdefCurrecnyTwo            = defCurrecnyTwo.getText();
 		
-		String expEffectiveDate				= f1.format(cal.getTime());
+		String expEffectiveDate				= df.format(cal.getTime());
 		String expValueUSD                  = "0.2300000000";
 		String expValueAED                  = "0.0100000000";
 		String expselCurrencyOne            = "AED";
@@ -1237,7 +1246,7 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 		String actdefCurrecnyOne            = defCurrecnyOne.getText();
 		String actdefCurrecnyTwo            = defCurrecnyTwo.getText();
 		
-		String expEffectiveDate				= f1.format(fromDate);
+		String expEffectiveDate				= f.format(fromDate);
 		String expValueUSD                  = "4.2800000000";
 		String expValueAED                  = "0.0700000000";
 		String expselCurrencyOne            = "USD";
@@ -1337,7 +1346,7 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 		String actdefCurrecnyOne            = defCurrecnyOne.getText();
 		String actdefCurrecnyTwo            = defCurrecnyTwo.getText();
 		
-		String expEffectiveDate				= f1.format(fromDate);
+		String expEffectiveDate				= f.format(fromDate);
 		String expValueUSD                  = "4.2800000000";
 		String expValueAED                  = "0.0700000000";
 		String expselCurrencyOne            = "USD";
@@ -1376,6 +1385,133 @@ public class ExchangeRateAndExchangeRateHistoryPage extends BaseEngine
 	}
 	
 
+
+	public static boolean CheckLogin() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+	{
+	        Thread.sleep(3000);
+
+	        getDriver().navigate().refresh();
+
+	        LoginPage lp=new LoginPage(getDriver()); 
+
+	        lp.checkLoginPageTitleByURLInputInBrowser();
+
+	        String unamelt="su";
+
+	        String pawslt="su";
+
+	        lp.enterUserName(unamelt);
+
+	        Thread.sleep(2000);
+	        
+	        lp.enterPassword(pawslt);
+
+	        Thread.sleep(2000);
+
+	        String compname = "Automation Company : 08/10/2020";
+
+	        Select oSelect = new Select(companyDropDownList);
+
+	        List<WebElement> elementCount = oSelect.getOptions();
+
+	        int cqSize = elementCount.size();
+
+	        System.out.println("CompanyDropdownList Count :" + cqSize);
+
+	        int i;
+
+	        for (i = 0; i < elementCount.size(); i++) {
+
+	                elementCount.get(i).getText();
+
+	                String optionName = elementCount.get(i).getText();
+	                if (optionName.toUpperCase().startsWith(compname.toUpperCase())) {
+	                        System.out.println("q" + elementCount.get(i).getText());
+	                        elementCount.get(i).click();
+	                }
+
+	        }
+
+	        Thread.sleep(2000);
+
+	        lp.clickOnSignInBtn();
+
+	        Thread.sleep(2000);
+
+	        String actUserInfo1=userNameDisplay.getText();
+
+	        System.out.println("User Info  : "+actUserInfo1);
+
+	        System.out.println("User Info Capture Text  :  "+userNameDisplay.getText());
+
+	        /*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
+	        companyLogo.click();*/
+
+	        String getCompanyTxt1=Company_Name.getText();
+	        String getLoginCompanyName1=getCompanyTxt1.substring(0, 31);
+	        System.out.println("company name  :  "+ getLoginCompanyName1);
+	        //companyLogo.click();
+
+	        String expUserInfo1           ="SU";
+	        String expLoginCompanyName1   ="Automation Company : 08/10/2020";
+
+	        System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
+	        System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
+
+	        if(actUserInfo1.equalsIgnoreCase(expUserInfo1) && getLoginCompanyName1.contains(expLoginCompanyName1))
+	        {
+	                return true;
+	        }
+	        else
+	        {
+	                return false;
+	        }
+
+	}
+
+
+	public boolean checkLogoutExchangeRatePage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		getDriver().navigate().refresh();
+		Thread.sleep(2000);
+		 
+		 try
+			{
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplayLogo));
+			  userNameDisplayLogo.click();
+			  Thread.sleep(2000);
+			 
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
+			  logoutOption.click();
+			  
+			  Thread.sleep(2000);
+			  
+			  boolean actUserLoginPage              = username.isDisplayed() && username.isEnabled()
+	                                               && password.isDisplayed() && password.isEnabled();
+	                                      
+			  boolean expUserLoginPage              = true;
+			  
+			  if(actUserLoginPage==expUserLoginPage)  
+		      {
+				System.out.println("***Test Pass: Login Successfull***");
+				
+				return true;
+			  }
+		      else
+		      {
+		  	 
+				System.out.println("***Test Fail: Login Not Successfull***");
+				
+				return false;
+			  }
+			}
+			catch (Exception e)
+			{
+			 	String exception = e.getMessage();
+			 		
+				return false;
+			}
+		}
 
 
 

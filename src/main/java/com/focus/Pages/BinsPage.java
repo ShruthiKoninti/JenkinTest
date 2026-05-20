@@ -13,6 +13,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+
 import com.focus.base.BaseEngine;
 import com.focus.supporters.ExcelReader;
 import com.focus.utilities.POJOUtility;
@@ -65,7 +67,8 @@ public class BinsPage extends BaseEngine
 
 	
 //	@FindBy(xpath="//*[@id='1115']")
-	@FindBy(xpath="//*[@id='navigation_menu']/li[1]/ul/li[4]/ul/li[19]")
+	//@FindBy(xpath="//*[@id='navigation_menu']/li[1]/ul/li[4]/ul/li[19]")
+	@FindBy(xpath="//*[text()='Bins']")
 	public static WebElement binElement;
 
 	public  boolean checkBinsMasterInMasterMenu() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
@@ -82,50 +85,18 @@ public class BinsPage extends BaseEngine
 		mastersMenu.click();
 		Thread.sleep(3000);
 		
-		JavascriptExecutor js = (JavascriptExecutor) getDriver(); 
-		js.executeScript("arguments[0].scrollIntoView(true);",binElement);
-		Thread.sleep(1000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binElement));
-		binElement.click();
-		
-		/*JavascriptExecutor js = (JavascriptExecutor) getDriver(); 
-		js.executeScript("arguments[0].scrollIntoView(true);",binElement);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binElement));
-		getAction().moveToElement(binElement).build().perform();
-		binElement.click();
-		*/
+		ClickUsingJs(binElement);
+	
 		Thread.sleep(2000);
-		
-		/*int count = masterSubMenusList.size();
-		
-		for (int i = 1; i < count; i++) 
-		{
-			String data = masterSubMenusList.get(i).getText();
-			System.err.println(data);
-			
-			JavascriptExecutor js = (JavascriptExecutor) getDriver(); 
-			//js.executeScript("arguments[0].scrollIntoView(true);",masterSubMenusList.get(i));
-			
-			if (data.equalsIgnoreCase(excelReader.getCellData(xlSheetName, 8, 5))) 
-			{
-					
-				masterSubMenusList.get(i).click();
-				break;
-			}
-			js.executeScript("arguments[0].scrollIntoView(true);",masterSubMenusList.get(i));
-
-		}
-		
-		Thread.sleep(2000);*/
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));
 		
 		String expected = excelReader.getCellData(xlSheetName, 8, 6);
-    	
     	String actual = Boolean.toString(masterNewBtn.isDisplayed());
     	
-    	System.out.println("New Button is Displayed : "+actual+"  "+expected);
+    	System.out.println("Act New Button is Displayed : " +actual);
+    	System.out.println("Exp New Button is Displayed : " +expected);
+    	
     	
     	excelReader.setCellData(xlfile, xlSheetName, 8, 7, actual);
     	
@@ -181,15 +152,17 @@ public class BinsPage extends BaseEngine
 		saveBtn.click();
 
 		String expMessage=excelReader.getCellData(xlSheetName, 9, 6);
-
 		String actMessage=checkValidationMessage(expMessage);
-
-		Thread.sleep(1000);
+		
+		System.out.println("actMessage : "+actMessage);
+		System.out.println("expMessage : "+expMessage);
+		
+		Thread.sleep(8000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCloseBtn));
 		masterCloseBtn.click();
 
-		System.out.println("Message     : "+actMessage+" Value Expected : "+expMessage);
+		
 		
 		 excelReader.setCellData(xlfile, xlSheetName, 9, 7, actMessage);
 
@@ -252,10 +225,10 @@ public class BinsPage extends BaseEngine
 		saveBtn.click();
 
 		String expMessage=excelReader.getCellData(xlSheetName, 12, 6);
-
 		String actMessage=checkValidationMessage(expMessage);
 
-		System.out.println("Message     : "+actMessage+" Value Expected : "+expMessage);
+		System.out.println("actMessage  : "+actMessage);
+		System.out.println("expMessage  : "+expMessage);
 		
 		excelReader.setCellData(xlfile, xlSheetName, 12, 7, actMessage);
 
@@ -299,7 +272,8 @@ public class BinsPage extends BaseEngine
 
 		System.out.println("************************checkUpdatedBinsMasterDisplayInBins***********************");
 
-		System.out.println("Updated Bin : "+actBins+"  Value Expected  "+expBins);
+		System.out.println("Act Updated Bin : "+actBins);
+		System.out.println("Exp Updated Bin : "+expBins);
 		
 		excelReader.setCellData(xlfile, xlSheetName, 15, 7, actBins);
 
@@ -350,12 +324,12 @@ public class BinsPage extends BaseEngine
 		clickOnOkInDelete.click();
 
 		String expMessage=excelReader.getCellData(xlSheetName, 16, 6);
-
 		String actMessage=checkValidationMessage(expMessage);
+		
+		System.out.println("actMessage  : " +actMessage);
+		System.out.println("expMessage  : " +expMessage);
 
 		System.out.println("********************************checkDeleteItemInItemMaster***************************");
-
-		System.out.println("Message     : "+actMessage+" Value Expected : "+expMessage);
 		
 		excelReader.setCellData(xlfile, xlSheetName, 16, 7, actMessage);
 
@@ -382,7 +356,7 @@ public class BinsPage extends BaseEngine
 	@FindBy(xpath="//*[@id='btnAdvImportForMaster']")
 	public static WebElement advanceMasterImportExportBtn;;
 
-	@FindBy(xpath="//*[@id='viewheading']")
+	@FindBy(xpath="//*[contains(text(),'Advance Master Import/Export')]")
 	public static WebElement advanceMasterLabel;
 					 
 	@FindBy(xpath="//button[@id='btnFile']")
@@ -467,7 +441,7 @@ public class BinsPage extends BaseEngine
 	   	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(advanceMasterLabel));
 	    System.out.println("Advance Master import/Export Label  "+advanceMasterLabel.getText());
 	      	
-	  	if(advanceMasterLabel.getText().equalsIgnoreCase("Advance Master Import/Export----> Bins"))
+	  	if(advanceMasterLabel.getText().equalsIgnoreCase("Advance Master Import/Export"))
 		{	
 			return true;
 		}	 
@@ -612,6 +586,137 @@ public class BinsPage extends BaseEngine
 			 return false;
 		 }
 	}	
+
+
+
+
+	public static boolean CheckLogin() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+	{
+	        Thread.sleep(3000);
+
+	        getDriver().navigate().refresh();
+
+	        LoginPage lp=new LoginPage(getDriver()); 
+
+	        lp.checkLoginPageTitleByURLInputInBrowser();
+
+	        String unamelt="su";
+
+	        String pawslt="su";
+
+	        lp.enterUserName(unamelt);
+
+	        Thread.sleep(2000);
+	        
+	        lp.enterPassword(pawslt);
+
+	        Thread.sleep(2000);
+
+	        String compname = "Automation Company : 08/10/2020";
+
+	        Select oSelect = new Select(companyDropDownList);
+
+	        List<WebElement> elementCount = oSelect.getOptions();
+
+	        int cqSize = elementCount.size();
+
+	        System.out.println("CompanyDropdownList Count :" + cqSize);
+
+	        int i;
+
+	        for (i = 0; i < elementCount.size(); i++) {
+
+	                elementCount.get(i).getText();
+
+	                String optionName = elementCount.get(i).getText();
+	                if (optionName.toUpperCase().startsWith(compname.toUpperCase())) {
+	                        System.out.println("q" + elementCount.get(i).getText());
+	                        elementCount.get(i).click();
+	                }
+
+	        }
+
+	        Thread.sleep(2000);
+
+	        lp.clickOnSignInBtn();
+
+	        Thread.sleep(2000);
+
+	        String actUserInfo1=userNameDisplay.getText();
+
+	        System.out.println("User Info  : "+actUserInfo1);
+
+	        System.out.println("User Info Capture Text  :  "+userNameDisplay.getText());
+
+	       /* getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
+	        companyLogo.click();*/
+
+	        String getCompanyTxt1=Company_Name.getText();
+	        String getLoginCompanyName1=getCompanyTxt1.substring(0, 31);
+	        System.out.println("company name  :  "+ getLoginCompanyName1);
+	       // companyLogo.click();
+
+	        String expUserInfo1           ="SU";
+	        String expLoginCompanyName1   ="Automation Company : 08/10/2020";
+
+	        System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
+	        System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
+
+	        if(actUserInfo1.equalsIgnoreCase(expUserInfo1) && getLoginCompanyName1.contains(expLoginCompanyName1))
+	        {
+	                return true;
+	        }
+	        else
+	        {
+	                return false;
+	        }
+
+	}
+
+
+	public boolean checkLogoutBinsPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		getDriver().navigate().refresh();
+		Thread.sleep(2000);
+		 
+		 try
+			{
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplayLogo));
+			  userNameDisplayLogo.click();
+			  Thread.sleep(2000);
+			 
+			  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
+			  logoutOption.click();
+			  
+			  Thread.sleep(2000);
+			  
+			  boolean actUserLoginPage              = username.isDisplayed() && username.isEnabled()
+	                                               && password.isDisplayed() && password.isEnabled();
+	                                      
+			  boolean expUserLoginPage              = true;
+			  
+			  if(actUserLoginPage==expUserLoginPage)  
+		      {
+				System.out.println("***Test Pass: Login Successfull***");
+				
+				return true;
+			  }
+		      else
+		      {
+		  	 
+				System.out.println("***Test Fail: Login Not Successfull***");
+				
+				return false;
+			  }
+			}
+			catch (Exception e)
+			{
+			 	String exception = e.getMessage();
+			 		
+				return false;
+			}
+		}
+
 
 
 

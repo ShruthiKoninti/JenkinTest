@@ -15,6 +15,15 @@ public class StandardRateTest extends BaseEngine
 {
 	StandardRatePage SRP;
 	
+	
+	 @Test(priority=215)
+	 public void CheckLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 SRP=new StandardRatePage(getDriver());
+		 Assert.assertEquals(SRP.CheckLogin(), true);
+	 }
+	
+	 
 	 @Test(priority=217)
 	 public void checkStandardRateDeleteOption() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -35,4 +44,15 @@ public class StandardRateTest extends BaseEngine
 		 SRP=new StandardRatePage(getDriver());
 		 Assert.assertEquals(SRP.checkEditingStandardRate(), true);
 	 }
+	 
+	 
+	 
+	 
+	 @Test(priority=221)
+	 public void checkLogoutStandardRatePage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 SRP=new StandardRatePage(getDriver());
+		 Assert.assertEquals(SRP.checkLogoutStandardRatePage(), true);
+	 }
+	 
 }
