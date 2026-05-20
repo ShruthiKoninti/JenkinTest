@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+ <listeners>
+ <listener class-name="com.focus.listeners.Listener"></listener>
+ </listeners>
+  <test thread-count="5" name="Test">
+   <classes>
+        
+        <class name="com.focus.testcases.URLBrowserTest"/>
+        <!-- <class name="com.focus.testcases.LoginPageTest"/> -->
+      
+         <!-- <class name="com.focus.testcases.CompanyCreateTest"/>    -->
+     
+  
+       
+      <!--  <class name="com.focus.testcases.AccountsTest"/>  
+         <class name="com.focus.testcases.ItemsTest"/>    -->
+           <class name="com.focus.testcases.AttributesTest"/>     
+       
+        <class name="com.focus.testcases.UnitsTest"/> 
+        <class name="com.focus.testcases.CurrencyTest"/> 
+        <class name="com.focus.testcases.ExchangeRateAndExchangeRateHistoryTest"/> 
+        
+        <class name="com.focus.testcases.DepartmentTest"/> 
+        <class name="com.focus.testcases.BinsTest"/>  
+        <class name="com.focus.testcases.WarehouseTest"/>   
+        <class name="com.focus.testcases.UnitConversionTest"/> 
+         
+         <class name="com.focus.testcases.ItemPropertiesTest"/>  
+     <class name="com.focus.testcases.InfoPanelTest" /> 
+        
+        <class name="com.focus.testcases.ConfigureMasterTest"/>
+   
+         <class name="com.focus.testcases.SmokeSecurityTest"/>
+         
+      <class name="com.focus.testcases.DocumentCustomizationTest"/>
+        <class name="com.focus.testcases.SanityDocCustViewTest"/>
+       <class name="com.focus.testcases.DocumentCuatomizationReceiptsTest"/> 
+         <class name="com.focus.testcases.TransactionAuthorizationTest"/>  
+        <class name="com.focus.testcases.MasterAuthorizationTest"/>  
+         <class name="com.focus.testcases.DesignWorkFlowTest"/> 
+        <class name="com.focus.testcases.StandardRateTest"/>
+        <class name="com.focus.testcases.SmokeDashboardTest"/>
+        
+       
+       <class name="com.focus.testcases.MasterPreloadTest"/>
+        <class name="com.focus.testcases.RulesTest"/>
+        	<class name="com.focus.testcases.NewRulesLoadingTest"/>
+         <class name="com.focus.testcases.VoucherViewsTest" />   
+        
+        <class name="com.focus.testcases.OpeningStocksTest"/> 
+        <class name="com.focus.testcases.OpeningBalancesTest"/>
+        <class name="com.focus.testcases.MaterialRequisitionTest"/>  
+        <class name="com.focus.testcases.PurchaseOrdersTest"/>
+        <class name="com.focus.testcases.PurchaseVouchersVATTest"/>
+        <class name="com.focus.testcases.PaymentsVATVoucherTest"/>
+
+        <class name="com.focus.testcases.ExcessInStocksVoucherTest"/> 
+        <class name="com.focus.testcases.StockTransferVoucherTest"/> 
+        
+       <class name="com.focus.testcases.SalesOrderVoucherTest"/> 
+        <class name="com.focus.testcases.SalesInvoiceVATVoucherTest"/>
+        <class name="com.focus.testcases.ReceiptsVATVoucherTest"/>
+        <class name="com.focus.testcases.CreditNotesTest"/>
+        <class name="com.focus.testcases.DebitNotesTest"/>
+        <class name="com.focus.testcases.JVVATViewTest"/>   
+        
+        <class name="com.focus.testcases.PDCTest"  />   
+        
+        <class name="com.focus.testcases.BuyerPriceBookValidationTest"  /> 
+         <class name="com.focus.testcases.PriceBookAuthorizationTest"  />   
+        	
+   <class name="com.focus.testcases.PurchaseVoucherVATandSalesInvoiceVATTriggersTest" />  
+
+   
+ 
+ 
+    <class name="com.focus.testcases.ReportGenerationTest" />
+ 
+  
+  	
+    </classes>
+  </test> <!-- Test-->
+</suite> <!-- Suite --> 
