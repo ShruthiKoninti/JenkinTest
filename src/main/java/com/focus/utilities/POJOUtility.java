@@ -26,6 +26,12 @@ public class POJOUtility {
 		PropertiesReusables pr=new PropertiesReusables(filePath);
 		return pr;
 	}
+
+
+	public static String getConfigValue() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 	

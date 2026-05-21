@@ -1812,6 +1812,7 @@ public static boolean CheckLogin() throws InterruptedException, EncryptedDocumen
         String unamelt="su";
 
         String pawslt="su";
+  
 
         lp.enterUserName(unamelt);
         
@@ -1861,12 +1862,12 @@ public static boolean CheckLogin() throws InterruptedException, EncryptedDocumen
         companyLogo.click();*/
 
         String getCompanyTxt1=Company_Name.getText();
-        String getLoginCompanyName1=getCompanyTxt1.substring(0, 31);
+        String getLoginCompanyName1=getCompanyTxt1;
         System.out.println("company name  :  "+ getLoginCompanyName1);
         //    companyLogo.click();
 
         String expUserInfo1           ="SU";
-        String expLoginCompanyName1   ="Automation Company : 08/10/2020";
+        String expLoginCompanyName1   ="Automation Company";
 
         System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
         System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);

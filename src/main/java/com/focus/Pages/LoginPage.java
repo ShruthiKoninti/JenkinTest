@@ -75,7 +75,8 @@ public class LoginPage extends BaseEngine
 	System.out.println("*************************************** checkLoginScreenTitleByURLInputInBrowser *********************************************************");
 	         
    // String actURLValue=/* excelReader.getCellData(xlSheetName, 6, 6);*/"https://focus-qa-17/focusx#";
-	String actURLValue="http://localhost/focusX#";
+	String actURLValue="http://192.168.5.88/focusx";
+    System.out.println("URL used: " + actURLValue);
 	
 	
  
@@ -106,7 +107,9 @@ public class LoginPage extends BaseEngine
 	
 	System.out.println("*************************************** checkLoginScreenTitleByURLInputInBrowser *********************************************************");
 	         
-    String actURLValue="https://focus-qa-17/focus10LR#";
+	
+    String actURLValue="http://192.168.5.88/focusx";
+    System.out.println("URL used: " + actURLValue);
  
     enterUrl(actURLValue);
    

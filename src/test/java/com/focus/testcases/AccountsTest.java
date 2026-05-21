@@ -27,8 +27,7 @@ public class AccountsTest extends BaseEngine
 			 AP=new AccountsPage(getDriver());
 			 Assert.assertEquals(AP.CheckLogin(), true);
 		 }
-	
-	/*
+/*
 	@Test(priority=110)
 	 public void checkRestoreAutomationCompany() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -324,8 +323,7 @@ public class AccountsTest extends BaseEngine
 	 }
 	 
 	 
-	 */
-	 
+
 	 
  ///////////////////Importing Data from Excel///////////////////////
 	/* 
