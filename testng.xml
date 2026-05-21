@@ -7,9 +7,9 @@
   <test thread-count="5" name="Test">
    <classes>
         
-        <class name="com.focus.testcases.URLBrowserTest"/>
+       <!-- <class name="com.focus.testcases.URLBrowserTest"/>-->
         <!-- <class name="com.focus.testcases.LoginPageTest"/> -->         
-        <!--  <class name="com.focus.testcases.AccountsTest"/>-->
+          <class name="com.focus.testcases.AccountsTest"/>
 
  
   
