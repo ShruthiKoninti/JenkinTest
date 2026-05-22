@@ -131,18 +131,18 @@ public class BaseEngine extends ElementRepository
 			
 			
 
-			/*
-			 * WebDriverManager.chromedriver().setup();
-			 * 
-			 * ChromeOptions options = new ChromeOptions();
-			 * options.addArguments("--start-maximized");
-			 * options.addArguments("--disable-notifications");
-			 * 
-			 * WebDriver driver = new ChromeDriver(options); initActivities();
-			 */
+			
+			  WebDriverManager.chromedriver().setup();
+			  
+			  ChromeOptions options1 = new ChromeOptions();
+			  options1.addArguments("--start-maximized");
+			  options1.addArguments("--disable-notifications");
+			  
+			   driver = new ChromeDriver(options1); initActivities();
+			 
 
 			
-			
+			/*
 			System.setProperty(DriverUtility.chromeKey, baseDir + DriverUtility.chromeValue);
 			String downloadFilepath = getBaseDir() + "\\autoIt\\ExportFiles";
 			HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
@@ -157,7 +157,7 @@ public class BaseEngine extends ElementRepository
 			cap.setCapability(ChromeOptions.CAPABILITY, options);
 
 			driver = new ChromeDriver(cap);
-			initActivities();
+			initActivities();*/
 			
 			
 			

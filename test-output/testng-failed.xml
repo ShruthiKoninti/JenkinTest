@@ -8,44 +8,14 @@
     <classes>
       <class name="com.focus.testcases.AccountsTest">
         <methods>
-          <include name="checkAfterTabCreationinAccountMasterPage"/>
-          <include name="checkRestoreAutomationCompany"/>
-          <include name="checkEditingInSavedAccountINAccountMaster"/>
-          <include name="checkCreatedGroupDisplayedonLeftPanel"/>
-          <include name="checkDeleteExtraFieldinCustomizeMaster"/>
-          <include name="beforeMethodExecution"/>
-          <include name="checkDeleteTabOptionForCreateTreeTabDisplayInTabs"/>
-          <include name="checkSearchinganAccountUnderSubGroup"/>
-          <include name="checkLogoutAccountsPage"/>
-          <include name="CheckLogin"/>
-          <include name="openBrowser"/>
-          <include name="checkLoginAfterLogout"/>
-          <include name="checkOpenGroupAccountMaster"/>
-          <include name="checkCreatingaTreeTabinAccountMaster"/>
-          <include name="checkCreatingExtraFieldsinAccountMaster"/>
-          <include name="checkAccountsSavedinGroupsandSubGroupsinAccountMaster"/>
-          <include name="checkAddedExtraFieldinGeneralTabofAccountMaster"/>
-          <include name="checkSavingAccountSubGroupinAccountMaster"/>
-          <include name="checkSavingAccountsinSubGroupsinAccountMaster"/>
-          <include name="generateReports"/>
-          <include name="afterMethodExecution"/>
-          <include name="checkCreateDocumentTabOptionsInCustomizeMaster"/>
-          <include name="checkDeletedExtraFieldinGeneralTabofAccountMaster"/>
-          <include name="checkDeleteAccountInAccountMaster"/>
-          <include name="checkUpdatedExtraFieldinGeneralTabofAccountMaster"/>
-          <include name="checkSavingAccountINAccountMaster"/>
-          <include name="checkUpdatedAccountDisplayInAccountGridBeforeCustomization"/>
-          <include name="checkLogoutAccountPageAfterTabCreation"/>
-          <include name="checkSavingAccountGroupinAccountMaster"/>
-          <include name="checkDeleteGroupAccountinAccountMaster"/>
           <include name="intialiseReports"/>
           <include name="closeBrowser"/>
-          <include name="checkLogoutAfterExtraFieldUpdated"/>
-          <include name="checkEditandUpdateExtraFieldinCustomizeMaster"/>
-          <include name="checkEditingNewlyCreatedTreeTabDisplay"/>
-          <include name="CheckLoginAfterExtraFieldUpdated"/>
-          <include name="CheckLoginAfterExtraFieldDeleted"/>
-          <include name="checkLogoutAfterExtraFieldDeleted"/>
+          <include name="beforeMethodExecution"/>
+          <include name="checkLogoutAccountsPage"/>
+          <include name="generateReports"/>
+          <include name="CheckLogin"/>
+          <include name="openBrowser"/>
+          <include name="afterMethodExecution"/>
         </methods>
       </class> <!-- com.focus.testcases.AccountsTest -->
     </classes>
