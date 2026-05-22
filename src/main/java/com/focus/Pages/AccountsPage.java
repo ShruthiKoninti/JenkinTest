@@ -1858,13 +1858,11 @@ public static boolean CheckLogin() throws InterruptedException, EncryptedDocumen
 
         System.out.println("User Info Capture Text  :  "+userNameDisplay.getText());
 
-        /*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
-        companyLogo.click();*/
-
+  
         String getCompanyTxt1=Company_Name.getText();
         String getLoginCompanyName1=getCompanyTxt1;
         System.out.println("company name  :  "+ getLoginCompanyName1);
-        //    companyLogo.click();
+        
 
         String expUserInfo1           ="SU";
         String expLoginCompanyName1   ="Automation Company";

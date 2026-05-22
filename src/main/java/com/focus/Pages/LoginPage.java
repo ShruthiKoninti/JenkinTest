@@ -69,21 +69,15 @@ public class LoginPage extends BaseEngine
 	
   public static boolean checkLoginPageTitleByURLInputInBrowser() throws EncryptedDocumentException, InvalidFormatException, IOException 
   {
-	excelReader=new ExcelReader(POJOUtility.getExcelPath());
-	xlfile=getBaseDir()+"\\src\\main\\resources\\testdata\\FocusTestData.xlsx";
 	
 	System.out.println("*************************************** checkLoginScreenTitleByURLInputInBrowser *********************************************************");
 	         
-   // String actURLValue=/* excelReader.getCellData(xlSheetName, 6, 6);*/"https://focus-qa-17/focusx#";
 	String actURLValue="http://192.168.5.88/focusx";
     System.out.println("URL used: " + actURLValue);
 	
 	
  
     enterUrl(actURLValue);
-    
-    getDriver().manage().deleteAllCookies();
-   // enterUrl("https://focus-qa-17/focusx#");
    
     String actLoginTitle = getDriver().getTitle();
     String expLoginTitle="Focus";
@@ -92,12 +86,10 @@ public class LoginPage extends BaseEngine
    
     if(actLoginTitle.equalsIgnoreCase(expLoginTitle))
     {
-	   excelReader.setCellData(xlfile, "LoginPage", 6, 9, resPass);
 	   return true;
     }
     else
     {
-	   excelReader.setCellData(xlfile, "LoginPage", 6, 9, resFail);
 	   return false;
     }   	       
    }
