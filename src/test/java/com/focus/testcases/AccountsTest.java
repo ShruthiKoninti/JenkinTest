@@ -35,7 +35,7 @@ public class AccountsTest extends BaseEngine
 		 Assert.assertEquals(AP.checkRestoreAutomationCompany(), true);
 	 }
 	
-	/*
+	
 	@Test(priority=117)
 	 public void checkSavingAccountINAccountMaster() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
